@@ -1,0 +1,60 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=D:\Program Files (x86)\Web\www\jui\doc\jQuery EasyUI中文手册.chm
+Contents file=D:\Program Files (x86)\Web\www\jui\doc\jQuery EasyUI中文手册.hhc
+Index file=D:\Program Files (x86)\Web\www\jui\doc\jQuery EasyUI中文手册.hhk
+Binary Index=Yes
+Binary TOC=Yes
+Full-text search=Yes
+Language=0x0804
+Title=jQuery EasyUI中文手册
+Error log file=Error.log
+Default Window=main
+
+[WINDOWS]
+main="jQuery EasyUI中文手册","D:\Program Files (x86)\Web\www\jui\doc\jQuery EasyUI中文手册.hhc","D:\Program Files (x86)\Web\www\jui\doc\jQuery EasyUI中文手册.hhk","","","","","","",0x60,240,0x70281e,[250,180,750,500],0x8000,0x0,,0,0,0,0
+[FILES]
+D:\Program Files (x86)\Web\www\jui\doc\accordion.html
+D:\Program Files (x86)\Web\www\jui\doc\calendar.html
+D:\Program Files (x86)\Web\www\jui\doc\chm_about.htm
+D:\Program Files (x86)\Web\www\jui\doc\combo.html
+D:\Program Files (x86)\Web\www\jui\doc\combobox.html
+D:\Program Files (x86)\Web\www\jui\doc\combogrid.html
+D:\Program Files (x86)\Web\www\jui\doc\combotree.html
+D:\Program Files (x86)\Web\www\jui\doc\datagrid.html
+D:\Program Files (x86)\Web\www\jui\doc\datebox.html
+D:\Program Files (x86)\Web\www\jui\doc\datetimebox.html
+D:\Program Files (x86)\Web\www\jui\doc\dialog.html
+D:\Program Files (x86)\Web\www\jui\doc\draggable.html
+D:\Program Files (x86)\Web\www\jui\doc\droppable.html
+D:\Program Files (x86)\Web\www\jui\doc\easyloader.html
+D:\Program Files (x86)\Web\www\jui\doc\easyui.jpg
+D:\Program Files (x86)\Web\www\jui\doc\form.html
+D:\Program Files (x86)\Web\www\jui\doc\index.htm
+D:\Program Files (x86)\Web\www\jui\doc\layout.html
+D:\Program Files (x86)\Web\www\jui\doc\linkbutton.html
+D:\Program Files (x86)\Web\www\jui\doc\main.css
+D:\Program Files (x86)\Web\www\jui\doc\menu.html
+D:\Program Files (x86)\Web\www\jui\doc\menubutton.html
+D:\Program Files (x86)\Web\www\jui\doc\messager.html
+D:\Program Files (x86)\Web\www\jui\doc\numberbox.html
+D:\Program Files (x86)\Web\www\jui\doc\numberspinner.html
+D:\Program Files (x86)\Web\www\jui\doc\pagination.html
+D:\Program Files (x86)\Web\www\jui\doc\panel.html
+D:\Program Files (x86)\Web\www\jui\doc\parser.html
+D:\Program Files (x86)\Web\www\jui\doc\progressbar.html
+D:\Program Files (x86)\Web\www\jui\doc\propertygrid.html
+D:\Program Files (x86)\Web\www\jui\doc\resizable.html
+D:\Program Files (x86)\Web\www\jui\doc\searchbox.html
+D:\Program Files (x86)\Web\www\jui\doc\shBrushJScript.js
+D:\Program Files (x86)\Web\www\jui\doc\shBrushXml.js
+D:\Program Files (x86)\Web\www\jui\doc\shCore.js
+D:\Program Files (x86)\Web\www\jui\doc\spinner.html
+D:\Program Files (x86)\Web\www\jui\doc\splitbutton.html
+D:\Program Files (x86)\Web\www\jui\doc\SyntaxHighlighter.css
+D:\Program Files (x86)\Web\www\jui\doc\tabs.html
+D:\Program Files (x86)\Web\www\jui\doc\timespinner.html
+D:\Program Files (x86)\Web\www\jui\doc\tree.html
+D:\Program Files (x86)\Web\www\jui\doc\treegrid.html
+D:\Program Files (x86)\Web\www\jui\doc\validatebox.html
+D:\Program Files (x86)\Web\www\jui\doc\window.html

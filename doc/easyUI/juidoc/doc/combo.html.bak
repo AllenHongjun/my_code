@@ -1,0 +1,544 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="keywords" content="jquery,ui,easy,easyui,web framekwork,ajax framekwork,ria,web development">
+		<meta name="description" content="easyui help you build your web page easily!">
+		<title>combo - jQuery EasyUI中文帮助手册</title>
+        <link rel="stylesheet" href="main.css" type="text/css" />
+		<link type="text/css" rel="stylesheet" href="SyntaxHighlighter.css"></link>
+		<script src="shCore.js"></script>
+		<script src="shBrushJScript.js"></script>
+		<script src="shBrushXml.js"></script>
+	</head>
+	<body>
+		<div id="header">
+						<div id="header-inner">
+				<table cellpadding="0" cellspacing="0" style="width:100%;">
+					<tr>
+						<td rowspan="2" style="width:20px;">
+						</td>
+						<td style="height:52px;">
+							<div style="color:#fff;font-size:22px;font-weight:bold;">
+								<a href="http://www.jeasyui.com/" style="color:#fff;font-size:22px;font-weight:bold;text-decoration:none">jQuery EasyUI</a>
+							</div>
+							<div style="color:#fff">
+								<a href="http://www.jeasyui.com/" style="color:#fff;text-decoration:none">jQuery EasyUI 框架帮助你轻松建立站点。</a>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+			
+		</div>
+		<div id="mainwrap">
+			<div id="content">
+			
+
+
+<div style="padding:10px">
+
+
+
+<h3>自定义组合框</h3>
+
+<p>继承$.fn.validatebox.defaults，使$.fn.combo.defaults重载。</p>
+
+<img src="images/combo.png"/>
+
+
+
+<h4>依赖关系</h4>
+
+<ul>
+
+	<li>表单验证</li>
+
+	<li>控制面板</li>
+
+</ul>
+
+
+
+<h4>使用方法</h4>
+
+<textarea name="code-combo" class="html">
+	<input id="cc" value="001">
+	<select id="cc"></select>
+</textarea>
+
+<textarea name="code-combo" class="js">
+	$('#cc').combo({
+		required:true,
+		multiple:true
+	});
+</textarea>
+
+
+
+<h4>属性</h4>
+
+<p>属性继承表单验证,以下是只读组合框独有的属性。</p>
+
+<table class="doc-table">
+
+<tr>
+
+<th><strong>名称</strong></th>
+<th><strong>类型</strong></th>
+<th><strong>描述</strong></th>
+
+<th><strong>默认值</strong></th>
+
+</tr>
+
+<tr>
+
+
+
+<td>width（宽度）</td>
+
+<td>number（数字）</td>
+
+<td>组合框的宽度。</td>
+
+<td>auto</td>
+
+</tr>
+
+<tr>
+
+<td>panelWidth（下拉框宽度）</td>
+
+<td>number（数字）</td>
+
+<td>下拉框的宽度。</td>
+
+<td>null</td>
+
+
+
+</tr>
+
+<tr>
+
+<td>panelHeight（下拉框高度）</td>
+
+<td>number（数字）</td>
+
+<td>下拉框的高度。</td>
+
+<td>200</td>
+
+</tr>
+
+<tr>
+
+<td>multiple（可多选）</td>
+
+<td>boolean（布尔型）</td>
+
+<td>定义是否支持多选。</td>
+
+
+
+<td>false</td>
+
+</tr>
+
+<tr>
+
+<td>separator（分隔条）</td>
+
+<td>string（字符串）</td>
+
+<td>当支持多选时，用以分隔文本的字符。</td>
+
+<td>,</td>
+
+</tr>
+
+<tr>
+
+<td>editable（可编辑）</td>
+
+<td>boolean（布尔型）</td>
+
+
+
+<td>定义用户是否可以直接向组合框输入内容。</td>
+
+<td>true</td>
+
+</tr>
+
+<tr>
+
+<td>disabled（禁用）</td>
+
+<td>boolean（布尔型）</td>
+
+<td>定义是否禁用输入框。</td>
+
+<td>false</td>
+
+</tr>
+
+<tr>
+
+<td>hasDownArrow（下拉图标）</td>
+
+
+
+<td>boolean（布尔型）</td>
+
+<td>定义是否显示下拉按钮。</td>
+
+<td>true</td>
+
+</tr>
+
+<tr>
+
+<td>value（值）</td>
+
+<td>string（字符串）</td>
+
+<td>默认值。</td>
+
+<td></td>
+
+</tr>
+
+<tr>
+
+<td>delay（延迟）</td>
+
+<td>number（数字）</td>
+
+<td>最后一次输入事件与搜索（自动完成）之间的延迟间隔。</td>
+
+<td>200</td>
+</tr>
+
+<tr>
+
+
+
+<td>keyHandler（按键助手）</td>
+
+<td>object（对象）</td>
+
+<td>
+
+当用户按下一个键位时调用的函数，默认的按键助手定义如下：
+
+<pre>
+
+keyHandler: {
+
+	up: function(){},
+
+	down: function(){},
+
+	enter: function(){},
+
+	query: function(q){}
+
+}
+
+</pre>
+
+</td>
+
+<td></td>
+
+</tr>
+
+</table>
+
+
+
+<h4>事件</h4>
+
+<table class="doc-table">
+<tr>
+<th><strong>名称</strong></th>
+<th><strong>参数</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+
+<tr>
+
+<td>onShowPanel</td>
+
+<td>none</td>
+
+<td>当显示下拉面板的时候触发。</td>
+
+</tr>
+
+<tr>
+
+<td>onHidePanel</td>
+
+<td>none</td>
+
+<td>当隐藏下拉面板的时候触发。</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>onChange</td>
+
+<td>newValue, oldValue</td>
+
+<td>当组合框的值发生改变时触发。</td>
+
+</tr>
+
+</table>
+
+
+
+<h4>方法</h4>
+
+<p>方法继承表单验证，以下是只读组合框独有的方法。</p>
+
+<table class="doc-table">
+
+<tr>
+
+<th><strong>名称</strong></th>
+<th><strong>参数</strong></th>
+<th><strong>描述</strong></th>
+
+</tr>
+
+<tr>
+
+<td>options</td>
+
+<td>none</td>
+
+<td>返回属性对象。</td>
+
+
+
+</tr>
+
+<tr>
+
+<td>panel</td>
+
+<td>none</td>
+
+<td>返回下拉面板对象。</td>
+
+</tr>
+
+<tr>
+
+<td>textbox</td>
+
+<td>none</td>
+
+<td>返回文本框对象。</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>destroy</td>
+
+<td>none</td>
+
+<td>销毁组件。</td>
+
+</tr>
+
+<tr>
+
+<td>resize</td>
+
+<td>width</td>
+
+<td>调整组件的宽度。</td>
+
+</tr>
+
+<tr>
+
+
+
+<td>showPanel</td>
+
+<td>none</td>
+
+<td>显示下拉面板。</td>
+
+</tr>
+
+<tr>
+
+<td>hidePanel</td>
+
+<td>none</td>
+
+<td>隐藏下拉面板。</td>
+
+</tr>
+
+<tr>
+
+<td>disable</td>
+
+
+
+<td>none</td>
+
+<td>禁用组合框。</td>
+
+</tr>
+
+<tr>
+
+<td>enable</td>
+
+<td>none</td>
+
+<td>启用组合框。</td>
+
+</tr>
+
+<tr>
+
+<td>validate</td>
+
+<td>none</td>
+
+
+
+<td>验证输入的值。</td>
+
+</tr>
+
+<tr>
+
+<td>isValid</td>
+
+<td>none</td>
+
+<td>返回验证结果。</td>
+
+</tr>
+
+<tr>
+
+<td>clear</td>
+
+<td>none</td>
+
+<td>清除组件的值。</td>
+
+
+
+</tr>
+
+<tr>
+
+<td>getText</td>
+
+<td>none</td>
+
+<td>获取组合框的值。</td>
+
+</tr>
+
+<tr>
+
+<td>setText</td>
+
+<td>text</td>
+
+<td>设置组合框的值。</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>getValues</td>
+
+<td>none</td>
+
+<td>返回一个存储下拉面板值的数组。</td>
+
+</tr>
+
+<tr>
+
+<td>setValues</td>
+
+<td>values</td>
+
+<td>设置下拉面板的值，参数values是一个数组。</td>
+
+</tr>
+
+<tr>
+
+
+
+<td>getValue</td>
+
+<td>none</td>
+
+<td>获取下拉面板的值。</td>
+
+</tr>
+
+<tr>
+
+<td>setValue</td>
+
+<td>value</td>
+
+<td>设置下拉面板的值。</td>
+
+</tr>
+
+</table>
+
+
+
+</div>
+
+
+
+﻿			</div>
+		</div>
+		<div id="footer">
+			<div>Copyright © 2010-2011 www.jeasyui.com</div>
+<a target="_blank" href="http://sighttp.qq.com/authd?IDKEY=0d8f551beb86c567f5d026fc3af8f8a0c1cf318635116789"><img border="0"  src="http://wpa.qq.com/imgd?IDKEY=0d8f551beb86c567f5d026fc3af8f8a0c1cf318635116789&pic=45" alt="点击Q我" title="点击Q我"></a>
+|  
+<noscript><a href="http://www.51.la/?4095651" target="_blank">
+<img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/4095651.asp" style="border:none" /></a></noscript> 
+<script src="http://s17.cnzz.com/stat.php?id=2412230&web_id=2412230&show=pic" language="JavaScript"></script>|<script language="javascript" type="text/javascript" src="http://js.users.51.la/4095651.js"></script>
+|<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F9541ae759aad5b1e7083c2f63b8e8e9c' type='text/javascript'%3E%3C/script%3E"));
+</script>
+		</div>
+		<script type="text/javascript">
+						dp.SyntaxHighlighter.ClipboardSwf = '/SyntaxHighlighter/Scripts/clipboard.swf';
+			dp.SyntaxHighlighter.HighlightAll('code-combo');
+		</script>
+	</body>
+</html>

@@ -1,0 +1,286 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="keywords" content="jquery,ui,easy,easyui,web framekwork,ajax framekwork,ria,web development">
+		<meta name="description" content="easyui help you build your web page easily!">
+		<title>form - jQuery EasyUI中文帮助手册</title>
+        <link rel="stylesheet" href="main.css" type="text/css" />
+		<link type="text/css" rel="stylesheet" href="SyntaxHighlighter.css"></link>
+		<script src="shCore.js"></script>
+		<script src="shBrushJScript.js"></script>
+		<script src="shBrushXml.js"></script>
+		<script type="text/javascript">/*120*270，创建于2011-12-16*/ var cpro_id = 'u713814';</script><script src="http://cpro.baidu.com/cpro/ui/f.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<div id="header">
+						<div id="header-inner">
+				<table cellpadding="0" cellspacing="0" style="width:100%;">
+					<tr>
+						<td rowspan="2" style="width:20px;">
+						</td>
+						<td style="height:52px;">
+							<div style="color:#fff;font-size:22px;font-weight:bold;">
+								<a href="http://www.jeasyui.com/" style="color:#fff;font-size:22px;font-weight:bold;text-decoration:none">jQuery EasyUI</a>
+							</div>
+							<div style="color:#fff">
+								<a href="http://www.jeasyui.com/" style="color:#fff;text-decoration:none">jQuery EasyUI 框架帮助你轻松建立站点。</a>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+			
+		</div>
+		<div id="mainwrap">
+			<div id="content">
+			
+
+
+<div style="padding:10px">
+
+
+
+<h3>表单</h3>
+
+<h4>使用方法</h4>
+
+<textarea name="code-form" class="html">
+	<form id="ff" method="post">
+		...
+	</form>
+</textarea>
+
+<p>使用ajax方式提交表单</p>
+
+<textarea name="code-form" class="js">
+
+	$('#ff').form({
+		url:...,
+		onSubmit: function(){
+			//进行表单验证
+			//如果返回false阻止提交
+		},
+		success:function(data){
+			alert(data)
+		}
+	});
+	//提交表单
+	$('#ff').submit();
+</textarea>
+
+<p>普通方式提交</p>
+
+<textarea name="code-form" class="js">
+	//调用表单插件的'submit'方法提交
+	$('#ff').form('submit', {
+		url:...,
+		onSubmit: function(){
+			//进行表单验证
+			//如果返回false阻止提交
+		},
+		success:function(data){
+			alert(data)
+		}
+	});
+</textarea>
+
+
+
+<h4>属性</h4>
+
+<table class="doc-table">
+
+<tr>
+
+<th><strong>名称</strong></th>
+<th><strong>类型</strong></th>
+<th><strong>描述</strong></th>
+
+<th><strong>默认值</strong></th>
+
+
+
+</tr>
+
+<tr>
+
+<td>url（目标网址）</td>
+
+<td>string（字符串）</td>
+
+<td>表单提交的目标网址</td>
+
+<td>null</td>
+
+</tr>
+
+</table>
+
+
+
+<h4>事件</h4>
+
+<table class="doc-table">
+
+<tr>
+
+<th><strong>名称</strong></th>
+<th><strong>参数</strong></th>
+<th><strong>描述</strong></th>
+
+</tr>
+
+<tr>
+
+<td>onSubmit</td>
+
+<td>none</td>
+
+
+
+<td>在表单提交之前触发，返回false将阻止表单提交。</td>
+
+</tr>
+
+<tr>
+
+<td>success</td>
+
+<td>data</td>
+
+<td>当表单成功提交时触发。</td>
+
+</tr>
+
+<tr>
+
+<td>onBeforeLoad</td>
+
+<td>param</td>
+
+<td>在发送载入远程数据请求之前触发，返回false将取消请求。</td>
+
+
+
+</tr>
+
+<tr>
+
+<td>onLoadSuccess</td>
+
+<td>data</td>
+
+<td>在表单数据被载入时触发。</td>
+
+</tr>
+
+<tr>
+
+<td>onLoadError</td>
+
+<td>none</td>
+
+<td>在载入表单数据发生错误时触发。</td>
+
+</tr>
+
+
+
+</table>
+
+
+
+<h4>方法</h4>
+
+<table class="doc-table">
+
+<tr>
+
+<th><strong>名称</strong></th>
+<th><strong>参数</strong></th>
+<th><strong>描述</strong></th>
+
+
+
+</tr>
+
+<tr>
+
+<td>submit</td>
+
+<td>options</td>
+
+<td>执行表单提交，options参数是一个包含以下属性的对象：<br />
+
+url：表单提交的目标网址<br />
+
+onSubmit：在表单提交之前执行的回调函数<br />
+
+success: 在表单成功提交后执行的回调函数<br /></td>
+
+</tr>
+
+<tr>
+
+<td>load</td>
+
+
+
+<td>data</td>
+
+<td>载入记录填充表单。<br />
+data参数可以是字符串或者对象类型，当传入字符串时，data参数必须是一个远程url地址，否则用户必须自定义要载入的数据</td>
+
+</tr>
+
+<tr>
+
+<td>clear</td>
+
+<td>none</td>
+
+<td>清除表单数据</td>
+
+</tr>
+
+<tr>
+
+<td>validate</td>
+
+
+
+<td>none</td>
+
+<td>执行表单域验证，如果全部表单域有效返回true，该方法与表单验证插件一起使用。</td>
+
+</tr>
+
+</table>
+
+
+
+</div>
+
+
+
+﻿			</div>
+		</div>
+		<div id="footer">
+			<div>Copyright © 2010-2011 www.jeasyui.com</div>
+<a target="_blank" href="http://sighttp.qq.com/authd?IDKEY=0d8f551beb86c567f5d026fc3af8f8a0c1cf318635116789"><img border="0"  src="http://wpa.qq.com/imgd?IDKEY=0d8f551beb86c567f5d026fc3af8f8a0c1cf318635116789&pic=45" alt="点击Q我" title="点击Q我"></a>
+|  
+<noscript><a href="http://www.51.la/?4095651" target="_blank">
+<img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/4095651.asp" style="border:none" /></a></noscript> 
+<script src="http://s17.cnzz.com/stat.php?id=2412230&web_id=2412230&show=pic" language="JavaScript"></script>|<script language="javascript" type="text/javascript" src="http://js.users.51.la/4095651.js"></script>
+|<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F9541ae759aad5b1e7083c2f63b8e8e9c' type='text/javascript'%3E%3C/script%3E"));
+</script>
+		</div>
+		<script type="text/javascript">
+						dp.SyntaxHighlighter.ClipboardSwf = '/SyntaxHighlighter/Scripts/clipboard.swf';
+			dp.SyntaxHighlighter.HighlightAll('code-form');
+		</script>
+	</body>
+</html>

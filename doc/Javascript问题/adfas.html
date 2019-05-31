@@ -1,0 +1,18 @@
+<html>
+<head>
+<script src="jquery-1.7.1.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+            var spans = $("#divTest span");
+            for (var i = 0; i < spans.length; i++) {
+                spans[i].onclick = function() {
+                    alert(i);
+                }
+            }
+        });
+</script>
+</head>
+<div id="divTest">
+        <span>0</span> <span>1</span> <span>2</span> <span>3</span>
+    </div>
+	</html>

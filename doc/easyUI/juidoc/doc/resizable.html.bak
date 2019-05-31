@@ -1,0 +1,249 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="keywords" content="jquery,ui,easy,easyui,web framekwork,ajax framekwork,ria,web development">
+		<meta name="description" content="easyui help you build your web page easily!">
+		<title>resizable - jQuery EasyUI中文帮助手册</title>
+        <link rel="stylesheet" href="main.css" type="text/css" />
+		<link type="text/css" rel="stylesheet" href="SyntaxHighlighter.css"></link>
+		<script src="shCore.js"></script>
+		<script src="shBrushJScript.js"></script>
+		<script src="shBrushXml.js"></script>
+	</head>
+	<body>
+		<div id="header">
+						<div id="header-inner">
+				<table cellpadding="0" cellspacing="0" style="width:100%;">
+					<tr>
+						<td rowspan="2" style="width:20px;">
+						</td>
+						<td style="height:52px;">
+							<div style="color:#fff;font-size:22px;font-weight:bold;">
+								<a href="http://www.jeasyui.com/" style="color:#fff;font-size:22px;font-weight:bold;text-decoration:none">jQuery EasyUI</a>
+							</div>
+							<div style="color:#fff">
+								<a href="http://www.jeasyui.com/" style="color:#fff;text-decoration:none">jQuery EasyUI 框架帮助你轻松建立站点。</a>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+			
+		</div>
+		<div id="mainwrap">
+			<div id="content">
+			
+
+
+<div style="padding:10px">
+
+
+
+<h3>缩放</h3>
+
+<p>使用$.fn.resizable.defaults重载默认值。</p>
+
+
+
+<h4>使用方法</h4>
+
+<textarea name="code-resizable" class="html">
+
+	<div id="rr" style="width:100px;height:100px;border:1px solid #ccc;"></div>
+
+</textarea>
+
+<textarea name="code-resizable" class="js">
+	$('#rr').resizable({
+		maxWidth:800,
+		maxHeight:600
+	});
+</textarea>
+
+
+
+<h4>属性</h4>
+
+<table class="doc-table">
+
+<tr>
+
+<th><strong>名称</strong></th>
+<th><strong>类型</strong></th>
+<th><strong>描述</strong></th>
+
+<th><strong>默认值</strong></th>
+
+</tr>
+
+<tr>
+
+<td>disabled（禁止缩放）</td>
+
+<td>boolean（布尔型）</td>
+
+<td>如果设置为true将禁止缩放。</td>
+
+<td>false</td>
+
+</tr>
+
+<tr>
+
+<td>handles（句柄）</td>
+
+
+
+<td>string（字符串）</td>
+
+<td>说明缩放的方向，'n'表示向上（北）,'e'表示向右（东）等。</td>
+
+<td>n, e, s, w, ne, se, sw, nw, all</td>
+
+</tr>
+
+<tr>
+
+<td>minWidth（最小宽度）</td>
+
+<td>number（数字）</td>
+
+<td>缩放时所允许的最小宽度。</td>
+
+<td>10</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>minHeight（最小高度）</td>
+
+<td>number（数字）</td>
+
+<td>缩放时所允许的最小高度。</td>
+
+<td>10</td>
+
+</tr>
+
+<tr>
+
+<td>maxWidth（最大宽度）</td>
+
+<td>number（数字）</td>
+
+<td>缩放时所允许的最大宽度。</td>
+
+
+
+<td>10000</td>
+
+</tr>
+
+<tr>
+
+<td>maxHeight</td>
+
+<td>number（数字）</td>
+
+<td>缩放时所允许的最大高度。</td>
+
+<td>10000</td>
+
+</tr>
+
+<tr>
+
+<td>edge（边界）</td>
+
+<td>number（数字）</td>
+
+
+
+<td>将被缩放的边框的边界。</td>
+
+<td>5</td>
+
+</tr>
+
+</table>
+
+
+
+<h4>事件</h4>
+
+<table class="doc-table">
+
+<tr>
+
+<th><strong>名称</strong></th>
+<th><strong>参数</strong></th>
+<th><strong>描述</strong></th>
+
+</tr>
+
+<tr>
+
+<td>onStartResize</td>
+
+<td>e</td>
+
+<td>当开始缩放时触发。</td>
+
+</tr>
+
+<tr>
+
+<td>onResize</td>
+
+<td>e</td>
+
+
+
+<td>在缩放过程中触发，当返回false时, DOM元素将不再缩放。</td>
+
+</tr>
+
+<tr>
+
+<td>onStopResize</td>
+
+<td>e</td>
+
+<td>当缩放停止是触发。</td>
+
+</tr>
+
+</table>
+
+
+
+</div>
+
+
+
+
+
+﻿			</div>
+		</div>
+		<div id="footer">
+			<div>Copyright © 2010-2011 www.jeasyui.com</div>
+<a target="_blank" href="http://sighttp.qq.com/authd?IDKEY=0d8f551beb86c567f5d026fc3af8f8a0c1cf318635116789"><img border="0"  src="http://wpa.qq.com/imgd?IDKEY=0d8f551beb86c567f5d026fc3af8f8a0c1cf318635116789&pic=45" alt="点击Q我" title="点击Q我"></a>
+|  
+<noscript><a href="http://www.51.la/?4095651" target="_blank">
+<img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/4095651.asp" style="border:none" /></a></noscript> 
+<script src="http://s17.cnzz.com/stat.php?id=2412230&web_id=2412230&show=pic" language="JavaScript"></script>|<script language="javascript" type="text/javascript" src="http://js.users.51.la/4095651.js"></script>
+|<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F9541ae759aad5b1e7083c2f63b8e8e9c' type='text/javascript'%3E%3C/script%3E"));
+</script>
+		</div>
+		<script type="text/javascript">
+						dp.SyntaxHighlighter.ClipboardSwf = 'clipboard.swf';
+			dp.SyntaxHighlighter.HighlightAll('code-resizable');
+		</script>
+	</body>
+</html>

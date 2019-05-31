@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script src="../../Scripts/jquery-3.4.1.js"></script>
+
+    <script>
+        $(function () {
+            $("#msg").css("display", "none");
+            $("#btnLogin").click(function () {
+
+
+                userLogin();
+            })
+
+            function userLogin() {
+                var userName = $("#txtUserName").val();
+                var userPwd = $("#txtUserPwd").val();
+
+                if (userName != "" && userPwd != "") {
+                    $.post("UserLogin.ashx",
+                        {
+                            userName,
+                            userPwd
+                        },
+                        function (data) {
+                            data = data.split(":");
+                            if (data[0] == "OK") {
+                                window.location.href = "/Pages/Login/UserInfoList.aspx";
+                            } else {
+                                $("#msg").css("display", "block").text(data[1]);
+                                $("input[type=text]").val("");
+                            }
+                        })
+                }
+            }
+
+
+        })
+
+    </script>
+</head>
+<body>
+
+
+    用户名： <input id="txtUserName" type="text" name="txtName" value="" />
+    密码： <input id="txtUserPwd" type="password" name="txtPwd" value="" />
+    <input id="btnLogin" type="button" name="name" value="登录" />
+
+    <br />
+    <span id="msg" style="font-size:14px;color:cadetblue"></span>
+
+
+
+</body>
+</html>

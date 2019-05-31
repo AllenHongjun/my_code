@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<!-- saved from url=(0063)http://msdn.microsoft.com/zh-cn/library/ms178472(v=vs.100).aspx -->
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="WT.seg_1" content="zh-cn"><link rel="canonical" href="./ASP.NET 页生命周期概述_files/ASP.NET 页生命周期概述.htm">
+        <title>ASP.NET 页生命周期概述</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/zh-cn/library/ms178472(d=default,l=zh-cn,v=vs.100).aspx">
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/zh-cn/library/ms178472(d=default,l=zh-cn,v=vs.100).aspx">
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/zh-cn/library/ms178472(d=default,l=zh-cn,v=vs.100).aspx">
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/zh-cn/library/ms178472(d=default,l=zh-cn,v=vs.100).aspx">
+
+<meta name="MN" content="4B9B1F25-9:37:24 AM">
+
+<meta name="Search.ShortId" content="ms178472">
+
+<meta name="ms.shortidmsdn" content="ms178472">
+
+<meta name="Ms.Locale" content="zh-cn">
+
+
+
+
+
+
+
+
+        
+    <link rel="stylesheet" type="text/css" href="./ASP.NET 页生命周期概述_files/Combined.css"><script type="text/javascript" async="" src="./ASP.NET 页生命周期概述_files/ms2.js"></script><script type="text/javascript" src="./ASP.NET 页生命周期概述_files/ai.js" async=""></script><script class="mtps-injected">try {
+/**/
+(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { 
+	"image": "http://i.msdn.microsoft.com", 
+	"js": "http://i2.msdn.microsoft.com", 
+	"css": "http://i3.msdn.microsoft.com"
+});
+/**/
+} finally { MTPS._injectNextScript_0 && MTPS._injectNextScript_0(); }</script><script class="mtps-injected" src="./ASP.NET 页生命周期概述_files/jquery-1.8.2.min.js"></script><script class="mtps-injected">try {
+//
+  var literalNormalizedUrl = '/zh-cn/library/ms178472(d=default,l=zh-cn,v=vs.100).aspx';
+  var wt_nvr_ru = 'WT_NVR_RU';
+  var wt_fpcdom = '.microsoft.com';
+  var wt_domlist = 'msdn.microsoft.com';
+  var wt_pathlist = '';
+  var wt_paramlist = 'DCSext.mtps_devcenter';
+  var wt_siteid = 'MSDN';
+  var gDomain = 'm.webtrends.com';
+  var gDcsId = 'dcsmgru7m99k7mqmgrhudo0k8_8c6m';
+  var gFpc = 'WT_FPC';
+
+
+
+  if (document.cookie.indexOf(gFpc + "=") == -1) {
+    var wtidJs = document.createElement("script");
+    wtidJs.src = "//" + gDomain + "/" + gDcsId + "/wtid.js";
+    document.getElementsByTagName("head")[0].appendChild(wtidJs);
+  }
+
+
+
+  var detectedLocale = 'zh-cn';
+  var wtsp = 'msdnlib_webdev';
+  var gTrackEvents = '0';
+/**/
+} finally { MTPS._injectNextScript_2 && MTPS._injectNextScript_2(); }</script><script src="./ASP.NET 页生命周期概述_files/wtid.js"></script><script class="mtps-injected">try {
+/**/
+  var omni_guid = "49c96c2d-d20a-49de-a204-577b94a9c788";
+/**/
+} finally { MTPS._injectNextScript_3 && MTPS._injectNextScript_3(); }</script><script class="mtps-injected">try {
+//
+
+            window.appInsightsId = '60854590-027a-4ae4-98be-2741a40f355f';
+            //
+} finally { MTPS._injectNextScript_4 && MTPS._injectNextScript_4(); }</script><script class="mtps-injected" src="./ASP.NET 页生命周期概述_files/Combined.js"></script><script class="mtps-injected" src="./ASP.NET 页生命周期概述_files/SearchBox.jss"></script><script class="mtps-injected" src="./ASP.NET 页生命周期概述_files/Combined(1).js"></script><script class="mtps-injected">try {
+//
+    MTPS = window.MTPS || {};
+    MTPS.Translation = window.MTPS.Translation || {};
+
+    MTPS.Translation.TranslationType =  0;
+    
+    
+    //
+} finally { MTPS._injectNextScript_8 && MTPS._injectNextScript_8(); }</script><script class="mtps-injected" src="./ASP.NET 页生命周期概述_files/Combined(2).js"></script><script class="mtps-injected">try {
+MTPS = window.MTPS || {}; MTPS.LocalizedStrings = window.MTPS.LocalizedStrings || {}; MTPS.LocalizedStrings.ExpandButtonTooltip = '展开'; MTPS.LocalizedStrings.CollapseButtonTooltip = '折叠'; MTPS.LocalizedStrings.EnhancedExpandTooltip = '单击以展开。双击以全部展开。'; MTPS.LocalizedStrings.EnhancedCollapseTooltip = '单击以折叠。双击以全部折叠。'; MTPS.LocalizedStrings.ExpandAllButtonTooltip = '全部展开'; MTPS.LocalizedStrings.CollapseAllButtonTooltip = '全部折叠';
+} finally { MTPS._injectNextScript_10 && MTPS._injectNextScript_10(); }</script><script class="mtps-injected" src="./ASP.NET 页生命周期概述_files/jquery.tmpl.min.js"></script><script class="mtps-injected" src="./ASP.NET 页生命周期概述_files/Combined(3).js"></script><script src="./ASP.NET 页生命周期概述_files/broker.js"></script><script class="mtps-injected">try {
+$(document).ready(function() {
+        try {
+            var token = $("#globalRequestVerification input[name='__RequestVerificationToken']").clone();
+            $("#siteFeedbackForm").append(token);
+        } catch(err) {
+            
+        }
+    });
+} finally { MTPS._injectNextScript_13 && MTPS._injectNextScript_13(); }</script><link href="./ASP.NET 页生命周期概述_files/PrintView.css" rel="stylesheet" type="text/css" media="print"></head>
+    <body class="library">
+        <div id="page">
+            
+            
+  
+            
+        
+    <link type="text/css" rel="stylesheet">
+    
+    <input type="hidden" id="isHeaderBleeding" value="true">
+    <div id="ux-header" dir="ltr" class="ltr msdn">
+        
+
+        <header>
+            <div class="row">
+                <div class="top mobile"></div>
+                <div class="left">
+                    <div class="siteLogo">  
+                        
+<a class="msdnLogoImg" href="http://msdn.microsoft.com/">
+                             <img src="./ASP.NET 页生命周期概述_files/microsoftLogoForHeader.png">
+                         </a>
+                                                             
+                        <div data-fragmentname="SiteLogo" id="Fragment_SiteLogo" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="LinkWithImage topImage">
+    <a id="SiteLogo_2152_1" href="http://msdn.microsoft.com/zh-cn">
+                
+                Developer Network
+            </a>
+  </div>
+</div>    
+                    </div>
+                    <div id="grip"></div>
+                </div>
+                
+                <div class="right desktop">
+                    <div class="auxNav">
+                        <div data-fragmentname="Subscriptions" id="Fragment_Subscriptions" xmlns="http://www.w3.org/1999/xhtml">
+  <a href="https://msdn.microsoft.com/subscriptions/manage/hh442900" id="Subscriptions_2153_1" xmlns="http://www.w3.org/1999/xhtml">
+    <span style="line-height:18px;" xmlns="">MSDN 订阅</span>
+  </a>
+</div>   
+                        <div data-fragmentname="GetTools" id="Fragment_GetTools" xmlns="http://www.w3.org/1999/xhtml">
+  <a href="http://go.microsoft.com/fwlink/?LinkId=309297&clcid=0x0804&slcid=0x0804" id="GetTools_2153_3" xmlns="http://www.w3.org/1999/xhtml">
+    <span style="line-height:18px;" xmlns="">获取工具</span>
+  </a>
+</div>   
+                        <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=12&ct=1398443844&rver=6.0.5276.0&wp=MCLBI&wlcxt=MSDN%24MSDN%24MSDN&wreply=http%3a%2f%2fmsdn.microsoft.com%2fzh-cn%2flibrary%2fms178472%2528v%3dvs.100%2529.aspx&lc=2052&id=254354&mkt=zh-CN" title=" 登录  "> 登录  </a></div>
+
+    
+
+                    </div>
+                    <div data-fragmentname="SearchBox" id="Fragment_SearchBox" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="SearchBox">
+    <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+      <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" autocomplete="off">
+      <button id="HeaderSearchButton" value="" type="submit" class="header-search-button" title="搜索 MSDN"></button>
+    <div id="SearchFlyoutContainer" style="display: none; text-align: left; border: 1px solid buttonshadow; position: absolute; z-index: 1000; padding: 2px; background-color: rgb(255, 255, 255); color: rgb(59, 59, 59); font-family: &#39;Microsoft YaHei UI&#39;, &#39;Microsoft YaHei&#39;, SimSun, &#39;Segoe UI&#39;, &#39;Lucida Grande&#39;, Verdana, Arial, Helvetica, sans-serif; font-size: 13px;"><div id="SuggestionContainer"><ul style="list-style: none; padding: 4px 2px 0px 1px; cursor: pointer; margin: 1px; white-space: nowrap;"></ul></div></div></form>
+    
+    
+  </div>
+</div> 
+                </div>
+            </div>
+       
+            <div class="row" id="droor" style="display: block;">
+                <div class="left" style="max-width: 1322px;">
+                            <nav>
+            <ul>
+                     <li class="inactive">
+
+                         <a href="http://msdn.microsoft.com/dn308572" title="主页">主页</a>
+
+                     </li>
+                     <li class="inactive">
+
+                         <a href="http://msdn.microsoft.com/dn271881" title="机会">机会</a>
+                                 <div class="area">
+                                     <div class="arrow"></div>
+                                 </div>
+                                 <div class="subNav" style="">
+                                     <ul>
+                                                 <li><a href="http://msdn.microsoft.com/dn469160" title="桌面">桌面</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn338449" title="Web">Web</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn338450" title=".Net 中的新体验。">.Net 中的新体验。</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn308583" title="平板电脑和 PC">平板电脑和 PC</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn338268" title="手机">手机</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn338159" title="云">云</a></li>
+                                     </ul>
+                                 </div>
+
+                     </li>
+                     <li class="inactive">
+
+                         <a href="http://msdn.microsoft.com/dn271880" title="平台">平台</a>
+
+                     </li>
+                     <li class="inactive">
+
+                         <a href="http://msdn.microsoft.com/dn338064" title="联系">联系</a>
+                                 <div class="area">
+                                     <div class="arrow"></div>
+                                 </div>
+                                 <div class="subNav" style="">
+                                     <ul>
+                                                 <li><a href="http://tech-advisors.msdn.microsoft.com/zh-cn" title="Tech Advisors">Tech Advisors</a></li>
+                                                 <li><a href="http://events.msdn.microsoft.com/zh-cn" title="事件">事件</a></li>
+                                                 <li><a href="http://social.msdn.microsoft.com/forums/" title="技术论坛">技术论坛</a></li>
+                                     </ul>
+                                 </div>
+
+                     </li>
+                     <li class="inactive">
+
+                         <a href="http://msdn.microsoft.com/dn292944" title="下载">下载</a>
+                                 <div class="area">
+                                     <div class="arrow"></div>
+                                 </div>
+                                 <div class="subNav" style="">
+                                     <ul>
+                                                 <li><a href="http://msdn.microsoft.com/dn369242" title="开发人员工具">开发人员工具</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn369240" title="SDK">SDK</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn369243" title="MSDN 订阅">MSDN 订阅</a></li>
+                                     </ul>
+                                 </div>
+
+                     </li>
+                     <li class="current active">
+
+                         <a href="http://msdn.microsoft.com/library" title="技术资源库">技术资源库</a>
+
+                     </li>
+                     <li class="inactive">
+
+                         <a href="http://code.msdn.microsoft.com/" title="示例代码">示例代码</a>
+
+                     </li>
+            </ul>
+          
+        </nav>        
+
+                </div>
+                <div class="right mobile"></div>
+                
+                <div data-fragmentname="SocialLinks" id="Fragment_SocialLinks" xmlns="http://www.w3.org/1999/xhtml"></div> 
+                
+                <span id="singleCol"></span>
+                <span id="doubleCol"></span>
+            </div>
+            
+
+        </header>
+    </div>
+    
+    
+
+        
+    <div class="printExportMenus ltr">
+        <a id="isd_printABook" href="http://msdn.microsoft.com/zh-cn/library/export/help/?returnUrl=%2fzh-cn%2flibrary%2fms178472(v%3dvs.100).aspx" style="display: inline;">
+            导出 (<span class="count">0</span>)
+        </a>
+        <a id="isd_print" href="http://msdn.microsoft.com/zh-cn/library/ms178472(d=printer,v=vs.100).aspx" rel="nofollow">
+            打印
+        </a>
+    </div>
+    
+
+        <div class="printExportMenus ltr">
+        <a id="expandCollapseAll" href="javascript:void(0)">全部折叠</a>
+    </div>
+
+    
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+
+    <div id="leftNav" style="width: 280px; max-width: 480px; min-height: 6707px; height: 346px;">
+
+
+
+<div id="tocnav" style="width: 280px; position: fixed; top: 60px;">
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px;">
+<a class="toc_collapsed" href="http://msdn.microsoft.com/zh-cn/library/ms178472(v=vs.100).aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/zh-cn/library/ms123401.aspx" id="ms310241_MSDN.10_zh-cn" mtpsaliasid="" mtpsassetid="5DDC0A78-6B2C-43E3-9C56-55F45C0DFFA5_MSDN.10_zh-cn" mtpsshortid="ms123401_MSDN.10_zh-cn" title="MSDN Library">MSDN Library</a>            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px;">
+<a class="toc_collapsed" href="http://msdn.microsoft.com/zh-cn/library/ms178472(v=vs.100).aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/zh-cn/library/aa155073.aspx" id="aa155073_MSDN.10_zh-cn" mtpsaliasid="" mtpsassetid="MSDN|webdev|$\webdev.hxt@0,0_MSDN.10_zh-cn" mtpsshortid="aa155073_MSDN.10_zh-cn" title="Web 开发">Web 开发</a>            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px;">
+<a class="toc_collapsed" href="http://msdn.microsoft.com/zh-cn/library/ms178472(v=vs.100).aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/zh-cn/library/dd566231.aspx" id="jj943725_VS.100_zh-cn" mtpsaliasid="" mtpsassetid="c3e0fd2f-7a94-47c4-afc0-ecfb7233e15a_VS.100_zh-cn" mtpsshortid="dd566231_VS.120_zh-cn" title="ASP.NET 和 Visual Studio for Web">ASP.NET 和 Visual Studio for Web</a>            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px;">
+<a class="toc_collapsed" href="http://msdn.microsoft.com/zh-cn/library/ms178472(v=vs.100).aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/zh-cn/library/ee532866.aspx" id="xx130500_VS.100_zh-cn" mtpsaliasid="" mtpsassetid="e4a7cbb8-9f59-4ebc-b47a-0177c339f5ed_VS.100_zh-cn" mtpsshortid="ee532866_VS.120_zh-cn" title="ASP.NET 4 和 Visual Studio 2010">ASP.NET 4 和 Visual Studio 2010</a>            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px;">
+<a class="toc_collapsed" href="http://msdn.microsoft.com/zh-cn/library/ms178472(v=vs.100).aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/zh-cn/library/ywdtth2f(v=vs.100).aspx" id="ms307319_VS.100_zh-cn" mtpsaliasid="" mtpsassetid="cdcd712f-96b0-4165-8b5d-9d0566650a28_VS.100_zh-cn" mtpsshortid="ywdtth2f_VS.100_zh-cn" title="ASP.NET Web 项目">ASP.NET Web 项目</a>            </div>
+            <div class="toclevel1" data-toclevel="1" data-childrenloaded="true" style="padding-left: 17px;">
+<a class="toc_expanded" href="http://msdn.microsoft.com/zh-cn/library/ms178472(v=vs.100).aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/zh-cn/library/ms227435(v=vs.100).aspx" id="gg594715_VS.100_zh-cn" mtpsaliasid="" mtpsassetid="01663e5f-b517-4524-918f-6b8f5ae35182_VS.100_zh-cn" mtpsshortid="ms227435_VS.100_zh-cn" title="ASP.NET 生命周期">ASP.NET 生命周期</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/zh-cn/library/ms178473(v=vs.100).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IIS 5.0 和 6.0 的 ASP.NET 应用程序生命周期概述">IIS 5.0 和 6.0 的 ASP.NET 应用程序生命周期概述</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/zh-cn/library/bb470252(v=vs.100).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IIS 7.0 的 ASP.NET 应用程序生命周期概述">IIS 7.0 的 ASP.NET 应用程序生命周期概述</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="./ASP.NET 页生命周期概述_files/ASP.NET 页生命周期概述.htm" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="ASP.NET 页生命周期概述">ASP.NET 页生命周期概述</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/zh-cn/library/ms178466(v=vs.100).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="ASP.NET 编译概述">ASP.NET 编译概述</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/zh-cn/library/ms366723(v=vs.100).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="了解 ASP.NET 动态编译">了解 ASP.NET 动态编译</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/zh-cn/library/fwzzh56s(v=vs.100).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="如何：创建 ASP.NET 应用程序级别的事件处理程序">如何：创建 ASP.NET 应用程序级别的事件处理程序</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+
+<a id="NavigationResize" href="javascript:void(0)" style="left: 280px; display: inline-block;">
+    <img class="cl_nav_resize_open" src="./ASP.NET 页生命周期概述_files/ImageSprite.png" title="展开" alt="展开">
+    <img class="cl_nav_resize_close" src="./ASP.NET 页生命周期概述_files/ImageSprite.png" title="最小化" alt="最小化" style="display: none;">
+</a>
+
+
+
+    </div>
+<div id="content" class="content" style="margin-left: 280px; width: auto;">
+
+
+
+<div id="MTPSTranslator" class="MTPSTranslator">
+    <table class="MTPSTranslatorTable" style="width: 100%">
+        <tbody><tr>
+            <td class="TranslationAlertBox">
+                <div>此文章由人工翻译。 将光标移到文章的句子上，以查看原文。 </div>
+            </td>
+                <td class="TranslationViewSwitcher">
+                    <div>
+                        <input title="显示译文" value="0" name="TrnaslatorView" type="radio" class="translatechoice" checked="checked"><span>译文</span>
+                    </div>
+                    <div>
+                        <input title="显示英文" value="1" name="TrnaslatorView" type="radio" class="translatechoice"><span>原文</span>
+                    </div>
+                </td>
+        </tr>
+    </tbody></table>
+</div>
+    
+    
+    
+     
+
+
+
+
+
+    
+    
+
+    
+
+    
+
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">ASP.NET 页生命周期概述</h1>
+  
+  <div class="lw_vs">
+    <div id="curversion">
+      <strong>
+            .NET Framework 4
+        </strong>
+    </div>
+    <div id="versionclick">
+      <div id="vsseperator" class="cl_lw_vs_seperator"></div>
+      <div>
+        <div>
+          <a id="vsLink" href="javascript:;">
+                        其他版本
+                    </a>
+        </div>
+        <div class="cl_vs_arrow clip10x10">
+          <img class="cl_lw_vs_arrow" id="vsArrow" alt="" src="./ASP.NET 页生命周期概述_files/ImageSprite.png">
+        </div>
+      </div>
+      <ul id="vsPanel">
+        <li>
+          <a href="http://msdn.microsoft.com/zh-cn/library/ms178472(v=vs.90).aspx" title="">Visual Studio 2008</a>
+        </li>
+        <li>
+          <a href="http://msdn.microsoft.com/zh-cn/library/ms178472(v=vs.80).aspx" title="">Visual Studio 2005</a>
+        </li>
+      </ul>
+    </div>
+  <div id="ratingCounterSeperator" class="cl_lw_vs_seperator" style="display: block;"></div><div id="ratingCounter" style="margin: 0px 0px 0px 13px; display: block;">
+        <span id="rcA" class="ratingText">
+            28（共 30）对本文的评价是有帮助 <span id="rateThisPrefix">- </span><a id="rateThisTopic" href="http://msdn.microsoft.com/zh-cn/library/ms178472(v=vs.100).aspx#feedback" title="评价此主题">评价此主题</a>
+            
+        </span>
+    </div></div>
+  <div style="clear:both;"></div>
+  
+  <div id="mainSection">
+    <div id="mainBody">
+      <p>
+        
+      </p> <p>更新：2011 年 5 月</p><a id="introduction"></a><div class="introduction"><p><span id="mt1" class="sentence" data-guid="513300b691734f7d9601cf3514633012" data-source="When an ASP.NET page runs, the page goes through a life cycle in which it performs a series of processing steps." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">ASP.NET 页运行时，此页将经历一个生命周期，在生命周期中将执行一系列处理步骤。</sentencetext></span>  <span id="mt2" class="sentence" data-guid="8d365becc191b2567490dae53f871e40" data-source="These include initialization, instantiating controls, restoring and maintaining state, running event handler code, and rendering." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">这些步骤包括初始化、实例化控件、还原和维护状态、运行事件处理程序代码以及进行呈现。</sentencetext></span>  <span id="mt3" class="sentence" data-guid="07f1395057eeb1b203386ff2b5491bfe" data-source="It is important for you to understand the page life cycle so that you can write code at the appropriate life-cycle stage for the effect you intend." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">了解页生命周期非常重要，因为这样做您就能在生命周期的合适阶段编写代码，以达到预期效果。</sentencetext></span>  </p><p><span id="mt4" class="sentence" data-guid="44212ab45b97ae3eaeb9dbedaa43d63a" data-source="If you develop custom controls, you must be familiar with the page life cycle in order to correctly initialize controls, populate control properties with view-state data, and run control behavior code." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">如果您要开发自定义控件，就必须熟悉页生命周期，以便正确进行控件初始化，使用视图状态数据填充控件属性以及运行控件行为代码。</sentencetext></span>  <span id="mt5" class="sentence" data-guid="738a8e4a3b080ef7fa388c9c79a0228b" data-source="The life cycle of a control is based on the page life cycle, and the page raises many of the events that you need to handle in a custom control." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">控件的生命周期基于页的生命周期，但是页引发许多您需要在自定义控件中处理的事件。</sentencetext></span>  </p><p><span id="mt6" class="sentence" data-guid="31777712e92f9ad09ace2af63077c305" data-source="This topic contains the following sections:" xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">本主题包含以下各节：</sentencetext></span></p><ul><li><p><a href="http://msdn.microsoft.com/zh-cn/library/ms178472(v=vs.100).aspx#general_page_lifecycle_stages">常规页生命周期阶段</a></p></li><li><p><a href="http://msdn.microsoft.com/zh-cn/library/ms178472(v=vs.100).aspx#lifecycle_events">生命周期事件</a></p></li><li><p><a href="http://msdn.microsoft.com/zh-cn/library/ms178472(v=vs.100).aspx#additional_page_life_cycle_considerations">其他的页生命周期注意事项</a></p></li><li><p><a href="http://msdn.microsoft.com/zh-cn/library/ms178472(v=vs.100).aspx#catch_up_events_for_added_controls">添加的控件的追赶事件</a></p></li><li><p><a href="http://msdn.microsoft.com/zh-cn/library/ms178472(v=vs.100).aspx#data_binding_events_for_databound_controls">数据绑定控件的数据绑定事件</a></p></li><li><p><a href="http://msdn.microsoft.com/zh-cn/library/ms178472(v=vs.100).aspx#login_control_events">登录控件事件</a></p></li></ul></div><a id="general_page_lifecycle_stages"></a><div><div class="LW_CollapsibleArea_TitleDiv"><div><a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="单击以折叠。双击以全部折叠。"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">常规页生命周期阶段</span></a><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></div><div class="sectionblock"><a id="sectionToggle0"></a><p><span id="mt13" class="sentence" data-guid="09fb36b13b292f896bafce8eaf458991" data-source="In general terms, the page goes through the stages outlined in the following table." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">一般来说，页要经历下表概述的各个阶段。</sentencetext></span>  <span id="mt14" class="sentence" data-guid="d8c848b0aaa0e6cc88fa7d95da0fd97c" data-source="In addition to the page life-cycle stages, there are application stages that occur before and after a request but are not specific to a page." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">除了页生命周期阶段以外，在请求前后还存在应用程序阶段，但是这些阶段并不特定于页。</sentencetext></span>  <span id="mt15" class="sentence" data-guid="bb26d1217029bf5f80e6ca2eaa93b578" data-source="For more information, see &lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Introduction to the ASP.NET Application Life Cycle&lt;/span&gt;&lt;/span&gt; and &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;ASP.NET Application Life Cycle Overview for IIS 7.0&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">有关更多信息，请参见 <a href="http://go.microsoft.com/fwlink/?LinkId=133108">Introduction to the ASP.NET Application Life Cycle</a> and <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/bb470252(v=vs.100).aspx">IIS 7.0 的 ASP.NET 应用程序生命周期概述</a></span>（ASP.NET 应用程序生命周期简介）。</sentencetext></span>  </p><p><span id="mt16" class="sentence" data-guid="653cd025e8d80b9b8964ab6834097dc1" data-source="Some parts of the life cycle occur only when a page is processed as a postback." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">生命周期的某些部分仅当页处理为回发时才出现。</sentencetext></span>  <span id="mt17" class="sentence" data-guid="1ca778427ae3364f3b235b23ba0f0938" data-source="For postbacks, the page life cycle is the same during a partial-page postback (as when you use an &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;UpdatePanel&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; control) as it is during a full-page postback." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">对于回发，部分页回发过程中（当您使用 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.updatepanel(v=vs.100).aspx">UpdatePanel</a></span> 控件）与整页回发过程中的页生命周期是一样。</sentencetext></span>  </p><div class="caption"></div><div class="tableSection"><table><tbody><tr><th><p><span class="label">阶段</span></p></th><th><p><span class="label">说明</span></p></th></tr><tr><td><p><span id="mt18" class="sentence" data-guid="8a7f6fbe44407ca05227518d86e42c64" data-source="Page request" xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">页请求</sentencetext></span></p></td><td><p><span id="mt19" class="sentence" data-guid="8e8897633cbc2f9feec3caca9aa1769d" data-source="The page request occurs before the page life cycle begins." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">页请求发生在页生命周期开始之前。</sentencetext></span>  <span id="mt20" class="sentence" data-guid="c60438daf35fb322a543ddf4970a3d8b" data-source="When the page is requested by a user, ASP.NET determines whether the page needs to be parsed and compiled (therefore beginning the life of a page), or whether a cached version of the page can be sent in response without running the page." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">用户请求页时，ASP.NET 将确定是否需要分析和编译页（从而开始页的生命周期），或者是否可以在不运行页的情况下发送页的缓存版本以进行响应。</sentencetext></span>  </p></td></tr><tr><td><p><span id="mt21" class="sentence" data-guid="ea2b2676c28c0db26d39331a336c6b92" data-source="Start" xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">启动</sentencetext></span></p></td><td><p><span id="mt22" class="sentence" data-guid="b8042b5472664a3dea367cc9ae3a52dd" data-source="In the start stage, page properties such as &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Request&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; and &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Response&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; are set." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在启动阶段，将设置页属性，如 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.page.request(v=vs.100).aspx">Request</a></span> 和 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.page.response(v=vs.100).aspx">Response</a></span>。</sentencetext></span>  <span id="mt23" class="sentence" data-guid="6791cf57b32b2977068179cbc455299c" data-source="At this stage, the page also determines whether the request is a postback or a new request and sets the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;IsPostBack&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; property." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在此阶段，页还将确定请求是回发请求还是新请求，并设置 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.page.ispostback(v=vs.100).aspx">IsPostBack</a></span> 属性。</sentencetext></span>  <span id="mt24" class="sentence" data-guid="e495b403b9ce96c693abce59ebc17d35" data-source="The page also sets the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;UICulture&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; property." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">页还设置 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.page.uiculture(v=vs.100).aspx">UICulture</a></span> 属性。</sentencetext></span>  </p></td></tr><tr><td><p><span id="mt25" class="sentence" data-guid="2d56c84e16cd8283af0b9c9c0c661405" data-source="Initialization" xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">初始化</sentencetext></span></p></td><td><p><span id="mt26" class="sentence" data-guid="8c31895585f3d054cdd02146026002ad" data-source="During page initialization, controls on the page are available and each control&#39;s &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;UniqueID&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; property is set." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">页初始化期间，可以使用页中的控件，并将设置每个控件的 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.uniqueid(v=vs.100).aspx">UniqueID</a></span> 属性。</sentencetext></span>  <span id="mt27" class="sentence" data-guid="5ef187c6818ddbc67baac1d2078bf360" data-source="A master page and themes are also applied to the page if applicable." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">如果需要，还会向页应用于母版页和主题。</sentencetext></span>  <span id="mt28" class="sentence" data-guid="a6f3592fc50fa55562d661007310fb61" data-source="If the current request is a postback, the postback data has not yet been loaded and control property values have not been restored to the values from view state." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">如果当前请求是回发请求，则回发数据尚未加载，并且控件属性值尚未还原为视图状态中的值。</sentencetext></span>  </p></td></tr><tr><td><p><span id="mt29" class="sentence" data-guid="ec4d1eb36b22d19728e9d1d23ca84d1c" data-source="Load" xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">加载</sentencetext></span></p></td><td><p><span id="mt30" class="sentence" data-guid="c346068dad6e296f77fc15e7b867bf41" data-source="During load, if the current request is a postback, control properties are loaded with information recovered from view state and control state." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">加载期间，如果当前请求是回发请求，则将使用从视图状态和控件状态恢复的信息加载控件属性。</sentencetext></span></p></td></tr><tr><td><p><span id="mt31" class="sentence" data-guid="ed9aee24ecfbdda77663e85a975e362d" data-source="Postback event handling" xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">回发事件处理</sentencetext></span></p></td><td><p><span id="mt32" class="sentence" data-guid="6c090ee40e9cbf57557c3b8b20e4152c" data-source="If the request is a postback, control event handlers are called." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">如果请求是回发请求，则将调用控件事件处理程序。</sentencetext></span>  <span id="mt33" class="sentence" data-guid="52b4383ceaa7494d714b8471472b9fd3" data-source="After that, the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Validate&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; method of all validator controls is called, which sets the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;IsValid&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; property of individual validator controls and of the page." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">之后，将调用所有验证程序控件的 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.basevalidator.validate(v=vs.100).aspx">Validate</a></span> 方法，此方法将设置各个验证程序控件和页的 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.ivalidator.isvalid(v=vs.100).aspx">IsValid</a></span> 属性。</sentencetext></span>  </p></td></tr><tr><td><p><span id="mt34" class="sentence" data-guid="eeb86a8e46dd53f05e075ef216e03d9b" data-source="Rendering" xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">呈现</sentencetext></span></p></td><td><p><span id="mt35" class="sentence" data-guid="d52a07f01add1199d0f7f6febcd0f48e" data-source="Before rendering, view state is saved for the page and all controls." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在呈现之前，会针对该页和所有控件保存视图状态。</sentencetext></span>  <span id="mt36" class="sentence" data-guid="412b4c763a2aa34fff4d75934557c05d" data-source="During the rendering stage, the page calls the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Render&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; method for each control, providing a text writer that writes its output to the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;OutputStream&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; object of the page&#39;s &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Response&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; property." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在呈现阶段中，页会针对每个控件调用 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.render(v=vs.100).aspx">Render</a></span> 方法，它会提供一个文本编写器，用于将控件的输出写入页的 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.page.response(v=vs.100).aspx">Response</a></span> 属性的 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpresponse.outputstream(v=vs.100).aspx">OutputStream</a></span> 对象中。</sentencetext></span>  </p></td></tr><tr><td><p><span id="mt37" class="sentence" data-guid="f972c1d6198baf47dd8fd9a05832db0f" data-source="Unload" xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">卸载</sentencetext></span></p></td><td><p><span id="mt38" class="sentence" data-guid="7f619d7296024cccb6e39b5d3bb5fb53" data-source="The &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Unload&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event is raised after the page has been fully rendered, sent to the client, and is ready to be discarded." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">完全呈现页并已将页发送至客户端、准备丢弃该页后，将引发 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.unload(v=vs.100).aspx">Unload</a></span> 事件。</sentencetext></span>  <span id="mt39" class="sentence" data-guid="5e56b32eedcab292a8b4f246449783fb" data-source="At this point, page properties such as &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Response&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; and &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Request&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; are unloaded and cleanup is performed." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">此时，将卸载页属性（如 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.page.response(v=vs.100).aspx">Response</a></span> 和 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.page.request(v=vs.100).aspx">Request</a></span>）并执行清理。</sentencetext></span>  </p></td></tr></tbody></table></div></div></div><a id="lifecycle_events"></a><div><div class="LW_CollapsibleArea_TitleDiv"><div><a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="单击以折叠。双击以全部折叠。"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">生命周期事件</span></a><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></div><div class="sectionblock"><a id="sectionToggle1"></a><p><span id="mt40" class="sentence" data-guid="e42fbfea425fafd83465ad82661a259b" data-source="Within each stage of the life cycle of a page, the page raises events that you can handle to run your own code." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在页生命周期的每个阶段中，页将引发可运行您自己的代码进行处理的事件。</sentencetext></span>  <span id="mt41" class="sentence" data-guid="ff85142ff51351621a9e0ee6860c86c8" data-source="For control events, you bind the event handler to the event, either declaratively using attributes such as &lt;span&gt;&lt;span class=&quot;input&quot;&gt;onclick&lt;/span&gt;&lt;/span&gt;, or in code." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">对于控件事件，通过以声明方式使用特性（如 <span xmlns="http://www.w3.org/1999/xhtml"><span class="input">onclick</span></span>）或以使用代码的方式，均可将事件处理程序绑定到事件。</sentencetext></span>  </p><p><span id="mt42" class="sentence" data-guid="56bb100658b80f24581d5cc449a377ed" data-source="Pages also support automatic event wire-up, meaning that ASP.NET looks for methods with particular names and automatically runs those methods when certain events are raised." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">页还支持自动事件连接，即，ASP.NET 将查找具有特定名称的方法，并在引发了特定事件时自动运行这些方法。</sentencetext></span>  <span id="mt43" class="sentence" data-guid="7c60aa8921170ff03d140e5e53b699d6" data-source="If the &lt;span&gt;&lt;span class=&quot;input&quot;&gt;AutoEventWireup&lt;/span&gt;&lt;/span&gt; attribute of the &lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;@ Page&lt;/span&gt;&lt;/span&gt; directive is set to &lt;span&gt;&lt;span class=&quot;input&quot;&gt;true&lt;/span&gt;&lt;/span&gt;, page events are automatically bound to methods that use the naming convention of &lt;span&gt;&lt;span class=&quot;input&quot;&gt;Page_&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;parameter&quot;&gt;event&lt;/span&gt;, such as &lt;span&gt;&lt;span class=&quot;input&quot;&gt;Page_Load&lt;/span&gt;&lt;/span&gt; and &lt;span&gt;&lt;span class=&quot;input&quot;&gt;Page_Init&lt;/span&gt;&lt;/span&gt;." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">如果 <a href="http://msdn.microsoft.com/zh-cn/library/ydy4x04a(v=vs.100).aspx">@&nbsp;Page</a> 指令的 <span xmlns="http://www.w3.org/1999/xhtml"><span class="input">AutoEventWireup</span></span> 特性设置为 <span xmlns="http://www.w3.org/1999/xhtml"><span class="input">true</span></span>，页事件将自动绑定至使用命名约定 <span xmlns="http://www.w3.org/1999/xhtml"><span class="input">Page_</span></span><span class="parameter" xmlns="http://www.w3.org/1999/xhtml">事件</span>（如 <span xmlns="http://www.w3.org/1999/xhtml"><span class="input">Page_Load</span></span> 和 <span xmlns="http://www.w3.org/1999/xhtml"><span class="input">Page_Init</span></span>）的方法。</sentencetext></span>  <span id="mt44" class="sentence" data-guid="363d2a27078ae66fce7e2f5be2538ed3" data-source="For more information on automatic event wire-up, see &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;ASP.NET Web Server Control Event Model&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">有关自动事件连接的更多信息，请参见 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/y3bwdsh3(v=vs.100).aspx">ASP.NET Web 服务器控件事件模型</a></span>。</sentencetext></span>  </p><p><span id="mt45" class="sentence" data-guid="e8642a3cc4b4886de1a2d90c9a79b731" data-source="The following table lists the page life-cycle events that you will use most frequently." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">下表列出了最常用的页生命周期事件。</sentencetext></span>  <span id="mt46" class="sentence" data-guid="dfa3296d24ed4b20420ec1f0948af37b" data-source="There are more events than those listed; however, they are not used for most page-processing scenarios." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">除了列出的事件外还有其他事件；不过，大多数页处理方案不使用这些事件。</sentencetext></span>  <span id="mt47" class="sentence" data-guid="9d2d9a3d236a539744c44498ce808ea0" data-source="Instead, they are primarily used by server controls on the ASP.NET Web page to initialize and render themselves." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">而是主要由 ASP.NET 网页上的服务器控件使用，以初始化和呈现它们本身。</sentencetext></span>  <span id="mt48" class="sentence" data-guid="9642dd6f7529e0c8b483bfa88cbf7853" data-source="If you want to write custom ASP.NET server controls, you need to understand more about these events." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">如果要编写自定义 ASP.NET 服务器控件，则需要详细了解这些事件。</sentencetext></span>  <span id="mt49" class="sentence" data-guid="d80aa4a51a333665834f9ce6d34e08d0" data-source="For information about creating custom controls, see &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Developing Custom ASP.NET Server Controls&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">有关创建自定义控件的信息，请参见<span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/zt27tfhy(v=vs.100).aspx">开发自定义 ASP.NET 服务器控件</a></span>。</sentencetext></span>  </p><div class="caption"></div><div class="tableSection"><table><tbody><tr><th><p><span class="label">页事件</span></p></th><th><p><span class="label">典型使用</span></p></th></tr><tr><td><p><span><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.page.preinit(v=vs.100).aspx">PreInit</a></span></p></td><td><p><span id="mt50" class="sentence" data-guid="40b368856106dc7973676317b15c54e8" data-source="Raised after the start stage is complete and before the initialization stage begins." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在启动阶段完成之后、初始化阶段开始之前引发。</sentencetext></span></p><p><span id="mt51" class="sentence" data-guid="2c538a85f358a6e63f4bbd20a152a37f" data-source="Use this event for the following:" xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">使用该事件来执行下列操作：</sentencetext></span></p><ul><li><p><span id="mt52" class="sentence" data-guid="d1349f65b1799ae09d918b322ebd14fa" data-source="Check the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;IsPostBack&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; property to determine whether this is the first time the page is being processed." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">检查 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.page.ispostback(v=vs.100).aspx">IsPostBack</a></span> 属性来确定是不是第一次处理该页。</sentencetext></span>  <span id="mt53" class="sentence" data-guid="0421c4d18383563a81bf7dc2f82c3850" data-source="The &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;IsCallback&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; and &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;IsCrossPagePostBack&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; properties have also been set at this time." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">此时还设置了 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.page.iscallback(v=vs.100).aspx">IsCallback</a></span> 和 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.page.iscrosspagepostback(v=vs.100).aspx">IsCrossPagePostBack</a></span> 属性。</sentencetext></span>  </p></li><li><p><span id="mt54" class="sentence" data-guid="5fda4a903be16e53516084d00ab8ea8d" data-source="Create or re-create dynamic controls." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">创建或重新创建动态控件。</sentencetext></span></p></li><li><p><span id="mt55" class="sentence" data-guid="e67cff0ee20c39c4ace23970108f81c6" data-source="Set a master page dynamically." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">动态设置主控页。</sentencetext></span></p></li><li><p><span id="mt56" class="sentence" data-guid="4696dfa211382dad2a0f11bda09e8cce" data-source="Set the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Theme&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; property dynamically." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">动态设置 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.page.theme(v=vs.100).aspx">Theme</a></span> 属性。</sentencetext></span></p></li><li><p><span id="mt57" class="sentence" data-guid="276b480809e6b69c22fbcf06c3633de1" data-source="Read or set profile property values." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">读取或设置配置文件属性值。</sentencetext></span></p><div class="alert"><div class="mtps-table" xmlns="http://www.w3.org/1999/xhtml"><div class="mtps-row"><span class="mtps-th"><img id="alert_note" alt="注意" src="./ASP.NET 页生命周期概述_files/clear.gif" title="注意" xmlns="" class="cl_IC101471"><strong>注意</strong></span></div><div class="mtps-row"><span class="mtps-cell"><span><span id="mt58" class="sentence" data-guid="49c97277ed58609dd5aa5e83d0e57ec2" data-source="If the request is a postback, the values of the controls have not yet been restored from view state." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">如果请求是回发请求，则控件的值尚未从视图状态还原。</sentencetext></span><span id="mt59" class="sentence" data-guid="ceddfda9aa4102182499a35b931acb84" data-source="If you set a control property at this stage, its value might be overwritten in the next event." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">如果在此阶段设置控件属性，则其值可能会在下一事件中被覆盖。</sentencetext></span></span></span></div></div></div></li></ul></td></tr><tr><td><p><span><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.init(v=vs.100).aspx">Init</a></span></p></td><td><p><span id="mt60" class="sentence" data-guid="14b3c348877f5bbeb9bca313aebe5121" data-source="Raised after all controls have been initialized and any skin settings have been applied." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在所有控件都已初始化且已应用所有外观设置后引发。</sentencetext></span>  <span id="mt61" class="sentence" data-guid="7226c8915e9cf37bc4ed8b6d62f147f6" data-source="The &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Init&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event of individual controls occurs before the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Init&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event of the page." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">各个控件的 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.init(v=vs.100).aspx">Init</a></span> 事件在页的 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.init(v=vs.100).aspx">Init</a></span> 事件之前发生。</sentencetext></span>  </p><p><span id="mt62" class="sentence" data-guid="fe778d894b1080c772b8e1e4715a37c3" data-source="Use this event to read or initialize control properties." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">使用该事件来读取或初始化控件属性。</sentencetext></span></p></td></tr><tr><td><p><span><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.page.initcomplete(v=vs.100).aspx">InitComplete</a></span></p></td><td><p><span id="mt63" class="sentence" data-guid="91ae231f35874d006e967333276a7653" data-source="Raised at the end of the page&#39;s initialization stage." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在页的初始化阶段结束时引发。</sentencetext></span>  <span id="mt64" class="sentence" data-guid="60c588d208ec9a16fc0df8255b17f470" data-source="Only one operation takes place between the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Init&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; and &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;InitComplete&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; events: tracking of view state changes is turned on." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">
+  <span xmlns="http://www.w3.org/1999/xhtml">
+    <a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.init(v=vs.100).aspx">Init</a>
+  </span> 和 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.page.initcomplete(v=vs.100).aspx">InitComplete</a></span> 事件之间仅发生一个操作：开启对视图状态更改的跟踪。</sentencetext></span>  <span id="mt65" class="sentence" data-guid="4aaf9d2c28f854755f531907a7b16c58" data-source="View state tracking enables controls to persist any values that are programmatically added to the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;ViewState&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; collection." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">视图状态跟踪使控件可以保留所有以编程方式添加到 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.viewstate(v=vs.100).aspx">ViewState</a></span> 集合的值。</sentencetext></span>  <span id="mt66" class="sentence" data-guid="7346468931d89e185ececbb2c5bcdda5" data-source="Until view state tracking is turned on, any values added to view state are lost across postbacks." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在开启视图状态跟踪之前，所有添加到视图状态的值都会在回发期间丢失。</sentencetext></span>  <span id="mt67" class="sentence" data-guid="aa3c266bb7211fb081bf6b80d9ccc286" data-source="Controls typically turn on view state tracking immediately after they raise their &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Init&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">控件通常在引发其 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.init(v=vs.100).aspx">Init</a></span> 事件后立即开启视图状态跟踪。</sentencetext></span>  </p><p><span id="mt68" class="sentence" data-guid="2c7a4034dd2f30e43d9fa56f2924bb98" data-source="Use this event to make changes to view state that you want to make sure are persisted after the next postback." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">使用此事件对要在下一个回发后务必保留的视图状态进行更改。</sentencetext></span></p></td></tr><tr><td><p><span><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.page.preload(v=vs.100).aspx">PreLoad</a></span></p></td><td><p><span id="mt69" class="sentence" data-guid="ff1666fd6a5323c3b4a3c1cf8533a3f9" data-source="Raised after the page loads view state for itself and all controls, and after it processes postback data that is included with the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Request&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; instance." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在页为自身和所有控件加载视图状态之后以及处理 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.page.request(v=vs.100).aspx">Request</a></span> 实例包括的回发数据之后引发。</sentencetext></span></p></td></tr><tr><td><p><span><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.load(v=vs.100).aspx">Load</a></span></p></td><td><p><span id="mt70" class="sentence" data-guid="d6a4f73fb0f32f2e761b1d591632f369" data-source="The &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Page&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; object calls the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;OnLoad&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; method on the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Page&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; object, and then recursively does the same for each child control until the page and all controls are loaded." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">
+  <span xmlns="http://www.w3.org/1999/xhtml">
+    <a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.page(v=vs.100).aspx">Page</a>
+  </span> 对象对 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.page(v=vs.100).aspx">Page</a></span> 对象调用 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.onload(v=vs.100).aspx">OnLoad</a></span> 方法，然后以递归方式对每个子控件执行相同操作，直到加载完本页和所有控件为止。</sentencetext></span>  <span id="mt71" class="sentence" data-guid="5b5883b0bd822d469729d3980fa3fd2e" data-source="The &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Load&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event of individual controls occurs after the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Load&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event of the page." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">各个控件的 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.load(v=vs.100).aspx">Load</a></span> 事件在页的 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.load(v=vs.100).aspx">Load</a></span> 事件之后发生。</sentencetext></span>  </p><p><span id="mt72" class="sentence" data-guid="6eb57d049a9ca1ececc4411c36d94689" data-source="Use the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;OnLoad&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event method to set properties in controls and to establish database connections." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">使用 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.onload(v=vs.100).aspx">OnLoad</a></span> 事件方法来设置控件中的属性并建立数据库连接。</sentencetext></span></p></td></tr><tr><td><p><span id="mt73" class="sentence" data-guid="e97de198c9a1795fd198d59de907f0e5" data-source="Control events" xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">控件事件</sentencetext></span></p></td><td><p><span id="mt74" class="sentence" data-guid="48a160425374494ec76a86a9ca9c64c0" data-source="Use these events to handle specific control events, such as a &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Button&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; control&#39;s &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Click&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event or a &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;TextBox&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; control&#39;s &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;TextChanged&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">使用这些事件来处理特定控件事件，如 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.button(v=vs.100).aspx">Button</a></span> 控件的 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.button.click(v=vs.100).aspx">Click</a></span> 事件或 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.textbox(v=vs.100).aspx">TextBox</a></span> 控件的 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.mobilecontrols.textbox.textchanged(v=vs.100).aspx">TextChanged</a></span> 事件。</sentencetext></span></p><div class="alert"><div class="mtps-table" xmlns="http://www.w3.org/1999/xhtml"><div class="mtps-row"><span class="mtps-th"><img id="alert_note" alt="注意" src="./ASP.NET 页生命周期概述_files/clear.gif" title="注意" xmlns="" class="cl_IC101471"><strong>注意</strong></span></div><div class="mtps-row"><span class="mtps-cell"><span><span id="mt75" class="sentence" data-guid="0e91a8d58a11611666ed210430000d3f" data-source="In a postback request, if the page contains validator controls, check the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;IsValid&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; property of the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Page&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; and of individual validation controls before performing any processing." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在回发请求中，如果页包含验证程序控件，请在执行任何处理之前检查 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.page(v=vs.100).aspx">Page</a></span> 和各个验证控件的 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.page.isvalid(v=vs.100).aspx">IsValid</a></span> 属性。</sentencetext></span></span></span></div></div></div></td></tr><tr><td><p><span><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.page.loadcomplete(v=vs.100).aspx">LoadComplete</a></span></p></td><td><p><span id="mt76" class="sentence" data-guid="4a4fc6526aae46540d1bc7080fcc31d2" data-source="Raised at the end of the event-handling stage." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在事件处理阶段结束时引发。</sentencetext></span></p><p><span id="mt77" class="sentence" data-guid="e121c6ad619f98fd422d7d382e264e06" data-source="Use this event for tasks that require that all other controls on the page be loaded." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">对需要加载页上的所有其他控件的任务使用该事件。</sentencetext></span></p></td></tr><tr><td><p><span><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.prerender(v=vs.100).aspx">PreRender</a></span></p></td><td><p><span id="mt78" class="sentence" data-guid="0d743e4192bd5bfde636ff1c5f0f3457" data-source="Raised after the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Page&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; object has created all controls that are required in order to render the page, including child controls of composite controls." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.page(v=vs.100).aspx">Page</a></span> 对象创建呈现页所需的所有控件（包括组合控件的子控件）之后引发。</sentencetext></span>  <span id="mt79" class="sentence" data-guid="8cb0a33e8fa58c84b784681e98dccd6e" data-source="(To do this, the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Page&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; object calls &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;EnsureChildControls&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; for each control and for the page.)" xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">（为此，<span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.page(v=vs.100).aspx">Page</a></span> 对象会针对每个控件和页调用 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.ensurechildcontrols(v=vs.100).aspx">EnsureChildControls</a></span>。）</sentencetext></span>  </p><p><span id="mt80" class="sentence" data-guid="b085d519a3c57c3ace39007bfaba6134" data-source="The &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Page&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; object raises the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;PreRender&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event on the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Page&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; object, and then recursively does the same for each child control." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">
+  <span xmlns="http://www.w3.org/1999/xhtml">
+    <a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.page(v=vs.100).aspx">Page</a>
+  </span> 对象在 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.page(v=vs.100).aspx">Page</a></span> 对象上调用 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.prerender(v=vs.100).aspx">PreRender</a></span> 事件，然后以递归方式对每个子控件执行相同操作。</sentencetext></span>  <span id="mt81" class="sentence" data-guid="39d0b3e75e28e510797c5066ab34485e" data-source="The &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;PreRender&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event of individual controls occurs after the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;PreRender&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event of the page." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">各个控件的 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.prerender(v=vs.100).aspx">PreRender</a></span> 事件在页的 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.prerender(v=vs.100).aspx">PreRender</a></span> 事件之后发生。</sentencetext></span>  </p><p><span id="mt82" class="sentence" data-guid="8576f167a2656e1b16172528081bf2cb" data-source="Use the event to make final changes to the contents of the page or its controls before the rendering stage begins." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在呈现阶段开始之前，使用该事件对页或其控件的内容进行最后更改。</sentencetext></span></p></td></tr><tr><td><p><span><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.page.prerendercomplete(v=vs.100).aspx">PreRenderComplete</a></span></p></td><td><p><span id="mt83" class="sentence" data-guid="c1f92d61c28b8fcd28cec9ff631b29f5" data-source="Raised after each data bound control whose &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;DataSourceID&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; property is set calls its &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;DataBind&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; method." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在设置了 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.databoundcontrol.datasourceid(v=vs.100).aspx">DataSourceID</a></span> 属性的每个数据绑定控件调用其 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.databind(v=vs.100).aspx">DataBind</a></span> 方法之后引发。</sentencetext></span>  <span id="mt84" class="sentence" data-guid="7f61d04f1bd3328599a1db5bfa2df8e4" data-source="For more information, see &lt;a href=&quot;#data_binding_events_for_databound_controls&quot;&gt;Data Binding Events for Data-Bound Controls&lt;/a&gt; later in this topic." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">有关更多信息，请参见本主题后面的<a href="http://msdn.microsoft.com/zh-cn/library/ms178472(v=vs.100).aspx#data_binding_events_for_databound_controls" xmlns="http://www.w3.org/1999/xhtml">数据绑定控件的数据绑定事件</a>。</sentencetext></span>  </p></td></tr><tr><td><p><span><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.page.savestatecomplete(v=vs.100).aspx">SaveStateComplete</a></span></p></td><td><p><span id="mt85" class="sentence" data-guid="79be7305bf9f8434096e1171cfbf5975" data-source="Raised after view state and control state have been saved for the page and for all controls." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在为页和所有控件保存视图状态和控件状态之后发生。</sentencetext></span>  <span id="mt86" class="sentence" data-guid="3e9b58314e9f9431c89cf63d9ab862be" data-source="Any changes to the page or controls at this point affect rendering, but the changes will not be retrieved on the next postback." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">此时对页或控件进行的任何更改都会影响呈现，但是在下一个回发中将不会检索到这些更改。</sentencetext></span>  </p></td></tr><tr><td><p><span><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.render(v=vs.100).aspx">Render</a></span> </p></td><td><p><span id="mt87" class="sentence" data-guid="13088eea13c680a8caf941114a143538" data-source="This is not an event; instead, at this stage of processing, the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Page&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; object calls this method on each control." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">这不是事件；在处理的这个阶段，<span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.page(v=vs.100).aspx">Page</a></span> 对象会在每个控件上调用此方法。</sentencetext></span>  <span id="mt88" class="sentence" data-guid="a49b513d20a42042d286168da5286c01" data-source="All ASP.NET Web server controls have a &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Render&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; method that writes out the control&#39;s markup to send to the browser." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">所有 ASP.NET Web 服务器控件都有一个用于写出发送给浏览器的控件标记的 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.render(v=vs.100).aspx">Render</a></span> 方法。</sentencetext></span>  </p><p><span id="mt89" class="sentence" data-guid="a3d37a1115c5e382098a5c7adaabe25c" data-source="If you create a custom control, you typically override this method to output the control&#39;s markup." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">如果创建自定义控件，通常要覆盖此方法以输出控件的标记。</sentencetext></span>  <span id="mt90" class="sentence" data-guid="c5b88f03c361ce52a460f7c2ca7a3cf4" data-source="However, if your custom control incorporates only standard ASP.NET Web server controls and no custom markup, you do not need to override the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Render&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; method." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">不过，如果自定义控件只合并标准的 ASP.NET Web 服务器控件，不合并自定义标记，则不需要覆盖 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.render(v=vs.100).aspx">Render</a></span> 方法。</sentencetext></span>  <span id="mt91" class="sentence" data-guid="964147618b2bb5445334ffd0587e760f" data-source="For more information, see &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Developing Custom ASP.NET Server Controls&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">有关更多信息，请参见<span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/zt27tfhy(v=vs.100).aspx">开发自定义 ASP.NET 服务器控件</a></span>。</sentencetext></span>  </p><p><span id="mt92" class="sentence" data-guid="51325003758dd9eb9df365f1a4c2c0e5" data-source="A user control (an .ascx file) automatically incorporates rendering, so you do not need to explicitly render the control in code." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">用户控件（.ascx 文件）自动合并呈现，因此不需要在代码中显式呈现该控件。</sentencetext></span></p></td></tr><tr><td><p><span><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.unload(v=vs.100).aspx">Unload</a></span> </p></td><td><p><span id="mt93" class="sentence" data-guid="5b8655b9dc4befbe02f9a716a45aa92d" data-source="Raised for each control and then for the page." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">首先针对每个控件引发，继而针对该页引发。</sentencetext></span></p><p><span id="mt94" class="sentence" data-guid="d91e1f88dbc04b7a9f4401cf9b630199" data-source="In controls, use this event to do final cleanup for specific controls, such as closing control-specific database connections." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在控件中，使用该事件对特定控件执行最后清理，如关闭控件特定数据库连接。</sentencetext></span></p><p><span id="mt95" class="sentence" data-guid="0558a6b7deb6b81015a82afd042d7f7a" data-source="For the page itself, use this event to do final cleanup work, such as closing open files and database connections, or finishing up logging or other request-specific tasks." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">对于页自身，使用该事件来执行最后清理工作，如：关闭打开的文件和数据库连接，或完成日志记录或其他请求特定任务。</sentencetext></span></p><div class="alert"><div class="mtps-table" xmlns="http://www.w3.org/1999/xhtml"><div class="mtps-row"><span class="mtps-th"><img id="alert_note" alt="注意" src="./ASP.NET 页生命周期概述_files/clear.gif" title="注意" xmlns="" class="cl_IC101471"><strong>注意</strong></span></div><div class="mtps-row"><span class="mtps-cell"><span><span id="mt96" class="sentence" data-guid="d53e9c5a2d509d4c7bd37bc08e747275" data-source="During the unload stage, the page and its controls have been rendered, so you cannot make further changes to the response stream." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在卸载阶段，页及其控件已被呈现，因此无法对响应流做进一步更改。</sentencetext></span><span id="mt97" class="sentence" data-guid="57ad260379be80f6e4f59109ab856035" data-source="If you attempt to call a method such as the &lt;span&gt;&lt;span class=&quot;input&quot;&gt;Response.Write&lt;/span&gt;&lt;/span&gt; method, the page will throw an exception." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">如果尝试调用方法（如 <span xmlns="http://www.w3.org/1999/xhtml"><span class="input">Response.Write</span></span> 方法），则该页将引发异常。</sentencetext></span></span></span></div></div></div></td></tr></tbody></table></div></div></div><a id="additional_page_life_cycle_considerations"></a><div><div class="LW_CollapsibleArea_TitleDiv"><div><a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="单击以折叠。双击以全部折叠。"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">其他的页生命周期注意事项</span></a><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></div><div class="sectionblock"><a id="sectionToggle2"></a><p><span id="mt98" class="sentence" data-guid="517d6fce249105d0837b176ab385abf2" data-source="Individual ASP.NET server controls have their own life cycle that is similar to the page life cycle." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">各个 ASP.NET 服务器控件都有自己的生命周期，该生命周期与页生命周期类似。</sentencetext></span>  <span id="mt99" class="sentence" data-guid="54f1790e69e1d4cc7e907392eb79f1bb" data-source="For example, a control&#39;s &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Init&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; and &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Load&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; events occur during the corresponding page events." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">例如，控件的 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.init(v=vs.100).aspx">Init</a></span> 和 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.load(v=vs.100).aspx">Load</a></span> 事件在相应的页事件期间发生。</sentencetext></span>  </p><p><span id="mt100" class="sentence" data-guid="ebf75b30d74a8e75bb07ee9f8ee47eec" data-source="Although both &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Init&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; and &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Load&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; recursively occur on each control, they happen in reverse order." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">虽然 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.init(v=vs.100).aspx">Init</a></span> 和 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.load(v=vs.100).aspx">Load</a></span> 都在每个控件上以递归方式发生，但它们的发生顺序相反。</sentencetext></span>  <span id="mt101" class="sentence" data-guid="da3ffe1ae80a903af83209f13d62b349" data-source="The &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Init&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event (and also the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Unload&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event) for each child control occur before the corresponding event is raised for its container (bottom-up)." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">每个子控件的 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.init(v=vs.100).aspx">Init</a></span> 事件（还有 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.unload(v=vs.100).aspx">Unload</a></span> 事件）在为其容器引发相应的事件之前发生（由下到上）。</sentencetext></span>  <span id="mt102" class="sentence" data-guid="4434b34f8f1475c69818cf0e674db7ac" data-source="However the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Load&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event for a container occurs before the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Load&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; events for its child controls (top-down)." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">但是，容器的 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.load(v=vs.100).aspx">Load</a></span> 事件是在其子控件的 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.load(v=vs.100).aspx">Load</a></span> 事件之前发生（由上到下）。</sentencetext></span>  <span id="mt103" class="sentence" data-guid="84a959784e3ab296160e318ed6497854" data-source="Master pages behave like child controls on a page: the master page &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Init&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event occurs before the page &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Init&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; and &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Load&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; events, and the master page &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Load&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event occurs after the page &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Init&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; and &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Load&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; events." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">母版页的行为方式类似于页上的子控件：母版页 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.init(v=vs.100).aspx">Init</a></span> 事件发生在页的 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.init(v=vs.100).aspx">Init</a></span> 和 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.load(v=vs.100).aspx">Load</a></span> 事件之前，母版页 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.load(v=vs.100).aspx">Load</a></span> 事件发生在页的 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.init(v=vs.100).aspx">Init</a></span> 和 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.load(v=vs.100).aspx">Load</a></span> 事件之后。</sentencetext></span>  </p><p><span id="mt104" class="sentence" data-guid="e63ae7d86760497325c208c057f84783" data-source="When you create a class that inherits from the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Page&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; class, in addition to handling events raised by the page, you can override methods from the page&#39;s base class." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">当您创建从 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.page(v=vs.100).aspx">Page</a></span> 类继承的类时，除了可以处理由页引发的事件以外，还可以重写页的基类中的方法。</sentencetext></span>  <span id="mt105" class="sentence" data-guid="e89fb2280778a311ff17b9dc9eb311e0" data-source="For example, you can override the page&#39;s &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;InitializeCulture&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; method to dynamically set culture information." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">例如，可以覆盖页的 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.page.initializeculture(v=vs.100).aspx">InitializeCulture</a></span> 方法，以便动态设置区域性信息。</sentencetext></span>  <span id="mt106" class="sentence" data-guid="479c7a883fdf921cb9808874b8ab3058" data-source="Note that when an event handler is created using the &lt;span&gt;&lt;span class=&quot;input&quot;&gt;Page_&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;parameter&quot;&gt;event&lt;/span&gt; syntax, the base implementation is implicitly called and therefore you do not need to call it in your method." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">注意，在使用 <span xmlns="http://www.w3.org/1999/xhtml"><span class="input">Page_</span></span><span class="parameter" xmlns="http://www.w3.org/1999/xhtml">事件</span> 语法创建事件处理程序时，将隐式调用基实现，因此无需在方法中调用它。</sentencetext></span>  <span id="mt107" class="sentence" data-guid="12ac1a0cfaaada113d205f5dfc4e9826" data-source="For example, the base page class&#39;s &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;OnLoad&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; method is always called, whether you create a &lt;span&gt;&lt;span class=&quot;input&quot;&gt;Page_Load&lt;/span&gt;&lt;/span&gt; method or not." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">例如，无论是否创建 <span xmlns="http://www.w3.org/1999/xhtml"><span class="input">Page_Load</span></span> 方法，始终都会调用页基类的 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.onload(v=vs.100).aspx">OnLoad</a></span> 方法。</sentencetext></span>  <span id="mt108" class="sentence" data-guid="c3258cfea0733e9f9f0ad29857d721c3" data-source="However, if you override the page &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;OnLoad&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; method with the &lt;span&gt;&lt;span class=&quot;input&quot;&gt;override&lt;/span&gt;&lt;/span&gt; keyword (&lt;span&gt;&lt;span class=&quot;input&quot;&gt;Overrides&lt;/span&gt;&lt;/span&gt; in Visual Basic), you must explicitly call the base method." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">但是，如果使用 <span xmlns="http://www.w3.org/1999/xhtml"><span class="input">override</span></span> 关键字（在 Visual Basic 中为 <span xmlns="http://www.w3.org/1999/xhtml"><span class="input">Overrides</span></span>）覆盖页的 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.onload(v=vs.100).aspx">OnLoad</a></span> 方法，则必须显式调用基方法。</sentencetext></span>  <span id="mt109" class="sentence" data-guid="db4f3a79ad5cc7f5cdf6576bb954c6d4" data-source="For example, if you override the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;OnLoad&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; method on the page, you must call &lt;span&gt;&lt;span class=&quot;input&quot;&gt;base.Load&lt;/span&gt;&lt;/span&gt; (&lt;span&gt;&lt;span class=&quot;input&quot;&gt;MyBase.Load&lt;/span&gt;&lt;/span&gt; in Visual Basic) in order for the base implementation to be run." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">例如，如果在页中覆盖 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.onload(v=vs.100).aspx">OnLoad</a></span> 方法，则必须调用 <span xmlns="http://www.w3.org/1999/xhtml"><span class="input">base.Load</span></span>（在 Visual Basic 中为 <span xmlns="http://www.w3.org/1999/xhtml"><span class="input">MyBase.Load</span></span>）以运行基实现。</sentencetext></span>  </p><p><span id="mt110" class="sentence" data-guid="d13d57deeedf71f9f279197c66bcd78e" data-source="The following illustration shows some of the most important methods of the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Page&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; class that you can override in order to add code that executes at specific points in the page life cycle." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">下图显示了 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.page(v=vs.100).aspx">Page</a></span> 类的一些最重要方法，您可以对其进行重写以便添加在页生命周期的特定点执行的代码。</sentencetext></span>  <span id="mt111" class="sentence" data-guid="2c13269d261822ffc5cd4a8fbd9d07cf" data-source="(For a complete list of page methods and events, see the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Page&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; class.) The illustration also shows how these methods relate to page events and to control events." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">（有关页方法和事件的完整列表，请参见 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.page(v=vs.100).aspx">Page</a></span> 类。）该图还演示这些方法如何与页事件和控件事件相关。</sentencetext></span>  <span id="mt112" class="sentence" data-guid="36baf72dfd5e7f50d468b6f1ccf9379d" data-source="The sequence of methods and events in the illustration is from top to bottom, and within each row from left to right." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在该图中方法和事件的顺序为从上到下排列，在每行中为从左到右。</sentencetext></span>  </p><img id="ASPNET_LifeCycleOverview" alt="ASP.NET 页面生命周期关系图" src="./ASP.NET 页生命周期概述_files/IC481543.png" title="ASP.NET 页面生命周期关系图" xmlns=""></div></div><a id="catch_up_events_for_added_controls"></a><div><div class="LW_CollapsibleArea_TitleDiv"><div><a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="单击以折叠。双击以全部折叠。"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">添加的控件的追赶事件</span></a><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></div><div class="sectionblock"><a id="sectionToggle3"></a><p><span id="mt113" class="sentence" data-guid="21692524aa7ba1524068ac599211d430" data-source="If controls are created dynamically at run time or declaratively within templates of data-bound controls, their events are initially not synchronized with those of other controls on the page." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">如果控件是在运行时动态创建的，或者是以声明方式在数据绑定控件的模板中创建的，它们的事件最初与页上的其他控件的事件并不同步。</sentencetext></span>  <span id="mt114" class="sentence" data-guid="14d93de48e4425b0f9651c02ec39a858" data-source="For example, for a control that is added at run time, the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Init&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; and &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Load&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; events might occur much later in the page life cycle than the same events for controls created declaratively." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">例如，对于运行时添加的控件，<span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.init(v=vs.100).aspx">Init</a></span> 和 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.load(v=vs.100).aspx">Load</a></span> 事件在页生命周期中的发生时间可能要比以声明方式创建的控件的相同事件晚得多。</sentencetext></span>  <span id="mt115" class="sentence" data-guid="81b59b33be401044adb0f86ffa98b7b7" data-source="Therefore, from the time that they are instantiated, dynamically added controls and controls in templates raise their events one after the other until they have caught up to the event during which it was added to the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Controls&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; collection." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">因此，从实例化那一刻起，动态添加的控件的事件就一直是在模板中的控件的事件之后发生，直到赶上该控件加入 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.controls(v=vs.100).aspx">Controls</a></span> 集合时所对应事件为止。</sentencetext></span>  </p></div></div><a id="data_binding_events_for_databound_controls"></a><div><div class="LW_CollapsibleArea_TitleDiv"><div><a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="单击以折叠。双击以全部折叠。"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">数据绑定控件的数据绑定事件</span></a><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></div><div class="sectionblock"><a id="sectionToggle4"></a><p><span id="mt116" class="sentence" data-guid="59473a0bccede9fbbc50333481bcf55b" data-source="To help you understand the relationship between the page life cycle and data binding events, the following table lists data-related events in data-bound controls such as the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;GridView&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;, &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;DetailsView&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;, and &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;FormView&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; controls." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">为了帮助您理解页生命周期与数据绑定事件之间的关系，下表列出了数据绑定控件（如 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.gridview(v=vs.100).aspx">GridView</a></span>、<span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.detailsview(v=vs.100).aspx">DetailsView</a></span> 和 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.formview(v=vs.100).aspx">FormView</a></span> 控件）中与数据相关的事件。</sentencetext></span></p><div class="caption"></div><div class="tableSection"><table><tbody><tr><th><p><span class="label">控件事件</span></p></th><th><p><span class="label">典型使用</span></p></th></tr><tr><td><p><span><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.databinding(v=vs.100).aspx">DataBinding</a></span></p></td><td><p><span id="mt117" class="sentence" data-guid="8488ecaee84433ff812adcfa3814c170" data-source="Raised after the control&#39;s &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;PreRender&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event, which occurs after the page&#39;s &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;PreRender&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在控件的 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.prerender(v=vs.100).aspx">PreRender</a></span> 事件（该事件在页的 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.prerender(v=vs.100).aspx">PreRender</a></span> 事件之后发生）之后引发。</sentencetext></span>  <span id="mt118" class="sentence" data-guid="dc717bd566a680fb12a0ce13b402bc04" data-source="(This applies to controls whose &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;DataSourceID&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; property is set declaratively." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">（这将应用于以声明方式设置其属性的 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.databoundcontrol.datasourceid(v=vs.100).aspx">DataSourceID</a></span> 控件。</sentencetext></span>  <span id="mt119" class="sentence" data-guid="0c9b651f194cb219db6289377d9a4c33" data-source="Otherwise the event happens when you call the control&#39;s &lt;span&gt;&lt;span class=&quot;input&quot;&gt;DataBind&lt;/span&gt;&lt;/span&gt; method.)" xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">否则，该事件在您调用控件的 <span xmlns="http://www.w3.org/1999/xhtml"><span class="input">DataBind</span></span> 方法时发生。）</sentencetext></span>  </p><p><span id="mt120" class="sentence" data-guid="6ccbd707a77d09ae5d12c4962c5a3774" data-source="This event marks the beginning of the process that binds the control to the data." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">该事件标记将控件绑定到数据的进程的开始。</sentencetext></span>  <span id="mt121" class="sentence" data-guid="3ec0bb3442995a8058895c0852f6a43e" data-source="Use this event to manually open database connections, if required, and to set parameter values dynamically before a query is run." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">使用此事件可以手动打开数据库连接，如果需要，还可以在运行查询之前动态设置参数值。</sentencetext></span>  </p></td></tr><tr><td><p><span id="mt122" class="sentence" data-guid="b4ced6a02fa21c8335e742ae2fb254c0" data-source="&lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;RowCreated&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; (&lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;GridView&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; only) or &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;ItemCreated&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; (&lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;DataList&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;, &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;DetailsView&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;, &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;SiteMapPath&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;, &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;DataGrid&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;, &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;FormView&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;, &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Repeater&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;, and &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;ListView&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; controls)" xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">
+  <span xmlns="http://www.w3.org/1999/xhtml">
+    <a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.gridview.rowcreated(v=vs.100).aspx">RowCreated</a>
+  </span>（仅限 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.gridview(v=vs.100).aspx">GridView</a></span>）或 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.datalist.itemcreated(v=vs.100).aspx">ItemCreated</a></span>（<span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.datalist(v=vs.100).aspx">DataList</a></span>、<span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.detailsview(v=vs.100).aspx">DetailsView</a></span>、<span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.sitemappath(v=vs.100).aspx">SiteMapPath</a></span>、<span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.datagrid(v=vs.100).aspx">DataGrid</a></span>、<span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.formview(v=vs.100).aspx">FormView</a></span>、<span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.repeater(v=vs.100).aspx">Repeater</a></span> 和 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.listview(v=vs.100).aspx">ListView</a></span> 控件）</sentencetext></span></p></td><td><p><span id="mt123" class="sentence" data-guid="653d1c6c7cc3b6111277c904c1c25863" data-source="Raised after the control&#39;s &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;DataBinding&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在控件的 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.databinding(v=vs.100).aspx">DataBinding</a></span> 事件之后引发。</sentencetext></span></p><p><span id="mt124" class="sentence" data-guid="a70c9a19704e7ae0e4b3db6220c84294" data-source="Use this event to manipulate content that is not dependent on data binding." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">使用该事件来操作不依赖于数据绑定的内容。</sentencetext></span>  <span id="mt125" class="sentence" data-guid="419ed2ea28447c4f1f81f268f691ffa9" data-source="For example, at run time, you might programmatically add formatting to a header or footer row in a &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;GridView&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; control." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">例如，在运行时，可以以编程方式向 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.gridview(v=vs.100).aspx">GridView</a></span> 控件中的页眉或页脚行添加格式。</sentencetext></span>  </p></td></tr><tr><td><p><span id="mt126" class="sentence" data-guid="fe568226a14d8779d144c2e7e73b3c1b" data-source="&lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;RowDataBound&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; (&lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;GridView&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; only) or &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;ItemDataBound&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; (&lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;DataList&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;, &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;SiteMapPath&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;, &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;DataGrid&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;, &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Repeater&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;, and &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;ListView&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; controls)" xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">
+  <span xmlns="http://www.w3.org/1999/xhtml">
+    <a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.gridview.rowdatabound(v=vs.100).aspx">RowDataBound</a>
+  </span>（仅限 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.gridview(v=vs.100).aspx">GridView</a></span>）或 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.datalist.itemdatabound(v=vs.100).aspx">ItemDataBound</a></span>（<span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.datalist(v=vs.100).aspx">DataList</a></span>、<span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.sitemappath(v=vs.100).aspx">SiteMapPath</a></span>、<span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.datagrid(v=vs.100).aspx">DataGrid</a></span>、<span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.repeater(v=vs.100).aspx">Repeater</a></span> 和 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.listview(v=vs.100).aspx">ListView</a></span> 控件）</sentencetext></span></p></td><td><p><span id="mt127" class="sentence" data-guid="b49b2f07f684dd7d874af5431736af41" data-source="Raised after the control&#39;s &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;RowCreated&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; or &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;ItemCreated&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在控件的 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.gridview.rowcreated(v=vs.100).aspx">RowCreated</a></span> 或 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.datalist.itemcreated(v=vs.100).aspx">ItemCreated</a></span> 事件之后引发。</sentencetext></span></p><p><span id="mt128" class="sentence" data-guid="6e348497c2292e1d8163e158f8636691" data-source="When this event occurs, data is available in the row or item, so you can format data or set the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;FilterExpression&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; property on child data source controls in order to display related data within the row or item." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">当此事件发生时，行或项中的数据可用，因此，可以在子数据源控件上格式化数据或设置 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.sqldatasource.filterexpression(v=vs.100).aspx">FilterExpression</a></span> 属性，以便显示行或项中的相关数据。</sentencetext></span></p></td></tr><tr><td><p><span><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.basedataboundcontrol.databound(v=vs.100).aspx">DataBound</a></span></p></td><td><p><span id="mt129" class="sentence" data-guid="15ed7a7d28e1119cc2414a7d7145fa90" data-source="Raised at the end of data-binding operations in a data-bound control." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在数据绑定控件中的数据绑定操作结尾引发。</sentencetext></span>  <span id="mt130" class="sentence" data-guid="c519d16ed3f2279c25069ec4bd37e72d" data-source="In a &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;GridView&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; control, data binding is complete for all rows and any child controls." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.gridview(v=vs.100).aspx">GridView</a></span> 控件中，会为所有行和子控件完成数据绑定。</sentencetext></span>  </p><p><span id="mt131" class="sentence" data-guid="6cd51ea99f01abf70e50f66d2133cd0b" data-source="Use this event to format data-bound content or to initiate data binding in other controls that depend on values from the current control&#39;s content." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">使用此事件格式化数据绑定内容，或在依赖来自当前控件的内容的值的其他控件中启动数据绑定。</sentencetext></span>  <span id="mt132" class="sentence" data-guid="e3ec2d73af451bd12019fb4bdceda694" data-source="(For more information, see &lt;a href=&quot;#catch_up_events_for_added_controls&quot;&gt;Catch-Up Events for Added Controls&lt;/a&gt; earlier in this topic.)" xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">（有关更多信息，请参见本主题中前面的<a href="http://msdn.microsoft.com/zh-cn/library/ms178472(v=vs.100).aspx#catch_up_events_for_added_controls" xmlns="http://www.w3.org/1999/xhtml">“添加的控件的追赶事件”</a>。）</sentencetext></span>  </p></td></tr></tbody></table></div><h3 class="subHeading">嵌套的数据绑定控件</h3><div class="subsection"><p><span id="mt133" class="sentence" data-guid="03c2db9174af60ee076c9aa75790836f" data-source="If a child control has been data bound, but its container control has not yet been data bound, the data in the child control and the data in its container control can be out of sync." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">如果子控件已执行数据绑定，但其容器控件尚未执行数据绑定，则子控件中的数据与其容器控件中的数据可能不同步。</sentencetext></span>  <span id="mt134" class="sentence" data-guid="c944028ec083d030a284c082f929f808" data-source="This is true particularly if the data in the child control performs processing based on a data-bound value in the container control." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">如果子控件中的数据根据容器控件中的数据绑定值执行了处理，这种情况则尤其显著。</sentencetext></span>  </p><p><span id="mt135" class="sentence" data-guid="cc83c5e4f91ea41641e26582c8c549bb" data-source="For example, suppose you have a &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;GridView&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; control that displays a company record in each row, and it displays a list of the company officers in a &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;ListBox&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; control." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">例如，假定有一个 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.gridview(v=vs.100).aspx">GridView</a></span> 控件，它的每一行显示一条公司记录，此外，还有一个 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.listbox(v=vs.100).aspx">ListBox</a></span> 控件包含公司管理者列表。</sentencetext></span>  <span id="mt136" class="sentence" data-guid="1d9c3b39fa63586f95cabdf78b3260c5" data-source="To fill the list of officers, you would bind the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;ListBox&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; control to a data source control (such as &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;SqlDataSource&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;) that retrieves the company officer data using the company ID in a query." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">若要填充管理者列表，则需要将 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.listbox(v=vs.100).aspx">ListBox</a></span> 控件绑定到一个数据源控件（如 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.sqldatasource(v=vs.100).aspx">SqlDataSource</a></span>），后者在查询中使用公司 ID 来检索公司管理者数据。</sentencetext></span>  </p><p><span id="mt137" class="sentence" data-guid="85f68c8ae3da936983b157652fd1d1bb" data-source="If the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;ListBox&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; control&#39;s data-binding properties, such as &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;DataSourceID&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; and &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;DataMember&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;, are set declaratively, the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;ListBox&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; control will try to bind to its data source during the containing row&#39;s &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;DataBinding&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">如果以声明方式设置了 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.listbox(v=vs.100).aspx">ListBox</a></span> 控件的数据绑定属性（如 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.basedatalist.datasourceid(v=vs.100).aspx">DataSourceID</a></span> 和 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.basedatalist.datamember(v=vs.100).aspx">DataMember</a></span>），<span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.listbox(v=vs.100).aspx">ListBox</a></span> 控件将尝试在包含行的 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.databinding(v=vs.100).aspx">DataBinding</a></span> 事件期间绑定到其数据源。</sentencetext></span>  <span id="mt138" class="sentence" data-guid="c0e8098323621cbbee870c8313e48278" data-source="However, the CompanyID field of the row does not contain a value until the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;GridView&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; control&#39;s &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;RowDataBound&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event occurs." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">不过，行的 CompanyID 字段直到 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.gridview(v=vs.100).aspx">GridView</a></span> 控件的 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.gridview.rowdatabound(v=vs.100).aspx">RowDataBound</a></span> 事件发生后才包含值。</sentencetext></span>  <span id="mt139" class="sentence" data-guid="4c851c599b242b46c7e6f4decb8ea9d9" data-source="In this case, the child control (the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;ListBox&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; control) is bound before the containing control (the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;GridView&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; control) is bound, so their data-binding stages are out of sync." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">这种情况下，先绑定子控件（<span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.listbox(v=vs.100).aspx">ListBox</a></span> 控件），后绑定包含控件（<span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.gridview(v=vs.100).aspx">GridView</a></span> 控件），因此它们的数据绑定阶段并不同步。</sentencetext></span>  </p><p><span id="mt140" class="sentence" data-guid="af5be2204113749535569afa79d93c4d" data-source="To avoid this condition, put the data source control for the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;ListBox&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; control in the same template item as the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;ListBox&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; control itself, and do not set the data binding properties of the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;ListBox&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; declaratively." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">若要避免此种情况，需要将 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.listbox(v=vs.100).aspx">ListBox</a></span> 控件的数据源控件与 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.listbox(v=vs.100).aspx">ListBox</a></span> 控件自身放在同一模板项中，并且不要以声明方式设置 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.listbox(v=vs.100).aspx">ListBox</a></span> 的数据绑定属性。</sentencetext></span>  <span id="mt141" class="sentence" data-guid="6cf351e8ee30f51013e18a8daeacfdd4" data-source="Instead, set them programmatically at run time during the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;RowDataBound&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event, so that the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;ListBox&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; control does not bind to its data until the CompanyID information is available." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">而应在 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.gridview.rowdatabound(v=vs.100).aspx">RowDataBound</a></span> 事件期间在运行时以编程方式设置它们，这样，到 CompanyID 信息可用时 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.listbox(v=vs.100).aspx">ListBox</a></span> 控件才会绑定到其数据。</sentencetext></span>  </p><p><span id="mt142" class="sentence" data-guid="035abf39c0a2da795aa921fbb66e9b57" data-source="For more information, see &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Binding to Data Using a Data Source Control&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">有关更多信息，请参见<span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/ms228089(v=vs.100).aspx">使用数据源控件绑定到数据</a></span>。</sentencetext></span></p></div></div></div><a id="login_control_events"></a><div><div class="LW_CollapsibleArea_TitleDiv"><div><a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="单击以折叠。双击以全部折叠。"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">登录控件事件</span></a><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></div><div class="sectionblock"><a id="sectionToggle5"></a><p><span id="mt143" class="sentence" data-guid="396f22d908b3a7f5de4d8ca0eb28ea81" data-source="The &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Login&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; control can use settings in the Web.config file to manage membership authentication automatically." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">
+  <span xmlns="http://www.w3.org/1999/xhtml">
+    <a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.login(v=vs.100).aspx">Login</a>
+  </span> 控件可以使用 Web.config 文件中的设置来自动管理成员资格验证。</sentencetext></span>  <span id="mt144" class="sentence" data-guid="f76ee1604084d746849ab2057e44d4d3" data-source="However, if your application requires you to customize how the control works, or if you want to understand how &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Login&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; control events relate to the page life cycle, you can use the events listed in the following table." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">不过，如果应用程序要求您自定义控件的工作方式，或者您要了解 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.login(v=vs.100).aspx">Login</a></span> 控件事件与页生命周期的关联方式，可以使用下表中列出的事件。</sentencetext></span>  </p><div class="caption"></div><div class="tableSection"><table><tbody><tr><th><p><span class="label">控件事件</span></p></th><th><p><span class="label">典型使用</span></p></th></tr><tr><td><p><span><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.login.loggingin(v=vs.100).aspx">LoggingIn</a></span></p></td><td><p><span id="mt145" class="sentence" data-guid="b27927c7628a87df2feae600321d7b8e" data-source="Raised during a postback, after the page&#39;s &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;LoadComplete&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event has occurred." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在回发期间，当页的 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.page.loadcomplete(v=vs.100).aspx">LoadComplete</a></span> 事件发生后引发。</sentencetext></span>  <span id="mt146" class="sentence" data-guid="f053a995a06616f341d9eb0e6cde4be9" data-source="This event marks the beginning of the login process." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">此事件标记登录过程的起点。</sentencetext></span>  </p><p><span id="mt147" class="sentence" data-guid="b0992e2b6face4f254d177fd837310ad" data-source="Use this event for tasks that must occur prior to beginning the authentication process." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">对必须在验证过程开始前发生的任务使用该事件。</sentencetext></span></p></td></tr><tr><td><p><span><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.login.authenticate(v=vs.100).aspx">Authenticate</a></span></p></td><td><p><span id="mt148" class="sentence" data-guid="256134aec7c3f726666fa0182d548baf" data-source="Raised after the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;LoggingIn&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event. " xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.login.loggingin(v=vs.100).aspx">LoggingIn</a></span> 事件之后引发。</sentencetext></span></p><p><span id="mt149" class="sentence" data-guid="a2e285048980309405ffb870c2bda182" data-source="Use this event to override or enhance the default authentication behavior of a &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Login&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; control. " xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">使用该事件来覆盖或增强 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.login(v=vs.100).aspx">Login</a></span> 控件的默认验证行为。</sentencetext></span></p></td></tr><tr><td><p><span><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.login.loggedin(v=vs.100).aspx">LoggedIn</a></span></p></td><td><p><span id="mt150" class="sentence" data-guid="c9a39a9b7d1b2a7047f892522373e426" data-source="Raised after the user name and password have been authenticated. " xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在验证用户名和密码后引发。</sentencetext></span></p><p><span id="mt151" class="sentence" data-guid="4659996db8e958e5d43415a4ff612330" data-source="Use this event to redirect to another page or to dynamically set the text in the control." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">使用该事件来重定向到另一个页或动态设置控件中的文本。</sentencetext></span>  <span id="mt152" class="sentence" data-guid="63c59da565fd107ba1102671cb0e3829" data-source="This event does not occur if there is an error or if authentication fails." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">如果出现错误或验证失败，就不会发生该事件。</sentencetext></span>  </p></td></tr><tr><td><p><span><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.login.loginerror(v=vs.100).aspx">LoginError</a></span></p></td><td><p><span id="mt153" class="sentence" data-guid="b0797c68fe4d6a0fc66a288ee228a2f1" data-source="Raised if authentication was not successful. " xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在身份验证失败的情况下引发。</sentencetext></span></p><p><span id="mt154" class="sentence" data-guid="c4816309576118707ff804a11169de71" data-source="Use this event to set text in the control that explains the problem or to direct the user to a different page." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">使用该事件来设置控件中的问题解释文本或将用户定向到不同的页。</sentencetext></span></p></td></tr></tbody></table></div></div></div><div><div class="LW_CollapsibleArea_TitleDiv"><div><a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="单击以折叠。双击以全部折叠。"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">请参见</span></a><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></div><div class="sectionblock"><a id="seeAlsoToggle"></a><h4 class="subHeading">参考</h4><div class="seeAlsoStyle"><span><a href="http://msdn.microsoft.com/zh-cn/library/7kh55542(v=vs.100).aspx">在 ASP.NET 网页中验证用户输入</a></span></div><div class="seeAlsoStyle"><span><a href="http://msdn.microsoft.com/zh-cn/library/ms178329(v=vs.100).aspx">ASP.NET 登录控件概述</a></span></div><h4 class="subHeading">概念</h4><div class="seeAlsoStyle"><span><a href="http://msdn.microsoft.com/zh-cn/library/y3bwdsh3(v=vs.100).aspx">ASP.NET Web 服务器控件事件模型</a></span></div><div class="seeAlsoStyle"><span><a href="http://msdn.microsoft.com/zh-cn/library/swe97x0b(v=vs.100).aspx">ASP.NET Web 应用程序中的页和应用程序上下文</a></span></div><div class="seeAlsoStyle"><span><a href="http://msdn.microsoft.com/zh-cn/library/bb386448(v=vs.100).aspx">ASP.NET 视图状态概述</a></span></div><div class="seeAlsoStyle"><span><a href="http://msdn.microsoft.com/zh-cn/library/ms228089(v=vs.100).aspx">使用数据源控件绑定到数据</a></span></div><h4 class="subHeading">其他资源</h4><div class="seeAlsoStyle"><span><a href="http://msdn.microsoft.com/zh-cn/library/zt27tfhy(v=vs.100).aspx">开发自定义 ASP.NET 服务器控件</a></span></div><div class="seeAlsoStyle"><span><a href="http://msdn.microsoft.com/zh-cn/library/fy30at8h(v=vs.100).aspx">ASP.NET 页语法</a></span></div><div class="seeAlsoStyle"><span><a href="http://msdn.microsoft.com/zh-cn/library/xax2hw3x(v=vs.100).aspx">ASP.NET 网页中的服务器事件处理</a></span></div></div></div><div><div class="LW_CollapsibleArea_TitleDiv"><div><a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="单击以折叠。双击以全部折叠。"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">修订记录</span></a><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></div><div class="sectionblock"><a id="changeHistoryToggle"></a><div class="caption"></div><div class="tableSection"><table><tbody><tr><th><p><span id="mt155" class="sentence" data-guid="5fc732311905cb27e82d67f4f6511f7f" data-source="Date" xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">日期</sentencetext></span></p></th><th><p><span id="mt156" class="sentence" data-guid="3cd15f8f2940aff879df34df4e5c2cd1" data-source="History" xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">修订记录</sentencetext></span></p></th><th><p><span id="mt157" class="sentence" data-guid="40bea8d637cdf2c1b07fcf0630482b73" data-source="Reason" xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">原因</sentencetext></span></p></th></tr><tr><td><p>
+    </p><p>2011 年 5 月</p>
+  </td><td><p><span id="mt158" class="sentence" data-guid="de8a9832300f1e4b1ef72d9d2a6d9537" data-source="Added note about event order in master pages." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">添加了有关母版页中的事件顺序的说明。</sentencetext></span></p></td><td><p>
+    </p><p>内容 Bug 修复</p>
+  </td></tr></tbody></table></div></div></div></div>
+  </div>
+</div>
+
+    
+
+
+
+<script id="CommentTemplate" type="text/x-jquery-tmpl">
+    <div class="communityContentAnnotation">
+        <a name="${Index}"></a>
+        <h3>
+            ${Title}
+        </h3>
+        <div class="communityContentAnnotationBody">
+            {{html Body}}
+        </div>
+        <div class="communityContentAnnotationInfo">
+            <div class="communityContentAnnotationAvatarContainer">
+                <a href="${UserAvatar.Href}" title="${UserAvatar.ToolTip}" class="communityContentAnnotationAvatar"><img src="${UserAvatar.ImageUrl}" alt="${UserAvatar.ImageAltText}" width="34" height="34" /></a>
+            </div>
+            <div class="communityContentAnnotationUserDateContainer">
+                <div class="communityContentAnnotationUserContainer">
+                    <a href="${UserAvatar.Href}">
+                        ${User}
+                    </a>
+                </div>
+                <div class="communityContentAnnotationDateContainer">
+                    <span>${Date}</span>
+                    
+                    {{if EditLink}}
+                        <span>
+                            <a href="${EditLink.Href}" title="${EditLink.ToolTip}" class="communityContentCommentEditLink">${EditLink.Title}</a>
+                        </span>
+                    {{/if}}
+
+                    {{if DeleteLink}}
+                        <span>
+                            <a href="${DeleteLink.Href}" title="${DeleteLink.ToolTip}" class="communityContentDeleteLink">${DeleteLink.Title}</a>
+                        </span>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<div class="communityContentContainer">
+    <div id="CommunityContentHeader" class="communityContentHeader">
+        <div class="communityContentHeaderTitleContainer">
+            <h2>社区附加资源</h2>
+                <a class="communityContentAddLink" href="http://msdn.microsoft.com/zh-cn/library/community/add/ms178472(v=vs.100).aspx">
+                    <span class="communityContentAddButton" title="添加">
+                        添加
+                    </span>
+                </a>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+    
+    <div id="CommunityComments" data-url="/zh-cn/library/community/comments/ms178472(v=vs.100).aspx"></div>
+</div>
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>显示:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit">继承
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected">保护
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="您当前的筛选设置无成员可用。">
+
+
+ 
+</div>
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="FI1g9XaIDrkKrko-HuENK_5f3Xu_5yr6xeCebludHXckpc8OxKDSI-0Rfx6JtNp8XQknK9F9euEhTx6u6XVFxhGJ1Nc1">
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/zh-cn/library/feedback/add/ms178472(v=vs.100).aspx">
+<input id="isTopicRated" type="hidden" value="false">
+
+
+
+
+        
+    <link type="text/css" rel="stylesheet">
+    
+    <div id="ux-footer" class="" style="" dir="ltr">
+        <footer class="top">
+            <div data-fragmentname="LeftLinks" id="Fragment_LeftLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="linkList">
+    <div class="linkListTitle">开发人员中心</div>
+    <ul class="links">
+      <li>
+        <a href="http://msdn.microsoft.com/windows" id="LeftLinks_2148_1" class="windowsBlue" xmlns="http://www.w3.org/1999/xhtml">Windows</a>
+      </li>
+      <li>
+        <a href="http://dev.windowsphone.com/" id="LeftLinks_2148_2" class="windowsPurple" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+      </li>
+      <li>
+        <a href="http://msdn.microsoft.com/office" id="LeftLinks_2148_3" class="office" xmlns="http://www.w3.org/1999/xhtml">Office</a>
+      </li>
+      <li>
+        <a href="http://msdn.microsoft.com/vstudio" id="LeftLinks_2148_4" class="visualStudio" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+      </li>
+      <li>
+        <a href="http://developer.nokia.com/" title="Nokia" target="_blank" id="LeftLinks_2148_14" class="nokia" xmlns="http://www.w3.org/1999/xhtml">Nokia</a>
+      </li>
+      <li>
+        <a href="http://www.windowsazure.com/en-us/documentation/" id="LeftLinks_2148_12" xmlns="http://www.w3.org/1999/xhtml">Microsoft Azure</a>
+      </li>
+      <li>
+        <a href="http://msdn.microsoft.com/aa937802" id="LeftLinks_2148_5" xmlns="http://www.w3.org/1999/xhtml">
+          <span style="line-height:18px;" xmlns="">更多…</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>    
+            <div id="rightLinks">
+                <div data-fragmentname="CenterLinks1" id="Fragment_CenterLinks1" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="linkList">
+    <div class="linkListTitle">学习资源</div>
+    <ul class="links">
+      <li>
+        <a href="http://www.microsoftvirtualacademy.com/" id="CenterLinks1_2151_4" xmlns="http://www.w3.org/1999/xhtml">Microsoft Virtual Academy</a>
+      </li>
+      <li>
+        <a href="http://channel9.msdn.com/" id="CenterLinks1_2151_5" xmlns="http://www.w3.org/1999/xhtml">Channel 9</a>
+      </li>
+      <li>
+        <a href="http://www.interoperabilitybridges.com/" id="CenterLinks1_2151_6" xmlns="http://www.w3.org/1999/xhtml">Interoperability Bridges</a>
+      </li>
+      <li>
+        <a href="http://msdn.microsoft.com/magazine/" id="CenterLinks1_2151_7" xmlns="http://www.w3.org/1999/xhtml">MSDN Magazine</a>
+      </li>
+    </ul>
+  </div>
+</div>
+                <div data-fragmentname="CenterLinks2" id="Fragment_CenterLinks2" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="linkList">
+    <div class="linkListTitle">社区</div>
+    <ul class="links">
+      <li>
+        <a href="http://social.msdn.microsoft.com/forums/zh-cn/home" id="CenterLinks2_2151_8" xmlns="http://www.w3.org/1999/xhtml">
+          <span style="line-height:18px;" xmlns="">技术论坛</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://blogs.msdn.com/b/developer-tools/" id="CenterLinks2_2151_9" xmlns="http://www.w3.org/1999/xhtml">Blogs</a>
+      </li>
+      <li>
+        <a href="http://www.codeplex.com/" id="CenterLinks2_2151_10" xmlns="http://www.w3.org/1999/xhtml">Codeplex</a>
+      </li>
+    </ul>
+  </div>
+</div>
+                <div data-fragmentname="CenterLinks3" id="Fragment_CenterLinks3" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="linkList">
+    <div class="linkListTitle">帮助和支持</div>
+    <ul class="links">
+      <li>
+        <a href="http://msdn.microsoft.com/hh361695" id="CenterLinks3_2151_11" xmlns="http://www.w3.org/1999/xhtml">
+          <span style="line-height:18px;" xmlns="">自助支持</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://support.microsoft.com/" id="CenterLinks3_2151_12" xmlns="http://www.w3.org/1999/xhtml">
+          <span style="line-height:18px;" xmlns="">其他支持选项</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+                <div data-fragmentname="CenterLinks4" id="Fragment_CenterLinks4" xmlns="http://www.w3.org/1999/xhtml" class="nth-child-4n">
+  
+  <div class="linkList">
+    <div class="linkListTitle">计划</div>
+    <ul class="links">
+      <li>
+        <a href="http://www.microsoft.com/bizspark/" id="CenterLinks4_2151_13" xmlns="http://www.w3.org/1999/xhtml">BizSpark (for startups)</a>
+      </li>
+      <li>
+        <a href="https://www.dreamspark.com/" id="CenterLinks4_2151_14" xmlns="http://www.w3.org/1999/xhtml">DreamSpark</a>
+      </li>
+      <li>
+        <a href="https://www.microsoft.com/faculty" id="CenterLinks4_2151_15" xmlns="http://www.w3.org/1999/xhtml">Faculty Connection</a>
+      </li>
+      <li>
+        <a href="http://www.microsoft.com/student/" id="CenterLinks4_2151_16" xmlns="http://www.w3.org/1999/xhtml">Microsoft Student</a>
+      </li>
+    </ul>
+  </div>
+</div>
+    
+    <div class="feedbackContainer">
+        <div id="feedbackSection1" class="clear">
+            <div class="left">本文是否对您有所帮助？</div>
+            <div class="left">
+                <div class="left">
+                    <input type="radio" name="feedback" id="feedbackYes" value="1" class="feedbackYesClick" data-enhance="false"><label class="feedbackYesClick" for="feedbackYes"> 是</label>
+                </div>
+                <div class="left">
+                    <input type="radio" name="feedback" id="feedbackNo" value="0" class="feedbackNoClick" data-enhance="false"><label class="feedbackNoClick" for="feedbackNo"> 否</label>
+                </div>
+            </div>
+            <a class="rateThisAnchor" name="feedback"></a>
+        </div>
+        <div id="feedbackSection2" class="clear">
+        </div>
+        <div id="feedbackSection3" class="clear">
+                    <div>
+                        <input id="checkboxNo201" name="chkbxNo" type="checkbox" value="201" data-enhance="false">
+                        <label for="checkboxNo201">不准确</label>
+                    </div>
+                    <div>
+                        <input id="checkboxNo202" name="chkbxNo" type="checkbox" value="202" data-enhance="false">
+                        <label for="checkboxNo202">深度不够</label>
+                    </div>
+                    <div>
+                        <input id="checkboxNo203" name="chkbxNo" type="checkbox" value="203" data-enhance="false">
+                        <label for="checkboxNo203">需要更多代码示例</label>
+                    </div>
+                    <div>
+                        <input id="checkboxNo204" name="chkbxNo" type="checkbox" value="204" data-enhance="false">
+                        <label for="checkboxNo204">翻译需要改进</label>
+                    </div>
+        </div>
+        <div id="feedbackSection4" class="clear">
+            <div>
+                <textarea id="feedbackTextArea" name="feedbackText" class="TellUsMoreTextBoxSearchLoaded" data-enhance="false">请告诉我们更多意见...</textarea>
+            </div>
+            <div class="left"><span class="counter">(<span id="feedbackTextCounter">1500</span> 个剩余字符)</span></div>
+            <div class="right">
+                <button type="button" id="feedbackSubmit" title="单击以提交反馈" data-enhance="false">提交</button>
+            </div>
+        </div>
+        <div id="feedbackSection5">感谢您的反馈</div>
+        <input id="feedbackValue" type="hidden" value="">
+        <input id="tellUsMoreText" type="hidden" value="请告诉我们更多意见...">
+        <input id="maxTextBoxCharacters" type="hidden" value="1500">
+        <input type="hidden" id="submitUrl" value="/zh-cn/msdn/ux/uxservices/feedback/add/footer(v=vs.100)">
+        <input type="hidden" id="feedbackSiteName" name="feedbackSiteName" value="">
+        <input type="hidden" id="feedbackPriority" name="feedbackPriority" value="">
+        <input type="hidden" id="feedbackSourceUrl" name="feedbackSourceUrl" value="">
+        <input type="hidden" id="ClientIP" name="ClientIP" value="">
+        <input type="hidden" id="ClientOS" name="ClientOS" value="">
+        <input type="hidden" id="ClientBrowser" name="ClientBrowser" value="">
+        <input type="hidden" id="ClientTime" name="ClientTime" value="">
+        <input type="hidden" id="ClientDate" name="ClientDate" value="">
+    </div>
+    
+            </div>
+        </footer>
+    
+        <footer class="bottom">
+            <span class="localeContainer">
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/zh-cn/selectlocale-dmc">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fzh-cn%2flibrary%2fms178472(v%3dvs.100).aspx">
+        <a href="http://msdn.microsoft.com/zh-cn/library/ms178472(v=vs.100).aspx#" onclick="$(&#39;#selectLocaleForm&#39;).submit();return false;" title="更改您的语言">中国（简体中文）</a>
+    </form>    
+
+
+            </span>
+        
+            <div data-fragmentname="BottomLinks" id="Fragment_BottomLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="linkList">
+    <ul class="links horizontal">
+      <li>
+        <a href="http://www.microsoft.com/china/msdn/newsletter/default.aspx" id="BottomLinks_2148_7" xmlns="http://www.w3.org/1999/xhtml">
+          <span style="line-height:18px;" xmlns="">MSDN Flash 中心</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://msdn.microsoft.com/dn529288" id="BottomLinks_2148_8" xmlns="http://www.w3.org/1999/xhtml">
+          <span style="line-height:18px;" xmlns="">隐私权声明</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://msdn.microsoft.com/cc300389.aspx" id="BottomLinks_2148_9" xmlns="http://www.w3.org/1999/xhtml">
+          <span style="line-height:18px;" xmlns="">保留所有权利</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BottomLinks_2148_10" xmlns="http://www.w3.org/1999/xhtml">
+          <span style="line-height:18px;" xmlns="">商标</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>    
+            <span class="logoLegal">
+                <span class="logo"></span>
+                <span class="copyright">© 2014 Microsoft</span>
+            </span>
+        </footer>
+    </div>
+    
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. 版权所有。 </div>
+            </div>
+
+            
+            
+    
+    
+    <input id="tocPaddingPerLevel" type="hidden" value="17">
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default">
+
+
+<!--[CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]-->
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript>&lt;div&gt;&lt;img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;amp;WT.js=No" /&gt;&lt;/div&gt;</noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  &lt;a href="http://www.omniture.com" title="Web Analytics"&gt;
+    &lt;img src="//msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" /&gt;
+  &lt;/a&gt;
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="hqj3TQUdH-Z5ZgIMXnfUUgE6c10vb5t63u-_9XPvsx5CkRj765plPYkoAjfWBDGZaBkb5w_TJXwtEiP1e83NOirWF901">
+</div>
+
+
+        </div>
+        
+        
+        
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/zh-cn/library/ms178472(d=default,l=zh-cn,v=vs.100).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027zh-cn\u0027;\n  var wtsp = \u0027msdnlib_webdev\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"49c96c2d-d20a-49de-a204-577b94a9c788\";\n/**/" },
+	{ txt: "//\n\n            window.appInsightsId = \u002760854590-027a-4ae4-98be-2741a40f355f\u0027;\n            //" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,1:Layout,2:Header,2:Footer,3:Feedback,0:Topic,4:webtrendsscript,5:omni_rsid_MSDN,0:AppInsightsPerf,6:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Centers/Themes/Base/Content:1,/Areas/Centers/Themes/StandardDevCenter/Content:2,/Areas/Epx/Shared/Content:3,/Areas/Global/Content/Webtrends/resources:4,/Areas/Global/Content/Omniture/resources/MSDN:5,/Areas/Epx/Themes/Base/Content:6\u0026amp;hashKey=EED176C19311527742EAE9817FAEB030" },
+	{ url: "http://i1.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=Msdn\u0026loc=zh-cn\u0026focusOnInit=false\u0026emptyWatermark=true\u0026searchButtonTooltip=搜索 MSDN" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:PrintExportButton,1:Toc,1:NavigationResize;/Areas/Library/Themes/Base/Content:0,/Areas/Library/Content:1\u0026amp;hashKey=5697C9CD323F5AF47E3C6402F1CAF960" },
+	{ txt: "//\n    MTPS = window.MTPS || {};\n    MTPS.Translation = window.MTPS.Translation || {};\n\n    MTPS.Translation.TranslationType =  0;\n    \n    \n    //" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:jquery.popup,0:Translator,1:FeedbackCounter;/Areas/Library/Content:0,/Areas/Epx/Shared/Content:1\u0026amp;hashKey=1FDD911346A8AAC65E131ED3A9F62283" },
+	{ txt: "MTPS = window.MTPS || {}; MTPS.LocalizedStrings = window.MTPS.LocalizedStrings || {}; MTPS.LocalizedStrings.ExpandButtonTooltip = \u0027展开\u0027; MTPS.LocalizedStrings.CollapseButtonTooltip = \u0027折叠\u0027; MTPS.LocalizedStrings.EnhancedExpandTooltip = \u0027单击以展开。双击以全部展开。\u0027; MTPS.LocalizedStrings.EnhancedCollapseTooltip = \u0027单击以折叠。双击以全部折叠。\u0027; MTPS.LocalizedStrings.ExpandAllButtonTooltip = \u0027全部展开\u0027; MTPS.LocalizedStrings.CollapseAllButtonTooltip = \u0027全部折叠\u0027;" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:CommunityContent,0:LibraryMemberFilter,1:Toc_Fixed,1:CodeSnippet,1:TopicNotInScope,1:CollapsibleArea,1:VersionSelector,1:SurveyBroker;/Areas/Library/Content:0,/Areas/Epx/Content/Scripts:1\u0026amp;hashKey=9A6478EAA9D0035A700B22D5E4C6E583" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script>
+<script src="./ASP.NET 页生命周期概述_files/broker-config.js"></script><div id="popup-loading0" class="popup-loading" style="display: none; z-index: 97; width: auto; height: auto; left: 327px; top: 4394px;">loading...</div><div id="popup0" class="MTPopup" style="z-index: 97; width: auto; height: auto; max-width: 687px; left: 327px; top: 4394px; display: none;"><div class="popup-main" style="z-index: 97;"><div class="popup-inner">For example, suppose you have a <span><span class="mtpsTagOuterHtml"><span>GridView</span></span></span> control that displays a company record in each row, and it displays a list of the company officers in a <span><span class="mtpsTagOuterHtml"><span>ListBox</span></span></span> control.</div></div></div><div id="_WEDCSInsertedData" style="display: none;"><iframe id="_msnFrame" src="./ASP.NET 页生命周期概述_files/c.gif" style="z-index:-1;height:1px;width:1px;display:none;visibility:hidden;" onload="javascript:MscomBeacon();"></iframe></div></body></html>

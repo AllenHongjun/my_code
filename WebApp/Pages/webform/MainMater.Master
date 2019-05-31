@@ -1,0 +1,40 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MainMater.master.cs" Inherits="WebApp.Pages.webform.MainMater" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+        <%--这个控件就相当于一个坑 这个肯的内容由aspx 页面来填写--%>
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+
+   <%-- 放一个公共布局的内容
+    一起页面的内容套一下 这个模板页面
+       页面特有的内容 就 主要的页面
+
+       这个是在服务端渲染拼接一个页面
+       
+       --%>
+    <form id="form1" runat="server">
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+
+            </asp:ContentPlaceHolder>
+        </div>
+
+        <div>
+            <asp:ContentPlaceHolder ID="Container" runat="server">
+
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+
+    <asp:ContentPlaceHolder ID="footer" runat="server">
+        所有的底部布局
+    </asp:ContentPlaceHolder>
+</body>
+</html>
