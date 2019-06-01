@@ -125,6 +125,10 @@ namespace BookShop.BLL
 
              验证cookie是否有值 ，，就是自动登陆是否生效
              是的 话也就直接登录了
+             
+
+             密码 md5加密一次 大写的保存  是加密了一之后再保存 而且保存还都是大写的
+
              */
 
             var current = HttpContext.Current;
@@ -142,11 +146,16 @@ namespace BookShop.BLL
                     User userInfo = GetModel(userName);
                     if (userInfo != null)
                     {
-                        var p = WebCommon.GetMd5String(WebCommon.GetMd5String(userInfo.LoginPwd));
+                        var p = WebCommon.GetMd5String(userInfo.LoginPwd.ToUpper());
                         if (userPwd == p)
                         {
                             current.Session["userInfo"] = userInfo;
                             isSuccess = true;
+                        }
+                        else
+                        {
+                            isSuccess = false;
+
                         }
                     }
                     else

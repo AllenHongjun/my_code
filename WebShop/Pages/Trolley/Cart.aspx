@@ -23,7 +23,8 @@
         购物的流程 以及是非常的普遍了。。看看别人是怎么做的
         模仿的做一做。。
 
-
+        商城系统 后台系统数据库 这个方便的业务 做精通。。
+        做好来。
 
         --%>
 
@@ -36,9 +37,8 @@
         <div class="wxts fl ml20">温馨提示：产品是否购买成功，以最终下单为准哦，请尽快结算</div>
         <div class="dlzc fr">
             <ul>
-                <li><a href="/Pages/Account/login.aspx">登录</a></li>
-                <li>|</li>
-                <li><a href="/Pages/Account/register.aspx">注册</a></li>
+                 <li>欢迎你,<%=user.LoginId %></li>
+                
             </ul>
 
         </div>
@@ -49,7 +49,7 @@
         <div class="gwcxd center">
             <div class="top2 center">
                 <div class="sub_top fl">
-                    <input type="checkbox" value="quanxuan" class="quanxuan" />全选
+                    <input type="checkbox" value="quanxuan" class="quanxuanAll" checked="true" />全选
                 </div>
                 <div class="sub_top fl">商品名称</div>
                 <div class="sub_top fl">单价</div>
@@ -73,17 +73,17 @@
              
             <div class="content2 center">
                 <div class="sub_content fl ">
-                    <input type="checkbox" value="quanxuan" class="quanxuan" />
+                    <input type="checkbox" value="quanxuan" class="quanxuan" checked />
                 </div>
                 <div class="sub_content fl">
                     <img width="30px;" src="/assets/image/BookCovers/<%=cartItem.Book.ISBN %>.jpg"></div>
                 <div class="sub_content fl " style="overflow:hidden;"><%=cartItem.Book.Title %></div>
                 <div class="sub_content fl " style="width:53px;"><i class="unit_price"><%=cartItem.Book.UnitPrice.ToString("0.00") %></i>元</div>
                 <div class="sub_content fl">
-                    <input class="shuliang" type="number" value='<%=cartItem.Count %>' step="1" min="1">
+                    <input id="txtCount<%=cartItem.Book.Id %>" onchange='changeCount(<%=cartItem.Id %>,<%=cartItem.Book.Id %>)' class="shuliang" type="number" value='<%=cartItem.Count %>' step="1" min="1">
                 </div>
                 <div class="sub_content fl" style="width:80px;"><%=(cartItem.Count * cartItem.Book.UnitPrice).ToString("0.00") %>元</div>
-                <div class="sub_content fl"><a onclick='removeBookInCart(<%=cartItem.Id %>);'>×</a></div>
+                <div class="sub_content fl"><a onclick='removeBookInCart(<%=cartItem.Id %>,this);'>×</a></div>
                 <div class="clear"></div>
             </div>
              <%  } %>
@@ -103,7 +103,7 @@
         <div class="jiesuandan mt20 center">
             <div class="tishi fl ml20">
                 <ul>
-                    <li><a href="/Shop/ShopList/aspx">继续购物</a></li>
+                    <li><a href="/Shop/ShopList.aspx">继续购物</a></li>
                     <li>|</li>
                     <li>共<span>2</span>件商品，已选择<span>1</span>件</li>
                     <div class="clear"></div>
@@ -137,12 +137,55 @@
         $(function () {
             getTotalMoney() 
 
+            //有些可能是版本的问题。。
+            $(".quanxuanAll").click(function () {
+                var isChecked = $(".quanxuanAll").get(0).checked;
+                if (isChecked) {
+                    $(".quanxuan").attr("checked", true);
+                } else {
+                    $(".quanxuan").attr("checked", false);
+                }
+            })
             
-
         });
 
+        //点击加号减号修改购物车中商品的数量
+        function changeCount(cartId,bookId) {
+            //不是说很精通 但是一个功能 一个流程 自己都要理解 遇到那个点都是要能写出来
+            var count = $("#txtCount" + bookId).val();
+            $.post("/ashx/EditCart.ashx", { "action": "edit", "count": count, "cartId": cartId },
+                function (data) {
+                    if (data == "ok") {
+                        $("#txtCount" + bookId).val(count);
+                        getTotalMoney();
+                    } else {
+                        swal("数量更新失败");
+                    }
+            })
+        }
 
+        //手动更新文本框中商品的数量
+        function changeTextOnBlur(cartId, control) {
+            var count = $(countrol).val();
+            var reg = /^\d+$/;
+            if (reg.test(count)) {
+                //更新商品的数量
+                //调用getTotalmoney()重新计算价格
+                $.post("/ashx/EditCart.ashx", { "action": "edit", "count": count, "cartId": cartId },
+                    function (data) {
+                        if (data == "ok") {
+                            $("#txtCount" + bookId).val(count);
+                            getTotalMoney();
+                        } else {
+                            swal("数量更新失败");
+                        }
+                    })
+            } else {
+                swal("商品的数量只能是数字");
+                $(control).val($("#pCount").val());
+            }
 
+        }
 
 
         //计算总金额
@@ -150,7 +193,6 @@
             var totalMoney = 0;
             $(".content2").each(function () {
                 var price = $(this).find(".unit_price").text();
-                //console.log(price);
                 var count = $(this).find(".shuliang").val();
                 totalMoney += parseFloat(price) * parseInt(count);
             })
@@ -158,8 +200,6 @@
             $("#totalMoney").text(fmoney(totalMoney, 2)+"元");
         }
 
-
-        //删除购物车里面的商品  购物车 ID 其实就是购物车中商品的id 清单id 其实就是清单中商品的id 
 
         //前端浙中 开发好的组件 调用一下 确实 效果要好不少
 
@@ -171,10 +211,11 @@
                   showCancelButton: true,
                   confirmButtonClass: "btn-danger",
                   confirmButtonText: "确定!",
-                  cancelButtonText:"取消",
-                  closeOnConfirm: false
+                  cancelButtonText:"取消"
+                  //closeOnConfirm: false
             },
                 function () {
+                   
                     $.post("/ashx/EditCart.ashx", { "action": "delete", "cartId": cartId }, function (data) {
                         var res = data.split(":");
                         if (res[0] == "ok") {
@@ -187,40 +228,14 @@
             });
         }
 
-        //一点点又成长了样式布局的调整
-
-        // 购物车中的商品数量更新 （一个购物车中有多个商品） 
+       
 
         //弹出对话框
         $("#btnJieSuan").click(function () {
                 swal("跳转结算页面")
-
-
-                //swal({
-                //    title: "提示",
-                //    text: "成功添加到购物车",
-                //    type: "info",
-                //    showCancelButton: true,
-                //    confirmButtonClass: "btn-danger",
-                //    confirmButtonText: "进入购物车!",
-                //    cancelButtonText: "继续购物",
-                //    closeOnConfirm: false
-                //},
-                //    function (isConfirm) {
-                //        if (isConfirm) {
-                //            window.location.href = "/Pages/Trolley/Cart.aspx";
-                //        } else {
-                //            window.location.href = "/Pages/Shop/ShopList.aspx";
-                //        }
-
-                //        //swal("Deleted!", "Your imaginary file has been deleted.", "success");
-                //    });
         });
 
 
-
-        //js里面浮点数字 保留最后一个小数的位数 
-        // 商城系统 你遇到的问题 别人都早就已经遇到过了。。99.9999的问题 别人都已经解决了。找到方法就可以
         function fmoney(s, n) {
             n = n > 0 && n <= 20 ? n : 2;
             s = parseFloat((s + "").replace(/[^\d\.-]/g, "")).toFixed(n) + "";//更改这里n数也可确定要保留的小数位  

@@ -1,5 +1,6 @@
 ﻿using BookShop.BLL;
 using BookShop.Model;
+using Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +32,7 @@ namespace WebShop.ashx
                 user.Name = username;
                 user.UserState.Id = 1;
                 user.Address = "某一个未知的地方";
-                user.LoginPwd = userpass;
+                user.LoginPwd = WebCommon.GetMd5String(userpass).ToUpper();
                 user.Mail = tel;
                 user.Phone = tel;
                 if (userManager.Add(user) > 0)

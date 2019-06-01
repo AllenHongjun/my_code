@@ -88,7 +88,7 @@ namespace Common
         /// </summary>
         public static void RedirectPage()
         {
-            HttpContext.Current.Response.Write("/Account/Login.aspx?returnUrl=" + HttpContext.Current.Request.Url);
+            HttpContext.Current.Response.Redirect("/Pages/Account/Login.aspx?returnUrl=" + HttpContext.Current.Request.Url);
         }
 
 

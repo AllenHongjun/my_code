@@ -134,6 +134,7 @@ namespace Shop.Web.User
         }
 
 
+        //验证用户名密码 设置自动登陆
         public bool CheckUserInfo()
         {   
 
@@ -165,8 +166,8 @@ namespace Shop.Web.User
                 if (!string.IsNullOrEmpty(Request["autoLogin"]))
                 {
                     HttpCookie ck1 = new HttpCookie("cp1",userName);
-                    password = WebCommon.GetMd5String(WebCommon.GetMd5String(password));
-                    HttpCookie ck2 = new HttpCookie("cp2", password);
+                    //password = ;
+                    HttpCookie ck2 = new HttpCookie("cp2", WebCommon.GetMd5String(WebCommon.GetMd5String(password).ToUpper()));
                     ck1.Expires.AddDays(7);
                     ck2.Expires.AddDays(7);
                     Response.Cookies.Add(ck1);

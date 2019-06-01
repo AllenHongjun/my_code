@@ -15,6 +15,8 @@ namespace WebShop.Pages.Trolley
     {   
         public List<BookShop.Model.Cart> CartList { get; set; }
 
+        public User user { get; set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -24,11 +26,17 @@ namespace WebShop.Pages.Trolley
                 UserManager userManager = new UserManager();
                 if (userManager.ValidateUserLogin())
                 {
+                    user = (User)Session["userInfo"];
                     BindCartList();
                 }
                 else
-                {   
+                {
+
+                    //f59bd65f7edafb087a81d4dca06c4910    md5加密算法 大小写出来的结果是不一样的。
+                    //f59bd65f7edafb087a81d4dca06c4910
                     //跳转到登陆页面带上当前的地址
+
+                    //  HttpContext.Current.Response.Write("/Pages/Account/Login.aspx?returnUrl=" + HttpContext.Current.Request.Url);
                     WebCommon.RedirectPage();
                 }
 

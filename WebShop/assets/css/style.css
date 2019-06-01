@@ -163,7 +163,8 @@ header {
 }
 
     .banner_x .logo {
-        background: url('/assets/image/logo_top.png') no-repeat center center;
+        background: url('https://tse3-mm.cn.bing.net/th?id=OIP.pPwe29HXwBBcNWaDFzsDbgHaGU&w=203&h=170&c=7&o=5&dpr=1.25&pid=1.7') center  no-repeat ;
+        background-size:  contain;
         width: 50px;
         height: 100px;
     }
@@ -244,13 +245,15 @@ header {
 .banner_y {
     width: 1226px;
     height: 460px;
-    background: url('/assets/image/banner2.jpg') no-repeat;
+    /*background: url('/assets/image/banner2.jpg') no-repeat;*/
+    background: url('/assets/image/banner/banner_4.jpg') no-repeat center;
+    background-size:cover;
 }
 
     .banner_y .nav {
         width: 234px;
         height: 460px;
-        background: rgb(12,12,19);
+        background: #202d2f;
     }
 
         .banner_y .nav ul {

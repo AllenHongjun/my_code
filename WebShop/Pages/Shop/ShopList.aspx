@@ -27,18 +27,11 @@
 					        
                             <%--点击图片 和点击 标题访问的是不同的页面--%>
                             <div class="sub_mingxing">
-                                <a href="<%#Eval("Id","/Pages/Shop/BookDetail_{0}.aspx") %>" target="_blank">
+                                <a href="<%#GetString(Eval("PublishDate")) %><%#Eval("Id") %>.html" >
                                     <img src="<%#Eval("ISBN","/assets/image/BookCovers/{0}.jpg") %>" alt="">
-
                                 </a>
-
 					        </div>
-                            <%--<div class="sub_mingxing">
-                                <a href="<%#GetString(Eval("PublishDate")) %><%#Eval("Id") %>.html" target="_blank">
-                                    <img src="<%#Eval("ISBN","/assets/image/BookCovers/{0}.jpg") %>" alt="">
-                                </a>
-					        </div>--%>
-					        <div class="pinpai"><a href="<%#GetString(Eval("PublishDate")) %><%#Eval("Id") %>.html" target="_blank"><%#Eval("Title") %></a></div>
+					        <div class="pinpai"><a href="<%#GetString(Eval("PublishDate")) %><%#Eval("Id") %>.html" ><%#Eval("Title") %></a></div>
 					        <div class="youhui"><%#this.CutString(Eval("ContentDescription").ToString(),12)%></div>
                             <%--<div class="youhui"><%#this.GetString(Eval("PublishDate").ToString(),150)%></div>--%>
 					        <div class="jiage"><%#Eval("UnitPrice","{0:0.00}") %>元</div>

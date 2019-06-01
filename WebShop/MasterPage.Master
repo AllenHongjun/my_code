@@ -20,33 +20,23 @@
         <div class="top center">
             <div class="left fl">
                 <ul>
-                    <li><a href="http://bs.tinnygod.com/" target="_blank">电子书城</a></li>
+                    <li><a href="/index.aspx" target="_blank">电子书城</a></li>
                     <li>|</li>
-                    <li><a href="/Pages/Shop/ShopList.aspx">预售</a></li>
+                    <li><a href="/Pages/Shop/ShopList.aspx">EF</a></li>
                     <li>|</li>
-                    <li><a href="">游戏</a></li>
-                    <li>|</li>
-                    <li><a href="">多看阅读</a></li>
-                    <li>|</li>
-                    <li><a href="">云服务</a></li>
-                    <li>|</li>
-                    <li><a href="">金融</a></li>
-                    <li>|</li>
-                    <li><a href="">电子商城移动版</a></li>
-                    <li>|</li>
-                    <li><a href="">问题反馈</a></li>
+                    <li><a href="">dotnet-core</a></li>
                     <li>|</li>
                     <li><a href="">Select Region</a></li>
                     <div class="clear"></div>
                 </ul>
             </div>
             <div class="right fr">
-                <div class="gouwuche fr"><a href="">购物车</a></div>
+                <div class="gouwuche fr"><a href="/Pages/Trolley/Cart.aspx">购物车</a></div>
                 <div class="fr">
                     <ul>
                         <% if (UserInfo !=null && UserInfo.Id > 0)
                             {%>
-                        <li><a href="/Pages/Account/login.aspx" >欢迎你: <%=UserInfo.LoginId %></a></li>
+                        <li><a href="/Pages/Account/SelfInfo.aspx" >欢迎你: <%=UserInfo.LoginId %></a></li>
                         
                         <%}
                         else
@@ -77,20 +67,17 @@
         <div class="nav fl">
             <ul>
                 <li><a href="/Pages/Shop/ShopList.aspx">预售</a></li>
-                <li><a href="">数字内容</a></li>
-                <li><a href="">知识服务</a></li>
-                <li><a href="">文娱商城</a></li>
-                <li><a href="">陪伴计划</a></li>
-                <li><a href="">只是商店</a></li>
-                
-                <li><a href="">99元10件</a></li>
-                <li><a href="">社区</a></li>
+                <li><a href="/Pages/Shop/ShopList.aspx">图书</a></li>
+                <li><a href="/Pages/Shop/ShopList.aspx">知识服务</a></li>
+                <li><a href="/Pages/Shop/ShopList.aspx">电子书</a></li>
+                <li><a href="/Pages/Shop/ShopList.aspx">网络文学</a></li>
+                <li><a href="/Pages/Shop/ShopList.aspx">社区</a></li>
             </ul>
         </div>
         <div class="search fr">
             <form action="" method="post">
                 <div class="text fl">
-                    <input type="text" class="shuru" placeholder="C#&nbsp;asp.net">
+                    <input type="text" class="shuru" placeholder="   C#&nbsp;asp.net">
                 </div>
                 <div class="submit fl">
                     <input type="submit" class="sousuo" value="搜索" />
@@ -112,7 +99,7 @@
     <footer class="mt20 center">
         <div class="mt20">电子商城|多看书城|移动|隐私政策|Select Region</div>
         <div>©tinnygod.com 浙ICP备18047156号  </div>
-        <div>违法和不良信息举报电话：159-5845-XXXX，本网站所列数据，除特殊说明，所有数据均是个人测试使用</div>
+        <div>违法和不良信息举报电话：130-5845-XXXX，本网站所列数据，除特殊说明，所有数据均是个人测试使用</div>
     </footer>
 </body>
 </html>
