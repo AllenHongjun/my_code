@@ -33,11 +33,13 @@ namespace BookShop.Model
 		/// 
 		/// </summary>
 
+        
         public User User
         {
             get { return _user; }
             set { _user = value; }
         }
+        // 一条购物车里面 可以放一种数据  
         public Book Book
         {
             get { return _book; }

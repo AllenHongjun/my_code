@@ -174,7 +174,7 @@ namespace Shop.Web.User
 
 
                 }
-                Session["UserInfo"] = user;
+                Session["userInfo"] = user;
                 // 登录成功之后回到之前的页面
                 if(string.IsNullOrEmpty(Request["HiddenReturnUrl"]))
                 {

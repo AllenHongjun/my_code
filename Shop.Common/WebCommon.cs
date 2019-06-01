@@ -82,6 +82,15 @@ namespace Common
             return sb.ToString();
         }
 
+        /// <summary>
+        /// 跳转页面带上当前页面的地址 
+        /// 
+        /// </summary>
+        public static void RedirectPage()
+        {
+            HttpContext.Current.Response.Write("/Account/Login.aspx?returnUrl=" + HttpContext.Current.Request.Url);
+        }
+
 
 
     }

@@ -96,7 +96,12 @@ namespace BookShop.Model
         //    get{return _userstateid;}
         //}
   
-
+        // 一个用户 对应有多个想购买的商品 中的数据 
+        //一个商品 也可以被加入多个购物车
+        // 有的表自己也是一个关系表。。一个用户有多个想购买的商品
+        // 一个商品也可以被多个用户加入购物车 
+        // 用户和商品 是多对多的关系 在购物车中 。一条线中。。一个条线可以有 多个关系
+        // 数据中的关系 是重要的一个概念
         public UserState UserState
         {
             get { return _userState; }

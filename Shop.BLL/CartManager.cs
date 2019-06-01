@@ -134,7 +134,9 @@ namespace BookShop.BLL
 						model.Id=int.Parse(dt.Rows[n]["Id"].ToString());
 					}
 					if(dt.Rows[n]["UserId"].ToString()!="")
-					{
+					{   
+                         //数据层 这个数据转成对象的时候 都是会把这个对应的关系熟悉查询出来
+                         //给对应的属性赋值上。。这样在使用的时候 也就会方便很多
 						 int UserId=int.Parse(dt.Rows[n]["UserId"].ToString());
                          model.User = userServices.GetModel(UserId);
 					}
@@ -169,6 +171,12 @@ namespace BookShop.BLL
 		//{
 			//return dal.GetList(PageSize,PageIndex,strWhere);
 		//}
+
+
+        public Cart GetModel(int userId,int bookId)
+        {
+            return dal.GetModel(userId, bookId);
+        }
 
 		#endregion  成员方法
 	}

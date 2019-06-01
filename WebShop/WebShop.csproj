@@ -1880,6 +1880,10 @@
     <Content Include="component\webuploader-0.1.5\_draft\music\success.png" />
     <Content Include="component\webuploader-0.1.5\_draft\music\upload.js" />
     <Content Include="component\webuploader-0.1.5\_draft\music\webuploader.js" />
+    <Content Include="Content\sweetalert\bootstrap-sweetalert.png" />
+    <Content Include="Content\sweetalert\docs.css" />
+    <Content Include="Content\sweetalert\sweet-alert.css" />
+    <Content Include="Content\sweetalert\thumbs-up.jpg" />
     <Content Include="html\css\login.css" />
     <Content Include="html\css\style.css" />
     <Content Include="html\dingdanzhongxin.html" />
@@ -2236,6 +2240,11 @@
     <Content Include="assets\image\BookCovers\9787560925110jpg" />
     <Content Include="ashx\Seo.ashx" />
     <Content Include="ashx\ProcessCart.ashx" />
+    <Content Include="Content\sweetalert\sweet-alert.less" />
+    <Content Include="Content\sweetalert\sweet-alert-combine.less" />
+    <Content Include="Content\sweetalert\sweet-alert-animations.less" />
+    <Content Include="Content\bootstrap\variables.less" />
+    <Content Include="Content\bootstrap\mixins.less" />
     <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
     <Content Include="Scripts\jquery-3.0.0.js" />
     <Content Include="Scripts\jquery-3.0.0.min.js" />
@@ -2244,6 +2253,7 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\sweetAlert.js" />
     <Content Include="ShowMsg.aspx" />
     <Content Include="Template\BookTemplate.html" />
     <Content Include="Web.config" />
@@ -2275,6 +2285,7 @@
     <Compile Include="ashx\ValidateReg.ashx.cs">
       <DependentUpon>ValidateReg.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\SweetController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2427,6 +2438,7 @@
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Scripts\jquery-3.0.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.0.0.min.map" />
+    <Content Include="Views\Sweet\Alert.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

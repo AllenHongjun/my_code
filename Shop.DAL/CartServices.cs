@@ -56,6 +56,12 @@ namespace BookShop.DAL
 					new SqlParameter("@BookId", SqlDbType.Int,4),
 					new SqlParameter("@Count", SqlDbType.Int,4)}
 					;
+            //3层时候 也早就可以从一个对象 点出另外一个对象的数据。
+            //珍惜可以安静的 好好写代码的时候。有很多时候 看着能写代码
+            //其实 不是的。需要一个不错的环境 环境的要求还挺高的
+            // 一个表里面有多个 外键的时候 他们的关系 怎么样来理解
+            //这里 实体类型的关系 是被改造过的。。 先一点一点的全部真的弄懂。
+            //一个用户一个购物车 
 			parameters[0].Value = model.User.Id;
 			parameters[1].Value = model.Book.Id;
 			parameters[2].Value = model.Count;
@@ -194,7 +200,7 @@ namespace BookShop.DAL
 			return DbHelperSQL.Query(strSql.ToString());
 		}
 
-		/*
+        /*
 		/// <summary>
 		/// 分页获取数据列表
 		/// </summary>
@@ -219,7 +225,61 @@ namespace BookShop.DAL
 			return DbHelperSQL.RunProcedure("UP_GetRecordByPage",parameters,"ds");
 		}*/
 
-		#endregion  成员方法
-	}
+        // 数据库的关系 设计 。。多花点时间在数据库着方面。
+
+
+        //---------------------------------
+        /// <summary>
+        /// 根据用户编号与商品的编号，得到一个对象实体
+        /// 根据用户编号和商品编号能确定唯一的购物车实体
+        /// 现在在学的内容 先学习好了。将明白了。。看了代码 有不懂 看视频对吧。
+        /// </summary>
+        public BookShop.Model.Cart GetModel(int userId, int bookId)
+        {
+
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select  top 1 Id,UserId,BookId,Count from Cart ");
+            strSql.Append(" where UserId=@UserId and BookId=@BookId");
+            SqlParameter[] parameters = {
+                    new SqlParameter("@UserId", SqlDbType.Int,4),
+                                        new SqlParameter("@BookId", SqlDbType.Int,4)
+                                        };
+            parameters[0].Value = userId;
+            parameters[1].Value = bookId;
+
+            BookShop.Model.Cart model = new BookShop.Model.Cart();
+            DataSet ds = DbHelperSQL.Query(strSql.ToString(), parameters);
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                if (ds.Tables[0].Rows[0]["Id"].ToString() != "")
+                {
+                    model.Id = int.Parse(ds.Tables[0].Rows[0]["Id"].ToString());
+                }
+                if (ds.Tables[0].Rows[0]["UserId"].ToString() != "")
+                {
+                    int UserId = int.Parse(ds.Tables[0].Rows[0]["UserId"].ToString());
+                    model.User = userServices.GetModel(UserId);
+                }
+                if (ds.Tables[0].Rows[0]["BookId"].ToString() != "")
+                {
+                    int BookId = int.Parse(ds.Tables[0].Rows[0]["BookId"].ToString());
+                    model.Book = bookServices.GetModel(BookId);
+                }
+                if (ds.Tables[0].Rows[0]["Count"].ToString() != "")
+                {
+                    model.Count = int.Parse(ds.Tables[0].Rows[0]["Count"].ToString());
+                }
+
+                return model;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+
+        #endregion  成员方法
+    }
 }
 
