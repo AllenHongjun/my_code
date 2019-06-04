@@ -1,0 +1,247 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="keywords" content="jquery,ui,easy,easyui,web framekwork,ajax framekwork,ria,web development">
+		<meta name="description" content="easyui help you build your web page easily!">
+		<title>dialog - jQuery EasyUI中文帮助手册</title>
+        <link rel="stylesheet" href="main.css" type="text/css" />
+		<link type="text/css" rel="stylesheet" href="SyntaxHighlighter.css"></link>
+		<script src="shCore.js"></script>
+		<script src="shBrushJScript.js"></script>
+		<script src="shBrushXml.js"></script>
+	</head>
+	<body>
+		<div id="header">
+						<div id="header-inner">
+				<table cellpadding="0" cellspacing="0" style="width:100%;">
+					<tr>
+						<td rowspan="2" style="width:20px;">
+						</td>
+						<td style="height:52px;">
+							<div style="color:#fff;font-size:22px;font-weight:bold;">
+								<a href="http://www.jeasyui.com/" style="color:#fff;font-size:22px;font-weight:bold;text-decoration:none">jQuery EasyUI</a>
+							</div>
+							<div style="color:#fff">
+								<a href="http://www.jeasyui.com/" style="color:#fff;text-decoration:none">jQuery EasyUI 框架帮助你轻松建立站点。</a>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+			
+		</div>
+		<div id="mainwrap">
+			<div id="content">
+			
+
+
+<div style="padding:10px">
+
+
+
+<h3>对话窗口</h3>
+
+<p>继承$.fn.window.defaults，使用$.fn.dialog.defaults重载默认值。</p>
+
+<img src="images/dialog.png"/>
+
+
+
+<h4>依赖关系</h4>
+
+<ul>
+
+	<li>窗口</li>
+
+	<li>链接按钮</li>
+
+</ul>
+
+
+
+<h4>使用方法</h4>
+
+<textarea name="code-dialog" class="html">
+	<div id="dd" title="My Dialog" style="width:400px;height:200px;">
+		Dialog Content.
+	</div>
+</textarea>
+
+<textarea name="code-dialog" class="js">
+	$('#dd').dialog({
+		modal:true
+	});
+</textarea>
+
+
+
+<h4>属性</h4>
+
+<p>属性继承窗口，以下是重载窗口的属性。</p>
+
+<table class="doc-table">
+
+<tr>
+
+<th><strong>名称</strong></th>
+<th><strong>类型</strong></th>
+<th><strong>描述</strong></th>
+<th><strong>默认值</strong></th>
+
+</tr>
+
+<tr>
+
+
+
+<td>title（标题）</td>
+
+<td>string（字符串）</td>
+
+<td>对话标题。</td>
+
+<td>New Dialog</td>
+
+</tr>
+
+<tr>
+
+<td>collapsible（可折叠）</td>
+
+<td>boolean（布尔型）</td>
+
+<td>定义是否显示折叠按钮。</td>
+
+<td>false</td>
+
+
+
+</tr>
+
+<tr>
+
+<td>minimizable（最小化）</td>
+
+<td>boolean（布尔型）</td>
+
+<td>定义是否显示最小化按钮。</td>
+
+<td>false</td>
+
+</tr>
+
+<tr>
+
+<td>maximizable（最大化）</td>
+
+<td>boolean（布尔型）</td>
+
+<td>定义是否显示最大化按钮。</td>
+
+
+
+<td>false</td>
+
+</tr>
+
+<tr>
+
+<td>resizable（可缩放）</td>
+
+<td>boolean（布尔型）</td>
+
+<td>定义对话窗口是否可以被缩放。</td>
+
+<td>false</td>
+
+</tr>
+
+<tr>
+
+<td>toolbar（工具栏）</td>
+
+<td>array（数组）</td>
+
+
+
+<td>对话窗口顶部的工具栏，每个工具的属性都跟链接按钮的属性一样。</td>
+
+<td>null</td>
+
+</tr>
+
+<tr>
+
+<td>buttons（按钮）</td>
+
+<td>array（数组）</td>
+
+<td>对话窗口底部的按钮，每个按钮的属性都跟链接按钮一样。</td>
+
+<td>null</td>
+
+</tr>
+
+</table>
+
+
+
+<h4>事件</h4>
+
+<p>事件继承窗口。</p>
+
+
+
+<h4>方法</h4>
+
+<p>方法继承窗口，以下是对话窗口独有的方法。</p>
+
+<table class="doc-table">
+
+<tr>
+
+<th><strong>名称</strong></th>
+<th><strong>参数</strong></th>
+<th><strong>描述</strong></th>
+
+</tr>
+
+<tr>
+
+<td>dialog</td>
+
+<td>none</td>
+
+<td>返回对话窗口对象。</td>
+
+</tr>
+
+</table>
+
+
+
+</div>
+
+
+
+﻿			</div>
+		</div>
+		<div id="footer">
+			<div>Copyright © 2010-2011 www.jeasyui.com</div>
+<a target="_blank" href="http://sighttp.qq.com/authd?IDKEY=0d8f551beb86c567f5d026fc3af8f8a0c1cf318635116789"><img border="0"  src="http://wpa.qq.com/imgd?IDKEY=0d8f551beb86c567f5d026fc3af8f8a0c1cf318635116789&pic=45" alt="点击Q我" title="点击Q我"></a>
+|  
+<noscript><a href="http://www.51.la/?4095651" target="_blank">
+<img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/4095651.asp" style="border:none" /></a></noscript> 
+<script src="http://s17.cnzz.com/stat.php?id=2412230&web_id=2412230&show=pic" language="JavaScript"></script>|<script language="javascript" type="text/javascript" src="http://js.users.51.la/4095651.js"></script>
+|<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F9541ae759aad5b1e7083c2f63b8e8e9c' type='text/javascript'%3E%3C/script%3E"));
+</script>
+		</div>
+		<script type="text/javascript">
+						dp.SyntaxHighlighter.ClipboardSwf = '/SyntaxHighlighter/Scripts/clipboard.swf';
+			dp.SyntaxHighlighter.HighlightAll('code-dialog');
+		</script>
+	</body>
+</html>

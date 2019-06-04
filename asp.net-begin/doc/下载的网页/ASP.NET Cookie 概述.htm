@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<!-- saved from url=(0060)http://msdn.microsoft.com/zh-cn/library/ms178194(VS.80).aspx -->
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="WT.seg_1" content="zh-cn"><link rel="canonical" href="http://msdn.microsoft.com/zh-cn/library/ms178194(v=vs.100).aspx">
+        <title>ASP.NET Cookie 概述</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/zh-cn/library/ms178194(d=default,l=zh-cn,v=vs.80).aspx">
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/zh-cn/library/ms178194(d=default,l=zh-cn,v=vs.80).aspx">
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/zh-cn/library/ms178194(d=default,l=zh-cn,v=vs.80).aspx">
+
+<meta name="MN" content="4B9B1F24-7:35:01 AM">
+
+<meta name="Search.ShortId" content="ms178194">
+
+<meta name="Ms.Locale" content="zh-cn">
+
+
+
+
+
+
+
+        
+    <link rel="stylesheet" type="text/css" href="./ASP.NET Cookie 概述_files/Combined.css"><script type="text/javascript" async="" src="./ASP.NET Cookie 概述_files/ms2.js"></script><script class="mtps-injected">try {
+/**/
+(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { 
+	"image": "http://i.msdn.microsoft.com", 
+	"js": "http://i2.msdn.microsoft.com", 
+	"css": "http://i3.msdn.microsoft.com"
+});
+/**/
+} finally { MTPS._injectNextScript_0 && MTPS._injectNextScript_0(); }</script><script class="mtps-injected" src="./ASP.NET Cookie 概述_files/jquery-1.8.2.min.js"></script><script class="mtps-injected">try {
+//
+  var literalNormalizedUrl = '/zh-cn/library/ms178194(d=default,l=zh-cn,v=vs.80).aspx';
+  var wt_nvr_ru = 'WT_NVR_RU';
+  var wt_fpcdom = '.microsoft.com';
+  var wt_domlist = 'msdn.microsoft.com';
+  var wt_pathlist = '';
+  var wt_paramlist = 'DCSext.mtps_devcenter';
+  var wt_siteid = 'MSDN';
+  var gDomain = 'm.webtrends.com';
+  var gDcsId = 'dcsmgru7m99k7mqmgrhudo0k8_8c6m';
+  var gFpc = 'WT_FPC';
+
+
+
+  if (document.cookie.indexOf(gFpc + "=") == -1) {
+    var wtidJs = document.createElement("script");
+    wtidJs.src = "//" + gDomain + "/" + gDcsId + "/wtid.js";
+    document.getElementsByTagName("head")[0].appendChild(wtidJs);
+  }
+
+
+
+  var detectedLocale = 'zh-cn';
+  var wtsp = 'msdnlib_devtools_lang';
+  var gTrackEvents = '0';
+/**/
+} finally { MTPS._injectNextScript_2 && MTPS._injectNextScript_2(); }</script><script class="mtps-injected">try {
+/**/
+  var omni_guid = "eaab93e8-f2de-4faf-a609-d145e674e6e3";
+/**/
+} finally { MTPS._injectNextScript_3 && MTPS._injectNextScript_3(); }</script><script class="mtps-injected" src="./ASP.NET Cookie 概述_files/Combined.js"></script><script class="mtps-injected" src="./ASP.NET Cookie 概述_files/SearchBox.jss"></script><script class="mtps-injected" src="./ASP.NET Cookie 概述_files/Combined(1).js"></script><script class="mtps-injected" src="./ASP.NET Cookie 概述_files/jquery.tmpl.min.js"></script><script class="mtps-injected" src="./ASP.NET Cookie 概述_files/Combined(2).js"></script><script src="./ASP.NET Cookie 概述_files/broker.js"></script><script class="mtps-injected">try {
+$(document).ready(function() {
+        try {
+            var token = $("#globalRequestVerification input[name='__RequestVerificationToken']").clone();
+            $("#siteFeedbackForm").append(token);
+        } catch(err) {
+            
+        }
+    });
+} finally { MTPS._injectNextScript_9 && MTPS._injectNextScript_9(); }</script><link href="./ASP.NET Cookie 概述_files/PrintView.css" rel="stylesheet" type="text/css" media="print"></head>
+    <body class="library">
+        <div id="page">
+            
+            
+  
+            
+    
+    <div id="ux-header">
+        <header>
+            <div class="row">
+                <div class="top mobile"></div>
+                <div class="left">
+                    <div data-fragmentname="SiteLogo" id="Fragment_SiteLogo" xmlns="http://www.w3.org/1999/xhtml">
+  <a href="http://msdn.microsoft.com/zh-cn" id="27762_1" xmlns="http://www.w3.org/1999/xhtml">Developer Network</a>
+</div>     
+                </div>
+                <div id="grip"></div>  
+                <div class="right desktop">
+                    <div class="auxNav">
+                        <div data-fragmentname="Subscriptions" id="Fragment_Subscriptions" xmlns="http://www.w3.org/1999/xhtml">
+  <a href="http://msdn.microsoft.com/dn369243" id="27762_5" xmlns="http://www.w3.org/1999/xhtml">MSDN 订阅</a>
+</div>   
+                        <div data-fragmentname="GetTools" id="Fragment_GetTools" xmlns="http://www.w3.org/1999/xhtml">
+  <a href="http://go.microsoft.com/fwlink/?LinkId=309297&clcid=0x0804&slcid=0x0804" id="27762_3" xmlns="http://www.w3.org/1999/xhtml">获取工具</a>
+</div>   
+                        
+
+    <div class="signIn"><a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=12&ct=1389713701&rver=6.0.5276.0&wp=MCLBI&wlcxt=MSDN%24MSDN%24MSDN&wreply=http%3a%2f%2fmsdn.microsoft.com%2fzh-cn%2flibrary%2fms178194%2528v%3dvs.80%2529.aspx&lc=2052&id=254354&mkt=zh-CN" title=" 登录  "> 登录  </a></div>
+
+                    </div>
+                    <div data-fragmentname="SearchBox" id="Fragment_SearchBox" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="SearchBox">
+    <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" action="http://social.msdn.microsoft.com/Search" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this, this.title);">
+      <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(this, this.title, &#39;SearchBoxOnFocus&#39;)" onblur="Epx.Controls.SearchBox.watermarkBlur(this, this.title, &#39;SearchBoxOnFocus&#39;)" autocomplete="off">
+      <input id="RefinementId" name="refinement" type="hidden" value="">
+      <button id="HeaderSearchButton" value="" type="submit" class="header-search-button" title=""></button>
+    <div id="SearchFlyoutContainer" style="display: none; text-align: left; border: 1px solid buttonshadow; position: absolute; z-index: 1000; padding: 2px; background-color: rgb(255, 255, 255); color: rgb(255, 255, 255); font-family: &#39;Microsoft YaHei UI&#39;, &#39;Microsoft YaHei&#39;, SimSun, &#39;Segoe UI&#39;, &#39;Lucida Grande&#39;, Verdana, Arial, Helvetica, sans-serif; font-size: 13px;"><div id="SuggestionContainer"><ul style="list-style: none; padding: 4px 2px 0px 1px; cursor: pointer; margin: 1px; white-space: nowrap;"></ul></div></div></form>
+    
+  </div>
+</div> 
+                </div>
+            </div>
+       
+            <div class="row" id="droor">
+                <div class="left">
+                            <nav>
+            <ul>
+                     <li class="inactive">
+
+                         <a href="http://msdn.microsoft.com/dn308572" title="主页">主页</a>
+
+                     </li>
+                     <li class="inactive">
+
+                         <a href="http://msdn.microsoft.com/dn271881" title="机会">机会</a>
+                                 <div class="area">
+                                     <div class="arrow"></div>
+                                 </div>
+                                 <div class="subNav">
+                                     <ul>
+                                                 <li><a href="http://msdn.microsoft.com/dn308583" title="平板电脑和 PC">平板电脑和 PC</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn338268" title="手机">手机</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn338159" title="云">云</a></li>
+                                     </ul>
+                                 </div>
+
+                     </li>
+                     <li class="inactive">
+
+                         <a href="http://msdn.microsoft.com/dn271880" title="平台">平台</a>
+
+                     </li>
+                     <li class="inactive">
+
+                         <a href="http://msdn.microsoft.com/dn338064" title="联系">联系</a>
+                                 <div class="area">
+                                     <div class="arrow"></div>
+                                 </div>
+                                 <div class="subNav">
+                                     <ul>
+                                                 <li><a href="http://tech-advisors.msdn.microsoft.com/zh-cn" title="Tech Advisors">Tech Advisors</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn338452" title="视角">视角</a></li>
+                                                 <li><a href="http://events.msdn.microsoft.com/zh-cn" title="事件">事件</a></li>
+                                                 <li><a href="http://social.msdn.microsoft.com/forums/" title="技术论坛">技术论坛</a></li>
+                                     </ul>
+                                 </div>
+
+                     </li>
+                     <li class="inactive">
+
+                         <a href="http://msdn.microsoft.com/dn292944" title="下载">下载</a>
+                                 <div class="area">
+                                     <div class="arrow"></div>
+                                 </div>
+                                 <div class="subNav">
+                                     <ul>
+                                                 <li><a href="http://msdn.microsoft.com/dn369242" title="开发人员工具">开发人员工具</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn369240" title="SDK">SDK</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn369243" title="MSDN 订阅">MSDN 订阅</a></li>
+                                     </ul>
+                                 </div>
+
+                     </li>
+                     <li class="active current">
+
+                         <a href="http://msdn.microsoft.com/library" title="技术资源库">技术资源库</a>
+
+                     </li>
+                     <li class="inactive">
+
+                         <a href="http://code.msdn.microsoft.com/" title="示例代码">示例代码</a>
+
+                     </li>
+            </ul>
+          
+        </nav>        
+       
+                </div>
+                <div class="right mobile"></div>
+                <div class="right">
+                    <div data-fragmentname="SocialLinks" id="Fragment_SocialLinks" xmlns="http://www.w3.org/1999/xhtml"></div> 
+                </div>
+                <span id="singleCol"></span>
+                <span id="doubleCol"></span>
+            </div>
+        </header>
+    </div>
+    
+    
+
+        
+    <div class="printExportMenus ltr">
+        <a id="isd_printABook" href="http://msdn.microsoft.com/zh-cn/library/export/help/?returnUrl=%2fzh-cn%2flibrary%2fms178194(v%3dvs.80).aspx" style="display: inline;">
+            导出 (<span class="count">0</span>)
+        </a>
+        <a id="isd_print" href="http://msdn.microsoft.com/zh-cn/library/ms178194(d=printer,v=vs.80).aspx" rel="nofollow">
+            打印
+        </a>
+    </div>
+    
+
+        <div class="printExportMenus ltr">
+        <a id="expandCollapseAll" href="javascript:void(0)" style="display: none;">全部展开</a>
+    </div>
+
+    
+
+        
+            <div id="body">
+                
+
+
+
+
+
+    <div id="leftNav" style="width: 280px; max-width: 480px; height: 315px;">
+
+
+
+<div id="tocnav" style="width: 280px; position: fixed; top: 60px;">
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px;">
+<a class="toc_collapsed" href="http://msdn.microsoft.com/zh-cn/library/ms178194(VS.80).aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/zh-cn/library/ms123401.aspx" id="ms310241_MSDN.10_zh-cn" mtpsaliasid="" mtpsassetid="5DDC0A78-6B2C-43E3-9C56-55F45C0DFFA5_MSDN.10_zh-cn" mtpsshortid="ms123401_MSDN.10_zh-cn" title="MSDN Library">MSDN Library</a>            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px;">
+<a class="toc_collapsed" href="http://msdn.microsoft.com/zh-cn/library/ms178194(VS.80).aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/zh-cn/library/aa187916.aspx" id="aa187916_MSDN.10_zh-cn" mtpsaliasid="" mtpsassetid="MSDN|devtoolslang|$\devtoolslang.hxt@0,0_MSDN.10_zh-cn" mtpsshortid="aa187916_MSDN.10_zh-cn" title="开发工具和语言">开发工具和语言</a>            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px;">
+<a class="toc_collapsed" href="http://msdn.microsoft.com/zh-cn/library/ms178194(VS.80).aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/zh-cn/library/aa139594.aspx" id="aa139594_MSDN.10_zh-cn" mtpsaliasid="" mtpsassetid="MSDN|devtoolslang|$\devtoolslang.hxt@0,0,4_MSDN.10_zh-cn" mtpsshortid="aa139594_MSDN.10_zh-cn" title="Visual Studio 2005">Visual Studio 2005</a>            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px;">
+<a class="toc_collapsed" href="http://msdn.microsoft.com/zh-cn/library/ms178194(VS.80).aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/zh-cn/library/ms269115(v=vs.80).aspx" id="ms269115_VS.80_zh-cn" mtpsaliasid="" mtpsassetid="VS|_vs80|$\_vs80.hxt@0,0_VS.80_zh-cn" mtpsshortid="ms269115_VS.80_zh-cn" title="Visual Studio 文档">Visual Studio 文档</a>            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px;">
+<a class="toc_collapsed" href="http://msdn.microsoft.com/zh-cn/library/ms178194(VS.80).aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/zh-cn/library/ms178093(v=vs.80).aspx" id="ms269116_VS.80_zh-cn" mtpsaliasid="" mtpsassetid="2294d222-f117-459d-8867-44e7d616f67c_VS.80_zh-cn" mtpsshortid="ms178093_VS.80_zh-cn" title="Visual Web Developer 文档">Visual Web Developer 文档</a>            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px;">
+<a class="toc_collapsed" href="http://msdn.microsoft.com/zh-cn/library/ms178194(VS.80).aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/zh-cn/library/2z18a5tf(v=vs.80).aspx" id="ms306548_VS.80_zh-cn" mtpsaliasid="" mtpsassetid="d57e9531-5600-4f5b-9617-aadc7fc2ee34_VS.80_zh-cn" mtpsshortid="2z18a5tf_VS.80_zh-cn" title="网页">网页</a>            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px;">
+<a class="toc_collapsed" href="http://msdn.microsoft.com/zh-cn/library/ms178194(VS.80).aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/zh-cn/library/50x35554(v=vs.80).aspx" id="ms306586_VS.80_zh-cn" mtpsaliasid="" mtpsassetid="8dc2123e-58f7-4314-907d-41fd12b8273d_VS.80_zh-cn" mtpsshortid="50x35554_VS.80_zh-cn" title="保存 ASP.NET 页的值">保存 ASP.NET 页的值</a>            </div>
+            <div class="toclevel1" data-toclevel="1" data-childrenloaded="true" style="padding-left: 17px;">
+<a class="toc_expanded" href="http://msdn.microsoft.com/zh-cn/library/ms178194(VS.80).aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/zh-cn/library/ms178193(v=vs.80).aspx" id="ms306589_VS.80_zh-cn" mtpsaliasid="" mtpsassetid="bc6b78a3-2a47-49f6-985f-8a8af5a218a6_VS.80_zh-cn" mtpsshortid="ms178193_VS.80_zh-cn" title="ASP.NET Cookie">ASP.NET Cookie</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/zh-cn/library/ms178194(v=vs.80).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="ASP.NET Cookie 概述">ASP.NET Cookie 概述</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/zh-cn/library/78c837bd(v=vs.80).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="如何：编写 Cookie">如何：编写 Cookie</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/zh-cn/library/bd70eh18(v=vs.80).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="如何：读取 Cookie">如何：读取 Cookie</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/zh-cn/library/ms178195(v=vs.80).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="如何：删除 Cookie">如何：删除 Cookie</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew" style="height: 9912px;"></div>
+        
+
+<a id="NavigationResize" href="javascript:void(0)" style="left: 280px; display: inline-block;">
+    <img class="cl_nav_resize_open" src="./ASP.NET Cookie 概述_files/ImageSprite.png" title="展开" alt="展开" style="">
+    <img class="cl_nav_resize_close" src="./ASP.NET Cookie 概述_files/ImageSprite.png" title="最小化" alt="最小化" style="display: none;">
+</a>
+
+
+
+    </div>
+<div id="content" class="content noL2" style="margin-left: 280px; width: auto;">
+
+
+
+
+
+
+
+    
+    
+
+    
+
+    
+
+        
+<div class="topic" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">ASP.NET Cookie 概述</h1>
+  
+  <div class="lw_vs">
+    <div id="curversion">
+      <strong>
+            Visual Studio 2005
+        </strong>
+    </div>
+    <div id="versionclick">
+      <div id="vsseperator" class="cl_lw_vs_seperator"></div>
+      <div>
+        <div>
+          <a id="vsLink" href="javascript:;">
+                        其他版本
+                    </a>
+        </div>
+        <div class="cl_vs_arrow clip10x10">
+          <img class="cl_lw_vs_arrow" id="vsArrow" alt="" src="./ASP.NET Cookie 概述_files/ImageSprite.png">
+        </div>
+      </div>
+      <ul id="vsPanel">
+        <li>
+          <a href="http://msdn.microsoft.com/zh-cn/library/ms178194(v=vs.100).aspx" title="">.NET Framework 4</a>
+        </li>
+        <li>
+          <a href="http://msdn.microsoft.com/zh-cn/library/ms178194(v=vs.90).aspx" title="">Visual Studio 2008</a>
+        </li>
+      </ul>
+    </div>
+  <div id="ratingCounterSeperator" class="cl_lw_vs_seperator" style="display: block;"></div><div id="ratingCounter" style="margin: 0px 0px 0px 13px; display: block;">
+        <span id="rcA" class="ratingText">
+            35（共 39）对本文的评价是有帮助 <span id="rateThisPrefix">- </span><a id="rateThisTopic" href="http://msdn.microsoft.com/zh-cn/library/ms178194(VS.80).aspx#feedback" title="评价此主题">评价此主题</a>
+            
+        </span>
+    </div></div>
+  <div style="clear:both;"></div>
+  
+  <div id="mainSection"> <div id="mainBody">  <p> </p><p>Cookie 提供了一种在 Web 应用程序中存储用户特定信息的方法。例如，当用户访问您的站点时，您可以使用 Cookie 存储用户首选项或其他信息。当该用户再次访问您的网站时，应用程序便可以检索以前存储的信息。</p> <h1 class="heading">什么是 Cookie？</h1><div id="sectionSection0" class="seeAlsoNoToggleSection"> <p>Cookie 是一小段文本信息，伴随着用户请求和页面在 Web 服务器和浏览器之间传递。Cookie 包含每次用户访问站点时 Web 应用程序都可以读取的信息。 </p> <p>例如，如果在用户请求站点中的页面时应用程序发送给该用户的不仅仅是一个页面，还有一个包含日期和时间的 Cookie，用户的浏览器在获得页面的同时还获得了该 Cookie，并将它存储在用户硬盘上的某个文件夹中。</p> <p>以后，如果该用户再次请求您站点中的页面，当该用户输入 URL 时，浏览器便会在本地硬盘上查找与该 URL 关联的 Cookie。如果该 Cookie 存在，浏览器便将该 Cookie 与页请求一起发送到您的站点。然后，应用程序便可以确定该用户上次访问站点的日期和时间。您可以使用这些信息向用户显示一条消息，也可以检查到期日期。</p> <p>Cookie 与网站关联，而不是与特定的页面关联。因此，无论用户请求站点中的哪一个页面，浏览器和服务器都将交换 Cookie 信息。用户访问不同站点时，各个站点都可能会向用户的浏览器发送一个 Cookie；浏览器会分别存储所有 Cookie。</p> <p>Cookie 帮助网站存储有关访问者的信息。一般来说，Cookie 是一种保持 Web 应用程序连续性（即执行状态管理）的方法。除短暂的实际交换信息的时间外，浏览器和 Web 服务器间都是断开连接的。对于用户向 Web 服务器发出的每个请求，Web 服务器都会单独处理。但是在很多情况下，Web 服务器在用户请求页时识别出用户会十分有用。例如，购物站点上的 Web 服务器跟踪每位购物者，这样站点就可以管理购物车和其他的用户特定信息。因此，Cookie 可以作为一种名片，提供相关的标识信息帮助应用程序确定如何继续执行。</p> <p>使用 Cookie 能够达到多种目的，所有这些目的都是为了帮助网站记住用户。例如，一个实施民意测验的站点可以简单地将 Cookie 作为一个 Boolean 值，用它来指示用户的浏览器是否已参与了投票，这样用户便无法进行第二次投票。要求用户登录的站点则可以通过 Cookie 来记录用户已经登录，这样用户就不必每次都输入凭据。</p> </div><h1 class="heading">Cookie 的限制</h1><div id="sectionSection1" class="seeAlsoNoToggleSection"> <p>大多数浏览器支持最大为 4096 字节的 Cookie。由于这限制了 Cookie 的大小，最好用 Cookie 来存储少量数据，或者存储用户 ID 之类的标识符。用户 ID 随后便可用于标识用户，以及从数据库或其他数据源中读取用户信息。（有关存储用户信息安全建议的信息，请参见下面的“Cookie 和安全性”一节。）</p> <p>浏览器还限制站点可以在用户计算机上存储的 Cookie 的数量。大多数浏览器只允许每个站点存储 20 个 Cookie；如果试图存储更多 Cookie，则最旧的 Cookie 便会被丢弃。有些浏览器还会对它们将接受的来自所有站点的 Cookie 总数作出绝对限制，通常为 300 个。</p> <p>您可能遇到的 Cookie 限制是用户可以将其浏览器设置为拒绝接受 Cookie。如果定义一个 P3P 隐私策略，并将其放置在网站的根目录中，则更多的浏览器将接受您站点的 Cookie。但是，您可能会不得不完全放弃 Cookie，而通过其他机制来存储用户特定的信息。存储用户信息的常用方法是会话状态，但会话状态依赖于 Cookie，这一点在后面的“Cookie 和会话状态”一节中说明。</p> <div class="alert"><table width="100%"><tbody><tr><th align="left"><img class="note cl_IC103139" alt="Note" src="./ASP.NET Cookie 概述_files/clear.gif">注意 </th></tr><tr><td> <p> 有关 Web 应用程序中的状态管理和用于保存信息的选项的更多信息，请参见 <a href="http://msdn.microsoft.com/zh-cn/library/75x4ha6s(v=vs.80).aspx">ASP.NET 状态管理概述</a> 和 <a href="http://msdn.microsoft.com/zh-cn/library/z1hkazw7(v=vs.80).aspx">ASP.NET 状态管理建议</a>。</p> </td></tr></tbody></table></div> <p>虽然 Cookie 在应用程序中非常有用，但应用程序不应依赖于能够存储 Cookie。不要使用 Cookie 支持关键功能。如果应用程序必须依赖于 Cookie，则可以通过测试确定浏览器是否将接受 Cookie。请参见本主题后面的“检查浏览器是否接受 Cookie”一节。</p> </div><h1 class="heading">编写 Cookie</h1><div id="sectionSection2" class="seeAlsoNoToggleSection"> <p>浏览器负责管理用户系统上的 Cookie。Cookie 通过 <a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpresponse(v=vs.80).aspx">HttpResponse</a> 对象发送到浏览器，该对象公开称为 <a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpresponse.cookies(v=vs.80).aspx">Cookies</a> 的集合。可以将 <b>HttpResponse</b> 对象作为 <a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.page(v=vs.80).aspx">Page</a> 类的 <a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.page.response(v=vs.80).aspx">Response</a> 属性来访问。要发送给浏览器的所有 Cookie 都必须添加到此集合中。创建 Cookie 时，需要指定 <a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpcookie.name(v=vs.80).aspx">Name</a> 和 <a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpcookie.value(v=vs.80).aspx">Value</a>。每个 Cookie 必须有一个唯一的名称，以便以后从浏览器读取 Cookie 时可以识别它。由于 Cookie 按名称存储，因此用相同的名称命名两个 Cookie 会导致其中一个 Cookie 被覆盖。 </p> <p>还可以设置 Cookie 的到期日期和时间。用户访问编写 Cookie 的站点时，浏览器将删除过期的 Cookie。只要应用程序认为 Cookie 值有效，就应将 Cookie 的有效期设置为这一段时间。对于永不过期的 Cookie，可将到期日期设置为从现在起 50 年。</p> <div class="alert"><table width="100%"><tbody><tr><th align="left"><img class="note cl_IC103139" alt="Note" src="./ASP.NET Cookie 概述_files/clear.gif">注意 </th></tr><tr><td> <p>用户可随时清除其计算机上的 Cookie。即便存储的 Cookie 距到期日期还有很长时间，但用户还是可以决定删除所有 Cookie，清除 Cookie 中存储的所有设置。</p> </td></tr></tbody></table></div> <p>如果没有设置 Cookie 的有效期，仍会创建 Cookie，但不会将其存储在用户的硬盘上。而会将 Cookie 作为用户会话信息的一部分进行维护。当用户关闭浏览器时，Cookie 便会被丢弃。这种非永久性 Cookie 很适合用来保存只需短时间存储的信息，或者保存由于安全原因不应该写入客户端计算机上的磁盘的信息。例如，如果用户在使用一台公用计算机，而您不希望将 Cookie 写入该计算机的磁盘中，这时就可以使用非永久性 Cookie。</p> <p>可以通过多种方法将 Cookie 添加到 <b>Cookies</b> 集合中。下面的示例演示两种编写 Cookie 的方法：</p> 
+<div id="code-snippet-1" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabActive" dir="ltr"><a>C#</a></div><div class="codeSnippetContainerTab" dir="ltr"><a href="http://msdn.microsoft.com/zh-cn/library/ms178194(v=vs.80).aspx?cs-save-lang=1&cs-lang=vb#code-snippet-1">VB</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="复制到剪贴板。" href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_478ac362-bbde-4766-9fab-aea04685347d');">复制</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_478ac362-bbde-4766-9fab-aea04685347d" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>Response.Cookies[<span style="color:#A31515;">"userName"</span>].Value = <span style="color:#A31515;">"patrick"</span>;
+Response.Cookies[<span style="color:#A31515;">"userName"</span>].Expires = DateTime.Now.AddDays(1);
+
+HttpCookie aCookie = <span style="color:Blue;">new</span> HttpCookie(<span style="color:#A31515;">"lastVisit"</span>);
+aCookie.Value = DateTime.Now.ToString();
+aCookie.Expires = DateTime.Now.AddDays(1);
+Response.Cookies.Add(aCookie);
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+  <p>此示例向 <b>Cookies</b> 集合添加两个 Cookie，一个名为 <tt xmlns:asp="http://msdn2.microsoft.com/asp">userName</tt>，另一个名为 <tt xmlns:asp="http://msdn2.microsoft.com/asp">lastVisit</tt>。对于第一个 Cookie，<b>Cookies</b> 集合的值是直接设置的。可以通过这种方式向集合添加值，因为 <b>Cookies</b> 是从 <a href="http://msdn.microsoft.com/zh-cn/library/system.collections.specialized.nameobjectcollectionbase(v=vs.80).aspx">NameObjectCollectionBase</a> 类型的专用集合派生的。</p> <p>对于第二个 Cookie，代码创建了一个 <a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpcookie(v=vs.80).aspx">HttpCookie</a> 类型的对象实例，设置其属性，然后通过 <a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpcookiecollection.add(v=vs.80).aspx">Add</a> 方法将其添加到 <b>Cookies</b> 集合。在实例化 <b>HttpCookie</b> 对象时，必须将该 Cookie 的名称作为构造函数的一部分进行传递。</p> <p>这两个示例都完成了同一任务，即向浏览器写入一个 Cookie。在这两种方法中，有效期值必须为 <a href="http://msdn.microsoft.com/zh-cn/library/system.datetime(v=vs.80).aspx">DateTime</a> 类型。但是，<tt xmlns:asp="http://msdn2.microsoft.com/asp">lastVisited</tt> 值也是日期时间值。因为所有 Cookie 值都存储为字符串，因此，必须将日期时间值转换为 <a href="http://msdn.microsoft.com/zh-cn/library/system.string(v=vs.80).aspx">String</a>。</p> </div><h1 class="heading">多值 Cookie</h1><div id="sectionSection3" class="seeAlsoNoToggleSection"> <p>可以在 Cookie 中存储一个值，如用户名和上次访问时间。也可以在一个 Cookie 中存储多个名称/值对。名称/值对称为子键。（子键布局类似于 URL 中的查询字符串。）例如，不要创建两个名为 <tt xmlns:asp="http://msdn2.microsoft.com/asp">userName</tt> 和 <tt xmlns:asp="http://msdn2.microsoft.com/asp">lastVisit</tt> 的单独 Cookie，而可以创建一个名为 <tt xmlns:asp="http://msdn2.microsoft.com/asp">userInfo</tt> 的 Cookie，其中包含两个子键 <tt xmlns:asp="http://msdn2.microsoft.com/asp">userName</tt> 和 <tt xmlns:asp="http://msdn2.microsoft.com/asp">lastVisit</tt>。</p> <p>您可能会出于多种原因来使用子键。首先，将相关或类似的信息放在一个 Cookie 中很方便。此外，由于所有信息都在一个 Cookie 中，所以诸如有效期之类的 Cookie 属性就适用于所有信息。（反之，如果要为不同类型的信息指定不同的到期日期，就应该把信息存储在单独的 Cookie 中。）</p> <p>带有子键的 Cookie 还可帮助您限制 Cookie 文件的大小。正如前面“Cookie 的限制”一节中所提到的，Cookie 通常限制为 4096 字节，并且每个站点最多可存储 20 个 Cookie。使用带子键的单个 Cookie，使用的 Cookie 数就不会超过分配给站点的 20 个的限制。此外，一个 Cookie 会占用大约 50 个字符的系统开销（用于保存有效期信息等），再加上其中存储的值的长度，其总和接近 4096 字节的限制。如果存储五个子键而不是五个单独的 Cookie，便可节省单独 Cookie 的系统开销，节省大约 200 字节。</p> <p>若要创建带子键的 Cookie，您可以使用编写单个 Cookie 的各种语法。下面的示例演示用于编写同一 Cookie 的两种方法，其中的每个 Cookie 都带有两个子键：</p> 
+<div id="code-snippet-2" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabActive" dir="ltr"><a>C#</a></div><div class="codeSnippetContainerTab" dir="ltr"><a href="http://msdn.microsoft.com/zh-cn/library/ms178194(v=vs.80).aspx?cs-save-lang=1&cs-lang=vb#code-snippet-2">VB</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="复制到剪贴板。" href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_14bb204d-d1f4-47ba-b034-e806a37e5c96');">复制</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_14bb204d-d1f4-47ba-b034-e806a37e5c96" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>Response.Cookies[<span style="color:#A31515;">"userInfo"</span>][<span style="color:#A31515;">"userName"</span>] = <span style="color:#A31515;">"patrick"</span>;
+Response.Cookies[<span style="color:#A31515;">"userInfo"</span>][<span style="color:#A31515;">"lastVisit"</span>] = DateTime.Now.ToString();
+Response.Cookies[<span style="color:#A31515;">"userInfo"</span>].Expires = DateTime.Now.AddDays(1);
+
+HttpCookie aCookie = <span style="color:Blue;">new</span> HttpCookie(<span style="color:#A31515;">"userInfo"</span>);
+aCookie.Values[<span style="color:#A31515;">"userName"</span>] = <span style="color:#A31515;">"patrick"</span>;
+aCookie.Values[<span style="color:#A31515;">"lastVisit"</span>] = DateTime.Now.ToString();
+aCookie.Expires = DateTime.Now.AddDays(1);
+Response.Cookies.Add(aCookie);
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+  </div><h1 class="heading">控制 Cookie 的范围</h1><div id="sectionSection4" class="seeAlsoNoToggleSection"> <p>默认情况下，一个站点的全部 Cookie 都一起存储在客户端上，而且所有 Cookie 都会随着对该站点发送的任何请求一起发送到服务器。也就是说，一个站点中的每个页面都能获得该站点的所有 Cookie。但是，可以通过两种方式设置 Cookie 的范围：</p> <ul><li> <p>将 Cookie 的范围限制到服务器上的某个文件夹，这允许您将 Cookie 限制到站点上的某个应用程序。 </p> </li><li> <p>将范围设置为某个域，这允许您指定域中的哪些子域可以访问 Cookie。 </p> </li></ul>  <h3 class="subHeading">将 Cookie 限制到某个文件夹或应用程序</h3><div class="subSection"> <p>若要将 Cookie 限制到服务器上的某个文件夹，请按下面的示例设置 Cookie 的 <a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpcookie.path(v=vs.80).aspx">Path</a> 属性：</p> 
+<div id="code-snippet-3" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabActive" dir="ltr"><a>C#</a></div><div class="codeSnippetContainerTab" dir="ltr"><a href="http://msdn.microsoft.com/zh-cn/library/ms178194(v=vs.80).aspx?cs-save-lang=1&cs-lang=vb#code-snippet-3">VB</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="复制到剪贴板。" href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_a3ea7672-d12b-4cc2-8e94-a8dcaf988346');">复制</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_a3ea7672-d12b-4cc2-8e94-a8dcaf988346" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>HttpCookie appCookie = <span style="color:Blue;">new</span> HttpCookie(<span style="color:#A31515;">"AppCookie"</span>);
+appCookie.Value = <span style="color:#A31515;">"written "</span> + DateTime.Now.ToString();
+appCookie.Expires = DateTime.Now.AddDays(1);
+appCookie.Path = <span style="color:#A31515;">"/Application1"</span>;
+Response.Cookies.Add(appCookie);
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+  <div class="alert"><table width="100%"><tbody><tr><th align="left"><img class="note cl_IC103139" alt="Note" src="./ASP.NET Cookie 概述_files/clear.gif">注意 </th></tr><tr><td> <p>还可以通过将 Cookie 直接添加到 <b>Cookies</b> 集合的方式来编写 Cookie，如先前的示例所示。</p> </td></tr></tbody></table></div> <p>路径可以是站点根目录下的物理路径，也可以是虚拟根目录。所产生的效果是 Cookie 只能用于 Application1 文件夹或虚拟根目录中的页面。例如，如果您的站点名称为 www.contoso.com，则在前面示例中创建的 Cookie 将只能用于路径为 http://www.contoso.com/Application1/ 的页面以及该文件夹下的所有页面。但是，Cookie 将不能用于其他应用程序中的页面，如 http://www.contoso.com/Application2/ 或 http://www.contoso.com/ 中的页面。</p> <div class="alert"><table width="100%"><tbody><tr><th align="left"><img class="note cl_IC103139" alt="Note" src="./ASP.NET Cookie 概述_files/clear.gif">注意 </th></tr><tr><td> <p>在某些浏览器中，路径区分大小写。您无法控制用户如何在其浏览器中键入 URL，但如果应用程序依赖于与特定路径相关的 Cookie，请确保您创建的所有超链接中的 URL 与 <b>Path</b> 属性值的大小写相匹配。</p> </td></tr></tbody></table></div> </div> <h3 class="subHeading">限制 Cookie 的域范围</h3><div class="subSection"> <p>默认情况下，Cookie 与特定域关联。例如，如果您的站点是 www.contoso.com，那么当用户向该站点请求任何页时，您编写的 Cookie 就会被发送到服务器。（这可能不包括带有特定路径值的 Cookie。）如果站点具有子域（例如，contoso.com、sales.contoso.com 和 support.contoso.com），则可以将 Cookie 与特定的子域关联。若要执行此操作，请设置 Cookie 的 <a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpcookie.domain(v=vs.80).aspx">Domain</a> 属性，如此示例所示：</p> 
+<div id="code-snippet-4" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabActive" dir="ltr"><a>C#</a></div><div class="codeSnippetContainerTab" dir="ltr"><a href="http://msdn.microsoft.com/zh-cn/library/ms178194(v=vs.80).aspx?cs-save-lang=1&cs-lang=vb#code-snippet-4">VB</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="复制到剪贴板。" href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_7a017052-245f-4151-9e8d-0d33c5eab235');">复制</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_7a017052-245f-4151-9e8d-0d33c5eab235" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>Response.Cookies[<span style="color:#A31515;">"domain"</span>].Value = DateTime.Now.ToString();
+Response.Cookies[<span style="color:#A31515;">"domain"</span>].Expires = DateTime.Now.AddDays(1);
+Response.Cookies[<span style="color:#A31515;">"domain"</span>].Domain = <span style="color:#A31515;">"support.contoso.com"</span>;
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+  <p>当以此方式设置域时，Cookie 将仅可用于指定的子域中的页面。还可以使用 <b>Domain</b> 属性创建可在多个子域间共享的 Cookie，如下面的示例所示：</p> 
+<div id="code-snippet-5" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabActive" dir="ltr"><a>C#</a></div><div class="codeSnippetContainerTab" dir="ltr"><a href="http://msdn.microsoft.com/zh-cn/library/ms178194(v=vs.80).aspx?cs-save-lang=1&cs-lang=vb#code-snippet-5">VB</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="复制到剪贴板。" href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_65ca9fbc-0bf5-4abc-9017-ba40204bbba5');">复制</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_65ca9fbc-0bf5-4abc-9017-ba40204bbba5" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>Response.Cookies[<span style="color:#A31515;">"domain"</span>].Value = DateTime.Now.ToString();
+Response.Cookies[<span style="color:#A31515;">"domain"</span>].Expires = DateTime.Now.AddDays(1);
+Response.Cookies[<span style="color:#A31515;">"domain"</span>].Domain = <span style="color:#A31515;">"contoso.com"</span>;
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+  <p>随后 Cookie 将可用于主域，也可用于 sales.contoso.com 和 support.contoso.com 域。</p> </div> </div><h1 class="heading">读取 Cookie</h1><div id="sectionSection5" class="seeAlsoNoToggleSection"> <p>浏览器向服务器发出请求时，会随请求一起发送该服务器的 Cookie。在 ASP.NET 应用程序中，可以使用 <a href="http://msdn.microsoft.com/zh-cn/library/system.web.httprequest(v=vs.80).aspx">HttpRequest</a> 对象读取 Cookie，该对象可用作 <b>Page</b> 类的 <a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.page.request(v=vs.80).aspx">Request</a> 属性使用。<b>HttpRequest</b> 对象的结构与 <b>HttpResponse</b> 对象的结构基本相同，因此，可以从 <b>HttpRequest</b> 对象中读取 Cookie，并且读取方式与将 Cookie 写入 <b>HttpResponse</b> 对象的方式基本相同。下面的代码示例演示两种方法，通过这两种方法可获取名为 <tt xmlns:asp="http://msdn2.microsoft.com/asp">username</tt> 的 Cookie 的值，并将其值显示在 <a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.label(v=vs.80).aspx">Label</a> 控件中：</p> 
+<div id="code-snippet-6" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabActive" dir="ltr"><a>C#</a></div><div class="codeSnippetContainerTab" dir="ltr"><a href="http://msdn.microsoft.com/zh-cn/library/ms178194(v=vs.80).aspx?cs-save-lang=1&cs-lang=vb#code-snippet-6">VB</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="复制到剪贴板。" href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_fbf74ab3-c05c-42c2-8703-d69c468cf25e');">复制</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_fbf74ab3-c05c-42c2-8703-d69c468cf25e" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre><span style="color:Blue;">if</span>(Request.Cookies[<span style="color:#A31515;">"userName"</span>] != <span style="color:Blue;">null</span>)
+    Label1.Text = Server.HtmlEncode(Request.Cookies[<span style="color:#A31515;">"userName"</span>].Value);
+
+<span style="color:Blue;">if</span>(Request.Cookies[<span style="color:#A31515;">"userName"</span>] != <span style="color:Blue;">null</span>)
+{
+    HttpCookie aCookie = Request.Cookies[<span style="color:#A31515;">"userName"</span>];
+    Label1.Text = Server.HtmlEncode(aCookie.Value);
+}
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+  <p>在尝试获取 Cookie 的值之前，应确保该 Cookie 存在；如果该 Cookie 不存在，将会收到 <a href="http://msdn.microsoft.com/zh-cn/library/system.nullreferenceexception(v=vs.80).aspx">NullReferenceException</a> 异常。还请注意在页面中显示 Cookie 的内容前，先调用 <a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpserverutility.htmlencode(v=vs.80).aspx">HtmlEncode</a> 方法对 Cookie 的内容进行编码。这样可以确保恶意用户没有向 Cookie 中添加可执行脚本。有关 Cookie 安全性的更多信息，请参见“Cookie 和安全性”一节。 </p> <div class="alert"><table width="100%"><tbody><tr><th align="left"><img class="note cl_IC103139" alt="Note" src="./ASP.NET Cookie 概述_files/clear.gif">注意 </th></tr><tr><td> <p>由于不同的浏览器存储 Cookie 的方式不同，因此，同一计算机上的不同浏览器没有必要能够读取彼此的 Cookie。例如，如果使用 Internet Explorer 测试一个页面，然后再使用其他浏览器进行测试，那么后者将不会找到 Internet Explorer 保存的 Cookie。</p> </td></tr></tbody></table></div> <p>读取 Cookie 中子键值的方法与设置该值的方法类似。下面的代码示例演示获取子键值的一种方法：</p> 
+<div id="code-snippet-7" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabActive" dir="ltr"><a>C#</a></div><div class="codeSnippetContainerTab" dir="ltr"><a href="http://msdn.microsoft.com/zh-cn/library/ms178194(v=vs.80).aspx?cs-save-lang=1&cs-lang=vb#code-snippet-7">VB</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="复制到剪贴板。" href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_23825922-86fd-46c3-ba17-1a69f23de95d');">复制</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_23825922-86fd-46c3-ba17-1a69f23de95d" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre><span style="color:Blue;">if</span>(Request.Cookies[<span style="color:#A31515;">"userInfo"</span>] != <span style="color:Blue;">null</span>)
+{
+    Label1.Text = 
+        Server.HtmlEncode(Request.Cookies[<span style="color:#A31515;">"userInfo"</span>][<span style="color:#A31515;">"userName"</span>]);
+
+    Label2.Text =
+        Server.HtmlEncode(Request.Cookies[<span style="color:#A31515;">"userInfo"</span>][<span style="color:#A31515;">"lastVisit"</span>]);
+}
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+  <p>在上面的示例中，代码读取子键 <tt xmlns:asp="http://msdn2.microsoft.com/asp">lastVisit</tt> 的值，该值先前被设置为字符串表示形式的 <b>DateTime</b> 值。Cookie 将值存储为字符串，因此，如果要将 <tt xmlns:asp="http://msdn2.microsoft.com/asp">lastVisit</tt> 值作为日期使用，必须将其转换为适当的类型，如此示例所示：</p> 
+<div id="code-snippet-8" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabActive" dir="ltr"><a>C#</a></div><div class="codeSnippetContainerTab" dir="ltr"><a href="http://msdn.microsoft.com/zh-cn/library/ms178194(v=vs.80).aspx?cs-save-lang=1&cs-lang=vb#code-snippet-8">VB</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="复制到剪贴板。" href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_22f71c07-e46b-4e95-bec8-566ff90a9d66');">复制</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_22f71c07-e46b-4e95-bec8-566ff90a9d66" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>DateTime dt;
+dt = DateTime.Parse(Request.Cookies[<span style="color:#A31515;">"userInfo"</span>][<span style="color:#A31515;">"lastVisit"</span>]);
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+  <p>Cookie 中的子键被类型化为 <a href="http://msdn.microsoft.com/zh-cn/library/system.collections.specialized.namevaluecollection(v=vs.80).aspx">NameValueCollection</a> 类型的集合。因此，获取单个子键的另一种方法是获取子键集合，然后再按名称提取子键值，如下面的示例所示：</p> 
+<div id="code-snippet-9" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabActive" dir="ltr"><a>C#</a></div><div class="codeSnippetContainerTab" dir="ltr"><a href="http://msdn.microsoft.com/zh-cn/library/ms178194(v=vs.80).aspx?cs-save-lang=1&cs-lang=vb#code-snippet-9">VB</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="复制到剪贴板。" href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_c8b64fa5-8930-442c-8f7b-b0d6bc519b48');">复制</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_c8b64fa5-8930-442c-8f7b-b0d6bc519b48" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre><span style="color:Blue;">if</span>(Request.Cookies[<span style="color:#A31515;">"userInfo"</span>] != <span style="color:Blue;">null</span>)
+{
+    System.Collections.Specialized.NameValueCollection
+        UserInfoCookieCollection;
+       
+    UserInfoCookieCollection = Request.Cookies[<span style="color:#A31515;">"userInfo"</span>].Values;
+    Label1.Text = 
+        Server.HtmlEncode(UserInfoCookieCollection[<span style="color:#A31515;">"userName"</span>]);
+    Label2.Text =
+        Server.HtmlEncode(UserInfoCookieCollection[<span style="color:#A31515;">"lastVisit"</span>]);
+}
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+   <h3 class="subHeading">更改 Cookie 的到期日期</h3><div class="subSection"> <p>浏览器负责管理 Cookie，而 Cookie 的到期时间和日期可帮助浏览器管理 Cookie 的存储。因此，虽然可以读取 Cookie 的名称和值，但无法读取 Cookie 的到期日期和时间。当浏览器向服务器发送 Cookie 信息时，并不包括有效期信息。（Cookie 的 <a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpcookie.expires(v=vs.80).aspx">Expires</a> 属性始终返回值为 0 的日期时间值。）如果您担心 Cookie 的到期日期，必须重新设置该 Cookie，该过程在“修改和删除 Cookie”一节中介绍。</p> <div class="alert"><table width="100%"><tbody><tr><th align="left"><img class="note cl_IC103139" alt="Note" src="./ASP.NET Cookie 概述_files/clear.gif">注意 </th></tr><tr><td> <p>可以在向浏览器发送 Cookie 之前读取已在 <b>HttpResponse</b> 对象中设置的 Cookie 的 <b>Expires</b> 属性。但是，您无法从返回的 <b>HttpRequest</b> 对象中获取有效期。</p> </td></tr></tbody></table></div> </div> <h3 class="subHeading">读取 Cookie 集合</h3><div class="subSection"> <p>有时，您可能需要读取可供页面使用的所有 Cookie。若要读取可供页面使用的所有 Cookie 的名称和值，可以使用如下代码依次通过 <a href="http://msdn.microsoft.com/zh-cn/library/system.web.httprequest.cookies(v=vs.80).aspx">Cookies</a> 集合。</p> 
+<div id="code-snippet-10" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabActive" dir="ltr"><a>C#</a></div><div class="codeSnippetContainerTab" dir="ltr"><a href="http://msdn.microsoft.com/zh-cn/library/ms178194(v=vs.80).aspx?cs-save-lang=1&cs-lang=vb#code-snippet-10">VB</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="复制到剪贴板。" href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_5fbc7aa1-42d2-47f5-9a75-7c8dfd25f297');">复制</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_5fbc7aa1-42d2-47f5-9a75-7c8dfd25f297" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>System.Text.StringBuilder output = <span style="color:Blue;">new</span> System.Text.StringBuilder();
+HttpCookie aCookie;
+<span style="color:Blue;">for</span>(<span style="color:Blue;">int</span> i=0; i&lt;Request.Cookies.Count; i++)
+{
+    aCookie = Request.Cookies[i];
+    output.Append(<span style="color:#A31515;">"Cookie name = "</span> + Server.HtmlEncode(aCookie.Name) 
+        + <span style="color:#A31515;">"&lt;br /&gt;"</span>);
+    output.Append(<span style="color:#A31515;">"Cookie value = "</span> + Server.HtmlEncode(aCookie.Value)
+        + <span style="color:#A31515;">"&lt;br /&gt;&lt;br /&gt;"</span>);
+}
+Label1.Text = output.ToString();
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+  <div class="alert"><table width="100%"><tbody><tr><th align="left"><img class="note cl_IC103139" alt="Note" src="./ASP.NET Cookie 概述_files/clear.gif">注意 </th></tr><tr><td> <p>在运行此代码时，可能会看到一个名为 <tt xmlns:asp="http://msdn2.microsoft.com/asp">ASP.NET_SessionId</tt> 的 Cookie。ASP.NET 使用该 Cookie 来存储您的会话的唯一标识符。会话 Cookie 不会保存在您的硬盘上。有关会话 Cookie 的更多信息，请参见本主题后面的“Cookie 和会话状态”一节。</p> </td></tr></tbody></table></div> <p>上面的示例有一个限制：如果 Cookie 有子键，则会以一个名称/值字符串来显示子键。可以读取 Cookie 的 <a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpcookie.haskeys(v=vs.80).aspx">HasKeys</a> 属性，以确定 Cookie 是否有子键。如果有，则可以读取子键集合以获取各个子键名称和值。可以通过索引值直接从 <b>Values</b> 集合中读取子键值。相应的子键名称可在 <a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpcookie.values(v=vs.80).aspx">Values</a> 集合的 <a href="http://msdn.microsoft.com/zh-cn/library/system.collections.specialized.namevaluecollection.allkeys(v=vs.80).aspx">AllKeys</a> 成员中获得，该成员将返回一个字符串数组。还可以使用 <b>Values</b> 集合的 <a href="http://msdn.microsoft.com/zh-cn/library/system.collections.specialized.nameobjectcollectionbase.keys(v=vs.80).aspx">Keys</a> 成员。但是，首次访问 <a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpcookiecollection.allkeys(v=vs.80).aspx">AllKeys</a> 属性时，该属性会被缓存。相比之下，每次访问 <b>Keys</b> 属性时，该属性都生成一个数组。因此在同一页请求的上下文内，在随后访问时，<b>AllKeys</b> 属性要快得多。</p> <p>下面的示例演示对前一示例的修改。该示例使用 <a href="http://msdn.microsoft.com/zh-cn/library/system.collections.specialized.namevaluecollection.haskeys(v=vs.80).aspx">HasKeys</a> 属性来测试是否存在子键，如果检测到子键，便从 <b>Values</b> 集合获取子键：</p> 
+<div id="code-snippet-11" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabActive" dir="ltr"><a>C#</a></div><div class="codeSnippetContainerTab" dir="ltr"><a href="http://msdn.microsoft.com/zh-cn/library/ms178194(v=vs.80).aspx?cs-save-lang=1&cs-lang=vb#code-snippet-11">VB</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="复制到剪贴板。" href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_8b3f4a7b-c00b-406e-b9fd-aeb757ec74b4');">复制</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_8b3f4a7b-c00b-406e-b9fd-aeb757ec74b4" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre><span style="color:Blue;">for</span>(<span style="color:Blue;">int</span> i=0; i&lt;Request.Cookies.Count; i++)
+{
+    aCookie = Request.Cookies[i];
+    output.Append(<span style="color:#A31515;">"Name = "</span> + aCookie.Name + <span style="color:#A31515;">"&lt;br /&gt;"</span>);
+    <span style="color:Blue;">if</span>(aCookie.HasKeys)
+    {
+        <span style="color:Blue;">for</span>(<span style="color:Blue;">int</span> j=0; j&lt;aCookie.Values.Count; j++)
+        {
+            subkeyName = Server.HtmlEncode(aCookie.Values.AllKeys[j]);
+            subkeyValue = Server.HtmlEncode(aCookie.Values[j]);
+            output.Append(<span style="color:#A31515;">"Subkey name = "</span> + subkeyName + <span style="color:#A31515;">"&lt;br /&gt;"</span>);
+            output.Append(<span style="color:#A31515;">"Subkey value = "</span> + subkeyValue + 
+                <span style="color:#A31515;">"&lt;br /&gt;&lt;br /&gt;"</span>);
+        }
+    }
+    <span style="color:Blue;">else</span>
+    {
+        output.Append(<span style="color:#A31515;">"Value = "</span> + Server.HtmlEncode(aCookie.Value) +
+            <span style="color:#A31515;">"&lt;br /&gt;&lt;br /&gt;"</span>);
+    }
+}
+Label1.Text = output.ToString();
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+  <p>或者，可将子键作为 <b>NameValueCollection</b> 对象提取，如下面的示例所示：</p> 
+<div id="code-snippet-12" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabActive" dir="ltr"><a>C#</a></div><div class="codeSnippetContainerTab" dir="ltr"><a href="http://msdn.microsoft.com/zh-cn/library/ms178194(v=vs.80).aspx?cs-save-lang=1&cs-lang=vb#code-snippet-12">VB</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="复制到剪贴板。" href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_d0acf42f-60d0-4997-bee5-67298ce12c38');">复制</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_d0acf42f-60d0-4997-bee5-67298ce12c38" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>System.Text.StringBuilder output = <span style="color:Blue;">new</span> System.Text.StringBuilder();
+HttpCookie aCookie;
+<span style="color:Blue;">string</span> subkeyName;
+<span style="color:Blue;">string</span> subkeyValue;
+
+<span style="color:Blue;">for</span> (<span style="color:Blue;">int</span> i = 0; i &lt; Request.Cookies.Count; i++)
+{
+    aCookie = Request.Cookies[i];
+    output.Append(<span style="color:#A31515;">"Name = "</span> + aCookie.Name + <span style="color:#A31515;">"&lt;br /&gt;"</span>);
+    <span style="color:Blue;">if</span> (aCookie.HasKeys)
+    {
+        System.Collections.Specialized.NameValueCollection CookieValues = 
+            aCookie.Values;
+        <span style="color:Blue;">string</span>[] CookieValueNames = CookieValues.AllKeys;
+        <span style="color:Blue;">for</span> (<span style="color:Blue;">int</span> j = 0; j &lt; CookieValues.Count; j++)
+        {
+            subkeyName = Server.HtmlEncode(CookieValueNames[j]);
+            subkeyValue = Server.HtmlEncode(CookieValues[j]);
+            output.Append(<span style="color:#A31515;">"Subkey name = "</span> + subkeyName + <span style="color:#A31515;">"&lt;br /&gt;"</span>);
+            output.Append(<span style="color:#A31515;">"Subkey value = "</span> + subkeyValue + 
+                <span style="color:#A31515;">"&lt;br /&gt;&lt;br /&gt;"</span>);
+        }
+    }
+    <span style="color:Blue;">else</span>
+    {
+        output.Append(<span style="color:#A31515;">"Value = "</span> + Server.HtmlEncode(aCookie.Value) +
+            <span style="color:#A31515;">"&lt;br /&gt;&lt;br /&gt;"</span>);
+    }
+}
+Label1.Text = output.ToString();
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+  </div> </div><h1 class="heading">修改和删除 Cookie</h1><div id="sectionSection6" class="seeAlsoNoToggleSection"> <p>不能直接修改 Cookie。更改 Cookie 的过程涉及创建一个具有新值的新 Cookie，然后将其发送到浏览器来覆盖客户端上的旧版本 Cookie。下面的代码示例演示如何更改存储用户对站点的访问次数的 Cookie 的值：</p> 
+<div id="code-snippet-13" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabActive" dir="ltr"><a>C#</a></div><div class="codeSnippetContainerTab" dir="ltr"><a href="http://msdn.microsoft.com/zh-cn/library/ms178194(v=vs.80).aspx?cs-save-lang=1&cs-lang=vb#code-snippet-13">VB</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="复制到剪贴板。" href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_aef5b214-198e-4c8a-a7e8-0d1272482ebe');">复制</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_aef5b214-198e-4c8a-a7e8-0d1272482ebe" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre><span style="color:Blue;">int</span> counter;
+<span style="color:Blue;">if</span> (Request.Cookies[<span style="color:#A31515;">"counter"</span>] == <span style="color:Blue;">null</span>)
+    counter = 0;
+<span style="color:Blue;">else</span>
+{
+    counter = <span style="color:Blue;">int</span>.Parse(Request.Cookies[<span style="color:#A31515;">"counter"</span>].Value);
+}
+counter++;
+
+Response.Cookies[<span style="color:#A31515;">"counter"</span>].Value = counter.ToString();
+Response.Cookies[<span style="color:#A31515;">"counter"</span>].Expires = DateTime.Now.AddDays(1);
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+   <h3 class="subHeading">删除 Cookie</h3><div class="subSection"> <p>删除 Cookie（即从用户的硬盘中物理移除 Cookie）是修改 Cookie 的一种形式。由于 Cookie 在用户的计算机中，因此无法将其直接移除。但是，可以让浏览器来为您删除 Cookie。该技术是创建一个与要删除的 Cookie 同名的新 Cookie，并将该 Cookie 的到期日期设置为早于当前日期的某个日期。当浏览器检查 Cookie 的到期日期时，浏览器便会丢弃这个现已过期的 Cookie。下面的代码示例演示删除应用程序中所有可用 Cookie 的一种方法：</p> 
+<div id="code-snippet-14" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabActive" dir="ltr"><a>C#</a></div><div class="codeSnippetContainerTab" dir="ltr"><a href="http://msdn.microsoft.com/zh-cn/library/ms178194(v=vs.80).aspx?cs-save-lang=1&cs-lang=vb#code-snippet-14">VB</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="复制到剪贴板。" href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_6ea3eed8-75be-418d-9dd3-c6fa1d6d6e85');">复制</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_6ea3eed8-75be-418d-9dd3-c6fa1d6d6e85" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>HttpCookie aCookie;
+<span style="color:Blue;">string</span> cookieName;
+<span style="color:Blue;">int</span> limit = Request.Cookies.Count;
+<span style="color:Blue;">for</span> (<span style="color:Blue;">int</span> i=0; i&lt;limit; i++)
+{
+    cookieName = Request.Cookies[i].Name;
+    aCookie = <span style="color:Blue;">new</span> HttpCookie(cookieName);
+    aCookie.Expires = DateTime.Now.AddDays(-1);
+    Response.Cookies.Add(aCookie);
+}
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+  </div> <h3 class="subHeading">修改或删除子键</h3><div class="subSection"> <p>修改单个子键的方法与创建它的方法相同，如下面的示例所示：</p> 
+<div id="code-snippet-15" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabActive" dir="ltr"><a>C#</a></div><div class="codeSnippetContainerTab" dir="ltr"><a href="http://msdn.microsoft.com/zh-cn/library/ms178194(v=vs.80).aspx?cs-save-lang=1&cs-lang=vb#code-snippet-15">VB</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="复制到剪贴板。" href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_deb01162-b6b6-45d5-954c-7e1fde1d63c9');">复制</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_deb01162-b6b6-45d5-954c-7e1fde1d63c9" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>Response.Cookies[<span style="color:#A31515;">"userInfo"</span>][<span style="color:#A31515;">"lastVisit"</span>] = DateTime.Now.ToString();
+Response.Cookies[<span style="color:#A31515;">"userInfo"</span>].Expires = DateTime.Now.AddDays(1);
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+  <p>若要删除单个子键，可以操作 Cookie 的 <b>Values</b> 集合，该集合用于保存子键。首先通过从 <b>Cookies</b> 对象中获取 Cookie 来重新创建 Cookie。然后您就可以调用 <b>Values</b> 集合的 <a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpcookiecollection.remove(v=vs.80).aspx">Remove</a> 方法，将要删除的子键的名称传递给 <b>Remove</b> 方法。接着，将 Cookie 添加到 <b>Cookies</b> 集合，这样 Cookie 便会以修改后的格式发送回浏览器。下面的代码示例演示如何删除子键。在此示例中，要移除的子键的名称在变量中指定。</p> 
+<div id="code-snippet-16" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabActive" dir="ltr"><a>C#</a></div><div class="codeSnippetContainerTab" dir="ltr"><a href="http://msdn.microsoft.com/zh-cn/library/ms178194(v=vs.80).aspx?cs-save-lang=1&cs-lang=vb#code-snippet-16">VB</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="复制到剪贴板。" href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_335f6154-907d-4895-b04f-b2e3d26027c1');">复制</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_335f6154-907d-4895-b04f-b2e3d26027c1" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre><span style="color:Blue;">string</span> subkeyName;
+subkeyName = <span style="color:#A31515;">"userName"</span>;
+HttpCookie aCookie = Request.Cookies[<span style="color:#A31515;">"userInfo"</span>];
+aCookie.Values.Remove(subkeyName);
+aCookie.Expires = DateTime.Now.AddDays(1);
+Response.Cookies.Add(aCookie);
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+  </div> </div><h1 class="heading">Cookie 和安全性</h1><div id="sectionSection7" class="seeAlsoNoToggleSection"> <p>Cookie 的安全性问题与从客户端获取数据的安全性问题类似。在应用程序中，Cookie 是另一种形式的用户输入，因此很容易被他们非法获取和利用。由于 Cookie 保存在用户自己的计算机上，因此，用户至少能看到您存储在 Cookie 中的数据。用户还可以在浏览器向您发送 Cookie 之前更改该 Cookie。</p> <p>千万不要在 Cookie 中存储敏感信息，如用户名、密码、信用卡号等等。不要在 Cookie 中放置任何不应由用户掌握的内容，也不要放可能被其他窃取 Cookie 的人控制的内容。 </p> <p>同样，不要轻信从 Cookie 中得到的信息。不要假定数据与您写出时相同；处理 Cookie 值时采用的安全措施应该与处理网页中用户键入的数据时采用的安全措施相同。本主题前面的示例演示在页面中显示值前，先对 Cookie 内容进行 HTML 编码的方法，这与在显示从用户处得到的任何信息之前的做法相同。 </p> <p>Cookie 以明文形式在浏览器和服务器间发送，任何可以截获 Web 通信的人都可以读取 Cookie。可以设置 Cookie 属性，使 Cookie 只能在使用安全套接字层 (SSL) 的连接上传输。SSL 并不能防止保存在用户计算机上的 Cookie 被读取或操作，但可防止 Cookie 在传输过程中被读取，因为 Cookie 已被加密。有关更多信息，请参见 <a href="http://msdn.microsoft.com/zh-cn/library/zdh19h94(v=vs.80).aspx">Web 应用程序的基本安全实施策略</a>。</p> </div><h1 class="heading">确定浏览器是否接受 Cookie</h1><div id="sectionSection8" class="seeAlsoNoToggleSection"> <p>用户可将其浏览器设置为拒绝接受 Cookie。在不能写入 Cookie 时不会引发任何错误。同样，浏览器也不向服务器发送有关其当前 Cookie 设置的任何信息。 </p> <div class="alert"><table width="100%"><tbody><tr><th align="left"><img class="note cl_IC103139" alt="Note" src="./ASP.NET Cookie 概述_files/clear.gif">注意 </th></tr><tr><td> <p><a href="http://msdn.microsoft.com/zh-cn/library/system.web.configuration.httpcapabilitiesbase.cookies(v=vs.80).aspx">Cookies</a> 属性不指示 Cookie 是否启用。它仅指示当前浏览器是否原本支持 Cookie。</p> </td></tr></tbody></table></div> <p>确定 Cookie 是否被接受的一种方法是尝试编写一个 Cookie，然后再尝试读取该 Cookie。如果无法读取您编写的 Cookie，则可以假定浏览器不接受 Cookie。</p> <p>下面的代码示例演示如何测试浏览器是否接受 Cookie。此示例由两个页面组成。第一个页面写出 Cookie，然后将浏览器重定向到第二个页面。第二个页面尝试读取该 Cookie。然后再将浏览器重定向回第一个页面，并将带有测试结果的查询字符串变量添加到 URL。</p> <p>第一个页面的代码如下所示：</p> 
+<div id="code-snippet-17" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabActive" dir="ltr"><a>C#</a></div><div class="codeSnippetContainerTab" dir="ltr"><a href="http://msdn.microsoft.com/zh-cn/library/ms178194(v=vs.80).aspx?cs-save-lang=1&cs-lang=vb#code-snippet-17">VB</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="复制到剪贴板。" href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_5d96e270-42fe-4360-8728-d7f44c7cea0f');">复制</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_5d96e270-42fe-4360-8728-d7f44c7cea0f" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre><span style="color:Blue;">protected</span> <span style="color:Blue;">void</span> Page_Load(<span style="color:Blue;">object</span> sender, EventArgs e)
+{
+    <span style="color:Blue;">if</span> (!Page.IsPostBack)
+    {
+        <span style="color:Blue;">if</span> (Request.QueryString[<span style="color:#A31515;">"AcceptsCookies"</span>] == <span style="color:Blue;">null</span>)
+        {
+            Response.Cookies[<span style="color:#A31515;">"TestCookie"</span>].Value = <span style="color:#A31515;">"ok"</span>;
+            Response.Cookies[<span style="color:#A31515;">"TestCookie"</span>].Expires =
+                DateTime.Now.AddMinutes(1);
+            Response.Redirect(<span style="color:#A31515;">"TestForCookies.aspx?redirect="</span> +
+                Server.UrlEncode(Request.Url.ToString()));
+        }
+        <span style="color:Blue;">else</span>
+        {
+            Label1.Text = <span style="color:#A31515;">"Accept cookies = "</span> +
+                Server.UrlEncode(
+                Request.QueryString[<span style="color:#A31515;">"AcceptsCookies"</span>]);
+        }
+    }
+}
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+  <p>该页面首先测试以确定是不是回发，如果不是，则查找包含测试结果的查询字符串变量名 <tt xmlns:asp="http://msdn2.microsoft.com/asp">AcceptsCookies</tt>。如果不存在查询字符串变量，表示测试还未完成，因此代码会写出一个名为 <tt xmlns:asp="http://msdn2.microsoft.com/asp">TestCookie</tt> 的 Cookie。写出 Cookie 后，该示例调用 <a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpresponse.redirect(v=vs.80).aspx">Redirect</a> 来切换到 TestForCookies.aspx 测试页。附加到测试页 URL 的信息是一个名为 <tt xmlns:asp="http://msdn2.microsoft.com/asp">redirect</tt> 的查询字符串变量，该变量包含当前页的 URL；这样就能在执行测试后重定向回此页面。</p> <p>测试页可完全由代码组成；不需要包含控件。下面的代码示例阐释了该测试页。</p> 
+<div id="code-snippet-18" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabActive" dir="ltr"><a>C#</a></div><div class="codeSnippetContainerTab" dir="ltr"><a href="http://msdn.microsoft.com/zh-cn/library/ms178194(v=vs.80).aspx?cs-save-lang=1&cs-lang=vb#code-snippet-18">VB</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="复制到剪贴板。" href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_ced8edbb-5071-4d2b-ac3f-4806ae2357fb');">复制</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_ced8edbb-5071-4d2b-ac3f-4806ae2357fb" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre><span style="color:Blue;">protected</span> <span style="color:Blue;">void</span> Page_Load(<span style="color:Blue;">object</span> sender, EventArgs e)
+{
+    <span style="color:Blue;">string</span> redirect = Request.QueryString[<span style="color:#A31515;">"redirect"</span>];
+    <span style="color:Blue;">string</span> acceptsCookies;
+    <span style="color:Blue;">if</span>(Request.Cookies[<span style="color:#A31515;">"TestCookie"</span>] ==<span style="color:Blue;">null</span>)
+        acceptsCookies = <span style="color:#A31515;">"no"</span>;
+    <span style="color:Blue;">else</span>
+    {
+        acceptsCookies = <span style="color:#A31515;">"yes"</span>;
+        <span style="color:Green;">// Delete test cookie.</span>
+        Response.Cookies[<span style="color:#A31515;">"TestCookie"</span>].Expires = 
+            DateTime.Now.AddDays(-1);
+    }
+    Response.Redirect(redirect + <span style="color:#A31515;">"?AcceptsCookies="</span> + acceptsCookies,
+    <span style="color:Blue;">true</span>);
+}
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+  <p>读取重定向查询字符串变量后，代码尝试读取 Cookie。出于管理目的，如果该 Cookie 存在，则立即删除。测试完成后，代码通过 <tt xmlns:asp="http://msdn2.microsoft.com/asp">redirect</tt> 查询字符串变量传递给它的 URL 构造一个新的 URL。新 URL 也包括一个包含测试结果的查询字符串变量。最后一步是使用新 URL 将浏览器重定向到最初页面。</p> <p>该示例的一个改进是可将 Cookie 测试结果保存到永久存储区（如数据库）中，这样就不必在用户每次查看最初页面时都重复进行测试。（默认情况下，在会话状态中存储测试结果需要 Cookie。）</p> </div><h1 class="heading">Cookie 和会话状态</h1><div id="sectionSection9" class="seeAlsoNoToggleSection"> <p>当用户导航到您的站点时，服务器为该用户建立唯一的会话，会话将一直延续到用户访问结束。ASP.NET 会为每个会话维护会话状态信息，应用程序可在会话状态信息中存储用户特定信息。有关更多信息，请参见<a href="http://msdn.microsoft.com/zh-cn/library/ms178581(v=vs.80).aspx">会话状态概述</a>主题。</p> <p>ASP.NET 必须跟踪每个用户的会话 ID，以便可以将用户映射到服务器上的会话状态信息。默认情况下，ASP.NET 使用非永久性 Cookie 来存储会话状态。但是，如果用户已在浏览器上禁用 Cookie，会话状态信息便无法存储在 Cookie 中。</p> <p>ASP.NET 提供了无 Cookie 会话作为替代。可以将应用程序配置为不将会话 ID 存储在 Cookie 中，而存储在站点中页面的 URL 中。如果应用程序依赖于会话状态，可以考虑将其配置为使用无 Cookie 会话。但是在较少的情况下，如果用户与他人共享 URL（可能是用户将 URL 发送给同事，而该用户的会话仍然处于活动状态），则最终这两个用户可能共享同一个会话，结果将难以预料。有关将应用程序配置为使用无 Cookie 会话的更多信息，请参见 <a href="http://msdn.microsoft.com/zh-cn/library/75x4ha6s(v=vs.80).aspx">ASP.NET 状态管理概述</a>主题。</p> </div><h1 class="heading"><span id="seeAlsoNoToggle">请参见</span></h1><div id="seeAlsoSection" class="seeAlsoNoToggleSection"><h4 class="subHeading">概念</h4><a href="http://msdn.microsoft.com/zh-cn/library/zdh19h94(v=vs.80).aspx">Web 应用程序的基本安全实施策略</a><br><h4 class="subHeading">其他资源</h4><a href="http://msdn.microsoft.com/zh-cn/library/y5y3c2c5(v=vs.80).aspx">ASP.NET 状态管理</a><br><br></div></div>  </div>
+</div>
+
+
+
+
+
+<p style="padding: 15px 0px; margin: 0px;"></p>
+    
+
+
+
+<script id="CommentTemplate" type="text/x-jquery-tmpl">
+    <div class="communityContentAnnotation">
+        <a name="${Index}"></a>
+        <h3>
+            ${Title}
+        </h3>
+        <div class="communityContentAnnotationBody">
+            {{html Body}}
+        </div>
+        <div class="communityContentAnnotationInfo">
+            <div class="communityContentAnnotationAvatarContainer">
+                <a href="${UserAvatar.Href}" title="${UserAvatar.ToolTip}" class="communityContentAnnotationAvatar"><img src="${UserAvatar.ImageUrl}" alt="${UserAvatar.ImageAltText}" width="34" height="34" /></a>
+            </div>
+            <div class="communityContentAnnotationUserDateContainer">
+                <div class="communityContentAnnotationUserContainer">
+                    <a href="${UserAvatar.Href}">
+                        ${User}
+                    </a>
+                </div>
+                <div class="communityContentAnnotationDateContainer">
+                    <span>${Date}</span>
+                    
+                    {{if EditLink}}
+                        <span>
+                            <a href="${EditLink.Href}" title="${EditLink.ToolTip}" class="communityContentCommentEditLink">${EditLink.Title}</a>
+                        </span>
+                    {{/if}}
+
+                    {{if DeleteLink}}
+                        <span>
+                            <a href="${DeleteLink.Href}" title="${DeleteLink.ToolTip}" class="communityContentDeleteLink">${DeleteLink.Title}</a>
+                        </span>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<div class="communityContentContainer">
+    <div id="CommunityContentHeader" class="communityContentHeader">
+        <div class="communityContentHeaderTitleContainer">
+            <h2>社区附加资源</h2>
+                <a class="communityContentAddLink" href="http://msdn.microsoft.com/zh-cn/library/community/add/ms178194(v=vs.80).aspx">
+                    <span class="communityContentAddButton" title="添加">
+                        添加
+                    </span>
+                </a>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+    
+    <div id="CommunityComments" data-url="/zh-cn/library/community/comments/ms178194(v=vs.80).aspx"></div>
+</div>
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>显示:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit">继承
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected">保护
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="您当前的筛选设置无成员可用。">
+
+
+ 
+</div>
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="_w38zn_fxwXDKtXWu0ZQUvKwn-9QudNq6PS6xnmkEH9poeAKgVXzmWv5FeFxt1n9xWmlFnAyG4T9AzBcz5MqpyiGUBxQkzbLTw4YQHtkRrnKVbz_dKiThPaTQGXhyf8cVZY0sA2">
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/zh-cn/library/feedback/add/ms178194(v=vs.80).aspx">
+<input id="isTopicRated" type="hidden" value="false">
+
+
+
+
+    <div id="ux-footer" class="" style="">
+    <footer class="top">
+        <div data-fragmentname="LeftLinks" id="Fragment_LeftLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="LinkListTitle">开发人员中心</div>
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://msdn.microsoft.com/windows" id="27861_1" class="windowsBlue" xmlns="http://www.w3.org/1999/xhtml">Windows</a>
+        </li>
+        <li>
+          <a href="http://dev.windowsphone.com/" id="27861_2" class="windowsPurple" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+        </li>
+        <li>
+          <a href="http://msdn.microsoft.com/office" id="27861_3" class="office" xmlns="http://www.w3.org/1999/xhtml">Office</a>
+        </li>
+        <li>
+          <a href="http://www.windowsazure.com/en-us/documentation/" id="27861_4" class="windowsBlue" xmlns="http://www.w3.org/1999/xhtml">Windows Azure</a>
+        </li>
+        <li>
+          <a href="http://msdn.microsoft.com/vstudio" id="27861_5" class="visualStudio" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+        </li>
+        <li>
+          <a href="http://msdn.microsoft.com/aa937802" id="27861_6" xmlns="http://www.w3.org/1999/xhtml">更多…</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>    
+        <div id="rightLinks">
+            <div data-fragmentname="CenterLinks1" id="Fragment_CenterLinks1" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="LinkListTitle">学习资源</div>
+    <div class="LinkListDescription"></div>
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://www.microsoftvirtualacademy.com/" id="27861_14" xmlns="http://www.w3.org/1999/xhtml">Microsoft Virtual Academy</a>
+        </li>
+        <li>
+          <a href="http://channel9.msdn.com/" id="27861_16" xmlns="http://www.w3.org/1999/xhtml">Channel 9</a>
+        </li>
+        <li>
+          <a href="http://www.interoperabilitybridges.com/" id="27861_17" xmlns="http://www.w3.org/1999/xhtml">Interoperability Bridges</a>
+        </li>
+        <li>
+          <a href="http://msdn.microsoft.com/magazine/" id="CenterLinks1_427_33" xmlns="http://www.w3.org/1999/xhtml">MSDN Magazine</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+            <div data-fragmentname="CenterLinks2" id="Fragment_CenterLinks2" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="LinkListTitle">社区</div>
+    <div class="LinkListDescription"></div>
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://social.msdn.microsoft.com/forums/" id="27861_19" xmlns="http://www.w3.org/1999/xhtml">技术论坛</a>
+        </li>
+        <li>
+          <a href="http://blogs.msdn.com/b/developer-tools/" id="27861_20" xmlns="http://www.w3.org/1999/xhtml">Blogs</a>
+        </li>
+        <li>
+          <a href="http://www.codeplex.com/" id="27861_22" xmlns="http://www.w3.org/1999/xhtml">Codeplex</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+            <div data-fragmentname="CenterLinks3" id="Fragment_CenterLinks3" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="LinkListTitle">帮助和支持</div>
+    <div class="LinkListDescription"></div>
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://msdn.microsoft.com/hh361695" id="CenterLinks3_427_34" xmlns="http://www.w3.org/1999/xhtml">自助支持</a>
+        </li>
+        <li>
+          <a href="http://support.microsoft.com/" id="27861_24" xmlns="http://www.w3.org/1999/xhtml">其他支持选项</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+            <div data-fragmentname="CenterLinks4" id="Fragment_CenterLinks4" xmlns="http://www.w3.org/1999/xhtml" class="nth-child-4n">
+  
+  <div class="LinkList">
+    <div class="LinkListTitle">计划</div>
+    <div class="LinkListDescription"></div>
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://www.microsoft.com/bizspark/" id="27861_27" xmlns="http://www.w3.org/1999/xhtml">BizSpark (for startups)</a>
+        </li>
+        <li>
+          <a href="https://www.dreamspark.com/" id="27861_28" xmlns="http://www.w3.org/1999/xhtml">DreamSpark</a>
+        </li>
+        <li>
+          <a href="https://www.microsoft.com/faculty" id="27861_29" xmlns="http://www.w3.org/1999/xhtml">Faculty Connection</a>
+        </li>
+        <li>
+          <a href="http://www.microsoft.com/student/" id="CenterLinks4_427_32" xmlns="http://www.w3.org/1999/xhtml">Microsoft Student</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+    <div class="feedbackContainer">
+        <div id="feedbackSection1" class="clear">
+            <div class="left">本文是否对您有所帮助？</div>
+            <div class="left">
+                <div class="left">
+                    <input type="radio" name="feedback" id="feedbackYes" value="1" class="feedbackYesClick" data-enhance="false"><label class="feedbackYesClick" for="feedbackYes"> 是</label>
+                </div>
+                <div class="left">
+                    <input type="radio" name="feedback" id="feedbackNo" value="0" class="feedbackNoClick" data-enhance="false"><label class="feedbackNoClick" for="feedbackNo"> 否</label>
+                </div>
+            </div>
+            <a class="rateThisAnchor" name="feedback"></a>
+        </div>
+        <div id="feedbackSection2" class="clear">
+        </div>
+        <div id="feedbackSection3" class="clear">
+                    <div>
+                        <input id="checkboxNo201" name="chkbxNo" type="checkbox" value="201" data-enhance="false">
+                        <label for="checkboxNo201">不准确</label>
+                    </div>
+                    <div>
+                        <input id="checkboxNo202" name="chkbxNo" type="checkbox" value="202" data-enhance="false">
+                        <label for="checkboxNo202">深度不够</label>
+                    </div>
+                    <div>
+                        <input id="checkboxNo203" name="chkbxNo" type="checkbox" value="203" data-enhance="false">
+                        <label for="checkboxNo203">需要更多代码示例</label>
+                    </div>
+                    <div>
+                        <input id="checkboxNo204" name="chkbxNo" type="checkbox" value="204" data-enhance="false">
+                        <label for="checkboxNo204">翻译需要改进</label>
+                    </div>
+        </div>
+        <div id="feedbackSection4" class="clear">
+            <div>
+                <textarea id="feedbackTextArea" name="feedbackText" class="TellUsMoreTextBoxSearchLoaded" data-enhance="false">请告诉我们更多意见...</textarea>
+            </div>
+            <div class="left"><span class="counter">(<span id="feedbackTextCounter">1500</span> 个剩余字符)</span></div>
+            <div class="right">
+                <button type="button" id="feedbackSubmit" title="单击以提交反馈" data-enhance="false">提交</button>
+            </div>
+        </div>
+        <div id="feedbackSection5">感谢您的反馈</div>
+        <input id="feedbackValue" type="hidden" value="">
+        <input id="tellUsMoreText" type="hidden" value="请告诉我们更多意见...">
+        <input id="maxTextBoxCharacters" type="hidden" value="1500">
+        <input type="hidden" id="feedbackSiteName" name="feedbackSiteName" value="">
+        <input type="hidden" id="feedbackPriority" name="feedbackPriority" value="">
+        <input type="hidden" id="feedbackSourceUrl" name="feedbackSourceUrl" value="">
+        <input type="hidden" id="ClientIP" name="ClientIP" value="">
+        <input type="hidden" id="ClientOS" name="ClientOS" value="">
+        <input type="hidden" id="ClientBrowser" name="ClientBrowser" value="">
+        <input type="hidden" id="ClientTime" name="ClientTime" value="">
+        <input type="hidden" id="ClientDate" name="ClientDate" value="">
+    </div>
+    
+        </div>
+    </footer>
+    
+    <footer class="bottom">
+        <span class="localeContainer">
+                <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/zh-cn/selectlocale-dmc">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fzh-cn%2flibrary%2fms178194(v%3dvs.80).aspx">
+        <a href="http://msdn.microsoft.com/zh-cn/library/ms178194(VS.80).aspx#" onclick="$(&#39;#selectLocaleForm&#39;).submit();return false;" title="更改您的语言">中国（简体中文）</a>
+    </form>    
+
+
+        </span>
+        
+        <div data-fragmentname="BottomLinks" id="Fragment_BottomLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="LinkListDescription"></div>
+    <div class="Links">
+      <ul class="LinkColumn horizontal">
+        <li>
+          <a href="http://www.microsoft.com/china/msdn/newsletter/default.aspx" id="27861_8" xmlns="http://www.w3.org/1999/xhtml">MSDN Flash 中心</a>
+        </li>
+        <li>
+          <a href="http://msdn.microsoft.com/dn529288" id="27861_10" xmlns="http://www.w3.org/1999/xhtml">隐私权声明</a>
+        </li>
+        <li>
+          <a href="http://msdn.microsoft.com/cc300389.aspx" id="27861_11" xmlns="http://www.w3.org/1999/xhtml">保留所有权利</a>
+        </li>
+        <li>
+          <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="27861_12" xmlns="http://www.w3.org/1999/xhtml">商标</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>    
+        <span class="logoLegal">
+            <span class="logo"></span>
+            <span class="copyright">© 2014 Microsoft</span>
+        </span>
+    </footer>
+</div>
+    
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. 版权所有。 </div>
+            </div>
+
+            
+            
+    
+    
+    <input id="tocPaddingPerLevel" type="hidden" value="17">
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default">
+
+
+<!--[CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]-->
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript>&lt;div&gt;&lt;img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;amp;WT.js=No" /&gt;&lt;/div&gt;</noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  &lt;a href="http://www.omniture.com" title="Web Analytics"&gt;
+    &lt;img src="//msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" /&gt;
+  &lt;/a&gt;
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="oDIn7AYGqgQCpoIXxp6gkDljjPf-_C7CxP1VlkcgIIJQbLtCGZFOwmI6FB8Z-S1WxW_uhthOpvC1auPtM1KdcHHvnhQD0Nx_cbiv2MyrVQdZRubEMdbE22w45Twu7rsTg7D4Hg2">
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/zh-cn/library/ms178194(d=default,l=zh-cn,v=vs.80).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027zh-cn\u0027;\n  var wtsp = \u0027msdnlib_devtools_lang\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"eaab93e8-f2de-4faf-a609-d145e674e6e3\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,1:Layout,2:Header,2:Rating,2:Footer,0:Topic,3:webtrendsscript,4:omni_rsid_MSDN,5:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Centers/Themes/Base/Content:1,/Areas/Centers/Themes/Msdn/Content:2,/Areas/Global/Content/Webtrends/resources:3,/Areas/Global/Content/Omniture/resources/MSDN:4,/Areas/Epx/Themes/Base/Content:5\u0026amp;hashKey=61C207377CBE579E8408FDB19B9E9D57" },
+	{ url: "http://i3.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=zh-cn\u0026focusOnInit=false\u0026emptyWatermark=true" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:PrintExportButton,1:Toc,1:NavigationResize,2:FeedbackCounter,2:Feedback;/Areas/Epx/Themes/Base/Content:0,/Areas/Epx/Library/Content:1,/Areas/Epx/Shared/Content:2\u0026amp;hashKey=512C6495376E57E3E6FF6F0F6D9DC8E6" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:CommunityContent,1:LibraryMemberFilter,1:Toc_Fixed,0:CodeSnippet,0:TopicNotInScope,0:CollapsibleArea,0:VersionSelector,0:SurveyBroker;/Areas/Epx/Content/Scripts:0,/Areas/Epx/Library/Content:1\u0026amp;hashKey=65EEFA29F96E9A74F5DCF143095A7110" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script>
+<script src="./ASP.NET Cookie 概述_files/broker-config.js"></script><div id="_WEDCSInsertedData" style="display: none;"><iframe id="_msnFrame" src="./ASP.NET Cookie 概述_files/c.gif" style="z-index:-1;height:1px;width:1px;display:none;visibility:hidden;" onload="javascript:MscomBeacon();"></iframe></div></body></html>

@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "用户详细信息";
+}
+
+@*导入一下命名空间*@
+@using AppMvcWebForm.Models;
+<h2>用户详情</h2>
+@{
+      
+//类型要要转换  Razor页面设置强类型视图  如何设置
+var u = (UserInfo)ViewData["userInfo"];
+}
+
+
+
+  @*
+      
+      强类型视图 这个页面继承 viewPage dynamic 运行的时候指定类型 var 编译的时候指定
+  动态类型  在视图页面里面是经常使用到的  
+      这个视图里面的页面都是 某一个类型的数据 比如 UserInfo  Ordre  Role  shop  的某一个类型数据 可以方便的。
+      可以更加的方便 
+      
+      *@
+<table>
+    <tr>
+        <th>介绍</th>
+        <th>内容</th>
+    </tr>
+    <tr>
+        <td>编号</td>
+        <td>@*@u.ID*@  @ViewData.Model</td>
+    </tr>
+    <tr>
+        <td>注册日期</td>
+        <td>@u.RegTime</td>
+    </tr>
+    <tr>
+        <td>邮箱</td>
+        <td>@u.Email</td>
+    </tr>
+    <tr>
+        <td>用户名</td>
+        <td>@u.UserName</td>
+    </tr>
+    <tr>
+        <td>用户密码</td>
+        <td>@u.UserPass</td>
+    </tr>
+</table>
+

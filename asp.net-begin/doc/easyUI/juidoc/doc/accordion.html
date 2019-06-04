@@ -1,0 +1,416 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="keywords" content="jquery,ui,easy,easyui,web framekwork,ajax framekwork,ria,web development">
+		<meta name="description" content="easyui help you build your web page easily!">
+		<title>accordion - jQuery EasyUI中文帮助手册</title>
+        <link rel="stylesheet" href="main.css" type="text/css" />
+		<link type="text/css" rel="stylesheet" href="SyntaxHighlighter.css"></link>
+		<script src="shCore.js"></script>
+		<script src="shBrushJScript.js"></script>
+		<script src="shBrushXml.js"></script>
+<script type="text/javascript">/*120*270，创建于2012-3-31*/ var cpro_id = 'u831686';</script><script src="http://cpro.baidu.com/cpro/ui/f.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<div id="header">
+						<div id="header-inner">
+				<table cellpadding="0" cellspacing="0" style="width:100%;">
+					<tr>
+						<td rowspan="2" style="width:20px;">
+						</td>
+						<td style="height:52px;">
+							<div style="color:#fff;font-size:22px;font-weight:bold;">
+								<a href="http://www.jeasyui.com/" style="color:#fff;font-size:22px;font-weight:bold;text-decoration:none">jQuery EasyUI</a>
+							</div>
+							<div style="color:#fff">
+								<a href="http://www.jeasyui.com/" style="color:#fff;text-decoration:none">jQuery EasyUI 框架帮助你轻松建立站点。</a>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+			
+		</div>
+		<div id="mainwrap">
+			<div id="content">
+			
+
+
+<div style="padding:10px">
+
+
+
+<h3>可伸缩面板</h3>
+
+<p>使用$.fn.accordion.defaults重载默认值</p>
+
+<img src="images/accordion.png"/>
+
+
+
+<h4>依赖关系</h4>
+
+<ul>
+
+	<li>控制面板</li>
+
+</ul>
+
+
+
+<h4>使用方法</h4>
+
+<h5>创建可伸缩面板</h5>
+
+<p>使用html标签创建可伸缩面板，只须要对&lt;div&gt;标签引用'easyui-accordion'类。</p>
+
+<textarea name="code-accordion" class="html">
+	<div id="aa" class="easyui-accordion" style="width:300px;height:200px;">
+		<div title="Title1" iconCls="icon-save" style="overflow:auto;padding:10px;">
+			<h3 style="color:#0099FF;">Accordion for jQuery</h3>
+			<p>Accordion is a part of easyui framework for jQuery. 
+			It lets you define your accordion component on web page more easily.</p>
+		</div>
+		<div title="Title2" iconCls="icon-reload" selected="true" style="padding:10px;">
+			content2
+		</div>
+		<div title="Title3">
+			content3
+		</div>
+	</div>
+</textarea>
+
+<p>在后面将介绍如何改变或者重建可伸缩面板以及修改一些特性。</p>
+
+<textarea name="code-accordion" class="js">
+	$('#aa').accordion({
+		animate:false
+	});
+</textarea>
+
+
+
+<br/>
+
+<h5>刷新可伸缩面板的内容</h5>
+
+<p>调用'getSelected'方法获取当前面板（的名称），接着可以调用控制面板的'refresh'方法来载入新的内容。</p>
+
+<textarea name="code-accordion" class="js">
+	var pp = $('#aa').accordion('getSelected');	//获取当前选择的可伸缩面板
+	if (pp){
+		pp.panel('refresh','new_content.php');	//调用'refresh'方法载入新内容
+	}
+</textarea>
+
+
+
+<p>&nbsp;</p>
+
+<h4>容器属性（可伸缩面板所在的容器，通常称为‘盒子’）</h4>
+
+<table class="doc-table">
+
+<tr>
+
+<th><strong>名称</strong></th>
+<th><strong>类型</strong></th>
+<th><strong>描述</strong></th>
+
+<th><strong>默认值</strong></th>
+
+</tr>
+
+<tr>
+
+<td>width（宽度）</td>
+
+<td>number（数字）</td>
+
+<td>可伸缩面板所在容器的宽度。</td>
+
+
+
+<td>auto</td>
+
+</tr>
+
+<tr>
+
+<td>height（高度）</td>
+
+<td>number（数字）</td>
+
+<td>可伸缩面板所在容器的高度。</td>
+
+<td>auto</td>
+
+</tr>
+
+<tr>
+
+<td>fit（铺满浏览器）</td>
+
+<td>boolean（布尔型）</td>
+
+
+
+<td>如果设置为true，可伸缩面板所在容器将铺满它所在的父容器（浏览器）</td>
+
+<td>false</td>
+
+</tr>
+
+<tr>
+
+<td>border（边框）</td>
+
+<td>boolean（布尔型）</td>
+
+<td>定义是否显示边框。</td>
+
+<td>true</td>
+
+</tr>
+
+<tr>
+
+<td>animate（动画效果）</td>
+
+
+
+<td>boolean（布尔型）</td>
+
+<td>定义当延伸或者折叠面板时是否显示动画效果。</td>
+
+<td>true</td>
+
+</tr>
+
+</table>
+
+
+
+<h4>可伸缩面板属性</h4>
+
+<p>可伸缩面板继承控制面板的属性，以下是额外的属性:</p>
+
+<table class="doc-table">
+
+<tr>
+
+<th><strong>名称</strong></th>
+<th><strong>类型</strong></th>
+<th><strong>描述</strong></th>
+
+<th><strong>默认值</strong></th>
+
+</tr>
+
+<tr>
+
+
+
+<td>selected（被选择）</td>
+
+<td>boolean（布尔型）</td>
+
+<td>设置为true将默认展开面板。</td>
+
+<td>false</td>
+
+</tr>
+
+</table>
+
+
+
+<h4>事件</h4>
+
+<table class="doc-table">
+
+<tr>
+
+<th><strong>名称</strong></th>
+<th><strong>参数</strong></th>
+<th><strong>描述</strong></th>
+
+</tr>
+
+<tr>
+
+<td>onSelect</td>
+
+<td>title</td>
+
+<td>当一个可伸缩面板被选择时触发。</td>
+
+
+
+</tr>
+
+<tr>
+
+<td>onAdd</td>
+
+<td>title</td>
+
+<td>在一个新面板被添加时触发。</td>
+
+</tr>
+
+<tr>
+
+<td>onBeforeRemove</td>
+
+<td>title</td>
+
+<td>在可伸缩面板被移除之前触发，返回false将取消移除。</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>onRemove</td>
+
+<td>title</td>
+
+<td>在一个可伸缩面板被移除时触发。</td>
+
+</tr>
+
+</table>
+
+
+
+<h4>方法</h4>
+
+<table class="doc-table">
+
+<tr>
+
+<th><strong>名称</strong></th>
+<th><strong>参数</strong></th>
+<th><strong>描述</strong></th>
+
+</tr>
+
+<tr>
+
+<td>options</td>
+
+<td>none</td>
+
+<td>返回容器属性对象。</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>panels</td>
+
+<td>none</td>
+
+<td>获取所有的面板。</td>
+
+</tr>
+
+<tr>
+
+<td>resize</td>
+
+<td>none</td>
+
+<td>重置可伸缩面板。</td>
+
+</tr>
+
+<tr>
+
+
+
+<td>getSelected</td>
+
+<td>none</td>
+
+<td>获取被选择的面板。</td>
+
+</tr>
+
+<tr>
+
+<td>getPanel</td>
+
+<td>title</td>
+
+<td>获取特定的可伸缩面板。</td>
+
+</tr>
+
+<tr>
+
+<td>select</td>
+
+
+
+<td>title</td>
+
+<td>选择特定的面板。</td>
+
+</tr>
+
+<tr>
+
+<td>add</td>
+
+<td>options</td>
+
+<td>添加一个先的可伸缩面板。</td>
+
+</tr>
+
+<tr>
+
+<td>remove</td>
+
+<td>title</td>
+
+
+
+<td>移除特定的面板。</td>
+
+</tr>
+
+</table>
+
+
+
+</div>
+
+
+
+﻿			</div>
+		</div>
+		<div id="footer">
+			<div>Copyright © 2010-2011 www.jeasyui.com</div>
+<a target="_blank" href="http://sighttp.qq.com/authd?IDKEY=0d8f551beb86c567f5d026fc3af8f8a0c1cf318635116789"><img border="0"  src="http://wpa.qq.com/imgd?IDKEY=0d8f551beb86c567f5d026fc3af8f8a0c1cf318635116789&pic=45" alt="点击Q我" title="点击Q我"></a>
+|  
+<noscript><a href="http://www.51.la/?4095651" target="_blank">
+<img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/4095651.asp" style="border:none" /></a></noscript> 
+<script src="http://s17.cnzz.com/stat.php?id=2412230&web_id=2412230&show=pic" language="JavaScript"></script>|<script language="javascript" type="text/javascript" src="http://js.users.51.la/4095651.js"></script>
+|<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F9541ae759aad5b1e7083c2f63b8e8e9c' type='text/javascript'%3E%3C/script%3E"));
+</script>
+		</div>
+		<script type="text/javascript">
+						dp.SyntaxHighlighter.ClipboardSwf = '/SyntaxHighlighter/Scripts/clipboard.swf';
+			dp.SyntaxHighlighter.HighlightAll('code-accordion');
+		</script>
+	</body>
+</html>

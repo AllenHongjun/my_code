@@ -1,0 +1,271 @@
+﻿<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="keywords" content="jquery,ui,easy,easyui,web framekwork,ajax framekwork,ria,web development">
+		<meta name="description" content="easyui help you build your web page easily!">
+		<title>combobox - jQuery EasyUI中文帮助手册</title>
+        <link rel="stylesheet" href="main.css" type="text/css" />
+		<link type="text/css" rel="stylesheet" href="SyntaxHighlighter.css"></link>
+		<script src="shCore.js"></script>
+		<script src="shBrushJScript.js"></script>
+		<script src="shBrushXml.js"></script>
+<script type="text/javascript">/*120*270，创建于2012-3-18*/ var cpro_id = 'u812233';</script><script src="http://cpro.baidu.com/cpro/ui/f.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<div id="header">
+						<div id="header-inner">
+				<table cellpadding="0" cellspacing="0" style="width:100%;">
+					<tr>
+						<td rowspan="2" style="width:20px;">
+						</td>
+						<td style="height:52px;">
+							<div style="color:#fff;font-size:22px;font-weight:bold;">
+								<a href="http://www.jeasyui.com/" style="color:#fff;font-size:22px;font-weight:bold;text-decoration:none">jQuery EasyUI</a>
+							</div>
+							<div style="color:#fff">
+								<a href="http://www.jeasyui.com/" style="color:#fff;text-decoration:none">jQuery EasyUI 框架帮助你轻松建立站点。</a>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+			
+		</div>
+		<div id="mainwrap">
+			<div id="content">
+			
+
+<div style="padding:10px">
+
+<h3>可装载组合框</h3>
+<p>继承$.fn.combo.defaults，使用$.fn.combobox.defaults重载默认值。</p>
+<img src="images/combobox.png"/>
+
+<h4>依赖关系</h4>
+<ul>
+	<li>自定义组合框</li>
+</ul>
+
+<h4>使用方法</h4>
+<textarea name="code-combobox" class="html">
+	<select id="cc" name="dept" style="width:200px;">
+		<option value="aa">aitem1</option>
+		<option>bitem2</option>
+		<option>bitem3</option>
+		<option>ditem4</option>
+		<option>eitem5</option>
+	</select>
+</textarea>
+<textarea name="code-combobox" class="html">
+	<input id="cc" name="dept" value="aa">
+</textarea>
+<textarea name="code-combobox" class="js">
+	$('#cc').combobox({
+		url:'combobox_data.json',
+		valueField:'id',
+		textField:'text'
+	});
+</textarea>
+<p>The json data format sample:</p>
+<textarea name="code-combobox" class="js">
+	[{
+		"id":1,
+		"text":"text1"
+	},{
+		"id":2,
+		"text":"text2"
+	},{
+		"id":3,
+		"text":"text3",
+		"selected":true
+	},{
+		"id":4,
+		"text":"text4"
+	},{
+		"id":5,
+		"text":"text5"
+	}]
+</textarea>
+
+<h4>属性</h4>
+<p>继承自定义组合框的属性, 以下是可装载组合框的独有属性。</p>
+<table class="doc-table">
+<tr>
+<th><strong>名称</strong></th>
+<th><strong>类型</strong></th>
+<th><strong>描述</strong></th>
+<th><strong>默认值</strong></th>
+</tr>
+<tr>
+
+<td>valueField（值域）</td>
+<td>string（字符串）</td>
+<td>绑定到组合框下的数据的值域的名称。</td>
+<td>value</td>
+</tr>
+<tr>
+<td>textField（文本域）</td>
+<td>string（字符串）</td>
+<td>绑定到组合框下数据的文本域的名称。</td>
+<td>text</td>
+
+</tr>
+<tr>
+<td>mode（模式）</td>
+<td>string（字符串）</td>
+<td>定义当文本发生改变时，如何载入数据列表。如果组合框要从远程地址载入数据，设置为'remote'。</td>
+<td>local</td>
+</tr>
+<tr>
+<td>url（超链接地址）</td>
+<td>string（字符串）</td>
+<td>可供载入数据列表的远程地址。</td>
+
+<td>null</td>
+</tr>
+<tr>
+<td>method（方法）</td>
+<td>string（字符串）</td>
+<td>获取数据的HTTP方法。</td>
+<td>post</td>
+</tr>
+<tr>
+<td>data（数据）</td>
+<td>array（数组）</td>
+
+<td>将被载入的数据列表。</td>
+<td>null</td>
+</tr>
+<tr>
+<td>filter（过滤器）</td>
+<td>function（函数）</td>
+<td>定义当模式设置为'local'时如何过滤本地数据，function有2个参数：<br />
+q: 用户输入的文本。<br />
+row: 数据列表<br />
+返回true将允许显示数据列表。</td>
+
+<td></td>
+</tr>
+<tr>
+<td>formatter(格式)</td>
+<td>function（函数）</td>
+<td>定义如何返回数据，function有一个参数：row。</td>
+<td></td>
+</tr>
+</table>
+
+<h4>事件</h4>
+<p>事件继承自定义组合框，以下是可装载组合框的独有事件。</p>
+<table class="doc-table">
+<tr>
+<th><strong>名称</strong></th>
+<th><strong>参数</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+<tr>
+<td>onLoadSuccess</td>
+
+<td>none</td>
+<td>当远程数据载入成功时触发。</td>
+</tr>
+<tr>
+<td>onLoadError</td>
+<td>none</td>
+<td>当远程数据载入错误时触发。</td>
+</tr>
+<tr>
+<td>onSelect</td>
+<td>record</td>
+
+<td>当用户选择一个列表项时触发。</td>
+</tr>
+<tr>
+<td>onUnselect</td>
+<td>record</td>
+<td>当用户取消选择一个列表项时触发。</td>
+</tr>
+</table>
+
+<h4>方法</h4>
+<p>方法继承自定义组合框，以下是可装载组合框独有的或者重载自定义组合框的方法。</p>
+<table class="doc-table">
+<tr>
+<th><strong>名称</strong></th>
+<th><strong>参数</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+<tr>
+<td>options</td>
+
+<td>none</td>
+<td>返回属性对象。</td>
+</tr>
+<tr>
+<td>getData</td>
+<td>none</td>
+<td>返回已载入的数据。</td>
+</tr>
+<tr>
+<td>loadData</td>
+<td>data</td>
+
+<td>载入本地数据列表。</td>
+</tr>
+<tr>
+<td>reload</td>
+<td>url</td>
+<td>请求远程数据列表。</td>
+</tr>
+<tr>
+<td>setValues</td>
+<td>values</td>
+<td>设置组合框的值，参数values是一个数组。</td>
+
+</tr>
+<tr>
+<td>setValue</td>
+<td>value</td>
+<td>设置组合框的值。</td>
+</tr>
+<tr>
+<td>clear</td>
+<td>none</td>
+<td>清除组合框的值。</td>
+</tr>
+
+<tr>
+<td>select</td>
+<td>value</td>
+<td>选择特定的项目。</td>
+</tr>
+<tr>
+<td>unselect</td>
+<td>value</td>
+<td>取消选择特定的项目。</td>
+</tr>
+</table>
+
+
+</div>
+
+﻿			</div>
+		</div>
+		<div id="footer">
+			<div>Copyright © 2010-2011 www.jeasyui.com</div>
+<a target="_blank" href="http://sighttp.qq.com/authd?IDKEY=0d8f551beb86c567f5d026fc3af8f8a0c1cf318635116789"><img border="0"  src="http://wpa.qq.com/imgd?IDKEY=0d8f551beb86c567f5d026fc3af8f8a0c1cf318635116789&pic=45" alt="点击Q我" title="点击Q我"></a>
+|  
+<noscript><a href="http://www.51.la/?4095651" target="_blank">
+<img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/4095651.asp" style="border:none" /></a></noscript> 
+<script src="http://s17.cnzz.com/stat.php?id=2412230&web_id=2412230&show=pic" language="JavaScript"></script>|<script language="javascript" type="text/javascript" src="http://js.users.51.la/4095651.js"></script>
+|<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F9541ae759aad5b1e7083c2f63b8e8e9c' type='text/javascript'%3E%3C/script%3E"));
+</script>
+		</div>
+		<script type="text/javascript">
+						dp.SyntaxHighlighter.ClipboardSwf = '/SyntaxHighlighter/Scripts/clipboard.swf';
+			dp.SyntaxHighlighter.HighlightAll('code-combobox');
+		</script>
+	</body>
+</html>

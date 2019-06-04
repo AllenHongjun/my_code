@@ -1,0 +1,27 @@
+﻿
+
+使用在输入框的地方
+
+1. 自己不会开发 那如果使用别人做好的 都不会用 那就废了
+
+2. 自己不一定做得好。。
+
+
+3. 先搞定一些前端的组件  然后搞定 一些服务端 
+
+4. 一步一步的走 
+
+
+5. 这个也就和项目关联起来了。。
+
+https://github.com/twitter/typeahead.js/
+
+
+
+https://twitter.github.io/typeahead.js/
+
+
+
+
+typeahead.js 使用教程小结
+https://segmentfault.com/a/1190000006036166

@@ -1,0 +1,295 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="keywords" content="jquery,ui,easy,easyui,web framekwork,ajax framekwork,ria,web development">
+		<meta name="description" content="easyui help you build your web page easily!">
+		<title>messager - jQuery EasyUI中文帮助手册</title>
+        <link rel="stylesheet" href="main.css" type="text/css" />
+		<link type="text/css" rel="stylesheet" href="SyntaxHighlighter.css"></link>
+		<script src="shCore.js"></script>
+		<script src="shBrushJScript.js"></script>
+		<script src="shBrushXml.js"></script>
+				<script type="text/javascript">
+        /*120*270，创建于2011-12-16*/ 
+        var cpro_id = 'u713814';
+        </script>
+        <script src="http://cpro.baidu.com/cpro/ui/f.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<div id="header">
+						<div id="header-inner">
+				<table cellpadding="0" cellspacing="0" style="width:100%;">
+					<tr>
+						<td rowspan="2" style="width:20px;">
+						</td>
+						<td style="height:52px;">
+							<div style="color:#fff;font-size:22px;font-weight:bold;">
+								<a href="http://www.jeasyui.com/" style="color:#fff;font-size:22px;font-weight:bold;text-decoration:none">jQuery EasyUI</a>
+							</div>
+							<div style="color:#fff">
+								<a href="http://www.jeasyui.com/" style="color:#fff;text-decoration:none">jQuery EasyUI 框架帮助你轻松建立站点。</a>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+			
+		</div>
+		<div id="mainwrap">
+			<div id="content">
+			
+
+
+<div style="padding:10px">
+
+
+
+<h3>消息窗口</h3>
+
+<p>使用$.messager.defaults重载默认值。</p>
+
+<img src="images/messager.png"/>
+
+
+
+<h4>依赖关系</h4>
+
+<ul>
+
+	<li>窗口</li>
+
+	<li>链接按钮</li>
+
+	<li>进度条</li>
+
+</ul>
+
+
+
+<h4>使用方法</h4>
+
+<textarea name="code-messager" class="js">
+	$.messager.alert('Warning','The warning message');
+	$.messager.confirm('Confirm','Are you sure you want to delete record?',function(r){
+		if (r){
+			alert('ok');
+		}
+	});
+</textarea>
+
+
+
+<h4>属性</h4>
+
+<table class="doc-table">
+
+<tr>
+
+<th><strong>名称</strong></th>
+<th><strong>类型</strong></th>
+<th><strong>描述</strong></th>
+<th><strong>默认值</strong></th>
+
+</tr>
+
+<tr>
+
+<td>ok（确认）</td>
+
+<td>string（字符串）</td>
+
+
+
+<td>显示在“确认”按钮上的文本。</td>
+
+<td>Ok</td>
+
+</tr>
+
+<tr>
+
+<td>cancel（取消）</td>
+
+<td>string（字符串）</td>
+
+<td>显示在“取消”按钮上的文本。</td>
+
+<td>Cancel</td>
+
+</tr>
+
+</table>
+
+
+
+<h4>方法</h4>
+
+<table class="doc-table">
+
+<tr>
+
+<th><strong>名称</strong></th>
+<th><strong>参数</strong></th>
+<th><strong>描述</strong></th>
+
+</tr>
+
+<tr>
+
+
+
+<td>$.messager.show</td>
+
+<td>options</td>
+
+<td>在屏幕的右下方显示一个消息窗口 ，options参数是一个可配置的对象:<br />
+
+showType：定义如何显示消息窗口，可选值: null,slide,fade,show，默认为slide。<br />
+
+showSpeed：定义窗口显示的时间，单位毫秒，默认为 600。<br />
+
+width：定义消息窗口的宽度，默认为250。<br />
+
+height：定义消息窗口的高度，默认为100。<br />
+
+msg：显示在消息窗口的文本。<br />
+
+title：显示在窗口头部的标题。<br />
+
+
+
+timeout：如果定义为0，消息窗口将不会关闭直到用户点击关闭为止。如果定义为非0，消息窗口在超时后将自动关闭。</td>
+
+</tr>
+
+<tr>
+
+<td>$.messager.alert</td>
+
+<td>title, msg, icon, fn</td>
+
+<td>显示警告窗口。参数如下:<br />
+
+title：显示在窗口头部的标题文本。<br />
+
+msg：显示在窗口中的文本。<br />
+
+icon：显示的图片，可选值：error,question,info,warning。<br />
+
+fn：当窗口关闭时触发的回调函数。</td>
+
+
+
+</tr>
+
+<tr>
+
+<td>$.messager.confirm</td>
+
+<td>title, msg, fn</td>
+
+<td>显示一个带有确认和取消按钮的确认信息窗口。参数如下：<br />
+
+title：显示在窗口头部的文本。<br />
+
+msg：显示在窗口中的文本。<br />
+
+fn(b)：回调函数，当用户点击确认按钮时，传递一个true值给回调函数，否则传递一个false值。</td>
+
+</tr>
+
+<tr>
+
+<td>$.messager.prompt</td>
+
+
+
+<td>title, msg, fn</td>
+
+<td>显示一个带有确认和取消的输入信息窗口。 参数如下：<br />
+
+title：显示在窗口头部的标题文本。<br />
+
+msg：显示在窗口中的信息<br />
+
+fn(val)：接受用户输入作为参数的回调函数。</td>
+
+</tr>
+
+<tr>
+
+<td>$.messager.progress</td>
+
+<td>options or method</td>
+
+<td>
+
+显示一个带进度条信息的窗口。<br/>
+
+属性定义如下：<br/>
+
+title：显示在面板头部的标题文本，默认为''。<br/>
+
+msg：显示在主窗体的文本，默认为''。<br/>
+
+text：显示在进度条中的信息默认为undefined。<br/>
+
+interval：每次进度增加所耗费的时间，单位为毫秒，默认为300.<br/>
+
+<br/>
+
+方法定义如下：<br/>
+
+bar：获取进度条对象。<br/>
+
+close：关闭进程窗口。<br/>
+
+<h5>示例代码</h5>
+
+显示进程消息窗口。 <br/>
+
+<pre>
+	$.messager.progress(); 
+</pre>
+
+使用如下代码关闭窗口。 <br/>
+
+<pre>
+	$.messager.progress('close');
+</pre>
+
+
+
+</td>
+
+</tr>
+
+</table>
+
+
+
+</div>
+
+
+
+﻿			</div>
+		</div>
+		<div id="footer">
+			<div>Copyright © 2010-2011 www.jeasyui.com</div>
+<a target="_blank" href="http://sighttp.qq.com/authd?IDKEY=0d8f551beb86c567f5d026fc3af8f8a0c1cf318635116789"><img border="0"  src="http://wpa.qq.com/imgd?IDKEY=0d8f551beb86c567f5d026fc3af8f8a0c1cf318635116789&pic=45" alt="点击Q我" title="点击Q我"></a>
+|  
+<noscript><a href="http://www.51.la/?4095651" target="_blank">
+<img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/4095651.asp" style="border:none" /></a></noscript> 
+<script src="http://s17.cnzz.com/stat.php?id=2412230&web_id=2412230&show=pic" language="JavaScript"></script>|<script language="javascript" type="text/javascript" src="http://js.users.51.la/4095651.js"></script>
+|<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F9541ae759aad5b1e7083c2f63b8e8e9c' type='text/javascript'%3E%3C/script%3E"));
+</script>
+		</div>
+		<script type="text/javascript">
+						dp.SyntaxHighlighter.ClipboardSwf = '/SyntaxHighlighter/Scripts/clipboard.swf';
+			dp.SyntaxHighlighter.HighlightAll('code-messager');
+		</script>
+	</body>
+</html>

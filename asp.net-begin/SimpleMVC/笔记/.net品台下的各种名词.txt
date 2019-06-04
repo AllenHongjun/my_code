@@ -1,0 +1,89 @@
+Nancy
+
+
+组织架构图  百度脑图 备注 
+
+- 单一入口的应用程序 所有的东西都是在里面的
+    - 程序思想 
+    - 一直都有一个项目  一直去维护 一直去做 慢慢的去做 慢慢的去维护 变成一个自己的产品。
+    - 不是想着去挣钱 
+    - Discuz  是也学生 的毕业设计 。 60的网站  论坛。某一个方面的牛逼之处 
+    - PHPWind  开源免费  每一个平台 授权许可 java平台 PHP静态   codeEDU 苏坤
+    - c=Oder&a=DoOrder&m=User  分一个模块 可以拆分到多个域名 。多个站点类处理。
+    - member1.taobao.com 项目里面的域名不能够写死 。。cookie设置成定级域名 。有些东西是不同的域名可以共享。
+      一个子域名下 一个Order 生鲜 
+    - 有一个统一的路口 。。公司里面每一个职位其实都是很重要的。。。
+
+-- 搭建一个自己mvc框架  小型的模拟的。。只要System System.Web 不依赖于其他的项目的  其实主要是模板是怎么玩的
+
+
+
+
+.net freamwork  平台 
+- CLR  基础类库 （ado.net ）
+		
+
+		spring.NET 没有人维护了 
+
+
+		UnityIOC 微软  auto fac  Ninject(轻量级的) 
+
+
+
+		EntityFreamwork
+
+
+
+		asp.net (只是微软的一小块技术 做平台。全部都有，核心的功能 核心的特性 web2.0)
+		-- System.Web 核心类库 HttpContext  HttpRequest HttpResponse IHttpHandler IHttpModule
+		-- 自己写一个类去监听这个类。去监听这个请求 可以基于.net的基础做一些东西
+		-- httpContext的分装 request response 
+		-- 提供了一个请求管道 管道事件 管道声明周期
+		-- 这么多技术做了一个框架的整理。
+		-- asp 和 html混编。
+
+			-- 有一个老大个 有人能够带你一下。 做过PHP 
+			-- AllenMVC  
+					-- 建立一个自己的MVC的框架 。
+					-- 一个很牛逼的项目 兄弟关系
+
+			-- asp.net WebApi  同一个团队在维护  sbring(依赖注入)   struct2(MVC)  
+					-- springMVC spring Mybits  虽然不用别的技术 但是最好也是有一点了解
+					- 基于RESTFul 应用 API的一套  解决方案  分享 分享 分享 （语言的魅力）
+					- 
+			-- asp.net MVC
+					- 1. 成也控件 败也控件 
+					- 2. 简历上让人迷惑但是又是那么一回事的事情 回归本质 
+					- 3. 基于asp.net 的原生web开发。。基础的东西 和其他的都是适用的
+					- 4. 核心 管道的机制 生命周期
+					- 5. 是asp.net 平台实现mvc思想的 一套web解决方案。 专业的 .net 平台开发人员
+					- 6. 核心组件类库 System.Web.MVC.DLL  
+					- 7. Model View Controller 
+					- 8. thinkPHP 还是比较牛逼的。。跳出了框架了。不要搞在了一起。使用这个东西。。不要太大的依赖性
+					- 9. 不要太限制与某一种技术 换一种技术 也是可以很容易的重新搞起来
+			-- asp.net webForm
+					- 1. 平台的基础之上 做了一个高度的封装。让大家使用起来很方便
+					- 2. 提供了一套微软基于web平台的 code behind aspx 模板引擎。 ()
+					- 3. 核心提供了一套控件的机制。让web开发 也能有用有cs开发的体验。。（利用表单回发模拟着一套的机制）
+					- 4. 点击这个东西回发这个请求 viewState 都会有一个表单的回发 Form Runat server viewstate 告诉服务做了哪些东西。。
+					- 5. 控件的声明周期 。为了让大家有一个cs的的开发体验。。不需要全部都  不好理解 但是会
+					- 6、事件内容不会写就 上网查找一点代码复制一下 哪里不爽了 哪里吸引了你 都是好的。
+					- System.Web   System.Web.UI  (微软觉得这个很牛逼。 )
+					- 7. 控件的声明周期 (这个 技术要牛逼一点。 技术是一点一点积累其阿里的 ) 自己做一个web框架 
+			-- asp.net webapi
+			-- asp.net singal 
+			
+			
+
+		-- .net 平台实现web服务的基础框架平台 
+
+		winform
+		-- .net 提供一个C/S架构模式的基础框架平台
+
+		WPF
+
+		-- winform的进阶版本  MVVM 数据绑定 不合理性 
+		-- MUI
+
+
+asp.net mvc

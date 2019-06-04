@@ -1,0 +1,702 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0062)http://msdn.microsoft.com/zh-cn/library/ms178581(v=vs.80).aspx -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head id="ctl00_Head1"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="canonical" href="./会话状态概述_files/会话状态概述.htm"><title>
+	
+  会话状态概述
+
+</title>
+    
+
+
+<link rel="alternate" media="print" href="http://msdn.microsoft.com/zh-cn/library/ms178581(d=printer,v=vs.80).aspx">
+
+
+
+
+<meta name="DCS.dcsuri" content="/zh-cn/library/ms178581(d=lightweight,l=zh-cn,v=vs.80).aspx">
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/zh-cn/library/ms178581(d=lightweight,l=zh-cn,v=vs.80).aspx">
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/zh-cn/library/ms178581(l=zh-cn,v=vs.80).aspx">
+
+<meta name="MN" content="3976B37B-3:10:38 PM">
+
+<meta name="Search.ShortId" content="ms178581">
+
+<meta name="Ms.Locale" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="./会话状态概述_files/Combined.css"><link rel="stylesheet" type="text/css" href="./会话状态概述_files/printview.css" media="print"><script class="mtps-injected">try {
+/**/
+"use strict"; 
+(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { 
+	"image": "http://i.msdn.microsoft.com", 
+	"js": "http://i2.msdn.microsoft.com", 
+	"css": "http://i3.msdn.microsoft.com"
+});
+/**/
+} finally { MTPS._injectNextScript_0 && MTPS._injectNextScript_0(); }</script><script class="mtps-injected">try {
+//
+    MTPS = window.MTPS || {};
+    MTPS.Watermarks = window.MTPS.Watermarks || {};
+    MTPS.Watermarks.SearchInput = {
+        "control": "SearchInput",
+        "defaultValue": "使用 Bing 搜索 MSDN",
+        "defaultCSS": "searchTextBox",
+        "focusCSS": "searchTextBoxTrue"
+    };
+    function checkSearchBox() {
+        if (document.getElementById("SearchInput").value == MTPS.Watermarks.SearchInput.defaultValue) {
+            document.getElementById("SearchInput").value = "";
+        }
+    }
+ //
+} finally { MTPS._injectNextScript_1 && MTPS._injectNextScript_1(); }</script><script class="mtps-injected">try {
+//
+  MTPS = window.MTPS || {};
+  MTPS.TopicNodes= {
+  
+            "_last": ''
+    };
+  //
+} finally { MTPS._injectNextScript_2 && MTPS._injectNextScript_2(); }</script><script class="mtps-injected">try {
+//
+  var literalNormalizedUrl = '/zh-cn/library/ms178581(d=lightweight,l=zh-cn,v=vs.80).aspx';
+  var wt_nvr_ru = 'WT_NVR_RU';
+  var wt_fpcdom = '.microsoft.com';
+  var wt_domlist = 'msdn.microsoft.com';
+  var wt_pathlist = '';
+  var wt_paramlist = 'DCSext.mtps_devcenter';
+  var wt_siteid = 'MSDN';
+  var gDomain = 'm.webtrends.com';
+  var gDcsId = 'dcsmgru7m99k7mqmgrhudo0k8_8c6m';
+  var gFpc = 'WT_FPC';
+  if (document.cookie.indexOf(gFpc + "=") == -1) {
+    var wtidJs = document.createElement("script");
+    wtidJs.src = "//" + gDomain + "/" + gDcsId + "/wtid.js";
+    document.getElementsByTagName("head")[0].appendChild(wtidJs);
+  }
+  var detectedLocale = 'zh-cn';
+  var wtsp = 'msdnlib_devtools_lang';
+  var gTrackEvents = '0';
+/**/
+} finally { MTPS._injectNextScript_3 && MTPS._injectNextScript_3(); }</script><script class="mtps-injected">try {
+/**/
+  var omni_guid = "85077889-8489-4567-9dd3-547d0e37f5b1";
+/**/
+} finally { MTPS._injectNextScript_4 && MTPS._injectNextScript_4(); }</script><script class="mtps-injected" src="./会话状态概述_files/Combined.js"></script><script src="./会话状态概述_files/broker.js"></script></head>
+<body>
+    
+        
+        
+  <div class="header">
+    
+
+<table border="0" cellpadding="0" cellspacing="0" class="headerBar cl_lightweight_topnav_slice">
+		<tbody><tr>
+			<td class="leftSection cl_lightweight_header_leftSection_wave leftSectionImageClusterOverride">
+        <div class="tabContainer">
+          <a href="http://msdn.microsoft.com/zh-cn/default.aspx" title="主页" class=" headerTab">主页</a>
+          <a href="http://msdn.microsoft.com/zh-cn/library/default.aspx" title="技术资源库" class="headerTabSelected cl_lightweight_selected_tab_repeatX ">技术资源库</a>
+          <a href="http://msdn.microsoft.com/zh-cn/bb188199.aspx" title="学习" class=" headerTab">学习</a>
+          <a href="http://msdn.microsoft.com/zh-cn/aa570309.aspx" title="下载" class=" headerTab">下载</a>
+          <a href="http://msdn.microsoft.com/zh-cn/hh361695.aspx" title="支持" class=" headerTab">支持</a>
+          <a href="http://msdn.microsoft.com/zh-cn/aa497440.aspx" title="社区" class=" headerTab">社区</a>
+          
+        </div>
+      </td>
+			<td class="rightSection cl_lightweight_header_rightSection_wave rightSectionImageClusterOverride">
+        <div class="tabContainer">
+            
+            <a href="https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=11&ct=1351696238&rver=6.0.5276.0&wp=MCLBI&wlcxt=msdn%24msdn%24msdn&wreply=http%3a%2f%2fmsdn.microsoft.com%2fzh-cn%2flibrary%2fms178581%2528v%3dvs.80%2529.aspx&lc=2052&id=254354&mkt=zh-CN" title=" 登录  " rel="nofollow"> 登录   </a>
+            <span class="pipe">|</span>
+            <a href="http://msdn.microsoft.com/zh-cn/library/preferences/locale/?returnurl=%252fzh-cn%252flibrary%252fms178581(v%253dvs.80).aspx" title="中国（简体中文）" rel="nofollow">中国（简体中文） </a>
+            <span class="pipe">|</span>
+            <a class="dispinline clip15x15" href="http://msdn.microsoft.com/zh-cn/library/preferences/experience/?returnurl=%252fzh-cn%252flibrary%252fms178581(v%253dvs.80).aspx" title="首选项" rel="nofollow"><img class="head_gear" src="./会话状态概述_files/Msdn_ImageSprite.png" alt=""></a>
+            <span class="pipe">|</span>
+            <a id="exportPrintLink" class="dispinline clip30x15 moveToDown" href="http://msdn.microsoft.com/zh-cn/library/ms178581(d=printer,v=vs.80).aspx" title="打印/导出"><img class="head_print_noarrow" src="./会话状态概述_files/Msdn_ImageSprite.png" alt=""></a>
+            
+            <div id="exportPrintLinkArrowDiv" class="exportPrintLinkArrow">
+            <a id="exportPrintLinkArrow" class="dispinline clip30x15 moveToDown" href="javascript:void(0);" title="打印/导出"><img class="head_print_arrow" src="./会话状态概述_files/Msdn_ImageSprite.png" alt=""></a>
+            </div>
+            
+        </div>
+			</td>
+	</tr>
+</tbody></table>
+
+  </div>
+  <div class="contentPlaceHolder">
+    
+    
+  <div class="navigation" id="Navigation" style="width:280px;padding-bottom:96px;">
+    <div class="searchcontainer">
+      
+<form id="SearchForm" action="http://social.msdn.microsoft.com/search/zh-cn" method="get" style="margin: 0; padding: 0;" onsubmit="return checkSearchBox()">
+<div class="searchBoxContainer" style="">
+  <table class="searchBox" cellpadding="0" cellspacing="0" border="0">
+    <tbody><tr>
+      <td class="searchTextBoxTd">
+        <input id="SearchInput" type="text" maxlength="200" class="searchTextBox" name="query">
+        
+      </td>
+      <td class="searchButtonTd">
+        <a href="javascript:void(0)" class="clip20x20" style="display: block; overflow: hidden; position: relative;           padding: 0; margin: 0;" onclick="javascript:if(document.getElementById(&#39;SearchInput&#39;).value == &#39;使用 Bing 搜索 MSDN&#39;)document.getElementById(&#39;SearchInput&#39;).value=&#39;&#39;; document.getElementById(&#39;SearchForm&#39;).submit();">
+          <img src="./会话状态概述_files/Msdn_ImageSprite.png" style="position: relative;" title="搜索 " class="isd_search" alt="搜索"></a>
+      </td>
+    </tr>
+  </tbody></table>
+</div>
+</form>
+
+
+
+    </div>
+    <div class="navcontainer">
+      
+
+<div class="nav">
+    
+    <div id="tocnav">
+        
+        <div class="toclevel0 ancestry">
+            
+            <div class="clip5x9 nav_root">
+                <img src="./会话状态概述_files/Msdn_ImageSprite.png" class="cl_nav_bullet" alt="">
+            </div>
+            
+            <div class="nav_div_currentroot">
+                <a data-tochassubtree="true" href="http://msdn.microsoft.com/zh-cn/library/ms123401.aspx" id="ms310241_MSDN.10_zh-cn" title="MSDN Library">MSDN Library</a>
+            </div>
+            
+            <div class="clip5x9 nav_arrows">
+                <img src="./会话状态概述_files/Msdn_ImageSprite.png" class="cl_nav_arrow" alt="">
+            </div>
+            
+            <div class="nav_div_currentroot">
+                <a data-tochassubtree="true" href="http://msdn.microsoft.com/zh-cn/library/aa187916.aspx" id="aa187916_MSDN.10_zh-cn" title="开发工具和语言">开发工具和语言</a>
+            </div>
+            
+            <div class="clip5x9 nav_arrows">
+                <img src="./会话状态概述_files/Msdn_ImageSprite.png" class="cl_nav_arrow" alt="">
+            </div>
+            
+            <div class="nav_div_currentroot">
+                <a data-tochassubtree="true" href="http://msdn.microsoft.com/zh-cn/library/aa187935.aspx" id="aa187935_MSDN.10_zh-cn" title="Visual Studio 2005">Visual Studio 2005</a>
+            </div>
+            
+            <div class="clip5x9 nav_arrows">
+                <img src="./会话状态概述_files/Msdn_ImageSprite.png" class="cl_nav_arrow" alt="">
+            </div>
+            
+            <div class="nav_div_currentroot">
+                <a data-tochassubtree="true" href="http://msdn.microsoft.com/zh-cn/library/ms269115(v=vs.80).aspx" id="ms269115_VS.80_zh-cn" title="Visual Studio 文档">Visual Studio 文档</a>
+            </div>
+            
+            <div class="clip5x9 nav_arrows">
+                <img src="./会话状态概述_files/Msdn_ImageSprite.png" class="cl_nav_arrow" alt="">
+            </div>
+            
+            <div class="nav_div_currentroot">
+                <a data-tochassubtree="true" href="http://msdn.microsoft.com/zh-cn/library/ms178093(v=vs.80).aspx" id="ms269116_VS.80_zh-cn" title="Visual Web Developer 文档">Visual Web Developer 文档</a>
+            </div>
+            
+            <div class="clip5x9 nav_arrows">
+                <img src="./会话状态概述_files/Msdn_ImageSprite.png" class="cl_nav_arrow" alt="">
+            </div>
+            
+            <div class="nav_div_currentroot">
+                <a data-tochassubtree="true" href="http://msdn.microsoft.com/zh-cn/library/2z18a5tf(v=vs.80).aspx" id="ms306548_VS.80_zh-cn" title="网页">网页</a>
+            </div>
+            
+            <div class="clip5x9 nav_arrows">
+                <img src="./会话状态概述_files/Msdn_ImageSprite.png" class="cl_nav_arrow" alt="">
+            </div>
+            
+            <div class="nav_div_currentroot">
+                <a data-tochassubtree="true" href="http://msdn.microsoft.com/zh-cn/library/50x35554(v=vs.80).aspx" id="ms306586_VS.80_zh-cn" title="保存 ASP.NET 页的值">保存 ASP.NET 页的值</a>
+            </div>
+            
+            <div class="clip13x9 nav_arrows">
+                <img src="./会话状态概述_files/Msdn_ImageSprite.png" class="cl_nav_dots" alt="">
+            </div>
+            
+            <div class="nav_div_currentroot">
+                <a data-tochassubtree="true" href="http://msdn.microsoft.com/zh-cn/library/87069683(v=vs.80).aspx" id="ms306593_VS.80_zh-cn" title="ASP.NET 会话状态">ASP.NET 会话状态</a>
+            </div>
+            
+        </div>
+        
+        <div class="toclevel1 children" style="border-bottom: 1px solid #bbbbbb;">
+            
+                <div class="clip13x9 nav_dots_current">
+                    <img src="./会话状态概述_files/Msdn_ImageSprite.png" class="cl_nav_dots" alt="">
+                </div>
+                
+                <div class="toclevel1 current">
+                    <a href="./会话状态概述_files/会话状态概述.htm" title="会话状态概述">会话状态概述</a>
+                </div>
+                
+                <div class="clip13x9 nav_dots_current">
+                    <img src="./会话状态概述_files/Msdn_ImageSprite.png" class="cl_nav_dots" alt="">
+                </div>
+                
+                <div>
+                    <a href="http://msdn.microsoft.com/zh-cn/library/ms178582(v=vs.80).aspx" title="会话标识符">会话标识符</a>
+                </div>
+                
+                <div class="clip13x9 nav_dots_current">
+                    <img src="./会话状态概述_files/Msdn_ImageSprite.png" class="cl_nav_dots" alt="">
+                </div>
+                
+                <div>
+                    <a href="http://msdn.microsoft.com/zh-cn/library/ms178583(v=vs.80).aspx" title="会话状态事件">会话状态事件</a>
+                </div>
+                
+                <div class="clip13x9 nav_dots_current">
+                    <img src="./会话状态概述_files/Msdn_ImageSprite.png" class="cl_nav_dots" alt="">
+                </div>
+                
+                <div>
+                    <a href="http://msdn.microsoft.com/zh-cn/library/ms178586(v=vs.80).aspx" title="会话状态模式">会话状态模式</a>
+                </div>
+                
+                <div class="clip13x9 nav_dots_current">
+                    <img src="./会话状态概述_files/Msdn_ImageSprite.png" class="cl_nav_dots" alt="">
+                </div>
+                
+                <div>
+                    <a href="http://msdn.microsoft.com/zh-cn/library/ms178201(v=vs.80).aspx" title="保护会话状态">保护会话状态</a>
+                </div>
+                
+                <div class="clip13x9 nav_dots_current">
+                    <img src="./会话状态概述_files/Msdn_ImageSprite.png" class="cl_nav_dots" alt="">
+                </div>
+                
+                <div>
+                    <a href="http://msdn.microsoft.com/zh-cn/library/6ad7zeeb(v=vs.80).aspx" title="如何：保存会话状态中的值">如何：保存会话状态中的值</a>
+                </div>
+                
+                <div class="clip13x9 nav_dots_current">
+                    <img src="./会话状态概述_files/Msdn_ImageSprite.png" class="cl_nav_dots" alt="">
+                </div>
+                
+                <div>
+                    <a href="http://msdn.microsoft.com/zh-cn/library/03sekbw5(v=vs.80).aspx" title="如何：读取会话状态中的值">如何：读取会话状态中的值</a>
+                </div>
+                
+                <div class="clip13x9 nav_dots_current">
+                    <img src="./会话状态概述_files/Msdn_ImageSprite.png" class="cl_nav_dots" alt="">
+                </div>
+                
+                <div>
+                    <a data-tochassubtree="true" href="http://msdn.microsoft.com/zh-cn/library/ms178587(v=vs.80).aspx" id="ms306595_VS.80_zh-cn" title="实现会话状态存储提供程序">实现会话状态存储提供程序</a>
+                </div>
+                
+        </div>
+        
+    </div>
+    
+    
+    
+        <img src="./会话状态概述_files/clear.gif" alt="Separator" class="communityContentNavigationSeparator cl_lt_cc_line_top">
+    
+    <div class="communityContentNavigation">
+        <div class="communityContentNavigationHeader">
+            社区内容</div>
+        
+        <div class="communityContentNavigationPost">
+            <div class="communityContentNavigationAvatarContainer">
+                <a class="communityContentNavigationLinkAvatar" href="http://msdn.microsoft.com/zh-cn/library/ms178581(v=vs.80).aspx#CommunityContent" title="用户"><img alt="头像" class="cl_default_avatar" src="./会话状态概述_files/clear.gif"></a>
+            </div>
+            
+            <div class="communityContentNavigationLinkAbstractAdvertisement">
+                <ul>
+                    <li>
+                        添加代码示例和提示以增强此主题。</li>
+                </ul>
+            </div>
+            
+        </div>
+        
+        <div class="communityContentNavigationMoreLink">
+            <a href="http://msdn.microsoft.com/zh-cn/library/ms178581(v=vs.80).aspx#CommunityContent" title="更多...">更多...</a></div>
+    </div>
+    
+</div>
+
+
+
+    </div>
+    
+  </div>
+  <div id="tocResizeContainer" style="visibility:hidden">
+  <a href="http://msdn.microsoft.com/zh-cn/library/ms178581(v=vs.80).aspx#" class="tocResize" id="TocResize" style="left:280px">
+    <img id="ResizeImageIncrease" class="cl_nav_resize_open" src="./会话状态概述_files/Msdn_ImageSprite.png" title="展开" alt="展开">
+      <img id="ResizeImageReset" class="cl_nav_resize_close" src="./会话状态概述_files/Msdn_ImageSprite.png" style="display:none" title="最小化" alt="最小化">
+  </a>
+  </div>
+  <div class="content">
+    
+    
+
+<div class="clip75x25 logo">
+  <a href="http://msdn.microsoft.com/zh-cn/default.aspx">
+    <img src="./会话状态概述_files/Msdn_ImageSprite.png" class="msdn_body_logo" alt="MSDN" title="MSDN">
+  </a>
+</div>
+
+    <div class="topicContainer">
+        
+    
+    
+
+    <div id="ratingCounterSeperator" class="cl_lw_vs_seperator" style="display: none;"></div>
+
+    <div id="ratingCounter">
+        <span id="rcA" class="ratingText">
+            3（共 4）对本文的评价是有帮助 <span id="rateThisPrefix">- </span><a id="rateThisTopic" href="http://msdn.microsoft.com/zh-cn/library/ms178581(v=vs.80).aspx#feedback" title="评价此主题">评价此主题</a>
+            
+        </span>
+    </div>
+<div class="topic" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">会话状态概述</h1>
+  <div class="lw_vs">
+    <div id="curversion">
+      <strong>
+            Visual Studio 2005</strong>
+    </div>
+    <div id="versionclick" style="visibility:hidden">
+      <div id="vsseperator" class="cl_lw_vs_seperator"></div>
+      <div id="versionclick_c1"></div>
+      <div id="versionclick_c2">
+        <div class="">
+          <a id="vsLink" href="javascript:;">
+                    其他版本
+                </a>
+        </div>
+        <div class="cl_vs_arrow clip10x10">
+          <img class="cl_lw_vs_arrow" id="vsArrow" alt="" src="./会话状态概述_files/Msdn_ImageSprite.png">
+        </div>
+      </div>
+      <div id="versionclick_c3"></div>
+    </div>
+    <ul id="vsPanel">
+      <li>
+        <a href="http://msdn.microsoft.com/zh-cn/library/ms178581(v=vs.100).aspx" title="">.NET Framework 4</a>
+      </li>
+      <li>
+        <a href="http://msdn.microsoft.com/zh-cn/library/ms178581(v=vs.90).aspx" title="">Visual Studio 2008</a>
+      </li>
+    </ul>
+  </div>
+  <div style="clear:both;"></div>
+  
+  <div id="mainSection"> <div id="mainBody">  <p> </p><p>当用户在构成 Web 应用程序的不同 ASP.NET 页面之间导航时，ASP.NET 会话状态使您能够为用户存储和检索值。HTTP 是一种无状态协议，这意味着您的 Web 服务器将对页面的每个 HTTP 请求当作独立的请求进行处理；服务器不保留与先前请求所使用的任何变量值有关的信息。ASP.NET 会话状态将一个有限时间窗口内来自同一浏览器的请求标识为一个会话，并在该会话持续期间保留变量的值。</p> <p>默认情况下，所有 ASP.NET 应用程序都启用 ASP.NET 会话状态。 </p> <p>会话状态的替代选项包括应用程序状态（请参见 <a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpapplication.application(v=vs.80).aspx">Application</a> 属性），它存储 ASP.NET 应用程序的所有用户均可访问的变量；<a href="http://msdn.microsoft.com/zh-cn/library/system.web.profile(v=vs.80).aspx">System.Web.Profile</a> 命名空间，它将用户值持久保留在数据存储区中，不使用超时限制让其过期；<a href="http://msdn.microsoft.com/zh-cn/library/system.web.caching(v=vs.80).aspx">System.Web.Caching</a> 命名空间，它将常用值存储在所有 ASP.NET 应用程序均可访问的内存中；ASP.NET <a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols(v=vs.80).aspx">System.Web.UI.WebControls</a>，它将控件值持久保留在 <a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.control.viewstate(v=vs.80).aspx">ViewState</a> 中；<a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpresponse.cookies(v=vs.80).aspx">Cookies</a>；<a href="http://msdn.microsoft.com/zh-cn/library/system.web.httprequest.querystring(v=vs.80).aspx">QueryString</a>；以及可使用 <a href="http://msdn.microsoft.com/zh-cn/library/system.web.httprequest.form(v=vs.80).aspx">Form</a> 集合通过 HTTP <b>POST</b> 访问的 HTML 表单中的字段。有关不同状态管理选项的比较，请参见 <a href="http://msdn.microsoft.com/zh-cn/library/z1hkazw7(v=vs.80).aspx">ASP.NET 状态管理建议</a>。</p> <h1 class="heading">会话变量</h1><div id="sectionSection0" class="seeAlsoNoToggleSection"> <p>会话变量存储在通过 <a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpcontext.session(v=vs.80).aspx">System.Web.HttpContext.Session</a> 属性公开的 <a href="http://msdn.microsoft.com/zh-cn/library/system.web.sessionstate.sessionstateitemcollection(v=vs.80).aspx">SessionStateItemCollection</a> 中。会话变量集合按变量名称或整数索引来进行索引。仅需通过名称引用会话变量即可创建会话变量。无需声明会话变量或将会话变量显式添加到集合中。例如，下面的代码示例创建分别表示用户的名字和姓氏的会话变量，并将它们设置为从 <a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.textbox(v=vs.80).aspx">TextBox</a> 控件检索到的值。</p> 
+
+<div class="codeSnippetContainer" xmlns="http://www.w3.org/1999/xhtml">
+  
+  
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTab codeSnippetContainerTabActive codeSnippetContainerTabFirst" dir="ltr"><a>C#</a></div><div class="codeSnippetContainerTab codeSnippetContainerTabLast" dir="ltr"><a href="javascript: CodeSnippet_SetLanguage('CodeSnippetContainerLang', 'Programming', 'Visual Basic');">VB</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" title="复制到剪贴板。" href="javascript:CodeSnippet_CopyCode('CodeSnippetContainerCode_6b300c59-718c-4fd3-991d-d0a14c945744');">复制</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_6b300c59-718c-4fd3-991d-d0a14c945744" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>Session[<span style="color:#A31515;">"FirstName"</span>] = FirstNameTextBox.Text;
+Session[<span style="color:#A31515;">"LastName"</span>] = LastNameTextBox.Text;
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+  <p>默认情况下，会话变量可以为任何有效的 .NET 类型。例如，下面的代码示例将值的 <a href="http://msdn.microsoft.com/zh-cn/library/system.collections.arraylist(v=vs.80).aspx">ArrayList</a> 存储在名为“StockPicks”的会话变量中。注意，由“StockPicks”会话变量返回的值在从 <b>SessionStateItemCollection</b> 检索出来时必须强制转换为适当的类型。</p> <div class="alert"><table width="100%"><tbody><tr><th align="left"><img class="note cl_IC103139" alt="Note" src="./会话状态概述_files/clear(1).gif">注意 </th></tr><tr><td> <p>使用 <a href="http://msdn.microsoft.com/zh-cn/library/system.web.sessionstate.sessionstatemode(v=vs.80).aspx">InProc</a> 以外的会话状态模式时，会话变量类型必须为基元 .NET 类型或可序列化的，原因是会话变量值存储在外部数据存储区中。有关更多信息，请参见<a href="http://msdn.microsoft.com/zh-cn/library/ms178586(v=vs.80).aspx">会话状态模式</a>。</p> </td></tr></tbody></table></div> 
+
+<div class="codeSnippetContainer" xmlns="http://www.w3.org/1999/xhtml">
+  
+  
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTab codeSnippetContainerTabActive codeSnippetContainerTabFirst" dir="ltr"><a>C#</a></div><div class="codeSnippetContainerTab codeSnippetContainerTabLast" dir="ltr"><a href="javascript: CodeSnippet_SetLanguage('CodeSnippetContainerLang', 'Programming', 'Visual Basic');">VB</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" title="复制到剪贴板。" href="javascript:CodeSnippet_CopyCode('CodeSnippetContainerCode_7ac805b1-e6c2-44bd-be33-cab370d7412b');">复制</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_7ac805b1-e6c2-44bd-be33-cab370d7412b" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre><span style="color:Green;">// When retrieving an object from session state, cast it as </span>
+<span style="color:Green;">// the appropriate type.</span>
+ArrayList stockPicks = (ArrayList)Session[<span style="color:#A31515;">"StockPicks"</span>];
+
+<span style="color:Green;">// Write the modified stock picks list back to session state.</span>
+Session[<span style="color:#A31515;">"StockPicks"</span>] = stockPicks;
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+  </div><h1 class="heading">会话标识符</h1><div id="sectionSection1" class="seeAlsoNoToggleSection"> <p>会话由一个可以使用 <a href="http://msdn.microsoft.com/zh-cn/library/system.web.sessionstate.httpsessionstate.sessionid(v=vs.80).aspx">SessionID</a> 属性读取的唯一会话标识符标识。为 ASP.NET 应用程序启用会话状态时，将检查应用程序中每个页面请求是否有浏览器发送的 <b>SessionID</b> 值。如果未提供任何 <b>SessionID</b> 值，则 ASP.NET 启动一个新会话，然后将该会话的 <b>SessionID</b> 随响应一起发送到浏览器。</p> <p>
+默认情况下，<b>SessionID</b> 值存储在 cookie 中，但也可以配置应用程序，将 <b>SessionID</b> 值存储在 URL 中，以实现一个“无 cookie”的会话。有关更多信息，请参见<a href="http://msdn.microsoft.com/zh-cn/library/ms178582(v=vs.80).aspx">会话标识符</a>。</p> <p>只要一直使用相同的 <b>SessionID</b> 值来发送请求，会话就被视为活动的。如果特定会话的请求发送间隔超过指定的超时值（以分钟为单位），则该会话被视为已过期。使用过期的 <b>SessionID</b> 值来发送请求将导致启动一个新会话。</p> </div><h1 class="heading">会话事件</h1><div id="sectionSection2" class="seeAlsoNoToggleSection"> <p>ASP.NET 提供两个有助于管理用户会话的事件：<b>Session_OnStart</b> 事件（在开始一个新会话时引发）和 <b>Session_OnEnd</b> 事件（在会话被放弃或过期时引发）。会话事件是在 ASP.NET 应用程序的 Global.asax 文件中指定的。注意，如果将会话 <a href="http://msdn.microsoft.com/zh-cn/library/system.web.sessionstate.httpsessionstate.mode(v=vs.80).aspx">Mode</a> 设置为 <b>InProc</b>（默认模式）以外的值，则 <b>Session_OnEnd</b> 事件将不受支持。</p> <div class="alert"><table width="100%"><tbody><tr><th align="left"><img class="note cl_IC103139" alt="Note" src="./会话状态概述_files/clear(1).gif">注意 </th></tr><tr><td> <p>如果 ASP.NET 应用程序的 Global.asax 文件或 Web.config 文件被修改，将重新启动应用程序，而且存储在应用程序状态或会话状态中的所有值都将丢失。注意，某些防病毒软件可能会更新应用程序的 Global.asax 或 Web.config 文件的最后修改日期和时间。</p> </td></tr></tbody></table></div> <p>有关更多信息，请参见<a href="http://msdn.microsoft.com/zh-cn/library/ms178583(v=vs.80).aspx">会话状态事件</a>。</p> </div><h1 class="heading">会话模式</h1><div id="sectionSection3" class="seeAlsoNoToggleSection"> <p>ASP.NET 会话状态支持会话变量的若干不同的存储选项。每个选项都被标识为一个会话状态 <b>Mode</b>。默认行为是将会话变量存储在 ASP.NET 辅助进程的内存空间中。但是，也可以指定将会话状态存储在单独进程、SQL Server 数据库或自定义数据源中。如果不希望为应用程序启用会话状态，可以将会话模式设置为 <a href="http://msdn.microsoft.com/zh-cn/library/system.web.sessionstate.sessionstatemode(v=vs.80).aspx">Off</a>。</p> <p>有关更多信息，请参见<a href="http://msdn.microsoft.com/zh-cn/library/ms178586(v=vs.80).aspx">会话状态模式</a>。</p> </div><h1 class="heading">配置会话状态</h1><div id="sectionSection4" class="seeAlsoNoToggleSection"> <p>使用 <b>system.web</b> 配置节的 <a href="http://msdn.microsoft.com/zh-cn/library/h6bb9cz9(v=vs.80).aspx">sessionState</a> 元素来配置会话状态。还可以使用 <a href="http://msdn.microsoft.com/zh-cn/library/system.web.configuration.pagessection.enablesessionstate(v=vs.80).aspx">EnableSessionState</a> 页指令来配置会话状态。</p> <p>使用 <b>sessionState</b> 元素可以指定会话存储数据的模式、在客户端和服务器间发送会话标识符值的方式、会话 <a href="http://msdn.microsoft.com/zh-cn/library/system.web.sessionstate.httpsessionstate.timeout(v=vs.80).aspx">Timeout</a> 值和基于会话 <b>Mode</b> 的支持值。例如，下面的 <b>sessionState</b> 元素将应用程序配置为 <a href="http://msdn.microsoft.com/zh-cn/library/system.web.sessionstate.sessionstatemode(v=vs.80).aspx">SQLServer</a> 会话模式，<b>Timeout</b> 为 30 分钟，并指定将会话标识符存储在 URL 中。</p> 
+
+<div class="codeSnippetContainer" xmlns="http://www.w3.org/1999/xhtml">
+  
+  
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" title="复制到剪贴板。" href="javascript:CodeSnippet_CopyCode('CodeSnippetContainerCode_00b13065-a069-46e3-856f-f9b8e5d16c6d');">复制</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_00b13065-a069-46e3-856f-f9b8e5d16c6d" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>&lt;sessionState mode="SQLServer"
+  cookieless="true "
+  regenerateExpiredSessionId="true "
+  timeout="30"
+  sqlConnectionString="Data Source=MySqlServer;Integrated Security=SSPI;"
+  stateNetworkTimeout="30"/&gt;
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+ <p>可以通过将会话状态模式设置为 <b>Off</b> 来禁用应用程序的会话状态。如果只希望禁用应用程序的某个特定页的会话状态，则可以将 <b>EnableSessionState</b> 页指令设置为 <b>false</b>。注意，还可将 <b>EnableSessionState</b> 页指令设置为 <b>ReadOnly </b> 以提供对会话变量的只读访问。</p> </div><h1 class="heading">并发请求和会话状态</h1><div id="sectionSection5" class="seeAlsoNoToggleSection"> <p>对 ASP.NET 会话状态的访问专属于每个会话，这意味着如果两个不同的用户同时发送请求，则会同时授予对每个单独会话的访问。但是，如果这两个并发请求是针对同一会话的（即，使用相同的 <b>SessionID</b> 值），则接收到的第一个请求获得对会话信息的独占访问权，而第二个请求将在第一个请求完成之后执行，或直到由于第一个请求超过锁定超时时间而释放对该信息的独占锁定后再执行。如果将 <b>EnableSessionState</b> 页指令设置为 <b>ReadOnly</b>，则对只读会话信息的请求不会导致对会话数据的独占锁定。可能仍需等到会话数据由读写请求而获得的锁定被解除后，对会话数据的只读请求才能得到满足。</p> </div><h1 class="heading"><span id="seeAlsoNoToggle">请参见</span></h1><div id="seeAlsoSection" class="seeAlsoNoToggleSection"><h4 class="subHeading">其他资源</h4><a href="http://msdn.microsoft.com/zh-cn/library/87069683(v=vs.80).aspx">ASP.NET 会话状态</a><br><a href="http://msdn.microsoft.com/zh-cn/library/y5y3c2c5(v=vs.80).aspx">ASP.NET 状态管理</a><br><br></div></div>  </div>
+</div>
+
+        
+
+
+
+<div id="contentFeedback">
+    <form method="post" action="http://msdn.microsoft.com/zh-cn/library/feedback/add/ms178581(v=vs.80).aspx">
+        <input name="__RequestVerificationToken" type="hidden" value="liaQqBO/qKWY/l4rvvHm0dVmj1z+bcXiXdIiNBpwRR2DEpU4qrYGKa9FGK46LF2yGz71+QEoXrEiSU24UP/ZkPVK+MhZ2xhxQAOM8BwqjzedcfdkpzU1fV/lISB7v9ocz5nZiw==">
+    <div id="contentFeedbackContainer">
+        <div class="FeedbackTitleContainer">
+            <a name="feedback"></a>
+        本文是否对您有所帮助？
+            <input id="rdIsUsefulYes" name="rdIsUseful" type="radio" value="1" onclick="toggleContentFeedback(&#39;Yes&#39;);"><label for="rdIsUsefulYes">是</label>
+            <input id="rdIsUsefulNo" name="rdIsUseful" type="radio" value="0" onclick="toggleContentFeedback(&#39;No&#39;);"><label for="rdIsUsefulNo">否</label>
+        
+        </div>
+        
+            <div id="contentFeedbackQAContainer">
+                
+                    <div id="feedbackListNoContainer" class="FeedbackListContainer">
+                        
+                            <div>
+                                <input id="chkbxNo201" name="chkbxNo" type="checkbox" value="201">
+                                <label for="chkbxNo201">不准确</label>
+                            </div>
+                        
+                            <div>
+                                <input id="chkbxNo202" name="chkbxNo" type="checkbox" value="202">
+                                <label for="chkbxNo202">深度不够</label>
+                            </div>
+                        
+                            <div>
+                                <input id="chkbxNo203" name="chkbxNo" type="checkbox" value="203">
+                                <label for="chkbxNo203">需要更多代码示例</label>
+                            </div>
+                        
+                            <div>
+                                <input id="chkbxNo204" name="chkbxNo" type="checkbox" value="204">
+                                <label for="chkbxNo204">翻译需要改进</label>
+                            </div>
+                        
+                    </div>
+                
+                <div class="FeedbackTellUsMoreContainer">
+                    <textarea id="feedbackText" name="feedbackText" class="TellUsMoreTextBoxSearchLoaded" onfocus="WatermarkFocus(this, &#39;请告诉我们更多意见...&#39;, &#39;TellUsMoreTextBoxSearch&#39;)" onblur="WatermarkBlur(this, &#39;请告诉我们更多意见...&#39;, &#39;TellUsMoreTextBoxSearchLoaded&#39;)" onmouseover="TextBoxCharactersCounter(this, document.getElementById(&#39;feedbackTextCounter&#39;), 1500)" onkeydown="TextBoxCharactersCounter(this, document.getElementById(&#39;feedbackTextCounter&#39;), 1500)" onkeyup="TextBoxCharactersCounter(this, document.getElementById(&#39;feedbackTextCounter&#39;), 1500)">请告诉我们更多意见...</textarea>
+                </div>
+                <span class="counter">(<span id="feedbackTextCounter">1500</span> 个剩余字符)</span>
+                <input type="hidden" id="returnUrl" name="returnUrl" value="http://msdn.microsoft.com/zh-cn/library/ms178581(v=vs.80).aspx">
+                <input type="submit" id="submit" value="提交" title="单击以提交反馈" onclick="WatermarkOnSubmit(document.getElementById(&#39;feedbackText&#39;), &#39;请告诉我们更多意见...&#39;, &#39;TellUsMoreTextBoxSearch&#39;)">
+                <div style="clear: both;"></div>
+            </div>  
+        
+    </div>
+    </form>
+</div>
+
+    </div>
+    
+    <div class="topicEndLine">
+    </div>
+    <div id="CommunityContent" class="CommunityContent">
+      
+<div class="CommunityContentContainer">
+    <div id="CommunityContentHeader" class="CommunityContentHeader">
+      <div class="CommunityContentHeaderTitleContainer">
+        <span class="CommunityContentHeaderTitle h1">社区内容</span>
+          
+        <a href="http://msdn.microsoft.com/zh-cn/library/community/add/ms178581(v=vs.80).aspx" title="添加" rel="nofollow">添加</a>
+          
+        </div>
+        <div class="CommunityContentFaq">
+            <a href="http://msdn.microsoft.com/zh-cn/library/community-edits.rss?topic=ms178581|zh-cn|VS.80" title="批注" rel="nofollow"><img class="cl_rss_button" alt="批注" src="./会话状态概述_files/clear.gif"></a>
+            <a href="http://msdn.microsoft.com/zh-cn/library/community-msdnwikifaq.aspx" title="常见问题" rel="nofollow">常见问题</a>
+        </div>
+        <div style="clear:both"></div>
+    </div>
+    
+    
+
+</div>
+    </div>
+    
+  </div>
+        
+  </div>
+  <div class="footer">
+    
+
+<div id="footer" class="msdn footerContainer cl_footer_slice">
+  <div class="footerLogoContainer">
+    <div class="footerContent">
+    <div class="copyright">
+      © 2012 Microsoft. 版权所有。 </div>
+    <div class="footerLogo cl_footer_logo"></div>
+    <a href="http://msdn.microsoft.com/zh-cn/cc300389.aspx">保留所有权利</a><span class="pipe"> | </span>
+    <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/zh-cn.mspx">商标</a><span class="pipe"> | </span>
+    <a href="http://go.microsoft.com/fwlink/?LinkId=248681">隐私权声明</a>
+    <span class="pipe">| </span>
+    <a href="http://go.microsoft.com/?linkid=8786242&lcid=2052">个人信息中心</a><span class="pipe"> | </span>
+    <a href="http://www.microsoft.com/legal/">法律信息</a><span class="pipe"> | </span>
+    <a href="http://www.microsoft.com/china/msdn/newsletter/default.aspx">MSDN Flash 中心</a><span class="pipe"> | </span>
+    <a href="mailto:msdnonln@microsoft.com">联系我们</a>
+    <span class="pipe">| </span>
+    <span class="FeedbacklinkDisabled" id="FeedbacklinkDisabled">网站反馈</span>
+    <a id="Feedbacklink" title="网站反馈" class="FeedbackLink" href="http://social.msdn.microsoft.com/Forums/en-US/libraryfeedback/threads">
+      网站反馈
+        <span class="FeedbackButton clip20x21" id="FeedbackButton">
+          <img id="feedBackImg" class="cl_footer_feedback_icon" src="./会话状态概述_files/Msdn_ImageSprite.png" alt="网站反馈">
+        </span>
+      </a>
+    
+  <div id="FeedbackContainer" class="FeedbackContainer">
+    <form id="siteFeedbackForm" method="post" action="http://msdn.microsoft.com/zh-cn/library/feedback/add/ms178581(v=vs.80).aspx">
+        <input name="__RequestVerificationToken" type="hidden" value="NWH4sAhnWauF+TPXdzZ4+S9yjqXg3LlG9VljZtAraS/58qo79gmHhv+IA2nSM9l7O17eCfbxZ4eIFcR+b+XTWndlHF2YOniqAmjkz2IhjasQt1SyDKnPkX3RNs8X4SCQBEsDgg==">
+    <div class="FeedbackTitleContainer">
+        <div class="FeedbackTitle">
+            网站反馈</div>
+        <div class="FeedbackCancel">
+            <a href="javascript:;" onclick="document.getElementById(&#39;FeedbackContainer&#39;).style.display = &#39;none&#39;;">x</a>
+            </div>
+    </div>
+    <div class="FeedbackData">
+        <div class="FeedbackInfoText">
+            请与我们分享您的经历…
+        </div>
+        <div class="QuestionText">
+            页面加载速度够快吗？
+        </div>
+        <div class="AnswerText">
+            
+            <span>
+                是<span>
+                    <input id="searchBox" name="searchBox" type="radio" value="1"></span></span>
+            
+            <span>
+                否<span>
+                    <input id="searchBox" name="searchBox" type="radio" value="0"></span></span>
+            
+        </div>
+        <div class="QuestionText">
+            您喜欢网页的设计吗？
+        </div>
+        <div class="AnswerText">
+            
+            <span>
+                是<span>
+                    <input id="tabbedCode" name="tabbedCode" type="radio" value="1"></span></span>
+            
+            <span>
+                否<span>
+                    <input id="tabbedCode" name="tabbedCode" type="radio" value="0"></span></span>
+            
+        </div>
+        <div class="QuestionText">
+            请告诉我们更多意见
+        </div>
+        <div class="FeedbackTextAreaContainer">
+            <textarea id="feedbackText" data-maxlength="4000" name="feedbackText" cols="25" rows="5" class="FeedbackTextArea"></textarea>
+            
+            <textarea id="feedbackDescription" name="feedbackDescription" cols="25" rows="10" style="display:none;">Enter description here.</textarea>
+            <input type="hidden" id="feedbackPriority" name="feedbackPriority" value="">
+            <input type="hidden" id="feedbackSourceUrl" name="feedbackSourceUrl" value="">
+            <input type="hidden" id="ClientIP" name="ClientIP" value="">
+            <input type="hidden" id="ClientOS" name="ClientOS" value="">
+            <input type="hidden" id="ClientBrowser" name="ClientBrowser" value="">
+            <input type="hidden" id="ClientTime" name="ClientTime" value="">
+            <input type="hidden" id="ClientTimeZone" name="ClientTimeZone" value="">
+            
+            
+        </div>
+        <div>
+            <input id="siteFeedbackSubmit" type="submit" value="发送" class="FeedbackSubmit" onclick="submitSiteFeedback(&#39;-1&#39;);">
+        </div>
+    </div>
+    <input type="hidden" id="returnUrl" name="returnUrl" value="http://msdn.microsoft.com/zh-cn/library/ms178581(v=vs.80).aspx">
+    
+    
+    <input type="hidden" id="feedBackVersion" name="feedBackVersion" value="1">
+    
+  </form> 
+</div>
+
+    </div>
+  </div>
+</div>
+
+  </div>
+
+    
+        <div class="MetricsContainer">
+            
+    <div class="WebtrendsContainer">
+      
+
+
+<noscript>&lt;div&gt;&lt;img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;amp;WT.js=No" /&gt;&lt;/div&gt;</noscript>
+
+
+    </div>
+    
+    <div class="OmnitureContainer">
+      
+
+
+<noscript>
+  &lt;a href="http://www.omniture.com" title="Web Analytics"&gt;
+    &lt;img src="//msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" /&gt;
+  &lt;/a&gt;
+</noscript>
+
+
+    </div>
+    
+        </div>
+        
+
+<!--[CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]-->
+<script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index],elem=document.createElement("script"),elem.className="mtps-injected",elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext,script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }"),parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n\"use strict\"; \r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ txt: "//\n    MTPS = window.MTPS || {};\n    MTPS.Watermarks = window.MTPS.Watermarks || {};\n    MTPS.Watermarks.SearchInput = {\n        \"control\": \"SearchInput\",\n        \"defaultValue\": \"使用 Bing 搜索 MSDN\",\n        \"defaultCSS\": \"searchTextBox\",\n        \"focusCSS\": \"searchTextBoxTrue\"\n    };\n    function checkSearchBox() {\n        if (document.getElementById(\"SearchInput\").value == MTPS.Watermarks.SearchInput.defaultValue) {\n            document.getElementById(\"SearchInput\").value = \"\";\n        }\n    }\n //" },
+	{ txt: "//\n  MTPS = window.MTPS || {};\n  MTPS.TopicNodes= {\n  \n            \"_last\": \u0027\u0027\n    };\n  //" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/zh-cn/library/ms178581(d=lightweight,l=zh-cn,v=vs.80).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n  var detectedLocale = \u0027zh-cn\u0027;\n  var wtsp = \u0027msdnlib_devtools_lang\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"85077889-8489-4567-9dd3-547d0e37f5b1\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Library,1:webtrendsscript,2:omni_rsid_MSDN,3:FeedbackCounter,4:CodeSnippet,3:Feedback,5:SurveyBroker;/Areas/Brand/Content:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Shared/Content:3,/Areas/Global/Content:4,/Areas/Epx/Content/Scripts:5&amp;hashKey=83E8A16A0FBE3476AE6C75AB814D3ACD" }
+]);
+
+/*]]>*/
+</script>
+
+<script src="./会话状态概述_files/broker-config.js"></script></body></html>

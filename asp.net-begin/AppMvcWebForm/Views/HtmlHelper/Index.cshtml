@@ -1,0 +1,135 @@
+﻿
+
+@*这个页面要变成强类型视图 才可以使用功能   不然的话是不行滴
+    有一些概念 还是要多使用才会有一些体会
+    
+    *@
+@model AppMvcWebForm.Models.UserInfo
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+
+    <style>
+
+        .big-font {
+            font-size: 18px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div>
+
+
+        @*@Html.ActionLink("UserInfo/Index", "用户列表");*@
+
+        @Html.ActionLink("用户列表", "Index");
+        @*<a href="/HtmlHelper-Index">用户列表</a>  根据路由规则来生成链接 *@;
+
+
+        @*默认的action是Index就省略了
+            会根据路由规则来确定 action 是不会变的。
+            路由规则 如果修改了。。
+
+        *@
+        @Html.ActionLink("用户列表", "Index", "UserInfo");
+        @*@Html.ActionLink("添加用户", "ShowDetial", "UserInfo", new UrlParameter { id = 12; });*@
+
+
+        添加样式   object routeValues, object htmlAttributes
+        <hr />
+
+        @*@class  注意这里加一个@符号转义一下 第3个参数是 路由参数 第4个 是html标签的属性*@
+        @Html.ActionLink("用户列表", "Index", "UserInfo", new { name = "zhangsan", age = 12 }, new { id = "123", @class = "big-font" });
+        添加 参数
+
+        <hr />
+
+        @*是否转义输出  着一天内容 没有代码 我也是哭了  server.htmlEncode()*@
+        @{
+            string htmlAttr = "<h1 color='red'>这个是一个文字</h1>";
+        }
+
+        @*为了 防止跨站脚本攻击 更加的安全  先输出的内容 让浏览器渲染   MVCHtmlString  *@
+        @MvcHtmlString.Create(htmlAttr)
+        <hr />
+        @htmlAttr
+
+        <hr />
+
+        @*这个city和ViewData的值一样就能够使用 如何找到一些资料
+
+            着ViewData是要重点研究一下的东西
+        *@
+        @Html.DropDownList("city")
+        <hr />
+
+        @*自己实现一个方法 有一个方法 就可以自己不写这个方法 还有一个默认选中 其他的东西
+            有了一些方法 能让你更加轻松的实现一个功能
+
+            工作 按照自己的想法 把功能实现一下
+        *@
+        @Html.DropDownList("city", null, new { id = "cityDropDownList" })
+
+        <hr />
+
+        @*自己实现一下东西   自己用到要 多试一试只是引入门*@
+        <select>
+            @{
+                var citys = (List<SelectListItem>)ViewData["city"];
+                foreach (var item in citys)
+                {
+                    <option @item.Value> @item.Text</option>
+                }
+            }
+        </select>
+
+        <hr />
+        <p>redio button</p>
+        男 @Html.RadioButton("man", 0, true, new { value = 1, id = "boy" })
+        女 @Html.RadioButton("man", 1, false, new { value = 0 })
+
+        <hr />
+
+        复选框
+
+        <hr />
+        表单  每一个方法都是有很多重载来使用
+        @*public void Dispose();*@
+
+
+        @using (Html.BeginForm("Index", "UserInfo", FormMethod.Get, new { id = "userForm", enctype = "multy-file" }))
+        {
+
+            <input type="submit" value="提交" />
+            @Html.TextBox("txtUserName", "请输入姓名", new { id = "name" });
+
+            //加for也是生成input文本框 需要一个lamda表达式  根据数据查询
+
+            //html 的方法 razor的语法 都是一个一个的知识点 拼接起来 构成一个知识面来做的
+
+
+
+
+            //Html.TextBoxFor()  使用这个强类型视图
+
+            // 一个表达式，用于标识包含要显示的属性的对象。  先显示的属性 是什么  可以根据强类型来获取得到
+            @Html.TextBoxFor(u => u.RegTime, new { id = "RegTime" });
+
+        }
+
+
+        @*//正则表达式验证 知己一个一个的写*@ 
+        <hr />
+
+
+    </div>
+</body>
+</html>

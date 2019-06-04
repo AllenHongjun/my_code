@@ -1,0 +1,20 @@
+﻿如何使用
+
+用在怎么地方
+
+
+资源包 整理
+
+
+demo测试
+
+https://www.newtonsoft.com/json
+
+
+
+
+PM> Install-Package Newtonsoft.Json
+
+查看演示demo
+
+https://www.cnblogs.com/freshman0216/p/4161800.html

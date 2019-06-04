@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<meta name="keywords" content="jquery,ui,easy,easyui,web framekwork,ajax framekwork,ria,web development">
+		<meta name="description" content="easyui help you build your web page easily!">
+		<title>easyloader - jQuery EasyUI中文帮助手册</title>
+        <link rel="stylesheet" href="main.css" type="text/css">
+		<link type="text/css" rel="stylesheet" href="SyntaxHighlighter.css">
+		<script src="shCore.js"></script>
+		<script src="shBrushJScript.js"></script>
+		<script src="shBrushXml.js"></script>
+	</head>
+	<body>
+		<div id="header">
+						<div id="header-inner">
+				<table cellpadding="0" cellspacing="0" style="width:100%;">
+					<tbody><tr>
+						<td rowspan="2" style="width:20px;">
+						</td>
+						<td style="height:52px;">
+							<div style="color:#fff;font-size:22px;font-weight:bold;">
+								<a href="http://www.jeasyui.com/" style="color:#fff;font-size:22px;font-weight:bold;text-decoration:none">jQuery EasyUI</a>
+							</div>
+							<div style="color:#fff">
+								<a href="http://www.jeasyui.com/" style="color:#fff;text-decoration:none">jQuery EasyUI 框架帮助你轻松建立站点。</a>
+							</div>
+						</td>
+					</tr>
+				</tbody></table>
+			</div>
+			
+		</div>
+		<div id="mainwrap">
+			<div id="content">
+			
+
+<div style="padding:10px">
+
+<h3>简单载入器</h3>
+<h4>使用方法</h4>
+<pre name="code-easyloader" class="JScript" style="display: none; ">	easyloader.base = '../';    // 设置easyui根目录
+	easyloader.load('messager', function(){        // 载入特定模块
+		$.messager.alert('Title', 'load ok');
+	});
+</pre>
+
+<h4>属性</h4>
+<table class="doc-table">
+<tbody><tr>
+<th><strong>名称</strong></th>
+<th><strong>类型</strong></th>
+<th><strong>描述</strong></th>
+
+<th><strong>默认值</strong></th>
+</tr>
+<tr>
+<td>modules（模块）</td>
+<td>object（对象）</td>
+<td>预定义模块。</td>
+<td></td>
+</tr>
+<tr>
+<td>locales（多语言）</td>
+
+<td>object（预定义对象）</td>
+<td>预定义多语言。</td>
+<td></td>
+</tr>
+<tr>
+<td>base（很目录）</td>
+<td>string（字符串）</td>
+<td>easyui根目录,必须以'/'结尾。</td>
+<td>easyui根目录将会被自动设置为相对于easyload.js的位置。</td>
+</tr>
+<tr>
+
+<td>theme（主题名称）</td>
+<td>string（字符串）</td>
+<td>'themes'目录中的主题的名称。</td>
+<td>default</td>
+</tr>
+<tr>
+<td>css（层叠样式表）</td>
+<td>boolean（布尔型）</td>
+<td>定义是否在加载模块的同时加载css文件。</td>
+<td>true</td>
+
+</tr>
+<tr>
+<td>locale（自定义语言）</td>
+<td>string（字符串）</td>
+<td>语言名称。</td>
+<td>null</td>
+</tr>
+<tr>
+<td>timeout（超时）</td>
+<td>number（数字）</td>
+<td>超时单位为毫秒，出现超时就触发。</td>
+
+<td>2000</td>
+</tr>
+</tbody></table>
+
+<h4>预定义语言</h4>
+<ul>
+<li>af</li>
+<li>bg</li>
+<li>ca</li>
+<li>cs</li>
+
+<li>da</li>
+<li>de（德语）</li>
+<li>en（英语）</li>
+<li>fr（法语）</li>
+<li>nl</li>
+<li>zh_CN（简体中文）</li>
+<li>zh_TW（繁体中文）</li>
+</ul>
+
+<h4>事件</h4>
+<table class="doc-table">
+<tbody><tr>
+<th><strong>名称</strong></th>
+<th><strong>参数</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+<tr>
+<td>onProgress</td>
+<td>name</td>
+
+<td>当一个模块成功载入时触发。</td>
+</tr>
+<tr>
+<td>onLoad</td>
+<td>name</td>
+<td>当一个模块及其所有依赖关系（可以理解为载入该模块所需要的其他模块、属性、方法等）载入时触发。</td>
+</tr>
+</tbody></table>
+
+<h4>方法</h4>
+<table class="doc-table">
+<tbody><tr>
+<th><strong>名称</strong></th>
+<th><strong>参数</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+<tr>
+<td>load</td>
+<td>module, callback</td>
+
+<td>载入特定的模块。当载入成功时将调用回调函数。<br>
+有效的模块参数类型如下:<br>
+单一的模块名称<br>
+一个存储有模块名称的数组<br>
+一个以'.css'结尾的样式文件<br>
+一个以'.js'结尾的js文件</td>
+</tr>
+</tbody></table>
+
+</div>
+
+﻿			</div>
+		</div>
+		<div id="footer">
+			<div>Copyright © 2010-2011 www.jeasyui.com</div>
+<a target="_blank" href="http://sighttp.qq.com/authd?IDKEY=0d8f551beb86c567f5d026fc3af8f8a0c1cf318635116789"><img border="0"  src="http://wpa.qq.com/imgd?IDKEY=0d8f551beb86c567f5d026fc3af8f8a0c1cf318635116789&pic=45" alt="点击Q我" title="点击Q我"></a>
+|  
+<noscript><a href="http://www.51.la/?4095651" target="_blank">
+<img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/4095651.asp" style="border:none" /></a></noscript> 
+<script src="http://s17.cnzz.com/stat.php?id=2412230&web_id=2412230&show=pic" language="JavaScript"></script>|<script language="javascript" type="text/javascript" src="http://js.users.51.la/4095651.js"></script>
+|<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F9541ae759aad5b1e7083c2f63b8e8e9c' type='text/javascript'%3E%3C/script%3E"));
+</script>
+		</div>
+		<script type="text/javascript">
+						dp.SyntaxHighlighter.ClipboardSwf = '/SyntaxHighlighter/Scripts/clipboard.swf';
+			dp.SyntaxHighlighter.HighlightAll('code-easyloader');
+		</script>
+	
+</body></html>

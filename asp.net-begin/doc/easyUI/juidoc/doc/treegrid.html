@@ -1,0 +1,721 @@
+﻿<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="keywords" content="jquery,ui,easy,easyui,web framekwork,ajax framekwork,ria,web development">
+		<meta name="description" content="easyui help you build your web page easily!">
+		<title>treegrid - jQuery EasyUI中文帮助手册</title>
+        <link rel="stylesheet" href="main.css" type="text/css" />
+		<link type="text/css" rel="stylesheet" href="SyntaxHighlighter.css"></link>
+		<script src="shCore.js"></script>
+		<script src="shBrushJScript.js"></script>
+		<script src="shBrushXml.js"></script>
+<script type="text/javascript">/*120*270，创建于2012-3-20*/ var cpro_id = 'u814345';</script><script src="http://cpro.baidu.com/cpro/ui/f.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<div id="header">
+						<div id="header-inner">
+				<table cellpadding="0" cellspacing="0" style="width:100%;">
+					<tr>
+						<td rowspan="2" style="width:20px;">
+						</td>
+						<td style="height:52px;">
+							<div style="color:#fff;font-size:22px;font-weight:bold;">
+								<a href="http://www.jeasyui.com/" style="color:#fff;font-size:22px;font-weight:bold;text-decoration:none">jQuery EasyUI</a>
+							</div>
+							<div style="color:#fff">
+								<a href="http://www.jeasyui.com/" style="color:#fff;text-decoration:none">jQuery EasyUI 框架帮助你轻松建立站点。</a>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+			
+		</div>
+		<div id="mainwrap">
+			<div id="content">
+			
+
+
+<div style="padding:10px">
+
+
+
+<h3>树形表格</h3>
+
+<p>继承$.fn.datagrid.defaults，使用$.fn.treegrid.defaults重载默认值。</p>
+
+
+
+<h4>依赖关系</h4>
+
+<ul>
+
+	<li>数据表格</li>
+
+</ul>
+
+
+
+<h4>使用方法</h4>
+
+<textarea name="code-treegrid" class="html">
+	<table id="tt"></table>
+</textarea>
+
+<textarea name="code-treegrid" class="js">
+	$('#tt').treegrid({
+		url:'treegrid_data.json',
+		treeField:'name',
+		columns:[[
+			{title:'Task Name',field:'name',width:180},
+			{field:'persons',title:'Persons',width:60,align:'right'},
+			{field:'begin',title:'Begin Date',width:80},
+			{field:'end',title:'End Date',width:80}
+		]]
+	});
+</textarea>
+
+
+
+<h4>属性</h4>
+
+<p>属性继承数据表格，以下是树形表格独有的树形。</p>
+
+<table class="doc-table">
+
+<tr>
+
+<th><strong>名称</strong></th>
+<th><strong>类型</strong></th>
+<th><strong>描述</strong></th>
+<th><strong>默认值</strong></th>
+
+</tr>
+
+<tr>
+
+<td>treeField（树形字段）</td>
+
+
+
+<td>string（字符串）</td>
+
+<td>定义作为树节点的字段。</td>
+
+<td>null</td>
+
+</tr>
+
+<tr>
+
+<td>animate（动画）</td>
+
+<td>boolean（布尔型）</td>
+
+<td>定义当打开或关闭节点时是否显示动画效果。</td>
+
+<td>false</td>
+
+</tr>
+
+
+
+</table>
+
+
+
+<h4>事件</h4>
+
+<p>事件继承数据表格，以下是树形表格的独有事件。</p>
+
+<table class="doc-table">
+
+<tr>
+
+<th><strong>名称</strong></th>
+<th><strong>参数</strong></th>
+<th><strong>描述</strong></th>
+
+</tr>
+
+<tr>
+
+<td>onClickRow</td>
+
+<td>row</td>
+
+<td>当用户点击节点时触发 。</td>
+
+</tr>
+
+<tr>
+
+<td>onDblClickRow</td>
+
+<td>row</td>
+
+<td>当用户双击节点时触发 。</td>
+
+
+
+</tr>
+
+<tr>
+
+<td>onBeforeLoad</td>
+
+<td>row, param</td>
+
+<td>在请求载入数据之前触发，返回false将取消载入。</td>
+
+</tr>
+
+<tr>
+
+<td>onLoadSuccess</td>
+
+<td>row, data</td>
+
+<td>当数据载入成功时触发。</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>onLoadError</td>
+
+<td>arguments</td>
+
+<td>当数据载入失败时触发，arguments参数和jQuery.ajax的'error'函数一样。</td>
+
+</tr>
+
+<tr>
+
+<td>onBeforeExpand</td>
+
+<td>row</td>
+
+<td>在节点打开之前触发 ，返回false将取消打开。</td>
+
+</tr>
+
+<tr>
+
+
+
+<td>onExpand</td>
+
+<td>row</td>
+
+<td>当节点打开时触发。</td>
+
+</tr>
+
+<tr>
+
+<td>onBeforeCollapse</td>
+
+<td>row</td>
+
+<td>在节点关闭之前触发，返回false将取消关闭。</td>
+
+</tr>
+
+<tr>
+
+<td>onCollapse</td>
+
+
+
+<td>row</td>
+
+<td>当节点关闭时触发。</td>
+
+</tr>
+
+<tr>
+
+<td>onContextMenu</td>
+
+<td>e, row</td>
+
+<td>当节点被鼠标右键点击时触发 。</td>
+
+</tr>
+
+<tr>
+
+<td>onBeforeEdit</td>
+
+<td>row</td>
+
+
+
+<td>当用户开始编辑节点时触发。</td>
+
+</tr>
+
+<tr>
+
+<td>onAfterEdit</td>
+
+<td>row,changes</td>
+
+<td> 当用户结束编辑时触发。</td>
+
+</tr>
+
+<tr>
+
+<td>onCancelEdit</td>
+
+<td>row</td>
+
+<td>当用户取消编辑节点时触发。</td>
+
+
+
+</tr>
+
+</table>
+
+
+
+<h4>方法</h4>
+
+<table class="doc-table">
+
+<tr>
+
+<th><strong>名称</strong></th>
+<th><strong>参数</strong></th>
+<th><strong>描述</strong></th>
+
+
+
+</tr>
+
+<tr>
+
+<td>options</td>
+
+<td>none</td>
+
+<td>返回树形表格的属性对象。</td>
+
+</tr>
+
+<tr>
+
+<td>resize</td>
+
+<td>options</td>
+
+<td>设置树形表格的大小，options包含2个属性：<br />
+
+width：新的树形表格宽度<br />
+
+
+
+height：新的树形表格高度。</td>
+
+</tr>
+
+<tr>
+
+<td>fixRowHeight</td>
+
+<td>id</td>
+
+<td>固定特定行的高。</td>
+
+</tr>
+
+<tr>
+
+<td>loadData</td>
+
+<td>data</td>
+
+<td>载入树形表格数据。</td>
+
+
+
+</tr>
+
+<tr>
+
+<td>reload</td>
+
+<td>id</td>
+
+<td>重新载入树形表格数据。</td>
+
+</tr>
+
+<tr>
+
+<td>reloadFooter</td>
+
+<td>footer</td>
+
+<td>重新载入树形表格的行底数据。</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>getData</td>
+
+<td>none</td>
+
+<td>获取已载入的数据。</td>
+
+</tr>
+
+<tr>
+
+<td>getFooterRows</td>
+
+<td>none</td>
+
+<td>获取行底数据。</td>
+
+</tr>
+
+<tr>
+
+
+
+<td>getRoot</td>
+
+<td>none</td>
+
+<td>获取根节点，返回节点对象。</td>
+
+</tr>
+
+<tr>
+
+<td>getRoots</td>
+
+<td>none</td>
+
+<td>获取根节点，返回节点数组。</td>
+
+</tr>
+
+<tr>
+
+<td>getParent</td>
+
+
+
+<td>id</td>
+
+<td>获取父节点。</td>
+
+</tr>
+
+<tr>
+
+<td>getChildren</td>
+
+<td>id</td>
+
+<td>获取子节点。</td>
+
+</tr>
+
+<tr>
+
+<td>getSelected</td>
+
+<td>none</td>
+
+
+
+<td>获取被选择节点并返回，如果没有节点被选择则返回null。</td>
+
+</tr>
+
+<tr>
+
+<td>getSelections</td>
+
+<td>none</td>
+
+<td>获取所有被选择的节点。</td>
+
+</tr>
+
+<tr>
+
+<td>getLevel</td>
+
+<td>id</td>
+
+<td>获取指定的节点的层级。</td>
+
+
+
+</tr>
+
+<tr>
+
+<td>find</td>
+
+<td>id</td>
+
+<td>查找指定的节点并返回节点数据。</td>
+
+</tr>
+
+<tr>
+
+<td>select</td>
+
+<td>id</td>
+
+<td>选择一个节点。</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>unselect</td>
+
+<td>id</td>
+
+<td>取消选择一个节点。</td>
+
+</tr>
+
+<tr>
+
+<td>selectAll</td>
+
+<td>none</td>
+
+<td>选择所有的节点。</td>
+
+</tr>
+
+<tr>
+
+
+
+<td>unselectAll</td>
+
+<td>none</td>
+
+<td>取消选择所有的节点。</td>
+
+</tr>
+
+<tr>
+
+<td>collapse</td>
+
+<td>id</td>
+
+<td>关闭节点。</td>
+
+</tr>
+
+<tr>
+
+<td>expand</td>
+
+
+
+<td>id</td>
+
+<td>打开节点。</td>
+
+</tr>
+
+<tr>
+
+<td>collapseAll</td>
+
+<td>id</td>
+
+<td>关闭所有节点。</td>
+
+</tr>
+
+<tr>
+
+<td>expandAll</td>
+
+<td>id</td>
+
+
+
+<td>打开所有节点。</td>
+
+</tr>
+
+<tr>
+
+<td>expandTo</td>
+
+<td>id</td>
+
+<td>打开从根节点到指定节点直接的所有节点。</td>
+
+</tr>
+
+<tr>
+
+<td>toggle</td>
+
+<td>id</td>
+
+<td>打开或关闭节点的触发器。</td>
+
+
+
+</tr>
+
+<tr>
+
+<td>append</td>
+
+<td>param</td>
+
+<td>添加若干子节点到一个父节点，'param'参数包含如下属性：<br />
+
+parent：DOM对象，将要被添加子节点的父节点，如果未指定，子节点将被添加至根节点。<br />
+
+data：数组，节点数据。</td>
+
+</tr>
+
+<tr>
+
+<td>remove</td>
+
+<td>id</td>
+
+
+
+<td>移除一个节点和它的子节点。</td>
+
+</tr>
+
+<tr>
+
+<td>refresh</td>
+
+<td>id</td>
+
+<td>属性指定的节点。</td>
+
+</tr>
+
+<tr>
+
+<td>beginEdit</td>
+
+<td>id</td>
+
+<td>开始编辑节点。</td>
+
+
+
+</tr>
+
+<tr>
+
+<td>endEdit</td>
+
+<td>id</td>
+
+<td>结束编辑节点。</td>
+
+</tr>
+
+<tr>
+
+<td>cancelEdit</td>
+
+<td>id</td>
+
+<td>取消编辑节点。</td>
+
+</tr>
+
+<tr>
+
+<td>getEditors</td>
+
+<td>id</td>
+
+<td>获取指定行的编辑器，每个编辑器都有如下属性：<br />
+
+actions：编辑器可以做的行为。<br />
+
+target：目标编辑器jQuery对象。<br />
+
+
+
+field：字段名。<br />
+
+type：编辑类型。</td>
+
+</tr>
+
+<tr>
+
+<td>getEditor</td>
+
+<td>options</td>
+
+<td>获取指定的编辑器，options包含2个属性：<br />
+
+id：行节点 id。<br />
+
+field：字段名。</td>
+
+</tr>
+
+
+
+</table>
+
+
+
+</div>
+
+
+
+﻿			</div>
+		</div>
+		<div id="footer">
+			<div>Copyright © 2010-2011 www.jeasyui.com</div>
+<a target="_blank" href="http://sighttp.qq.com/authd?IDKEY=0d8f551beb86c567f5d026fc3af8f8a0c1cf318635116789"><img border="0"  src="http://wpa.qq.com/imgd?IDKEY=0d8f551beb86c567f5d026fc3af8f8a0c1cf318635116789&pic=45" alt="点击Q我" title="点击Q我"></a>
+|  
+<noscript><a href="http://www.51.la/?4095651" target="_blank">
+<img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/4095651.asp" style="border:none" /></a></noscript> 
+<script src="http://s17.cnzz.com/stat.php?id=2412230&web_id=2412230&show=pic" language="JavaScript"></script>|<script language="javascript" type="text/javascript" src="http://js.users.51.la/4095651.js"></script>
+|<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F9541ae759aad5b1e7083c2f63b8e8e9c' type='text/javascript'%3E%3C/script%3E"));
+</script>
+		</div>
+		<script type="text/javascript">
+						dp.SyntaxHighlighter.ClipboardSwf = '/SyntaxHighlighter/Scripts/clipboard.swf';
+			dp.SyntaxHighlighter.HighlightAll('code-treegrid');
+		</script>
+	</body>
+</html>

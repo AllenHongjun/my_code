@@ -1,0 +1,71 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+    <script>
+        function afterAdd(data) {
+            alert("表单提交成功");
+            console.log(data);
+        }
+    </script>
+
+</head>
+<body>
+    <div> 
+        @*这个是是和jquery有关系的
+            
+            写一点属性 就能提交表单 
+            了解一下 
+            还不如直接写一个ajax请求
+            感觉其实也不太好弄
+            不能够只是知道高度封装的内容 
+            如何使用 这个是不行的
+            有些是使用 。很多还是要自己能够会写的 会用的。
+            unobtrusive-ajax.js  帮你封号好了 ajax的操作
+            提交表单 基于jquery的插件  
+            就是很多搞服务端开发的人 更加容易使用 这些js的东西
+
+            jquery unobtrusive 封装了 常用的ajax的属性 
+            如果你想这么用 还需要自己来封装方法 。
+            微乳就是已经想好了 有可能 你会要封装一些方法 就提前把这个方法帮你给封装好了 
+
+            正式这种不会用 不太使用的东西 自己要多掌握 
+            过程里面添加一个参数 所有的过程都要添加一遍 就有一种想死的感觉
+            就弄一下 没有难的。
+
+            可以配合vue angular 其他的 就是在html添加一些data标记 
+            webapi crud 使用 数据层的内容 数据查询 
+
+
+            *@
+        @using (Ajax.BeginForm("CreateUser", "Ajax" , new AjaxOptions {
+            HttpMethod = "post",
+            Confirm = "确定要添加吗？",
+            UpdateTargetId = "div1",
+            InsertionMode = InsertionMode.InsertBefore,
+            LoadingElementId = "div2",
+            OnSuccess = "afterAdd"
+        }))
+        {
+            <input type="submit" value="添加用户"/>
+        }
+
+            <div id="div1"></div>
+            <div id="div2" style="display:none;">提交当中</div>
+
+            @*一个请求是要一定的时间的*@
+    </div>
+</body>
+</html>

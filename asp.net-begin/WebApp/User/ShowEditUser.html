@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <form method="post" action="EditUser.ashx">
+        用户名:<input type="text" name="txtName" value="$name" /><br />
+        密码:<input type="text" name="txtPwd" value="$pwd" /><br />
+        邮箱:<input type="text" name="txtMail" value="$mail" /><br />
+        <input type="hidden" name="txtId" value="$Id" />
+        <input type="hidden" name="txtRegTime" value="$regTime" />
+        <input type="submit" value="修改用户" />
+    </form>
+</body>
+</html>
