@@ -1,0 +1,28 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Pages/webform/MainMater.Master" AutoEventWireup="true" CodeBehind="NestedMasterPage1.master.cs" Inherits="WebApp.Pages.webform.NestedMasterPage1" %>
+
+
+<%--在嵌套的目标页如何挖坑--%>
+
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <h1>head</h1>
+
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <h2>ContentPlaceHolder</h2>
+
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="Container" runat="server">
+
+    <h3>Container   </h3>
+</asp:Content>
+<asp:Content ID="Content4" ContentPlaceHolderID="footer" runat="server">
+
+    <h4>Footer
+
+        预习过
+        相关的东西 会做 也就能做好一些事情
+        这就有些尴尬了 在二级模板页面里面不能挖坑 🎧  🖱  键盘 🐼
+
+    </h4>
+</asp:Content>

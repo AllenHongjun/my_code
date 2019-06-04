@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<!-- saved from url=(0063)http://msdn.microsoft.com/zh-cn/library/bb470252(v=vs.100).aspx -->
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="WT.seg_1" content="zh-cn"><link rel="canonical" href="./IIS 7.0 的 ASP.NET 应用程序生命周期概述_files/IIS 7.0 的 ASP.NET 应用程序生命周期概述.htm">
+        <title>IIS 7.0 的 ASP.NET 应用程序生命周期概述</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/zh-cn/library/bb470252(d=default,l=zh-cn,v=vs.100).aspx">
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/zh-cn/library/bb470252(d=default,l=zh-cn,v=vs.100).aspx">
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/zh-cn/library/bb470252(d=default,l=zh-cn,v=vs.100).aspx">
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/zh-cn/library/bb470252(d=default,l=zh-cn,v=vs.100).aspx">
+
+<meta name="MN" content="EE4293C3-9:42:12 AM">
+
+<meta name="Search.ShortId" content="bb470252">
+
+<meta name="ms.shortidmsdn" content="bb470252">
+
+<meta name="Ms.Locale" content="zh-cn">
+
+
+
+
+
+
+
+
+        
+    <link rel="stylesheet" type="text/css" href="./IIS 7.0 的 ASP.NET 应用程序生命周期概述_files/Combined.css"><script type="text/javascript" async="" src="./IIS 7.0 的 ASP.NET 应用程序生命周期概述_files/ms2.js"></script><script type="text/javascript" src="./IIS 7.0 的 ASP.NET 应用程序生命周期概述_files/ai.js" async=""></script><script class="mtps-injected">try {
+/**/
+(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { 
+	"image": "http://i.msdn.microsoft.com", 
+	"js": "http://i2.msdn.microsoft.com", 
+	"css": "http://i3.msdn.microsoft.com"
+});
+/**/
+} finally { MTPS._injectNextScript_0 && MTPS._injectNextScript_0(); }</script><script class="mtps-injected" src="./IIS 7.0 的 ASP.NET 应用程序生命周期概述_files/jquery-1.8.2.min.js"></script><script class="mtps-injected">try {
+//
+  var literalNormalizedUrl = '/zh-cn/library/bb470252(d=default,l=zh-cn,v=vs.100).aspx';
+  var wt_nvr_ru = 'WT_NVR_RU';
+  var wt_fpcdom = '.microsoft.com';
+  var wt_domlist = 'msdn.microsoft.com';
+  var wt_pathlist = '';
+  var wt_paramlist = 'DCSext.mtps_devcenter';
+  var wt_siteid = 'MSDN';
+  var gDomain = 'm.webtrends.com';
+  var gDcsId = 'dcsmgru7m99k7mqmgrhudo0k8_8c6m';
+  var gFpc = 'WT_FPC';
+
+
+
+  if (document.cookie.indexOf(gFpc + "=") == -1) {
+    var wtidJs = document.createElement("script");
+    wtidJs.src = "//" + gDomain + "/" + gDcsId + "/wtid.js";
+    document.getElementsByTagName("head")[0].appendChild(wtidJs);
+  }
+
+
+
+  var detectedLocale = 'zh-cn';
+  var wtsp = 'msdnlib_webdev';
+  var gTrackEvents = '0';
+/**/
+} finally { MTPS._injectNextScript_2 && MTPS._injectNextScript_2(); }</script><script class="mtps-injected">try {
+/**/
+  var omni_guid = "e5b20ef8-2972-4fb5-91e5-1da13c9a7e55";
+/**/
+} finally { MTPS._injectNextScript_3 && MTPS._injectNextScript_3(); }</script><script class="mtps-injected">try {
+//
+
+            window.appInsightsId = '60854590-027a-4ae4-98be-2741a40f355f';
+            //
+} finally { MTPS._injectNextScript_4 && MTPS._injectNextScript_4(); }</script><script class="mtps-injected" src="./IIS 7.0 的 ASP.NET 应用程序生命周期概述_files/Combined.js"></script><script class="mtps-injected" src="./IIS 7.0 的 ASP.NET 应用程序生命周期概述_files/SearchBox.jss"></script><script class="mtps-injected" src="./IIS 7.0 的 ASP.NET 应用程序生命周期概述_files/Combined(1).js"></script><script class="mtps-injected">try {
+//
+    MTPS = window.MTPS || {};
+    MTPS.Translation = window.MTPS.Translation || {};
+
+    MTPS.Translation.TranslationType =  0;
+    
+    
+    //
+} finally { MTPS._injectNextScript_8 && MTPS._injectNextScript_8(); }</script><script class="mtps-injected" src="./IIS 7.0 的 ASP.NET 应用程序生命周期概述_files/Combined(2).js"></script><script class="mtps-injected">try {
+MTPS = window.MTPS || {}; MTPS.LocalizedStrings = window.MTPS.LocalizedStrings || {}; MTPS.LocalizedStrings.ExpandButtonTooltip = '展开'; MTPS.LocalizedStrings.CollapseButtonTooltip = '折叠'; MTPS.LocalizedStrings.EnhancedExpandTooltip = '单击以展开。双击以全部展开。'; MTPS.LocalizedStrings.EnhancedCollapseTooltip = '单击以折叠。双击以全部折叠。'; MTPS.LocalizedStrings.ExpandAllButtonTooltip = '全部展开'; MTPS.LocalizedStrings.CollapseAllButtonTooltip = '全部折叠';
+} finally { MTPS._injectNextScript_10 && MTPS._injectNextScript_10(); }</script><script class="mtps-injected" src="./IIS 7.0 的 ASP.NET 应用程序生命周期概述_files/jquery.tmpl.min.js"></script><script class="mtps-injected" src="./IIS 7.0 的 ASP.NET 应用程序生命周期概述_files/Combined(3).js"></script><script src="./IIS 7.0 的 ASP.NET 应用程序生命周期概述_files/broker.js"></script><script class="mtps-injected">try {
+$(document).ready(function() {
+        try {
+            var token = $("#globalRequestVerification input[name='__RequestVerificationToken']").clone();
+            $("#siteFeedbackForm").append(token);
+        } catch(err) {
+            
+        }
+    });
+} finally { MTPS._injectNextScript_13 && MTPS._injectNextScript_13(); }</script><link href="./IIS 7.0 的 ASP.NET 应用程序生命周期概述_files/PrintView.css" rel="stylesheet" type="text/css" media="print"></head>
+    <body class="library">
+        <div id="page">
+            
+            
+  
+            
+        
+    <link type="text/css" rel="stylesheet">
+    
+    <input type="hidden" id="isHeaderBleeding" value="true">
+    <div id="ux-header" dir="ltr" class="ltr msdn">
+        
+
+        <header>
+            <div class="row">
+                <div class="top mobile"></div>
+                <div class="left">
+                    <div class="siteLogo">  
+                        
+<a class="msdnLogoImg" href="http://msdn.microsoft.com/">
+                             <img src="./IIS 7.0 的 ASP.NET 应用程序生命周期概述_files/microsoftLogoForHeader.png">
+                         </a>
+                                                             
+                        <div data-fragmentname="SiteLogo" id="Fragment_SiteLogo" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="LinkWithImage topImage">
+    <a id="SiteLogo_2152_1" href="http://msdn.microsoft.com/zh-cn">
+                
+                Developer Network
+            </a>
+  </div>
+</div>    
+                    </div>
+                    <div id="grip"></div>
+                </div>
+                
+                <div class="right desktop">
+                    <div class="auxNav">
+                        <div data-fragmentname="Subscriptions" id="Fragment_Subscriptions" xmlns="http://www.w3.org/1999/xhtml">
+  <a href="https://msdn.microsoft.com/subscriptions/manage/hh442900" id="Subscriptions_2153_1" xmlns="http://www.w3.org/1999/xhtml">
+    <span style="line-height:18px;" xmlns="">MSDN 订阅</span>
+  </a>
+</div>   
+                        <div data-fragmentname="GetTools" id="Fragment_GetTools" xmlns="http://www.w3.org/1999/xhtml">
+  <a href="http://go.microsoft.com/fwlink/?LinkId=309297&clcid=0x0804&slcid=0x0804" id="GetTools_2153_3" xmlns="http://www.w3.org/1999/xhtml">
+    <span style="line-height:18px;" xmlns="">获取工具</span>
+  </a>
+</div>   
+                        <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=12&ct=1398444132&rver=6.0.5276.0&wp=MCLBI&wlcxt=MSDN%24MSDN%24MSDN&wreply=http%3a%2f%2fmsdn.microsoft.com%2fzh-cn%2flibrary%2fbb470252%2528v%3dvs.100%2529.aspx&lc=2052&id=254354&mkt=zh-CN" title=" 登录  "> 登录  </a></div>
+
+    
+
+                    </div>
+                    <div data-fragmentname="SearchBox" id="Fragment_SearchBox" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="SearchBox">
+    <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+      <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" autocomplete="off">
+      <button id="HeaderSearchButton" value="" type="submit" class="header-search-button" title="搜索 MSDN"></button>
+    <div id="SearchFlyoutContainer" style="display: none; text-align: left; border: 1px solid buttonshadow; position: absolute; z-index: 1000; padding: 2px; background-color: rgb(255, 255, 255); color: rgb(59, 59, 59); font-family: &#39;Microsoft YaHei UI&#39;, &#39;Microsoft YaHei&#39;, SimSun, &#39;Segoe UI&#39;, &#39;Lucida Grande&#39;, Verdana, Arial, Helvetica, sans-serif; font-size: 13px;"><div id="SuggestionContainer"><ul style="list-style: none; padding: 4px 2px 0px 1px; cursor: pointer; margin: 1px; white-space: nowrap;"></ul></div></div></form>
+    
+    
+  </div>
+</div> 
+                </div>
+            </div>
+       
+            <div class="row" id="droor" style="display: block;">
+                <div class="left" style="max-width: 1322px;">
+                            <nav>
+            <ul>
+                     <li class="inactive">
+
+                         <a href="http://msdn.microsoft.com/dn308572" title="主页">主页</a>
+
+                     </li>
+                     <li class="inactive">
+
+                         <a href="http://msdn.microsoft.com/dn271881" title="机会">机会</a>
+                                 <div class="area">
+                                     <div class="arrow"></div>
+                                 </div>
+                                 <div class="subNav" style="">
+                                     <ul>
+                                                 <li><a href="http://msdn.microsoft.com/dn469160" title="桌面">桌面</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn338449" title="Web">Web</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn338450" title=".Net 中的新体验。">.Net 中的新体验。</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn308583" title="平板电脑和 PC">平板电脑和 PC</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn338268" title="手机">手机</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn338159" title="云">云</a></li>
+                                     </ul>
+                                 </div>
+
+                     </li>
+                     <li class="inactive">
+
+                         <a href="http://msdn.microsoft.com/dn271880" title="平台">平台</a>
+
+                     </li>
+                     <li class="inactive">
+
+                         <a href="http://msdn.microsoft.com/dn338064" title="联系">联系</a>
+                                 <div class="area">
+                                     <div class="arrow"></div>
+                                 </div>
+                                 <div class="subNav" style="">
+                                     <ul>
+                                                 <li><a href="http://tech-advisors.msdn.microsoft.com/zh-cn" title="Tech Advisors">Tech Advisors</a></li>
+                                                 <li><a href="http://events.msdn.microsoft.com/zh-cn" title="事件">事件</a></li>
+                                                 <li><a href="http://social.msdn.microsoft.com/forums/" title="技术论坛">技术论坛</a></li>
+                                     </ul>
+                                 </div>
+
+                     </li>
+                     <li class="inactive">
+
+                         <a href="http://msdn.microsoft.com/dn292944" title="下载">下载</a>
+                                 <div class="area">
+                                     <div class="arrow"></div>
+                                 </div>
+                                 <div class="subNav" style="">
+                                     <ul>
+                                                 <li><a href="http://msdn.microsoft.com/dn369242" title="开发人员工具">开发人员工具</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn369240" title="SDK">SDK</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn369243" title="MSDN 订阅">MSDN 订阅</a></li>
+                                     </ul>
+                                 </div>
+
+                     </li>
+                     <li class="current active">
+
+                         <a href="http://msdn.microsoft.com/library" title="技术资源库">技术资源库</a>
+
+                     </li>
+                     <li class="inactive">
+
+                         <a href="http://code.msdn.microsoft.com/" title="示例代码">示例代码</a>
+
+                     </li>
+            </ul>
+          
+        </nav>        
+
+                </div>
+                <div class="right mobile"></div>
+                
+                <div data-fragmentname="SocialLinks" id="Fragment_SocialLinks" xmlns="http://www.w3.org/1999/xhtml"></div> 
+                
+                <span id="singleCol"></span>
+                <span id="doubleCol"></span>
+            </div>
+            
+
+        </header>
+    </div>
+    
+    
+
+        
+    <div class="printExportMenus ltr">
+        <a id="isd_printABook" href="http://msdn.microsoft.com/zh-cn/library/export/help/?returnUrl=%2fzh-cn%2flibrary%2fbb470252(v%3dvs.100).aspx" style="display: inline;">
+            导出 (<span class="count">0</span>)
+        </a>
+        <a id="isd_print" href="http://msdn.microsoft.com/zh-cn/library/bb470252(d=printer,v=vs.100).aspx" rel="nofollow">
+            打印
+        </a>
+    </div>
+    
+
+        <div class="printExportMenus ltr">
+        <a id="expandCollapseAll" href="javascript:void(0)">全部折叠</a>
+    </div>
+
+    
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+
+    <div id="leftNav" style="width: 280px; max-width: 480px; min-height: 5451px; height: 346px;">
+
+
+
+<div id="tocnav" style="width: 280px; position: fixed; top: 60px;">
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px;">
+<a class="toc_collapsed" href="http://msdn.microsoft.com/zh-cn/library/bb470252(v=vs.100).aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/zh-cn/library/ms123401.aspx" id="ms310241_MSDN.10_zh-cn" mtpsaliasid="" mtpsassetid="5DDC0A78-6B2C-43E3-9C56-55F45C0DFFA5_MSDN.10_zh-cn" mtpsshortid="ms123401_MSDN.10_zh-cn" title="MSDN Library">MSDN Library</a>            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px;">
+<a class="toc_collapsed" href="http://msdn.microsoft.com/zh-cn/library/bb470252(v=vs.100).aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/zh-cn/library/aa155073.aspx" id="aa155073_MSDN.10_zh-cn" mtpsaliasid="" mtpsassetid="MSDN|webdev|$\webdev.hxt@0,0_MSDN.10_zh-cn" mtpsshortid="aa155073_MSDN.10_zh-cn" title="Web 开发">Web 开发</a>            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px;">
+<a class="toc_collapsed" href="http://msdn.microsoft.com/zh-cn/library/bb470252(v=vs.100).aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/zh-cn/library/dd566231.aspx" id="jj943725_VS.100_zh-cn" mtpsaliasid="" mtpsassetid="c3e0fd2f-7a94-47c4-afc0-ecfb7233e15a_VS.100_zh-cn" mtpsshortid="dd566231_VS.120_zh-cn" title="ASP.NET 和 Visual Studio for Web">ASP.NET 和 Visual Studio for Web</a>            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px;">
+<a class="toc_collapsed" href="http://msdn.microsoft.com/zh-cn/library/bb470252(v=vs.100).aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/zh-cn/library/ee532866.aspx" id="xx130500_VS.100_zh-cn" mtpsaliasid="" mtpsassetid="e4a7cbb8-9f59-4ebc-b47a-0177c339f5ed_VS.100_zh-cn" mtpsshortid="ee532866_VS.120_zh-cn" title="ASP.NET 4 和 Visual Studio 2010">ASP.NET 4 和 Visual Studio 2010</a>            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px;">
+<a class="toc_collapsed" href="http://msdn.microsoft.com/zh-cn/library/bb470252(v=vs.100).aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/zh-cn/library/ywdtth2f(v=vs.100).aspx" id="ms307319_VS.100_zh-cn" mtpsaliasid="" mtpsassetid="cdcd712f-96b0-4165-8b5d-9d0566650a28_VS.100_zh-cn" mtpsshortid="ywdtth2f_VS.100_zh-cn" title="ASP.NET Web 项目">ASP.NET Web 项目</a>            </div>
+            <div class="toclevel1" data-toclevel="1" data-childrenloaded="true" style="padding-left: 17px;">
+<a class="toc_expanded" href="http://msdn.microsoft.com/zh-cn/library/bb470252(v=vs.100).aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/zh-cn/library/ms227435(v=vs.100).aspx" id="gg594715_VS.100_zh-cn" mtpsaliasid="" mtpsassetid="01663e5f-b517-4524-918f-6b8f5ae35182_VS.100_zh-cn" mtpsshortid="ms227435_VS.100_zh-cn" title="ASP.NET 生命周期">ASP.NET 生命周期</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/zh-cn/library/ms178473(v=vs.100).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IIS 5.0 和 6.0 的 ASP.NET 应用程序生命周期概述">IIS 5.0 和 6.0 的 ASP.NET 应用程序生命周期概述</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="./IIS 7.0 的 ASP.NET 应用程序生命周期概述_files/IIS 7.0 的 ASP.NET 应用程序生命周期概述.htm" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IIS 7.0 的 ASP.NET 应用程序生命周期概述">IIS 7.0 的 ASP.NET 应用程序生命周期概述</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/zh-cn/library/ms178472(v=vs.100).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="ASP.NET 页生命周期概述">ASP.NET 页生命周期概述</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/zh-cn/library/ms178466(v=vs.100).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="ASP.NET 编译概述">ASP.NET 编译概述</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/zh-cn/library/ms366723(v=vs.100).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="了解 ASP.NET 动态编译">了解 ASP.NET 动态编译</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/zh-cn/library/fwzzh56s(v=vs.100).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="如何：创建 ASP.NET 应用程序级别的事件处理程序">如何：创建 ASP.NET 应用程序级别的事件处理程序</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+
+<a id="NavigationResize" href="javascript:void(0)" style="left: 280px; display: inline-block;">
+    <img class="cl_nav_resize_open" src="./IIS 7.0 的 ASP.NET 应用程序生命周期概述_files/ImageSprite.png" title="展开" alt="展开">
+    <img class="cl_nav_resize_close" src="./IIS 7.0 的 ASP.NET 应用程序生命周期概述_files/ImageSprite.png" title="最小化" alt="最小化" style="display: none;">
+</a>
+
+
+
+    </div>
+<div id="content" class="content" style="margin-left: 280px; width: auto;">
+
+
+
+<div id="MTPSTranslator" class="MTPSTranslator">
+    <table class="MTPSTranslatorTable" style="width: 100%">
+        <tbody><tr>
+            <td class="TranslationAlertBox">
+                <div>此文章由人工翻译。 将光标移到文章的句子上，以查看原文。 </div>
+            </td>
+                <td class="TranslationViewSwitcher">
+                    <div>
+                        <input title="显示译文" value="0" name="TrnaslatorView" type="radio" class="translatechoice" checked="checked"><span>译文</span>
+                    </div>
+                    <div>
+                        <input title="显示英文" value="1" name="TrnaslatorView" type="radio" class="translatechoice"><span>原文</span>
+                    </div>
+                </td>
+        </tr>
+    </tbody></table>
+</div>
+    
+    
+    
+     
+
+
+
+
+
+    
+    
+
+    
+
+    
+
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">IIS 7.0 的 ASP.NET 应用程序生命周期概述</h1>
+  
+  <div class="lw_vs">
+    <div id="curversion">
+      <strong>
+            .NET Framework 4
+        </strong>
+    </div>
+    <div id="versionclick">
+      <div id="vsseperator" class="cl_lw_vs_seperator"></div>
+      <div>
+        <div>
+          <a id="vsLink" href="javascript:;">
+                        其他版本
+                    </a>
+        </div>
+        <div class="cl_vs_arrow clip10x10">
+          <img class="cl_lw_vs_arrow" id="vsArrow" alt="" src="./IIS 7.0 的 ASP.NET 应用程序生命周期概述_files/ImageSprite.png">
+        </div>
+      </div>
+      <ul id="vsPanel">
+        <li>
+          <a href="http://msdn.microsoft.com/zh-cn/library/bb470252(v=vs.90).aspx" title="">Visual Studio 2008</a>
+        </li>
+      </ul>
+    </div>
+  <div id="ratingCounterSeperator" class="cl_lw_vs_seperator" style="display: block;"></div><div id="ratingCounter" style="margin: 0px 0px 0px 13px; display: block;">
+        <span id="rcA" class="ratingText">
+            4（共 5）对本文的评价是有帮助 <span id="rateThisPrefix">- </span><a id="rateThisTopic" href="http://msdn.microsoft.com/zh-cn/library/bb470252(v=vs.100).aspx#feedback" title="评价此主题">评价此主题</a>
+            
+        </span>
+    </div></div>
+  <div style="clear:both;"></div>
+  
+  <div id="mainSection">
+    <div id="mainBody">
+      <p>
+        
+      </p> <div class="introduction"><p><span id="mt1" class="sentence" data-guid="b34e16d6a167dd405a882bd6c9c42f0a" data-source="This topic describes the application life cycle for ASP.NET applications that are running in IIS 7.0 in Integrated mode and with the .NET Framework 3.0 or later." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">本主题介绍在 IIS 7.0 集成模式下运行以及与 .NET Framework 3.0 或更高版本一起运行的 ASP.NET 应用程序的应用程序生命周期。</sentencetext></span>  <span id="mt2" class="sentence" data-guid="b271eea8b830ec2322ed74de6c878e21" data-source="IIS 7.0 also supports Classic mode, which behaves like ASP.NET running in IIS 6.0." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">IIS 7.0 还支持经典模式，其行为类似于在 IIS&nbsp;6.0 中运行的 ASP.NET。</sentencetext></span>  <span id="mt3" class="sentence" data-guid="91331a72ea63b70834270b3cdad560ce" data-source="For more information, see &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;ASP.NET Application Life Cycle Overview for IIS 5.0 and 6.0&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">有关更多信息，请参见 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/ms178473(v=vs.100).aspx">IIS 5.0 和 6.0 的 ASP.NET 应用程序生命周期概述</a></span>。</sentencetext></span>  </p><p><span id="mt4" class="sentence" data-guid="245ff65667058f1e9d2a5277d875814f" data-source="The IIS 7.0 integrated pipeline is a unified request processing pipeline that supports both native-code and managed-code modules." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">IIS 7.0 集成管道是一种统一的请求处理管道，它同时支持本机代码和托管代码模块。</sentencetext></span>  <span id="mt5" class="sentence" data-guid="5d497d839209f1f937417da67333b5a2" data-source="Managed-code modules that implement the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;IHttpModule&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; interface have access to all events in the request pipeline." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">实现 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ihttpmodule(v=vs.100).aspx">IHttpModule</a></span> 接口的托管代码模块可访问该请求管道中的所有事件。</sentencetext></span>  <span id="mt6" class="sentence" data-guid="3940554f621b5afa6852566f0dbdf95d" data-source="For example, a managed-code module can be used for ASP.NET forms authentication for both ASP.NET Web pages (.aspx files) and HTML pages (.htm or .html files)." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">例如，托管代码模块可用于 ASP.NET 网页（.aspx 文件）和 HTML 页（.htm 或 .html 文件）的 ASP.NET Forms 身份验证。</sentencetext></span>  <span id="mt7" class="sentence" data-guid="5539732784f9ffc3a31142552e6ffae1" data-source="This is true even though HTML pages are treated as static resources by IIS and ASP.NET." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">即使 IIS 和 ASP.NET 将 HTML 页视为静态资源，情况也是如此。</sentencetext></span>  <span id="mt8" class="sentence" data-guid="274715abb125f9557a863fb105b6efd5" data-source="For more information about IIS 7.0 Integrated mode, see &lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;ASP.NET Integration with IIS7&lt;/span&gt;&lt;/span&gt;." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">有关 IIS 7.0 集成模式的更多信息，请参见 <a href="http://go.microsoft.com/fwlink/?LinkId=88850">ASP.NET Integration with IIS7</a>（将 ASP.NET 与 IIS7 集成）。</sentencetext></span>  </p><p><span id="mt9" class="sentence" data-guid="31777712e92f9ad09ace2af63077c305" data-source="This topic contains the following sections:" xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">本主题包含以下各节：</sentencetext></span></p><ul><li><p><a href="http://msdn.microsoft.com/zh-cn/library/bb470252(v=vs.100).aspx#Overview">结构概述</a></p></li><li><p><a href="http://msdn.microsoft.com/zh-cn/library/bb470252(v=vs.100).aspx#Stages">生命周期阶段</a></p></li><li><p><a href="http://msdn.microsoft.com/zh-cn/library/bb470252(v=vs.100).aspx#GlobalAsax">使用 Global.asax 文件</a></p></li><li><p><a href="http://msdn.microsoft.com/zh-cn/library/bb470252(v=vs.100).aspx#Modules">IIS&nbsp;7.0 中的托管代码模块</a></p></li></ul></div><a id="Overview"></a><div><div class="LW_CollapsibleArea_TitleDiv"><div><a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="单击以折叠。双击以全部折叠。"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">结构概述</span></a><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></div><div class="sectionblock"><a id="sectionToggle0"></a><p><span id="mt14" class="sentence" data-guid="0cc8928f63c0ac8489f9cca9d35dcd7d" data-source="A request in IIS 7.0 Integrated mode passes through stages that are like the stages of requests for ASP.NET resources in IIS 6.0." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在 IIS 7.0 集成模式下的请求会经历几个阶段，类似于在 IIS&nbsp;6.0 中对 ASP.NET 资源的请求所经历的阶段。</sentencetext></span>  <span id="mt15" class="sentence" data-guid="4c0694252826f999e4e5c15c2794a8a1" data-source="However, in IIS 7.0, these stages include several additional application events, such as the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;MapRequestHandler&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;, &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;LogRequest&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;, and &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;PostLogRequest&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; events." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">但是，在 IIS 7.0 中，这些阶段包含多个额外的应用程序事件，如 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpapplication.maprequesthandler(v=vs.100).aspx">MapRequestHandler</a></span>、<span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpapplication.logrequest(v=vs.100).aspx">LogRequest</a></span> 和 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpapplication.postlogrequest(v=vs.100).aspx">PostLogRequest</a></span> 事件。</sentencetext></span>  </p><p><span id="mt16" class="sentence" data-guid="514303aeda5abf6c22469e52b2cdb8cb" data-source="The main difference in processing stages between IIS 7.0 and IIS 6.0 is in how ASP.NET is integrated with the IIS server." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">IIS 7.0 和 IIS&nbsp;6.0 的处理阶段之间的主要区别在于 ASP.NET 如何与 IIS 服务器集成。</sentencetext></span>  <span id="mt17" class="sentence" data-guid="0f8adac97c6fc7d10c5d490bbf50414d" data-source="In IIS 6.0, there are two request processing pipelines." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在 IIS&nbsp;6.0 中，有两个请求处理管道。</sentencetext></span>  <span id="mt18" class="sentence" data-guid="29cd846e6d784f19030b29c3041a64a7" data-source="One pipeline is for native-code ISAPI filters and extension components." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">一个管道用于本机代码 ISAPI 筛选器和扩展组件。</sentencetext></span>  <span id="mt19" class="sentence" data-guid="d58f90e6650db6f8bbb9db55ec7e6134" data-source="The other pipeline is for managed-code application components such as ASP.NET." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">另一个管道用于托管代码应用程序组件，如 ASP.NET。</sentencetext></span>  <span id="mt20" class="sentence" data-guid="916f8cfdbef377cdec3914146c48dcf6" data-source="In IIS 7.0, the ASP.NET runtime is integrated with the Web server so that there is one unified request processing pipeline for all requests." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在 IIS 7.0 中，ASP.NET 运行时与 Web 服务器集成，这样就有了一个针对所有请求的统一的请求处理管道。</sentencetext></span>  <span id="mt21" class="sentence" data-guid="b670e8c2c7a3d4fe437500fbfec3beab" data-source="For ASP.NET developers, the benefits of the integrated pipeline are as follows:" xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">对于 ASP.NET 开发人员，集成管道有以下益处：</sentencetext></span>  </p><ul><li><p><span id="mt22" class="sentence" data-guid="869a01adde3ba915bb78231e06ac80a5" data-source="The integrated pipeline raises all the events that are exposed by the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;HttpApplication&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; object, which enables existing ASP.NET HTTP modules to work in IIS 7.0 Integrated mode." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">集成管道引发由 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpapplication(v=vs.100).aspx">HttpApplication</a></span> 对象公开的所有事件，这使现有 ASP.NET HTTP 模块可在 IIS 7.0 集成模式下工作。</sentencetext></span></p></li><li><p><span id="mt23" class="sentence" data-guid="ad6fb5df74e1a7898aff45cf6603cc3f" data-source="Both native-code and managed-code modules can be configured at the Web server, Web site, or Web application level." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在 Web 服务器级别、网站级别或 Web 应用程序级别，都可配置本机代码和托管代码模块。</sentencetext></span>  <span id="mt24" class="sentence" data-guid="9449483e7e47dca6e752a0758a1b0d3e" data-source="This includes the built-in ASP.NET managed-code modules for session state, forms authentication, profiles, and role management." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">这包括用于会话状态、Forms 身份验证、配置文件以及角色管理的内置 ASP.NET 托管代码模块。</sentencetext></span>  <span id="mt25" class="sentence" data-guid="5e005e25fdb0be4513707acefdff4722" data-source="Furthermore, managed-code modules can be enabled or disabled for all requests, regardless of whether the request is for an ASP.NET resource like an .aspx file." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">此外，可以为所有请求启用或禁用托管代码模块，无论请求是否针对 ASP.NET 资源（如 aspx 文件）。</sentencetext></span>  </p></li><li><p><span id="mt26" class="sentence" data-guid="a11a5fe91f50095f684bd64582fdac33" data-source="Managed-code modules can be invoked at any stage in the pipeline." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">可以在管道中的任何阶段调用托管代码模块。</sentencetext></span>  <span id="mt27" class="sentence" data-guid="b13bf3a6e1360272d4211a0cae546771" data-source="This includes before any server processing occurs for the request, after all server processing has occurred, or anywhere in between." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">这包括在对请求进行任何服务器处理之前，在所有服务器处理都已发生之后，或者两者间的任何阶段。</sentencetext></span>  </p></li><li><p><span id="mt28" class="sentence" data-guid="c7b8c8dc6ac85aaac3c3c75f5d089111" data-source="You can register and enable or disable modules through an application’s Web.config file. " xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">可以通过应用程序的 Web.config 文件注册模块，也可以启用或禁用模块。</sentencetext></span></p></li></ul><p><span id="mt29" class="sentence" data-guid="1324e7bfcf0e913d2dc080e713601373" data-source="The following illustration shows the configuration of an application&#39;s request pipeline." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">下面的插图演示应用程序的请求管道的配置。</sentencetext></span>  <span id="mt30" class="sentence" data-guid="e4005145800cdb4e3d52e942bbec5dca" data-source="The example includes the following:" xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">该示例包括以下内容：</sentencetext></span>  </p><ul><li><p><span id="mt31" class="sentence" data-guid="35468ab62c249ca21379809a702daa68" data-source="The &lt;span&gt;&lt;span class=&quot;input&quot;&gt;Anonymous&lt;/span&gt;&lt;/span&gt; native-code module and the &lt;span&gt;&lt;span class=&quot;input&quot;&gt;Forms&lt;/span&gt;&lt;/span&gt; managed-code module (which corresponds to &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;FormsAuthenticationModule&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;)." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">
+  <span xmlns="http://www.w3.org/1999/xhtml">
+    <span class="input">Anonymous</span>
+  </span> 本机代码模块和 <span xmlns="http://www.w3.org/1999/xhtml"><span class="input">Forms</span></span> 托管代码模块（对应于 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.security.formsauthenticationmodule(v=vs.100).aspx">FormsAuthenticationModule</a></span>）。</sentencetext></span>  <span id="mt32" class="sentence" data-guid="4c9001438787158ac931639882524040" data-source="These modules are configured, and they are invoked during the &lt;span&gt;&lt;span class=&quot;input&quot;&gt;Authentication&lt;/span&gt;&lt;/span&gt; stage of the request." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">这些模块都已配置，并在请求的<span xmlns="http://www.w3.org/1999/xhtml"><span class="input">Authentication</span></span>阶段调用。</sentencetext></span>  </p></li><li><p><span id="mt33" class="sentence" data-guid="66d059065b44423deba5c54ee45a0500" data-source="The &lt;span&gt;&lt;span class=&quot;input&quot;&gt;Basic&lt;/span&gt;&lt;/span&gt; native-code module and the &lt;span&gt;&lt;span class=&quot;input&quot;&gt;Windows&lt;/span&gt;&lt;/span&gt; managed-code module (which corresponds to &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;WindowsAuthenticationModule&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;)." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">
+  <span xmlns="http://www.w3.org/1999/xhtml">
+    <span class="input">Basic</span>
+  </span> 本机代码模块和 <span xmlns="http://www.w3.org/1999/xhtml"><span class="input">Windows</span></span> 托管代码模块（对应于 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.security.windowsauthenticationmodule(v=vs.100).aspx">WindowsAuthenticationModule</a></span>）。</sentencetext></span>  <span id="mt34" class="sentence" data-guid="3d9bf204aae4726f92fb4b4251ebacfb" data-source="They are shown, but they are not configured for the application." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">它们虽然显示，但并没有为应用程序进行配置。</sentencetext></span>  </p></li><li><p><span id="mt35" class="sentence" data-guid="4fb1a1eddddf8dfdab213f4fc48fa040" data-source="The &lt;span&gt;&lt;span class=&quot;input&quot;&gt;Execute handler&lt;/span&gt;&lt;/span&gt; stage, where the handler (a module scoped to a URL) is invoked to construct the response." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在 <span xmlns="http://www.w3.org/1999/xhtml"><span class="input">Execute handler</span></span> 阶段，会调用处理程序（应用范围为 URL 的模块）以构造响应。</sentencetext></span>  <span id="mt36" class="sentence" data-guid="5f25003d1242e43d6e65a03a2bb1b772" data-source="For .aspx files, the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;PageHandlerFactory&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; handler is used to respond to the request." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">对于 .aspx 文件，使用 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.pagehandlerfactory(v=vs.100).aspx">PageHandlerFactory</a></span> 处理程序来响应请求。</sentencetext></span>  <span id="mt37" class="sentence" data-guid="1abad0f95079ce4e832470824cc55d13" data-source="For static files, the native-code &lt;span&gt;&lt;span class=&quot;input&quot;&gt;StaticFileModule&lt;/span&gt;&lt;/span&gt; module responds to the request." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">对于静态文件，本机代码 <span xmlns="http://www.w3.org/1999/xhtml"><span class="input">StaticFileModule</span></span> 模块响应请求。</sentencetext></span>  </p></li><li><p><span id="mt38" class="sentence" data-guid="51f38a4a3ec115b087b4dca7e7f1869b" data-source="The &lt;span&gt;&lt;span class=&quot;input&quot;&gt;Trace&lt;/span&gt;&lt;/span&gt; native-code module." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">
+  <span xmlns="http://www.w3.org/1999/xhtml">
+    <span class="input">Trace</span>
+  </span> 本机代码模块。</sentencetext></span>  <span id="mt39" class="sentence" data-guid="4c636f6a4785e54d831b0984d5785ed4" data-source="This is shown, but it is not configured for the application." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">此模块虽然显示，但并没有为应用程序进行配置。</sentencetext></span>  </p></li><li><p><span id="mt40" class="sentence" data-guid="5c63010102d8103db41c80a08dba0d2c" data-source="The &lt;span&gt;&lt;span class=&quot;input&quot;&gt;Custom module&lt;/span&gt;&lt;/span&gt; managed-code class." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">
+  <span xmlns="http://www.w3.org/1999/xhtml">
+    <span class="input">Custom module</span>
+  </span> 托管代码类。</sentencetext></span>  <span id="mt41" class="sentence" data-guid="054ca726f3bf0ad6ec8cc664ccf2a904" data-source="It is invoked during the &lt;span&gt;&lt;span class=&quot;input&quot;&gt;Log request&lt;/span&gt;&lt;/span&gt; stage." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">该类在 <span xmlns="http://www.w3.org/1999/xhtml"><span class="input">Log request</span></span> 阶段中调用。</sentencetext></span>  </p></li></ul><img id="AppPipeOver" alt="IIS 7.0 中的请求管线" src="./IIS 7.0 的 ASP.NET 应用程序生命周期概述_files/IC5405.png" title="IIS 7.0 中的请求管线" xmlns=""><p><span id="mt42" class="sentence" data-guid="52acf620985d4c56e04157fa1d7f6209" data-source="For information about known compatibility issues with ASP.NET applications that are being migrated from earlier versions of IIS to IIS 7.0, see the &quot;Known Differences Between Integrated Mode and Classic Mode&quot; section of &lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Upgrading ASP.NET Applications to IIS 7.0: Differences between IIS 7.0 Integrated Mode and Classic mode&lt;/span&gt;&lt;/span&gt;." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">有关从早期版本的 IIS 迁移到 IIS 7.0 的 ASP.NET 应用程序的已知兼容性问题的信息，请参见 <a href="http://go.microsoft.com/fwlink/?LinkId=86952">Upgrading ASP.NET Applications to IIS 7.0: Differences between IIS 7.0 Integrated Mode and Classic mode</a>（将 ASP.NET 应用程序升级到 IIS 7.0：IIS 7.0 集成模式和经典模式之间的区别）中的“Known Differences Between Integrated Mode and Classic Mode”（集成模式和经典模式之间的已知区别）部分。</sentencetext></span></p></div></div><a id="Stages"></a><div><div class="LW_CollapsibleArea_TitleDiv"><div><a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="单击以折叠。双击以全部折叠。"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">生命周期阶段</span></a><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></div><div class="sectionblock"><a id="sectionToggle1"></a><p><span id="mt43" class="sentence" data-guid="e92d2b26c1331e28f08a7c5a7844dcc7" data-source="The following table lists the stages of the ASP.NET application life cycle with Integrated mode in IIS 7.0." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">下表列出了在 IIS 7.0 集成模式下运行的 ASP.NET 应用程序生命周期的各个阶段。</sentencetext></span></p><div class="caption"></div><div class="tableSection"><table><tbody><tr><th><p><span id="mt44" class="sentence" data-guid="9a8c2b9d518bc163e99611fbacea63b2" data-source="Stage" xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">阶段</sentencetext></span></p></th><th><p><span id="mt45" class="sentence" data-guid="67daf92c833c41c95db874e18fcb2786" data-source="Description" xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">说明</sentencetext></span></p></th></tr><tr><td><p><span id="mt46" class="sentence" data-guid="c4576b57345c8356a1addf74e543669e" data-source="A request is made for an application resource." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">发出一个对应用程序资源的请求。</sentencetext></span></p></td><td><p><span id="mt47" class="sentence" data-guid="66f3350d270044646aca78de7c55415d" data-source="The life cycle of an ASP.NET application starts with a request sent by a browser to the Web server. " xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">ASP.NET 应用程序的生命周期以浏览器向 Web 服务器发送请求为起点。</sentencetext></span></p><p><span id="mt48" class="sentence" data-guid="da65cb6a317992caed36feec98143282" data-source="In Classic mode in IIS 7.0 and in IIS 6.0, the ASP.NET request pipeline is separate from the Web server pipeline." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在 IIS 7.0 经典模式下以及在 IIS&nbsp;6.0 中，ASP.NET 请求管道与 Web 服务器管道分离。</sentencetext></span>  <span id="mt49" class="sentence" data-guid="e783ffca634eb0053f5b16ceb39f3fcc" data-source="Modules apply only to requests that are routed to the ASP.NET ISAPI extension." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">模块仅应用于路由到 ASP.NET ISAPI 扩展的请求。</sentencetext></span>  <span id="mt50" class="sentence" data-guid="d0855b19271fb761bd5ae85ed61bd39c" data-source="If the file-name extension of the requested resource type is not explicitly mapped to ASP.NET, ASP.NET functionality is not invoked for the request because the request is not processed by the ASP.NET runtime." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">如果请求的资源类型的文件扩展名未显式映射到 ASP.NET，则不会为该请求调用 ASP.NET 功能，因为 ASP.NET 运行时没有处理该请求。</sentencetext></span>  </p><p><span id="mt51" class="sentence" data-guid="67b6ae59fef4ff664140164cacb97860" data-source="In integrated mode in IIS 7.0, a unified pipeline handles all requests." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">而在 IIS 7.0 集成模式下，由一个统一的管道处理所有请求。</sentencetext></span>  <span id="mt52" class="sentence" data-guid="baec669aa4c5f113f2632f9fb7458f2c" data-source="When the integrated pipeline receives a request, the request passes through stages that are common to all requests." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">当集成管道收到请求时，该请求将经历所有请求共有的一些阶段。</sentencetext></span>  <span id="mt53" class="sentence" data-guid="967f22f34d09ed86bce6fbb940672a6d" data-source="These stages are represented by the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;RequestNotification&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; enumeration." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">这些阶段由 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.requestnotification(v=vs.100).aspx">RequestNotification</a></span> 枚举表示。</sentencetext></span>  <span id="mt54" class="sentence" data-guid="4c4c1ffa5772372e855b41d963453699" data-source="All requests can be configured to take advantage of ASP.NET functionality, because that functionality is encapsulated in managed-code modules that have access to the request pipeline." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">所有请求都可以配置为使用 ASP.NET 功能，因为该功能封装在可以访问请求管道的托管代码模块中。</sentencetext></span>  <span id="mt55" class="sentence" data-guid="c1484ed8d662f0ff5831b5c93ed35865" data-source="For example, even though the .htm file-name extension is not explicitly mapped to ASP.NET, a request for an HTML page still invokes ASP.NET modules." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">例如，即使 .htm 文件扩展名未显式映射到 ASP.NET，对 HTML 页的请求仍会调用 ASP.NET 模块。</sentencetext></span>  <span id="mt56" class="sentence" data-guid="4a68dfd3e81f3023071ec62dd879e81e" data-source="This enables you to take advantage of ASP.NET authentication and authorization for all resources." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">这使您能对所有资源使用 ASP.NET 身份验证和授权。</sentencetext></span>  </p></td></tr><tr><td><p><span id="mt57" class="sentence" data-guid="2a5ff603b295cb3d2d040d0bc113f1b7" data-source="The unified pipeline receives the first request for the application." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">统一管道接收对应用程序的第一个请求。</sentencetext></span></p></td><td><p><span id="mt58" class="sentence" data-guid="d93597b9142224fe93ef59cd91a71fd9" data-source="When the unified pipeline receives the first request for any resource in an application, an instance of the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;ApplicationManager&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; class is created, which is the application domain that the request is processed in." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">当统一管道接收对应用程序中的任何资源的第一个请求时，将为 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.hosting.applicationmanager(v=vs.100).aspx">ApplicationManager</a></span> 类创建一个实例，该实例就是处理请求的应用程序域。</sentencetext></span>  <span id="mt59" class="sentence" data-guid="fd938627e1c171e9dc60605f785f6fa4" data-source="Application domains provide isolation between applications for global variables and enable each application to be unloaded separately." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">应用程序域提供了应用程序之间全局变量的分离，并且使每个应用程序能够单独卸载。</sentencetext></span>  <span id="mt60" class="sentence" data-guid="3a1400717e5260570d7791e008f293be" data-source="In the application domain, an instance of the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;HostingEnvironment&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; class is created, which provides access to information about the application, such as the name of the folder where the application is stored." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在应用程序域中，将为 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.hosting.hostingenvironment(v=vs.100).aspx">HostingEnvironment</a></span> 类创建一个实例，该实例提供对有关应用程序的信息（如存储该应用程序的文件夹的名称）的访问。</sentencetext></span>  </p><p><span id="mt61" class="sentence" data-guid="fb3da67b6593caea1db6d65f36f65bb9" data-source="During the first request, top-level items in the application are compiled if required, which includes application code in the App_Code folder." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在第一个请求期间，如果需要，将对应用程序中的顶级项进行编译，其中包括 App_Code 文件夹中的应用程序代码。</sentencetext></span>  <span id="mt62" class="sentence" data-guid="f3fa917eb482545261ad96a4bda6c902" data-source="You can include custom modules and handlers in the App_Code folder as described in &lt;a href=&quot;#Modules&quot;&gt;Managed-code Modules in IIS 7.0&lt;/a&gt; later in this topic." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">可以根据本主题后面的 <a href="http://msdn.microsoft.com/zh-cn/library/bb470252(v=vs.100).aspx#Modules" xmlns="http://www.w3.org/1999/xhtml">IIS&nbsp;7.0 中的托管代码模块</a>中的说明，在 App_Code 文件夹中包含自定义模块和处理程序。</sentencetext></span>  </p></td></tr><tr><td><p><span id="mt63" class="sentence" data-guid="37df8195000144fb5ce66aa7b0428c3c" data-source="Response objects are created for each request." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">将为每个请求创建响应对象。</sentencetext></span></p></td><td><p><span id="mt64" class="sentence" data-guid="af81ae28f7aafb70751685199c749f43" data-source="After the application domain has been created and the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;HostingEnvironment&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; object has been instantiated, application objects such as &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;HttpContext&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;, &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;HttpRequest&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;, and &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;HttpResponse&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; are created and initialized." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在创建了应用程序域并对 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.hosting.hostingenvironment(v=vs.100).aspx">HostingEnvironment</a></span> 对象进行了实例化之后，将创建并初始化应用程序对象，如 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpcontext(v=vs.100).aspx">HttpContext</a></span>、<span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httprequest(v=vs.100).aspx">HttpRequest</a></span> 和 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpresponse(v=vs.100).aspx">HttpResponse</a></span>。</sentencetext></span>  <span id="mt65" class="sentence" data-guid="1e9eccccb2f11debf339fcd22b5f169b" data-source="The &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;HttpContext&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; class contains objects that are specific to the current application request, such as the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;HttpRequest&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; and &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;HttpResponse&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; objects." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">
+  <span xmlns="http://www.w3.org/1999/xhtml">
+    <a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpcontext(v=vs.100).aspx">HttpContext</a>
+  </span> 类包含特定于当前应用程序请求的对象，如 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httprequest(v=vs.100).aspx">HttpRequest</a></span> 和 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpresponse(v=vs.100).aspx">HttpResponse</a></span> 对象。</sentencetext></span>  <span id="mt66" class="sentence" data-guid="9c6eee771b330b439d9741f3481f8bb0" data-source="The &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;HttpRequest&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; object contains information about the current request, which includes cookies and browser information." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">
+  <span xmlns="http://www.w3.org/1999/xhtml">
+    <a href="http://msdn.microsoft.com/zh-cn/library/system.web.httprequest(v=vs.100).aspx">HttpRequest</a>
+  </span> 对象包含有关当前请求的信息，包括 Cookie 和浏览器信息。</sentencetext></span>  <span id="mt67" class="sentence" data-guid="5479d5bf00560f068f4b7f8ef30f9721" data-source="The &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;HttpResponse&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; object contains the response that is sent to the client, which includes all the rendered output and cookies." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">
+  <span xmlns="http://www.w3.org/1999/xhtml">
+    <a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpresponse(v=vs.100).aspx">HttpResponse</a>
+  </span> 对象包含发送到客户端的响应，其中包括所有呈现的输出和 Cookie。</sentencetext></span>  </p><p><span id="mt68" class="sentence" data-guid="c40a6782a32541e9048317bfd8f50f82" data-source="The following are some key differences between IIS 6.0 and IIS 7.0 running in Integrated mode and with the .NET Framework 3.0 or later:" xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">下面是 IIS&nbsp;6.0 和 IIS 7.0（在集成模式下，与 .NET Framework 3.0 或更高版本一起运行）之间的某些关键差异：</sentencetext></span></p><ul><li><p><span id="mt69" class="sentence" data-guid="82ad64f49a00467d2c4f0888255be384" data-source="The &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;SubStatusCode&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; property of the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;HttpResponse&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; object is available for setting codes that are useful for failed-request tracing." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">可以使用 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpresponse(v=vs.100).aspx">HttpResponse</a></span> 对象的 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpresponse.substatuscode(v=vs.100).aspx">SubStatusCode</a></span> 属性，设置对失败请求跟踪有用的代码。</sentencetext></span>  <span id="mt70" class="sentence" data-guid="f69a32a47ecd2f34761d7a042c04ce1f" data-source="For more information, see &lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Troubleshooting Failed Requests Using Failed Request Tracing in IIS 7.0&lt;/span&gt;&lt;/span&gt;." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">有关更多信息，请参见 <a href="http://go.microsoft.com/fwlink/?LinkId=87359">Troubleshooting Failed Requests Using Failed Request Tracing in IIS 7.0</a>（使用 IIS 7.0 中的失败请求跟踪功能解决失败请求存在的问题）。</sentencetext></span>  </p></li><li><p><span id="mt71" class="sentence" data-guid="4cfbee8f6520f01f71e97d34099359d6" data-source="The &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Headers&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; property of the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;HttpResponse&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; object provides access to response headers for the response." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">
+  <span xmlns="http://www.w3.org/1999/xhtml">
+    <a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpresponse(v=vs.100).aspx">HttpResponse</a>
+  </span> 对象的 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpresponse.headers(v=vs.100).aspx">Headers</a></span> 属性提供对响应的响应头的访问。</sentencetext></span></p></li><li><p><span id="mt72" class="sentence" data-guid="824feb343ca4d15161a2b1bf272dd4cf" data-source="Two properties of the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;HttpContext&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; object, &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;IsPostNotification&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; and &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;CurrentNotification&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;, are used when one event handler handles several &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;HttpApplication&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; events." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在一个事件处理程序处理多个 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpapplication(v=vs.100).aspx">HttpApplication</a></span> 事件时，可以使用 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpcontext(v=vs.100).aspx">HttpContext</a></span> 对象的两个属性 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpcontext.ispostnotification(v=vs.100).aspx">IsPostNotification</a></span> 和 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpcontext.currentnotification(v=vs.100).aspx">CurrentNotification</a></span>。</sentencetext></span></p></li><li><p><span id="mt73" class="sentence" data-guid="94959910f707133d87850711e384b076" data-source="The &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Headers&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; and &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;ServerVariables&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; property of the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;HttpRequest&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; object are write-enabled." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">
+  <span xmlns="http://www.w3.org/1999/xhtml">
+    <a href="http://msdn.microsoft.com/zh-cn/library/system.web.httprequest(v=vs.100).aspx">HttpRequest</a>
+  </span> 对象的 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httprequest.headers(v=vs.100).aspx">Headers</a></span> 和 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httprequest.servervariables(v=vs.100).aspx">ServerVariables</a></span> 属性支持写操作。</sentencetext></span></p></li></ul></td></tr><tr><td><p><span id="mt74" class="sentence" data-guid="6adc23d890f4a0ab707312a6c389b5af" data-source="An &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;HttpApplication&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; object is assigned to the request" xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">将 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpapplication(v=vs.100).aspx">HttpApplication</a></span> 对象分配给请求</sentencetext></span></p></td><td><p><span id="mt75" class="sentence" data-guid="aab9b33816532e13739db8d90ac5e451" data-source="After all application objects have been initialized, the application is started by creating an instance of the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;HttpApplication&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; class." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">初始化所有应用程序对象之后，将通过创建 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpapplication(v=vs.100).aspx">HttpApplication</a></span> 类的实例来启动应用程序。</sentencetext></span>  <span id="mt76" class="sentence" data-guid="61d91c86f84723e3a4f5b20c6f42d664" data-source="If the application has a Global.asax file, ASP.NET instead creates an instance of the Global.asax class that is derived from the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;HttpApplication&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; class." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">如果应用程序有 Global.asax 文件，则 ASP.NET 会创建从 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpapplication(v=vs.100).aspx">HttpApplication</a></span> 类派生的 Global.aspx 类的实例。</sentencetext></span>  <span id="mt77" class="sentence" data-guid="db6c2c904619a48c440fdb1d2bf2db59" data-source="It then uses the derived class to represent the application." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">然后使用该派生类来表示应用程序。</sentencetext></span>  </p><div class="alert"><div class="mtps-table" xmlns="http://www.w3.org/1999/xhtml"><div class="mtps-row"><span class="mtps-th"><img id="alert_note" alt="注意" src="./IIS 7.0 的 ASP.NET 应用程序生命周期概述_files/clear.gif" title="注意" xmlns="" class="cl_IC101471"><strong>注意</strong></span></div><div class="mtps-row"><span class="mtps-cell"><span><span id="mt78" class="sentence" data-guid="c2176d79519a572e844954935b40935f" data-source="The first time that an ASP.NET page or process is requested in an application, a new instance of the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;HttpApplication&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; class is created." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">第一次在应用程序中请求 ASP.NET 页或进程时，将创建 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpapplication(v=vs.100).aspx">HttpApplication</a></span> 类的一个新实例。</sentencetext></span><span id="mt79" class="sentence" data-guid="abb9d7fdf05828fda39d6417a1c2c1d9" data-source="However, to maximize performance, &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;HttpApplication&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; instances might be reused for multiple requests." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">不过，为了尽可能提高性能，可对多个请求重复使用 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpapplication(v=vs.100).aspx">HttpApplication</a></span> 实例。</sentencetext></span></span></span></div></div></div><p><span id="mt80" class="sentence" data-guid="9d7d1fcce05585c0c3ed9d9f251534a6" data-source="Which ASP.NET modules are loaded (such as the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;SessionStateModule&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;) depends on the managed-code modules that the application inherits from a parent application." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">加载哪些 ASP.NET 模块（如 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.sessionstate.sessionstatemodule(v=vs.100).aspx">SessionStateModule</a></span>）取决于应用程序从父应用程序继承的托管代码模块。</sentencetext></span>  <span id="mt81" class="sentence" data-guid="3de739eb033f57268436a7e2a53d1f17" data-source="It also depends on which modules are configured in the configuration section of the application&#39;s Web.config file." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">这还取决于在应用程序的 Web.config 文件的配置节中配置了哪些模块。</sentencetext></span>  <span id="mt82" class="sentence" data-guid="cc335215fc66d5acb08276b013610fe1" data-source="Modules are added or removed in the application&#39;s Web.config &lt;span&gt;&lt;span class=&quot;input&quot;&gt;modules&lt;/span&gt;&lt;/span&gt; element in the &lt;span&gt;&lt;span class=&quot;input&quot;&gt;system.webServer&lt;/span&gt;&lt;/span&gt; section." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在应用程序的 Web.config 的 <span xmlns="http://www.w3.org/1999/xhtml"><span class="input">system.webServer</span></span> 节中的 <span xmlns="http://www.w3.org/1999/xhtml"><span class="input">modules</span></span> 元素中添加或移除模块。</sentencetext></span>  <span id="mt83" class="sentence" data-guid="cd5506867acfe7ee147ac89132831de5" data-source="For more information, see &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;How to: Configure the &amp;lt;system.webServer&amp;gt; Section for IIS 7.0&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">有关更多信息，请参见 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/bb763179(v=vs.100).aspx">如何：为 IIS 7.0 配置 &lt;system.webServer&gt; 节</a></span>。</sentencetext></span>  </p></td></tr><tr><td><p><span id="mt84" class="sentence" data-guid="85c644465ca255f10b2b21d8615ad419" data-source="The request is processed by the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;HttpApplication&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; pipeline." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">由 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpapplication(v=vs.100).aspx">HttpApplication</a></span> 管线处理请求。</sentencetext></span></p></td><td><p><span id="mt85" class="sentence" data-guid="18ac09d09075dd97f4d613f67f81ffc5" data-source="The following tasks are performed by the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;HttpApplication&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; class while the request is being processed." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在处理请求时，<span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpapplication(v=vs.100).aspx">HttpApplication</a></span> 类会执行下列任务。</sentencetext></span>  <span id="mt86" class="sentence" data-guid="00bebf4923693a91f656664f4afd1590" data-source="The events are useful for page developers who want to run code when key request pipeline events are raised." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">这些事件对于希望在引发关键请求管道事件时运行代码的网页开发人员很有用。</sentencetext></span>  <span id="mt87" class="sentence" data-guid="0a1880f01a721ac9ac7883d778a62776" data-source="They are also useful if you are developing a custom module and you want the module to be invoked for all requests to the pipeline." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">如果是在开发自定义模块，并且希望对发往管道的所有请求都调用该模块，则这些事件也很有用。</sentencetext></span>  <span id="mt88" class="sentence" data-guid="572d3f6806a15c4cdf2b7888beacedbc" data-source="Custom modules implement the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;IHttpModule&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; interface." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">自定义模块实现 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ihttpmodule(v=vs.100).aspx">IHttpModule</a></span> 接口。</sentencetext></span>  <span id="mt89" class="sentence" data-guid="e8f0aae5152262417d025eb16baa71e2" data-source="In Integrated mode in IIS 7.0, you must register event handlers in a module&#39;s &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Init&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; method." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在 IIS 7.0 集成模式下，必须在模块的 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ihttpmodule.init(v=vs.100).aspx">Init</a></span> 方法中注册事件处理程序。</sentencetext></span>  </p><ol><li><p><span id="mt90" class="sentence" data-guid="912066984d50155ee9bee926efc8e3f9" data-source="Validate the request, which examines the information sent by the browser and determines whether it contains potentially malicious markup." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">对请求进行验证，将检查浏览器发送的信息，并确定其是否包含潜在恶意标记。</sentencetext></span>  <span id="mt91" class="sentence" data-guid="0363b9c494c35daa0870fcdfcff094e1" data-source="For more information, see &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;ValidateRequest&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; and &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Script Exploits Overview&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">有关更多信息，请参见 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.configuration.pagessection.validaterequest(v=vs.100).aspx">ValidateRequest</a></span> 和<span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/w1sw53ds(v=vs.100).aspx">脚本侵入概述</a></span>。</sentencetext></span>  </p></li><li><p><span id="mt92" class="sentence" data-guid="eaa7feb6e9ccf5990c2f18da7daacced" data-source="Perform URL mapping, if any URLs have been configured in the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;UrlMappingsSection&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; section of the Web.config file." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">如果已在 Web.config 文件的 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.configuration.urlmappingssection(v=vs.100).aspx">UrlMappingsSection</a></span> 节中配置了任何 URL，则执行 URL 映射。</sentencetext></span></p></li><li><p><span id="mt93" class="sentence" data-guid="c1c887a7e8644886ac8bc2d35ca18411" data-source="Raise the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;BeginRequest&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">引发 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpapplication.beginrequest(v=vs.100).aspx">BeginRequest</a></span> 事件。</sentencetext></span></p></li><li><p><span id="mt94" class="sentence" data-guid="5f01583aca88e7e9b7d6f4b1bea048eb" data-source="Raise the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;AuthenticateRequest&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">引发 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpapplication.authenticaterequest(v=vs.100).aspx">AuthenticateRequest</a></span> 事件。</sentencetext></span></p></li><li><p><span id="mt95" class="sentence" data-guid="b845b7dd37e272d7f6243a2ef248ba95" data-source="Raise the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;PostAuthenticateRequest&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">引发 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpapplication.postauthenticaterequest(v=vs.100).aspx">PostAuthenticateRequest</a></span> 事件。</sentencetext></span></p></li><li><p><span id="mt96" class="sentence" data-guid="a38e1b69c7d120978a424683e60be5ac" data-source="Raise the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;AuthorizeRequest&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">引发 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpapplication.authorizerequest(v=vs.100).aspx">AuthorizeRequest</a></span> 事件。</sentencetext></span></p></li><li><p><span id="mt97" class="sentence" data-guid="16fd9d713d01771eec49e17b80a83f4b" data-source="Raise the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;PostAuthorizeRequest&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">引发 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpapplication.postauthorizerequest(v=vs.100).aspx">PostAuthorizeRequest</a></span> 事件。</sentencetext></span></p></li><li><p><span id="mt98" class="sentence" data-guid="307ae4f362ce3bc09f7ffb6f6fa2d6b9" data-source="Raise the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;ResolveRequestCache&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">引发 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpapplication.resolverequestcache(v=vs.100).aspx">ResolveRequestCache</a></span> 事件。</sentencetext></span></p></li><li><p><span id="mt99" class="sentence" data-guid="dff0a2fa88e757643f993ec604c650b6" data-source="Raise the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;PostResolveRequestCache&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">引发 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpapplication.postresolverequestcache(v=vs.100).aspx">PostResolveRequestCache</a></span> 事件。</sentencetext></span></p></li><li><p><span id="mt100" class="sentence" data-guid="ecb63cf8284ff6759015b832c31cdc4b" data-source="Raise the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;MapRequestHandler&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">引发 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpapplication.maprequesthandler(v=vs.100).aspx">MapRequestHandler</a></span> 事件。</sentencetext></span>  <span id="mt101" class="sentence" data-guid="efbc7dc4e6b6a8efa556e20df24c100b" data-source="An appropriate handler is selected based on the file-name extension of the requested resource." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">将根据所请求资源的文件扩展名，选择相应的处理程序。</sentencetext></span>  <span id="mt102" class="sentence" data-guid="a898fec04de1516506320891359c89ca" data-source="The handler can be a native-code module such as the IIS 7.0 &lt;span&gt;&lt;span class=&quot;input&quot;&gt;StaticFileModule&lt;/span&gt;&lt;/span&gt; or a managed-code module such as the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;PageHandlerFactory&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; class (which handles .aspx files)." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">处理程序可以是本机代码模块，如 IIS 7.0 <span xmlns="http://www.w3.org/1999/xhtml"><span class="input">StaticFileModule</span></span>，也可以是托管代码模块，如 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ui.pagehandlerfactory(v=vs.100).aspx">PageHandlerFactory</a></span> 类（它处理 .aspx 文件）。</sentencetext></span>  </p></li><li><p><span id="mt103" class="sentence" data-guid="594356faff3e54b45675ee061d8f9bed" data-source="Raise the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;PostMapRequestHandler&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">引发 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpapplication.postmaprequesthandler(v=vs.100).aspx">PostMapRequestHandler</a></span> 事件。</sentencetext></span></p></li><li><p><span id="mt104" class="sentence" data-guid="f9d39d2aec7e46efb0c25bc37cfadd27" data-source="Raise the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;AcquireRequestState&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">引发 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpapplication.acquirerequeststate(v=vs.100).aspx">AcquireRequestState</a></span> 事件。</sentencetext></span></p></li><li><p><span id="mt105" class="sentence" data-guid="d23c232e001c7259e66529744e1ec8de" data-source="Raise the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;PostAcquireRequestState&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">引发 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpapplication.postacquirerequeststate(v=vs.100).aspx">PostAcquireRequestState</a></span> 事件。</sentencetext></span></p></li><li><p><span id="mt106" class="sentence" data-guid="d5033b02be8b116143807822a8642bf9" data-source="Raise the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;PreRequestHandlerExecute&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">引发 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpapplication.prerequesthandlerexecute(v=vs.100).aspx">PreRequestHandlerExecute</a></span> 事件。</sentencetext></span></p></li><li><p><span id="mt107" class="sentence" data-guid="92999ae4a838f42d89376acef381b832" data-source="Call the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;ProcessRequest&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; method (or the asynchronous version &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;IHttpAsyncHandler&lt;span class=&quot;mtpsTagOuterHtml&quot;  xmlns=&quot;&quot;&gt;&lt;span&gt;.&lt;/span&gt;&lt;/span&gt;BeginProcessRequest&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;) of the appropriate &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;IHttpHandler&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; class for the request." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">为该请求调用合适的 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ihttphandler(v=vs.100).aspx">IHttpHandler</a></span> 类的 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ihttphandler.processrequest(v=vs.100).aspx">ProcessRequest</a></span> 方法（或异步版 <span xmlns="http://www.w3.org/1999/xhtml"><span class="unresolvedLink">IHttpAsyncHandler<span xmlns="">.</span>BeginProcessRequest</span></span>）。</sentencetext></span>  <span id="mt108" class="sentence" data-guid="3737ca8b5e51339b507c105ea013b579" data-source="For example, if the request is for a page, the current page instance handles the request." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">例如，如果该请求针对某页，则当前的页实例将处理该请求。</sentencetext></span>  </p></li><li><p><span id="mt109" class="sentence" data-guid="b4b803be8060bb007b6577fad8c1059f" data-source="Raise the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;PostRequestHandlerExecute&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">引发 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpapplication.postrequesthandlerexecute(v=vs.100).aspx">PostRequestHandlerExecute</a></span> 事件。</sentencetext></span></p></li><li><p><span id="mt110" class="sentence" data-guid="4a7ec92d629fe5dea7bbe02d85fb707d" data-source="Raise the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;ReleaseRequestState&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">引发 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpapplication.releaserequeststate(v=vs.100).aspx">ReleaseRequestState</a></span> 事件。</sentencetext></span></p></li><li><p><span id="mt111" class="sentence" data-guid="b279bb650abccaa14bd397b0083d5ef1" data-source="Raise the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;PostReleaseRequestState&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">引发 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpapplication.postreleaserequeststate(v=vs.100).aspx">PostReleaseRequestState</a></span> 事件。</sentencetext></span></p></li><li><p><span id="mt112" class="sentence" data-guid="5661f231865fc19638b167e6cd11bc00" data-source="Perform response filtering if the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Filter&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; property is defined." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">如果定义了 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpresponse.filter(v=vs.100).aspx">Filter</a></span> 属性，则执行响应筛选。</sentencetext></span></p></li><li><p><span id="mt113" class="sentence" data-guid="26e110f24e90239ecf8be1b23eccc906" data-source="Raise the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;UpdateRequestCache&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">引发 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpapplication.updaterequestcache(v=vs.100).aspx">UpdateRequestCache</a></span> 事件。</sentencetext></span></p></li><li><p><span id="mt114" class="sentence" data-guid="8f8d0df1cef8afc830db60f97a291abd" data-source="Raise the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;PostUpdateRequestCache&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">引发 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpapplication.postupdaterequestcache(v=vs.100).aspx">PostUpdateRequestCache</a></span> 事件。</sentencetext></span></p></li><li><p><span id="mt115" class="sentence" data-guid="9964a111ea93e3c3afa29c59ca5e1ff8" data-source="Raise the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;LogRequest&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">引发 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpapplication.logrequest(v=vs.100).aspx">LogRequest</a></span> 事件。</sentencetext></span></p></li><li><p><span id="mt116" class="sentence" data-guid="5f889efc62e9fc17a6c6799bce6e35c4" data-source="Raise the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;PostLogRequest&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">引发 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpapplication.postlogrequest(v=vs.100).aspx">PostLogRequest</a></span> 事件。</sentencetext></span></p></li><li><p><span id="mt117" class="sentence" data-guid="d80e22ddd15e00ed3aab6b23a9db2474" data-source="Raise the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;EndRequest&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">引发 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpapplication.endrequest(v=vs.100).aspx">EndRequest</a></span> 事件。</sentencetext></span></p></li><li><p><span id="mt118" class="sentence" data-guid="fc06a513040b457e80c22fdabab172a1" data-source="Raise the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;PreSendRequestHeaders&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">引发 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpapplication.presendrequestheaders(v=vs.100).aspx">PreSendRequestHeaders</a></span> 事件。</sentencetext></span></p></li><li><p><span id="mt119" class="sentence" data-guid="adafa57c167c88fac102f07e742811bf" data-source="Raise the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;PreSendRequestContent&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; event." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">引发 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpapplication.presendrequestcontent(v=vs.100).aspx">PreSendRequestContent</a></span> 事件。</sentencetext></span></p><div class="alert"><div class="mtps-table" xmlns="http://www.w3.org/1999/xhtml"><div class="mtps-row"><span class="mtps-th"><img id="alert_note" alt="注意" src="./IIS 7.0 的 ASP.NET 应用程序生命周期概述_files/clear.gif" title="注意" xmlns="" class="cl_IC101471"><strong>注意</strong></span></div><div class="mtps-row"><span class="mtps-cell"><span><span id="mt120" class="sentence" data-guid="0f9fb84c9c2e35c552fd58a222ca7702" data-source="The &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;MapRequestHandler&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;, &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;LogRequest&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;, and &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;PostLogRequest&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; events are supported only if the application is running in Integrated mode in IIS 7.0 and with the .NET Framework 3.0 or later." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">只有当应用程序在 IIS 7.0 集成模式下运行，并且与 .NET Framework 3.0 或更高版本一起运行时，才会支持 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpapplication.maprequesthandler(v=vs.100).aspx">MapRequestHandler</a></span>、<span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpapplication.logrequest(v=vs.100).aspx">LogRequest</a></span> 和 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpapplication.postlogrequest(v=vs.100).aspx">PostLogRequest</a></span> 事件。</sentencetext></span></span></span></div></div></div></li></ol></td></tr></tbody></table></div></div></div><a id="GlobalAsax"></a><div><div class="LW_CollapsibleArea_TitleDiv"><div><a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="单击以折叠。双击以全部折叠。"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">使用 Global.asax 文件</span></a><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></div><div class="sectionblock"><a id="sectionToggle2"></a><p><span id="mt121" class="sentence" data-guid="245443341c00f77acaec311b5f794100" data-source="The Global.asax file is used in Integrated mode in IIS 7.0 much as it is used in ASP.NET in IIS 6.0." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">Global.asax 文件在 IIS 7.0 中的集成模式下的使用与在 IIS&nbsp;6.0 的 ASP.NET 中的使用有诸多类似。</sentencetext></span>  <span id="mt122" class="sentence" data-guid="273568b753ce52ca7dc2dcc7b93f12ba" data-source="For more information, see the &quot;Life Cycle Events and Global.asax File&quot; section in &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;ASP.NET Application Life Cycle Overview for IIS 5.0 and 6.0&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">有关更多信息，请参见 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/ms178473(v=vs.100).aspx">IIS 5.0 和 6.0 的 ASP.NET 应用程序生命周期概述</a></span>中的“生命周期事件和 Global.asax 文件”一节。</sentencetext></span>  </p><p><span id="mt123" class="sentence" data-guid="150a68cf76bc4d828d85dc12a573ff7f" data-source="One difference is that you can add handlers for the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;MapRequestHandler&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;, &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;LogRequest&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;, and &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;PostLogRequest&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; events." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">其中一个区别是：您可以为 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpapplication.maprequesthandler(v=vs.100).aspx">MapRequestHandler</a></span>、<span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpapplication.logrequest(v=vs.100).aspx">LogRequest</a></span> 和 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpapplication.postlogrequest(v=vs.100).aspx">PostLogRequest</a></span> 事件添加处理程序。</sentencetext></span>  <span id="mt124" class="sentence" data-guid="6b8450c53454ed70ce717173ad4de43f" data-source="These events are supported for applications that run in Integrated mode in IIS 7.0 and with the .NET Framework 3.0 or later." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">对于在 IIS 7.0 集成模式下运行并且与 .NET Framework 3.0 或更高版本一起运行的应用程序，可以支持这些事件。</sentencetext></span>  </p><p><span id="mt125" class="sentence" data-guid="e8b493dc1173941558ec833faf585b85" data-source="You can provide application event handlers in the Global.asax file to add code that executes for all requests that are handled by ASP.NET, such as requests for .aspx and .axd pages." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">可以在 Global.asax 文件中提供应用程序事件处理程序，以添加为 ASP.NET 处理的所有请求（例如对 .aspx 和 .axd 页的请求）执行的代码。</sentencetext></span>  <span id="mt126" class="sentence" data-guid="e41e323960f0438d45ea87cc7a5ee03b" data-source="However, handler code in the Global.asax file is not called for requests for non-ASP.NET resources, such as static files." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">但是，不会调用 Global.asax 文件中的处理程序代码来处理对非 ASP.NET 资源（如静态文件）的请求。</sentencetext></span>  <span id="mt127" class="sentence" data-guid="40dddd36ca6e98b052a1f7d784064222" data-source="To run managed code that runs for all resources, create a custom module that implements the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;IHttpModule&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; interface." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">若要运行为所有资源运行的托管代码，请创建一个实现 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ihttpmodule(v=vs.100).aspx">IHttpModule</a></span> 接口的自定义模块。</sentencetext></span>  <span id="mt128" class="sentence" data-guid="3e875ff0ab45c661706e5592a832dc11" data-source="The custom module will run for all requests to resources in the application, even if the resource handler is not an ASP.NET handler." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">该自定义模块将会运行，以处理对应用程序中的资源的所有请求，即使资源处理程序不是 ASP.NET 处理程序。</sentencetext></span>  </p></div></div><a id="Modules"></a><div><div class="LW_CollapsibleArea_TitleDiv"><div><a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="单击以折叠。双击以全部折叠。"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">IIS&nbsp;7.0 中的托管代码模块</span></a><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></div><div class="sectionblock"><a id="sectionToggle3"></a><p><span id="mt129" class="sentence" data-guid="f8afd0b3d070a9d58535882cb0d7194b" data-source="The ASP.NET managed-code modules that can be configured and loaded in IIS 7.0 include the following:" xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">可在 IIS 7.0 中配置并加载的 ASP.NET 托管代码模块包括下面这些：</sentencetext></span></p><ul><li><p><span><a href="http://msdn.microsoft.com/zh-cn/library/system.web.security.formsauthenticationmodule(v=vs.100).aspx">FormsAuthenticationModule</a></span></p></li><li><p><span><a href="http://msdn.microsoft.com/zh-cn/library/system.web.profile.profilemodule(v=vs.100).aspx">ProfileModule</a></span> </p></li><li><p><span><a href="http://msdn.microsoft.com/zh-cn/library/system.web.security.rolemanagermodule(v=vs.100).aspx">RoleManagerModule</a></span></p></li><li><p><span><a href="http://msdn.microsoft.com/zh-cn/library/system.web.sessionstate.sessionstatemodule(v=vs.100).aspx">SessionStateModule</a></span></p></li></ul><p><span id="mt130" class="sentence" data-guid="359da78785f5f851272970ca76f2945a" data-source="To configure IIS 7.0 managed-code modules you can use one of the following methods:" xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">若要配置 IIS 7.0 托管代码模块，可以使用以下方法之一：</sentencetext></span></p><ul><li><p><span id="mt131" class="sentence" data-guid="b6403c3c6aba9f34408810df72a30a64" data-source="Use IIS Manager. For more information, see &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;How to: Open IIS Manager&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">使用 IIS 管理器。有关更多信息，请参见<span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/bb763170(v=vs.100).aspx">如何：打开 IIS 管理器</a></span>。</sentencetext></span></p></li><li><p><span id="mt132" class="sentence" data-guid="31e61b9927bc1a321ebeffd8ff90eb80" data-source="Use the IIS 7.0 command-line tool (Appcmd.exe). For more information, see &lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;IIS 7.0 Command-Line Tool&lt;/span&gt;&lt;/span&gt;." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">使用 IIS 7.0 命令行工具 (Appcmd.exe)。有关更多信息，请参见 <a href="http://go.microsoft.com/fwlink/?LinkId=92315">IIS 7.0 Command-Line Tool</a>（IIS 7.0 命令行工具）。</sentencetext></span></p></li><li><p><span id="mt133" class="sentence" data-guid="5241c950cdc754771a712d540b9bb737" data-source="Edit the IIS 7.0 XML-based configuration store." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">编辑 IIS 7.0 基于 XML 的配置存储区。</sentencetext></span>  <span id="mt134" class="sentence" data-guid="812f267d62951ea3bc30dbd46fe04cb3" data-source="For more information, see &lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;IIS 7.0: IIS 7.0 Configuration Store&lt;/span&gt;&lt;/span&gt;." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">有关更多信息，请参见 <a href="http://technet2.microsoft.com/windowsserver2008/en/library/81ea4d41-5319-480b-8e80-d7f7a63e39121033.mspx?mfr=true">IIS 7.0: IIS 7.0 Configuration Store</a>（IIS 7.0：IIS 7.0 配置存储区）。</sentencetext></span>  </p></li></ul><p><span id="mt135" class="sentence" data-guid="3482f626291bb716d7c0c83a34f693e4" data-source="When an ASP.NET managed-code module such as the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;FormsAuthenticationModule&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; module is configured to load in IIS 7.0, it has access to all events in the request pipeline." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">当 ASP.NET 托管代码模块（如 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.security.formsauthenticationmodule(v=vs.100).aspx">FormsAuthenticationModule</a></span> 模块）配置为在 IIS 7.0 中加载时，它可以访问请求管道中的所有事件。</sentencetext></span>  <span id="mt136" class="sentence" data-guid="d106f9e78edd459dd7f166a7ba8912f2" data-source="This means that all requests pass through the managed-code module." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">这意味着所有请求都将通过该托管代码模块。</sentencetext></span>  <span id="mt137" class="sentence" data-guid="fd42d669629dd3e3180f2376ef3df875" data-source="For the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;FormsAuthenticationModule&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; class, it means that static content can be protected by using forms authentication, even though the content is not handled by an ASP.NET handler." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">对于 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.security.formsauthenticationmodule(v=vs.100).aspx">FormsAuthenticationModule</a></span> 类，这意味着可以使用 Forms 身份验证来保护静态内容，即使这些内容并非由 ASP.NET 处理程序进行处理。</sentencetext></span>  </p><h3 class="subHeading">开发自定义托管代码模块</h3><div class="subsection"><p><span id="mt138" class="sentence" data-guid="90f8c5b07372ab6e01f77547c090cb90" data-source="The ASP.NET application life cycle can be extended with modules that implement the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;IHttpModule&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; interface." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">可使用实现 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ihttpmodule(v=vs.100).aspx">IHttpModule</a></span> 接口的模块来扩展 ASP.NET 应用程序生命周期。</sentencetext></span>  <span id="mt139" class="sentence" data-guid="478962a044092101e1f90e1bf00f080f" data-source="Modules that implement the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;IHttpModule&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; interface are managed-code modules." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">实现 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ihttpmodule(v=vs.100).aspx">IHttpModule</a></span> 接口的模块为托管代码模块。</sentencetext></span>  <span id="mt140" class="sentence" data-guid="dc5e0b4c5dad02774fb64012a271187c" data-source="The integrated pipeline of ASP.NET and IIS 7.0 is also extensible through native-code modules, which are not discussed in this topic." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">ASP.NET 和 IIS 7.0 的集成管道还可以通过本机代码模块扩展，这些内容不在本主题讨论范围内。</sentencetext></span>  <span id="mt141" class="sentence" data-guid="e816c0680717bf2a423eede4e885b43d" data-source="For more information about native-code modules and about how to configure modules generally, see &lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;IIS Module Overview&lt;/span&gt;&lt;/span&gt;." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">有关本机代码模块以及有关通常如何配置模块的更多信息，请参见 <a href="http://go.microsoft.com/fwlink/?LinkId=88851">IIS Module Overview</a>（IIS 模块概述）。</sentencetext></span>  </p><p><span id="mt142" class="sentence" data-guid="105980806c76c25ad4f35a596d7ab094" data-source="You can define a managed-code module as a class file in the application&#39;s App_Code folder." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">可以将托管代码模块定义为应用程序的 App_Code 文件夹中的一个类文件。</sentencetext></span>  <span id="mt143" class="sentence" data-guid="e58550c2841edff2f335b978c35d1cb4" data-source="You can also create the module as a class library project, compile it, and add it to application&#39;s Bin folder." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">还可以将模块创建为一个类库项目，并编译该项目，然后将其添加到应用程序的 Bin 文件夹下。</sentencetext></span>  <span id="mt144" class="sentence" data-guid="588cce3cd25c180738ceaa06a71e32ee" data-source="After you have created the custom module, you must register it with IIS 7.0." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">创建自定义模块后，必须在 IIS 7.0 中注册它。</sentencetext></span>  <span id="mt145" class="sentence" data-guid="54d0ccbe46f87b339f5d08029f612d99" data-source="You can use one of the methods described for managing IIS 7.0 managed-code modules." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">可以使用所述方法之一来管理 IIS 7.0 托管代码模块。</sentencetext></span>  <span id="mt146" class="sentence" data-guid="85eff486071b7aa871ee4cb408f70315" data-source="For example, you can edit an application&#39;s Web.config file to register the managed-code module for just that application. For an example of registering a module, see &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Walkthrough: Creating and Registering a Custom HTTP Module&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">例如，可以编辑应用程序的 Web.config 文件来向该应用程序注册此托管代码模块。有关注册模块的示例，请参见<span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/ms227673(v=vs.100).aspx">演练：创建和注册自定义 HTTP 模块</a></span>。</sentencetext></span>  </p><p><span id="mt147" class="sentence" data-guid="e6ab046726e835e0efe5b0063c6a3350" data-source="If a module is defined an application&#39;s App_Code or Bin folder and it is registered in the application&#39;s Web.config file, the module is invoked only for that application." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">如果某个模块在应用程序的 App_Code 或 Bin 文件夹中定义，并且已在应用程序的 Web.config 文件中注册，则此模块仅为该应用程序调用。</sentencetext></span>  <span id="mt148" class="sentence" data-guid="114afbaf0babcf0cf77b1ad5461bd82f" data-source="To register the module in the application’s Web.config file, you work with the &lt;span&gt;&lt;span class=&quot;input&quot;&gt;modules&lt;/span&gt;&lt;/span&gt; element in the &lt;span&gt;&lt;span class=&quot;input&quot;&gt;system.webServer&lt;/span&gt;&lt;/span&gt; section." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">若要在应用程序的 Web.config 文件中注册模块，可以使用 <span xmlns="http://www.w3.org/1999/xhtml"><span class="input">system.webServer</span></span> 节中的 <span xmlns="http://www.w3.org/1999/xhtml"><span class="input">modules</span></span> 元素。</sentencetext></span>  <span id="mt149" class="sentence" data-guid="cd5506867acfe7ee147ac89132831de5" data-source="For more information, see &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;How to: Configure the &amp;lt;system.webServer&amp;gt; Section for IIS 7.0&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">有关更多信息，请参见 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/bb763179(v=vs.100).aspx">如何：为 IIS 7.0 配置 &lt;system.webServer&gt; 节</a></span>。</sentencetext></span>  <span id="mt150" class="sentence" data-guid="94e6bb82333fd13343bfa9ac821956a9" data-source="Changes made by using IIS Manager or the Appcmd.exe tool will make changes to the application&#39;s Web.config file." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">使用 IIS 管理器或 Appcmd.exe 工具进行更改，也将对应用程序的 Web.config 文件进行相应更改。</sentencetext></span>  </p><p><span id="mt151" class="sentence" data-guid="a75a4c0f1bdf4d8cc1a3cd02ad4a6757" data-source="Managed-code modules can also be registered in the &lt;span&gt;&lt;span class=&quot;input&quot;&gt;modules&lt;/span&gt;&lt;/span&gt; element of the IIS 7.0 configuration store (the ApplicationHost.config file). Modules registered in the ApplicationHost.config file have global scope because they are registered for all Web applications hosted by IIS 7.0." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">托管代码模块也可以在 IIS 7.0 配置存储区（ApplicationHost.config 文件）的 <span xmlns="http://www.w3.org/1999/xhtml"><span class="input">modules</span></span> 元素中注册。在 ApplicationHost.config 文件中注册的模块具有全局范围，因为它们为所有由 IIS 7.0 承载的 Web 应用程序而注册。</sentencetext></span>  <span id="mt152" class="sentence" data-guid="2165f0e226b03b6725a43301c5a28728" data-source="Similarly, native-code modules that are defined in the &lt;span&gt;&lt;span class=&quot;input&quot;&gt;globalModules&lt;/span&gt;&lt;/span&gt; element of the ApplicationHost.config file have global scope." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">同样，在 ApplicationHost.config 文件的 <span xmlns="http://www.w3.org/1999/xhtml"><span class="input">globalModules</span></span> 元素中定义的本机代码模块也具有全局范围。</sentencetext></span>  <span id="mt153" class="sentence" data-guid="63f8df0abe739ed888e6b3f1c681a87d" data-source="If a global module is not needed for a Web application, you can disable it." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">如果 Web 应用程序不需要全局模块，则可以将其禁用。</sentencetext></span>  </p></div><h3 class="subHeading">示例</h3><div class="subsection"><p><span id="mt154" class="sentence" data-guid="4443af58e81f750692ac09a1dd0f9c18" data-source="The following example shows a custom module that handles the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;LogRequest&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; and &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;PostLogRequest&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; events." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">下面的示例演示一个处理 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpapplication.logrequest(v=vs.100).aspx">LogRequest</a></span> 和 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.httpapplication.postlogrequest(v=vs.100).aspx">PostLogRequest</a></span> 事件的自定义模块。</sentencetext></span>  <span id="mt155" class="sentence" data-guid="2d974f999cb88b8532eae60df29ee449" data-source="Event handlers are registered in the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Init&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; method of the module." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">事件处理程序在模块的 <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/system.web.ihttpmodule.init(v=vs.100).aspx">Init</a></span> 方法中注册。</sentencetext></span>  </p><div id="snippetGroup">
+<div id="code-snippet-1" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabActive" dir="ltr"><a>C#</a></div><div class="codeSnippetContainerTab" dir="ltr"><a href="http://msdn.microsoft.com/zh-cn/library/bb470252(v=vs.100).aspx?cs-save-lang=1&cs-lang=vb#code-snippet-1">VB</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="复制到剪贴板。" href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_fe0f6f20-d1ec-4b49-94bf-27fa8c2a550d');">复制</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_fe0f6f20-d1ec-4b49-94bf-27fa8c2a550d" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+<span style="color:Blue;">using</span> System;
+<span style="color:Blue;">using</span> System.Data;
+<span style="color:Blue;">using</span> System.Web;
+<span style="color:Blue;">using</span> System.Web.Security;
+<span style="color:Blue;">using</span> System.Web.UI;
+
+<span style="color:Green;">// Module that demonstrates one event handler for several events.</span>
+<span style="color:Blue;">namespace</span> Samples
+{
+    <span style="color:Blue;">public</span> <span style="color:Blue;">class</span> ModuleExample : IHttpModule
+    {
+        <span style="color:Blue;">public</span> ModuleExample()
+        {
+            <span style="color:Green;">// Constructor</span>
+        }
+        <span style="color:Blue;">public</span> <span style="color:Blue;">void</span> Init(HttpApplication app)
+        {
+            app.LogRequest += <span style="color:Blue;">new</span> EventHandler(App_Handler);
+            app.PostLogRequest += <span style="color:Blue;">new</span> EventHandler(App_Handler);
+        }
+        <span style="color:Blue;">public</span> <span style="color:Blue;">void</span> Dispose()
+        {
+        }
+        <span style="color:Green;">// One handler for both the LogRequest and the PostLogRequest events.</span>
+        <span style="color:Blue;">public</span> <span style="color:Blue;">void</span> App_Handler(<span style="color:Blue;">object</span> source, EventArgs e)
+        {
+            HttpApplication app = (HttpApplication)source;
+            HttpContext context = app.Context;
+
+            <span style="color:Blue;">if</span> (context.CurrentNotification == RequestNotification.LogRequest)
+            {
+                <span style="color:Blue;">if</span> (!context.IsPostNotification)
+                {
+                    <span style="color:Green;">// Put code here that is invoked when the LogRequest event is raised.</span>
+                }
+                <span style="color:Blue;">else</span>
+                {
+                    <span style="color:Green;">// PostLogRequest</span>
+                    <span style="color:Green;">// Put code here that runs after the LogRequest event completes.</span>
+                }
+            }
+
+        }
+    }
+}
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+</div><p><span id="mt156" class="sentence" data-guid="90ad6e3bbc39dbe8e956739d5247dba2" data-source="The following example shows how to register the module in the application’s Web.config file." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">下面的示例演示如何在应用程序的 Web.config 文件中注册模块。</sentencetext></span>  <span id="mt157" class="sentence" data-guid="f2cb1426c4aa734d69355a4238ae0ce2" data-source="Add the &lt;span&gt;&lt;span class=&quot;input&quot;&gt;system.webServer&lt;/span&gt;&lt;/span&gt; configuration section inside the &lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;configuration&lt;/span&gt;&lt;/span&gt; section." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在 <a href="http://msdn.microsoft.com/zh-cn/library/ms228147(v=vs.100).aspx">configuration</a> 节内部添加 <span xmlns="http://www.w3.org/1999/xhtml"><span class="input">system.webServer</span></span> 配置节。</sentencetext></span>  </p>
+<div id="code-snippet-2" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="复制到剪贴板。" href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_6d466eec-cc8d-4167-94b0-6a797253ea0d');">复制</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_6d466eec-cc8d-4167-94b0-6a797253ea0d" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>&lt;system.webServer&gt;
+  &lt;modules&gt;
+    &lt;add name="ModuleExample" type="Samples.ModuleExample"/&gt;
+  &lt;/modules&gt;
+&lt;/system.webServer&gt;
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+<p><span id="mt158" class="sentence" data-guid="185443128626ab8cc7ba00c53984e095" data-source="For an additional example that shows how to create and register a custom module, see &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Walkthrough: Creating and Registering a Custom HTTP Module&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">有关如何创建和注册自定义模块的其他示例，请参见<span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/zh-cn/library/ms227673(v=vs.100).aspx">演练：创建和注册自定义 HTTP 模块</a></span>。</sentencetext></span></p></div></div></div><div><div class="LW_CollapsibleArea_TitleDiv"><div><a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="单击以折叠。双击以全部折叠。"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">请参见</span></a><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></div><div class="sectionblock"><a id="seeAlsoToggle"></a><h4 class="subHeading">概念</h4><div class="seeAlsoStyle"><span><a href="http://msdn.microsoft.com/zh-cn/library/ms178472(v=vs.100).aspx">ASP.NET 页生命周期概述</a></span></div><div class="seeAlsoStyle"><span><a href="http://msdn.microsoft.com/zh-cn/library/4w3ex9c2(v=vs.100).aspx">ASP.NET 概述</a></span></div><div class="seeAlsoStyle"><span><a href="http://msdn.microsoft.com/zh-cn/library/ms178466(v=vs.100).aspx">ASP.NET 编译概述</a></span></div><h4 class="subHeading">其他资源</h4><div class="seeAlsoStyle"><span><a href="http://msdn.microsoft.com/zh-cn/library/ms178477(v=vs.100).aspx">ASP.NET 和 IIS 配置</a></span></div></div></div></div>
+  </div>
+</div>
+
+    
+
+
+
+<script id="CommentTemplate" type="text/x-jquery-tmpl">
+    <div class="communityContentAnnotation">
+        <a name="${Index}"></a>
+        <h3>
+            ${Title}
+        </h3>
+        <div class="communityContentAnnotationBody">
+            {{html Body}}
+        </div>
+        <div class="communityContentAnnotationInfo">
+            <div class="communityContentAnnotationAvatarContainer">
+                <a href="${UserAvatar.Href}" title="${UserAvatar.ToolTip}" class="communityContentAnnotationAvatar"><img src="${UserAvatar.ImageUrl}" alt="${UserAvatar.ImageAltText}" width="34" height="34" /></a>
+            </div>
+            <div class="communityContentAnnotationUserDateContainer">
+                <div class="communityContentAnnotationUserContainer">
+                    <a href="${UserAvatar.Href}">
+                        ${User}
+                    </a>
+                </div>
+                <div class="communityContentAnnotationDateContainer">
+                    <span>${Date}</span>
+                    
+                    {{if EditLink}}
+                        <span>
+                            <a href="${EditLink.Href}" title="${EditLink.ToolTip}" class="communityContentCommentEditLink">${EditLink.Title}</a>
+                        </span>
+                    {{/if}}
+
+                    {{if DeleteLink}}
+                        <span>
+                            <a href="${DeleteLink.Href}" title="${DeleteLink.ToolTip}" class="communityContentDeleteLink">${DeleteLink.Title}</a>
+                        </span>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<div class="communityContentContainer">
+    <div id="CommunityContentHeader" class="communityContentHeader">
+        <div class="communityContentHeaderTitleContainer">
+            <h2>社区附加资源</h2>
+                <a class="communityContentAddLink" href="http://msdn.microsoft.com/zh-cn/library/community/add/bb470252(v=vs.100).aspx">
+                    <span class="communityContentAddButton" title="添加">
+                        添加
+                    </span>
+                </a>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+    
+    <div id="CommunityComments" data-url="/zh-cn/library/community/comments/bb470252(v=vs.100).aspx"></div>
+</div>
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>显示:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit">继承
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected">保护
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="您当前的筛选设置无成员可用。">
+
+
+ 
+</div>
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="CoP7HlRcjuwFjlfCCCREk2rc7Xyn9UYsHj1-sWlZ_pxeaP80zvedXcZhz6UZfLanImt6M6yQUJ0FdGYe3yy-PPXeuPU1">
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/zh-cn/library/feedback/add/bb470252(v=vs.100).aspx">
+<input id="isTopicRated" type="hidden" value="false">
+
+
+
+
+        
+    <link type="text/css" rel="stylesheet">
+    
+    <div id="ux-footer" class="" style="" dir="ltr">
+        <footer class="top">
+            <div data-fragmentname="LeftLinks" id="Fragment_LeftLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="linkList">
+    <div class="linkListTitle">开发人员中心</div>
+    <ul class="links">
+      <li>
+        <a href="http://msdn.microsoft.com/windows" id="LeftLinks_2148_1" class="windowsBlue" xmlns="http://www.w3.org/1999/xhtml">Windows</a>
+      </li>
+      <li>
+        <a href="http://dev.windowsphone.com/" id="LeftLinks_2148_2" class="windowsPurple" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+      </li>
+      <li>
+        <a href="http://msdn.microsoft.com/office" id="LeftLinks_2148_3" class="office" xmlns="http://www.w3.org/1999/xhtml">Office</a>
+      </li>
+      <li>
+        <a href="http://msdn.microsoft.com/vstudio" id="LeftLinks_2148_4" class="visualStudio" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+      </li>
+      <li>
+        <a href="http://developer.nokia.com/" title="Nokia" target="_blank" id="LeftLinks_2148_14" class="nokia" xmlns="http://www.w3.org/1999/xhtml">Nokia</a>
+      </li>
+      <li>
+        <a href="http://www.windowsazure.com/en-us/documentation/" id="LeftLinks_2148_12" xmlns="http://www.w3.org/1999/xhtml">Microsoft Azure</a>
+      </li>
+      <li>
+        <a href="http://msdn.microsoft.com/aa937802" id="LeftLinks_2148_5" xmlns="http://www.w3.org/1999/xhtml">
+          <span style="line-height:18px;" xmlns="">更多…</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>    
+            <div id="rightLinks">
+                <div data-fragmentname="CenterLinks1" id="Fragment_CenterLinks1" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="linkList">
+    <div class="linkListTitle">学习资源</div>
+    <ul class="links">
+      <li>
+        <a href="http://www.microsoftvirtualacademy.com/" id="CenterLinks1_2151_4" xmlns="http://www.w3.org/1999/xhtml">Microsoft Virtual Academy</a>
+      </li>
+      <li>
+        <a href="http://channel9.msdn.com/" id="CenterLinks1_2151_5" xmlns="http://www.w3.org/1999/xhtml">Channel 9</a>
+      </li>
+      <li>
+        <a href="http://www.interoperabilitybridges.com/" id="CenterLinks1_2151_6" xmlns="http://www.w3.org/1999/xhtml">Interoperability Bridges</a>
+      </li>
+      <li>
+        <a href="http://msdn.microsoft.com/magazine/" id="CenterLinks1_2151_7" xmlns="http://www.w3.org/1999/xhtml">MSDN Magazine</a>
+      </li>
+    </ul>
+  </div>
+</div>
+                <div data-fragmentname="CenterLinks2" id="Fragment_CenterLinks2" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="linkList">
+    <div class="linkListTitle">社区</div>
+    <ul class="links">
+      <li>
+        <a href="http://social.msdn.microsoft.com/forums/zh-cn/home" id="CenterLinks2_2151_8" xmlns="http://www.w3.org/1999/xhtml">
+          <span style="line-height:18px;" xmlns="">技术论坛</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://blogs.msdn.com/b/developer-tools/" id="CenterLinks2_2151_9" xmlns="http://www.w3.org/1999/xhtml">Blogs</a>
+      </li>
+      <li>
+        <a href="http://www.codeplex.com/" id="CenterLinks2_2151_10" xmlns="http://www.w3.org/1999/xhtml">Codeplex</a>
+      </li>
+    </ul>
+  </div>
+</div>
+                <div data-fragmentname="CenterLinks3" id="Fragment_CenterLinks3" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="linkList">
+    <div class="linkListTitle">帮助和支持</div>
+    <ul class="links">
+      <li>
+        <a href="http://msdn.microsoft.com/hh361695" id="CenterLinks3_2151_11" xmlns="http://www.w3.org/1999/xhtml">
+          <span style="line-height:18px;" xmlns="">自助支持</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://support.microsoft.com/" id="CenterLinks3_2151_12" xmlns="http://www.w3.org/1999/xhtml">
+          <span style="line-height:18px;" xmlns="">其他支持选项</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+                <div data-fragmentname="CenterLinks4" id="Fragment_CenterLinks4" xmlns="http://www.w3.org/1999/xhtml" class="nth-child-4n">
+  
+  <div class="linkList">
+    <div class="linkListTitle">计划</div>
+    <ul class="links">
+      <li>
+        <a href="http://www.microsoft.com/bizspark/" id="CenterLinks4_2151_13" xmlns="http://www.w3.org/1999/xhtml">BizSpark (for startups)</a>
+      </li>
+      <li>
+        <a href="https://www.dreamspark.com/" id="CenterLinks4_2151_14" xmlns="http://www.w3.org/1999/xhtml">DreamSpark</a>
+      </li>
+      <li>
+        <a href="https://www.microsoft.com/faculty" id="CenterLinks4_2151_15" xmlns="http://www.w3.org/1999/xhtml">Faculty Connection</a>
+      </li>
+      <li>
+        <a href="http://www.microsoft.com/student/" id="CenterLinks4_2151_16" xmlns="http://www.w3.org/1999/xhtml">Microsoft Student</a>
+      </li>
+    </ul>
+  </div>
+</div>
+    
+    <div class="feedbackContainer">
+        <div id="feedbackSection1" class="clear">
+            <div class="left">本文是否对您有所帮助？</div>
+            <div class="left">
+                <div class="left">
+                    <input type="radio" name="feedback" id="feedbackYes" value="1" class="feedbackYesClick" data-enhance="false"><label class="feedbackYesClick" for="feedbackYes"> 是</label>
+                </div>
+                <div class="left">
+                    <input type="radio" name="feedback" id="feedbackNo" value="0" class="feedbackNoClick" data-enhance="false"><label class="feedbackNoClick" for="feedbackNo"> 否</label>
+                </div>
+            </div>
+            <a class="rateThisAnchor" name="feedback"></a>
+        </div>
+        <div id="feedbackSection2" class="clear">
+        </div>
+        <div id="feedbackSection3" class="clear">
+                    <div>
+                        <input id="checkboxNo201" name="chkbxNo" type="checkbox" value="201" data-enhance="false">
+                        <label for="checkboxNo201">不准确</label>
+                    </div>
+                    <div>
+                        <input id="checkboxNo202" name="chkbxNo" type="checkbox" value="202" data-enhance="false">
+                        <label for="checkboxNo202">深度不够</label>
+                    </div>
+                    <div>
+                        <input id="checkboxNo203" name="chkbxNo" type="checkbox" value="203" data-enhance="false">
+                        <label for="checkboxNo203">需要更多代码示例</label>
+                    </div>
+                    <div>
+                        <input id="checkboxNo204" name="chkbxNo" type="checkbox" value="204" data-enhance="false">
+                        <label for="checkboxNo204">翻译需要改进</label>
+                    </div>
+        </div>
+        <div id="feedbackSection4" class="clear">
+            <div>
+                <textarea id="feedbackTextArea" name="feedbackText" class="TellUsMoreTextBoxSearchLoaded" data-enhance="false">请告诉我们更多意见...</textarea>
+            </div>
+            <div class="left"><span class="counter">(<span id="feedbackTextCounter">1500</span> 个剩余字符)</span></div>
+            <div class="right">
+                <button type="button" id="feedbackSubmit" title="单击以提交反馈" data-enhance="false">提交</button>
+            </div>
+        </div>
+        <div id="feedbackSection5">感谢您的反馈</div>
+        <input id="feedbackValue" type="hidden" value="">
+        <input id="tellUsMoreText" type="hidden" value="请告诉我们更多意见...">
+        <input id="maxTextBoxCharacters" type="hidden" value="1500">
+        <input type="hidden" id="submitUrl" value="/zh-cn/msdn/ux/uxservices/feedback/add/footer(v=vs.100)">
+        <input type="hidden" id="feedbackSiteName" name="feedbackSiteName" value="">
+        <input type="hidden" id="feedbackPriority" name="feedbackPriority" value="">
+        <input type="hidden" id="feedbackSourceUrl" name="feedbackSourceUrl" value="">
+        <input type="hidden" id="ClientIP" name="ClientIP" value="">
+        <input type="hidden" id="ClientOS" name="ClientOS" value="">
+        <input type="hidden" id="ClientBrowser" name="ClientBrowser" value="">
+        <input type="hidden" id="ClientTime" name="ClientTime" value="">
+        <input type="hidden" id="ClientDate" name="ClientDate" value="">
+    </div>
+    
+            </div>
+        </footer>
+    
+        <footer class="bottom">
+            <span class="localeContainer">
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/zh-cn/selectlocale-dmc">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fzh-cn%2flibrary%2fbb470252(v%3dvs.100).aspx">
+        <a href="http://msdn.microsoft.com/zh-cn/library/bb470252(v=vs.100).aspx#" onclick="$(&#39;#selectLocaleForm&#39;).submit();return false;" title="更改您的语言">中国（简体中文）</a>
+    </form>    
+
+
+            </span>
+        
+            <div data-fragmentname="BottomLinks" id="Fragment_BottomLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="linkList">
+    <ul class="links horizontal">
+      <li>
+        <a href="http://www.microsoft.com/china/msdn/newsletter/default.aspx" id="BottomLinks_2148_7" xmlns="http://www.w3.org/1999/xhtml">
+          <span style="line-height:18px;" xmlns="">MSDN Flash 中心</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://msdn.microsoft.com/dn529288" id="BottomLinks_2148_8" xmlns="http://www.w3.org/1999/xhtml">
+          <span style="line-height:18px;" xmlns="">隐私权声明</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://msdn.microsoft.com/cc300389.aspx" id="BottomLinks_2148_9" xmlns="http://www.w3.org/1999/xhtml">
+          <span style="line-height:18px;" xmlns="">保留所有权利</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BottomLinks_2148_10" xmlns="http://www.w3.org/1999/xhtml">
+          <span style="line-height:18px;" xmlns="">商标</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>    
+            <span class="logoLegal">
+                <span class="logo"></span>
+                <span class="copyright">© 2014 Microsoft</span>
+            </span>
+        </footer>
+    </div>
+    
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. 版权所有。 </div>
+            </div>
+
+            
+            
+    
+    
+    <input id="tocPaddingPerLevel" type="hidden" value="17">
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default">
+
+
+<!--[CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]-->
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript>&lt;div&gt;&lt;img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;amp;WT.js=No" /&gt;&lt;/div&gt;</noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  &lt;a href="http://www.omniture.com" title="Web Analytics"&gt;
+    &lt;img src="//msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" /&gt;
+  &lt;/a&gt;
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="-AD5BSZ9Ge4YzuRTYB3gAn_jZ6NuDUURbOysNckR9iKPUJ4fIWuKYpbxqawLya6w_GIDCyQUCfSH9E6LSUjMalxBSUY1">
+</div>
+
+
+        </div>
+        
+        
+        
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/zh-cn/library/bb470252(d=default,l=zh-cn,v=vs.100).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027zh-cn\u0027;\n  var wtsp = \u0027msdnlib_webdev\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"e5b20ef8-2972-4fb5-91e5-1da13c9a7e55\";\n/**/" },
+	{ txt: "//\n\n            window.appInsightsId = \u002760854590-027a-4ae4-98be-2741a40f355f\u0027;\n            //" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,1:Layout,2:Header,2:Footer,3:Feedback,0:Topic,4:webtrendsscript,5:omni_rsid_MSDN,0:AppInsightsPerf,6:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Centers/Themes/Base/Content:1,/Areas/Centers/Themes/StandardDevCenter/Content:2,/Areas/Epx/Shared/Content:3,/Areas/Global/Content/Webtrends/resources:4,/Areas/Global/Content/Omniture/resources/MSDN:5,/Areas/Epx/Themes/Base/Content:6\u0026amp;hashKey=EED176C19311527742EAE9817FAEB030" },
+	{ url: "http://i4.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=Msdn\u0026loc=zh-cn\u0026focusOnInit=false\u0026emptyWatermark=true\u0026searchButtonTooltip=搜索 MSDN" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:PrintExportButton,1:Toc,1:NavigationResize;/Areas/Library/Themes/Base/Content:0,/Areas/Library/Content:1\u0026amp;hashKey=5697C9CD323F5AF47E3C6402F1CAF960" },
+	{ txt: "//\n    MTPS = window.MTPS || {};\n    MTPS.Translation = window.MTPS.Translation || {};\n\n    MTPS.Translation.TranslationType =  0;\n    \n    \n    //" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:jquery.popup,0:Translator,1:FeedbackCounter;/Areas/Library/Content:0,/Areas/Epx/Shared/Content:1\u0026amp;hashKey=1FDD911346A8AAC65E131ED3A9F62283" },
+	{ txt: "MTPS = window.MTPS || {}; MTPS.LocalizedStrings = window.MTPS.LocalizedStrings || {}; MTPS.LocalizedStrings.ExpandButtonTooltip = \u0027展开\u0027; MTPS.LocalizedStrings.CollapseButtonTooltip = \u0027折叠\u0027; MTPS.LocalizedStrings.EnhancedExpandTooltip = \u0027单击以展开。双击以全部展开。\u0027; MTPS.LocalizedStrings.EnhancedCollapseTooltip = \u0027单击以折叠。双击以全部折叠。\u0027; MTPS.LocalizedStrings.ExpandAllButtonTooltip = \u0027全部展开\u0027; MTPS.LocalizedStrings.CollapseAllButtonTooltip = \u0027全部折叠\u0027;" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:CommunityContent,0:LibraryMemberFilter,1:Toc_Fixed,1:CodeSnippet,1:TopicNotInScope,1:CollapsibleArea,1:VersionSelector,1:SurveyBroker;/Areas/Library/Content:0,/Areas/Epx/Content/Scripts:1\u0026amp;hashKey=9A6478EAA9D0035A700B22D5E4C6E583" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script>
+<script src="./IIS 7.0 的 ASP.NET 应用程序生命周期概述_files/broker-config.js"></script><div id="popup-loading0" class="popup-loading" style="display: none; z-index: 97; width: auto; height: auto; left: 370px; top: 3752px;">loading...</div><div id="popup0" class="MTPopup" style="z-index: 97; width: auto; height: auto; max-width: 837px; left: 370px; top: 3752px; display: none;"><div class="popup-main" style="z-index: 97;"><div class="popup-inner">For the <span><span class="mtpsTagOuterHtml"><span>FormsAuthenticationModule</span></span></span> class, it means that static content can&nbsp;be protected by using forms authentication, even though the content is not handled by an ASP.NET handler.</div></div></div><div id="_WEDCSInsertedData" style="display: none;"><iframe id="_msnFrame" src="./IIS 7.0 的 ASP.NET 应用程序生命周期概述_files/c.gif" style="z-index:-1;height:1px;width:1px;display:none;visibility:hidden;" onload="javascript:MscomBeacon();"></iframe></div></body></html>

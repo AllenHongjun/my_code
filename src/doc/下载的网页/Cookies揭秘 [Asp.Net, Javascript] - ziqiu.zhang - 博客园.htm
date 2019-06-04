@@ -1,0 +1,2209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0083)http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Cookies揭秘 [Asp.Net, Javascript] - ziqiu.zhang - 博客园</title>
+<link type="text/css" rel="stylesheet" href="./Cookies揭秘 [Asp.Net, Javascript] - ziqiu.zhang - 博客园_files/common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./Cookies揭秘 [Asp.Net, Javascript] - ziqiu.zhang - 博客园_files/style.css">
+<link type="text/css" rel="stylesheet" href="./Cookies揭秘 [Asp.Net, Javascript] - ziqiu.zhang - 博客园_files/common2.css">
+<link type="text/css" rel="stylesheet" href="./Cookies揭秘 [Asp.Net, Javascript] - ziqiu.zhang - 博客园_files/shStyle.css">
+<link type="text/css" rel="stylesheet" href="./Cookies揭秘 [Asp.Net, Javascript] - ziqiu.zhang - 博客园_files/customcss.aspx">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/zhangziqiu/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/zhangziqiu/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/zhangziqiu/wlwmanifest.xml">
+<script async="" type="text/javascript" src="./Cookies揭秘 [Asp.Net, Javascript] - ziqiu.zhang - 博客园_files/gpt.js"></script><script type="text/javascript" async="" src="./Cookies揭秘 [Asp.Net, Javascript] - ziqiu.zhang - 博客园_files/ga.js"></script><script src="./Cookies揭秘 [Asp.Net, Javascript] - ziqiu.zhang - 博客园_files/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">
+var currentBlogApp = 'zhangziqiu';
+</script>
+<script src="./Cookies揭秘 [Asp.Net, Javascript] - ziqiu.zhang - 博客园_files/common.js" type="text/javascript"></script> 
+<script src="./Cookies揭秘 [Asp.Net, Javascript] - ziqiu.zhang - 博客园_files/json2.js" type="text/javascript"></script>
+<script type="text/javascript" src="./Cookies揭秘 [Asp.Net, Javascript] - ziqiu.zhang - 博客园_files/syntaxHighlighter.js"></script>
+<script async="" type="text/javascript" src="./Cookies揭秘 [Asp.Net, Javascript] - ziqiu.zhang - 博客园_files/google_ads_gpt.js"></script><script type="text/javascript" src="./Cookies揭秘 [Asp.Net, Javascript] - ziqiu.zhang - 博客园_files/osd.js"></script></head>
+<body>
+<a name="top"></a>
+
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+		
+<!--done-->
+<div class="title"><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/zhangziqiu/"><b>张子秋的博客</b></a></div>
+<div class="subtitle">华丽的转身, 不留下一片浮云.</div>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="MyLinks1_HomeLink" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+<li><a id="MyLinks1_MyHomeLink" class="menu" href="http://www.cnblogs.com/zhangziqiu/">首页</a></li>
+<li><a class="menu" href="http://q.cnblogs.com/">博问</a></li>
+<li><a class="menu" href="http://home.cnblogs.com/ing/">闪存</a></li>
+<li><a id="MyLinks1_NewPostLink" class="menu" rel="nofollow" href="http://www.cnblogs.com/zhangziqiu/admin/EditPosts.aspx?opt=1">新随笔</a></li>
+<li><a id="MyLinks1_ContactLink" class="menu" rel="nofollow" href="http://space.cnblogs.com/msg/send/ziqiu.zhang">联系</a></li>
+<li><a id="MyLinks1_Syndication" class="menu" href="http://www.cnblogs.com/zhangziqiu/rss">订阅</a>
+<!--<a id="MyLinks1_XMLLink" class="aHeaderXML" href="http://www.cnblogs.com/zhangziqiu/rss"><img src="/Skins/Custom/images/rss.gif" alt="订阅" /></a>--></li>
+<li><a id="MyLinks1_Admin" class="menu" rel="nofollow" href="http://www.cnblogs.com/zhangziqiu/admin/EditPosts.aspx">管理</a></li>
+</ul>
+
+		<div class="blogStats">
+			
+			
+<!--done-->
+随笔-39&nbsp;
+文章-0&nbsp;
+评论-1547&nbsp;
+
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+	
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="./Cookies揭秘 [Asp.Net, Javascript] - ziqiu.zhang - 博客园_files/Cookies揭秘 [Asp.Net, Javascript] - ziqiu.zhang - 博客园.htm">Cookies揭秘 [Asp.Net, Javascript]</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body"><h2>一，前言</h2>  <p>Cookies想必所有人都了解， 但是未必所有人都精通。本文讲解了Cookies的各方面知识， 并且提出来了最佳实践。这是笔者在日常工作中的积累和沉淀。</p>  <p>&nbsp;</p>  <h2>二，基础知识</h2>  <h3>1.什么是Cookies</h3>  <p>Cookie 是一小段文本信息，伴随着用户请求和页面在 Web 服务器和浏览器之间传递。Cookie 包含每次用户访问站点时 Web 应用程序都可以读取的信息。 </p>  <p>例如，如果在用户请求站点中的页面时应用程序发送给该用户的不仅仅是一个页面，还有一个包含日期和时间的 Cookie，用户的浏览器在获得页面的同时还获得了该 Cookie，并将它存储在用户硬盘上的某个文件夹中。 </p>  <p>以后，如果该用户再次请求您站点中的页面，当该用户输入 URL 时，浏览器便会在本地硬盘上查找与该 URL 关联的 Cookie。如果该 Cookie 存在，浏览器便将该 Cookie 与页请求一起发送到您的站点。然后，应用程序便可以确定该用户上次访问站点的日期和时间。您可以使用这些信息向用户显示一条消息，也可以检查到期日期。 </p>  <p>Cookie 与网站关联，而不是与特定的页面关联。因此，无论用户请求站点中的哪一个页面，浏览器和服务器都将交换 Cookie 信息。用户访问不同站点时，各个站点都可能会向用户的浏览器发送一个 Cookie；浏览器会分别存储所有 Cookie。 </p>  <p>Cookie 帮助网站存储有关访问者的信息。一般来说，Cookie 是一种保持 Web 应用程序连续性（即执行状态管理）的方法。除短暂的实际交换信息的时间外，浏览器和 Web 服务器间都是断开连接的。对于用户向 Web 服务器发出的每个请求，Web 服务器都会单独处理。但是在很多情况下，Web 服务器在用户请求页时识别出用户会十分有用。例如，购物站点上的 Web 服务器跟踪每位购物者，这样站点就可以管理购物车和其他的用户特定信息。因此，Cookie 可以作为一种名片，提供相关的标识信息帮助应用程序确定如何继续执行。 </p>  <p>使用 Cookie 能够达到多种目的，所有这些目的都是为了帮助网站记住用户。例如，一个实施民意测验的站点可以简单地将 Cookie 作为一个 Boolean 值，用它来指示用户的浏览器是否已参与了投票，这样用户便无法进行第二次投票。要求用户登录的站点则可以通过 Cookie 来记录用户已经登录，这样用户就不必每次都输入凭据。 </p>  <h3>2.Cookies如何存储</h3>  <p>Cookies保存在用户的本地机器上，不同的浏览器存储在不同的文件夹中，并且按照域名分别保存。即网站之间的Cookies不会彼此覆盖。</p>  <p>IE浏览器的用户可以通过在本地的文档中找到Cookies的txt文件， 不同操作系统的位置不同，windows server 2003/xp都保存在：</p>  <p>C:\Documents and Settings\Administrator\Cookies 文件夹下。</p>  <p>其中名称txt按照域名保存，比如localhost域下的cookies为：</p>  <p><a href="mailto:administrator@localhost[1].txt">administrator@localhost[1].txt</a> 或者 <a href="mailto:administrator@localhost[2].txt">administrator@localhost[2].txt</a></p>  <p>其中后面的[1]和[2]是随着每次保存交替变化的。</p>  <h3>3.Cookies如何传递</h3>  <p>Cookies的信息是在Web服务器和浏览器之间传递的。保存在Http请求中。</p>  <h4>（1）请求页面</h4>  <p>在请求一个页面的Http头中，会将属于此页面的<strong>本地Cookies信息</strong>加在Http头中，注意下面加粗的部分：</p>  <pre class="csharpcode">GET /Cookies/Test.aspx HTTP/1.1 
+Host: localhost:1335 
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.2; zh-CN; rv:1.9.1.1) Gecko/20090715 Firefox/3.5.1 GTB5 (.NET CLR 3.5.30729) 
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8 
+Accept-Language: zh-cn,zh;q=0.5 
+Accept-Encoding: gzip,deflate 
+Accept-Charset: GB2312,utf-8;q=0.7,*;q=0.7 
+Keep-Alive: 300 
+Connection: keep-alive 
+Cookie: My.Common.TestCookieInfo=Pkid=999&amp;TestValue=aaabbbcccdddeee </pre>
+<style type="text/css">
+
+
+.csharpcode, .csharpcode pre
+{
+	font-size: small;
+	color: black;
+	font-family: consolas, "Courier New", courier, monospace;
+	background-color: #ffffff;
+	/*white-space: pre;*/
+}
+.csharpcode pre { margin: 0em; }
+.csharpcode .rem { color: #008000; }
+.csharpcode .kwrd { color: #0000ff; }
+.csharpcode .str { color: #006080; }
+.csharpcode .op { color: #0000c0; }
+.csharpcode .preproc { color: #cc6633; }
+.csharpcode .asp { background-color: #ffff00; }
+.csharpcode .html { color: #800000; }
+.csharpcode .attr { color: #ff0000; }
+.csharpcode .alt 
+{
+	background-color: #f4f4f4;
+	width: 100%;
+	margin: 0em;
+}
+.csharpcode .lnum { color: #606060; }</style>
+
+<h4>（2）页面响应</h4>
+
+<p>如果页面要求写入Cookies信息，则返回的Http如下，注意加粗的部分：</p>
+
+<pre class="csharpcode">HTTP/1.x 200 OK 
+Server: ASP.NET Development Server/9.0.0.0 
+Date: Thu, 06 Aug 2009 03:40:59 GMT 
+X-AspNet-Version: 2.0.50727 
+Set-Cookie: My.Common.TestCookieInfo=Pkid=999&amp;TestValue=aaabbbcccdddeee; expires=Fri, 07-Aug-2009 03:40:59 GMT; path=/ 
+Cache-Control: <span class="kwrd">private</span> 
+Content-Type: text/html; charset=utf-8 
+Content-Length: 558 
+Connection: Close </pre>
+<style type="text/css">
+
+
+.csharpcode, .csharpcode pre
+{
+	font-size: small;
+	color: black;
+	font-family: consolas, "Courier New", courier, monospace;
+	background-color: #ffffff;
+	/*white-space: pre;*/
+}
+.csharpcode pre { margin: 0em; }
+.csharpcode .rem { color: #008000; }
+.csharpcode .kwrd { color: #0000ff; }
+.csharpcode .str { color: #006080; }
+.csharpcode .op { color: #0000c0; }
+.csharpcode .preproc { color: #cc6633; }
+.csharpcode .asp { background-color: #ffff00; }
+.csharpcode .html { color: #800000; }
+.csharpcode .attr { color: #ff0000; }
+.csharpcode .alt 
+{
+	background-color: #f4f4f4;
+	width: 100%;
+	margin: 0em;
+}
+.csharpcode .lnum { color: #606060; }</style>
+
+<h3>4.Cookies如何查看</h3>
+
+<h4>（1）查看Cookies的txt文件</h4>
+
+<p>IE用户可以直接查看Cookies的txt文件。 
+  <br>比如：C:\Documents and Settings\Administrator\Cookies\administrator@localhost[1].txt</p>
+
+<p>&nbsp;</p>
+
+<h4>（2）使用插件</h4>
+
+<p>FF下使用Web Developer插件可以很方便的查看、删除和修改Cookies：</p>
+
+<p>插件截图：</p>
+
+<p><a href="http://images.cnblogs.com/cnblogs_com/zhangziqiu/WindowsLiveWriter/CookiesAsp.NetJavascript_A1EC/image_2.png"><img title="image" style="border-right: 0px; border-top: 0px; display: inline; border-left: 0px; border-bottom: 0px" height="79" alt="image" src="./Cookies揭秘 [Asp.Net, Javascript] - ziqiu.zhang - 博客园_files/image_thumb.png" width="480" border="0"></a>&nbsp;</p>
+
+<p>查看页面Cookies：</p>
+
+<p><a href="http://images.cnblogs.com/cnblogs_com/zhangziqiu/WindowsLiveWriter/CookiesAsp.NetJavascript_A1EC/image6.png"><img title="image" style="border-right: 0px; border-top: 0px; display: inline; border-left: 0px; border-bottom: 0px" height="372" alt="image" src="./Cookies揭秘 [Asp.Net, Javascript] - ziqiu.zhang - 博客园_files/image6_thumb.png" width="644" border="0"></a> </p>
+
+<p>&nbsp;</p>
+
+<p></p>
+
+<p></p>
+
+<h2>三. Cookies高级知识</h2>
+
+<h3>1.Cookie 的限制</h3>
+
+<p>大多数浏览器支持最大为 4096 字节的 Cookie。 </p>
+
+<p>浏览器还限制站点可以在用户计算机上存储的 Cookie 的数量。大多数浏览器只允许每个站点存储 20 个 Cookie；<strong>注意这里的20个是指主键值，也就是20条Cookies记录，但是每个Cookies记录还可以包含若干子键，下面会详细解释。如果试图存储更多 Cookie，则最旧的 Cookie 便会被丢弃。</strong>有些浏览器还会对它们将接受的来自所有站点的 Cookie 总数作出绝对限制，通常为 300 个。 </p>
+
+<h3>2.Cookies的存储格式</h3>
+
+<p>Cookies可以包含一个主键， 主键再包含子键。比如asp.net中获取Cookies的格式是：</p>
+
+<pre class="csharpcode">Request.Cookies[key][subkey].ToString();</pre>
+
+<p>&nbsp;</p>
+
+<p>其中的key就是主键，subkey就是主键关联的子键。</p>
+
+<h4>（1）本地磁盘存储格式：</h4>
+
+<pre class="csharpcode">My.Common.TestCookieInfo
+Pkid=999&amp;TestValue=aaabbbcccdddeee
+localhost/
+1536
+3059603968
+30021392
+2348960464
+30021191
+*</pre>
+<style type="text/css">
+
+
+
+.csharpcode, .csharpcode pre
+{
+	font-size: small;
+	color: black;
+	font-family: consolas, "Courier New", courier, monospace;
+	background-color: #ffffff;
+	/*white-space: pre;*/
+}
+.csharpcode pre { margin: 0em; }
+.csharpcode .rem { color: #008000; }
+.csharpcode .kwrd { color: #0000ff; }
+.csharpcode .str { color: #006080; }
+.csharpcode .op { color: #0000c0; }
+.csharpcode .preproc { color: #cc6633; }
+.csharpcode .asp { background-color: #ffff00; }
+.csharpcode .html { color: #800000; }
+.csharpcode .attr { color: #ff0000; }
+.csharpcode .alt 
+{
+	background-color: #f4f4f4;
+	width: 100%;
+	margin: 0em;
+}
+.csharpcode .lnum { color: #606060; }</style>
+
+<p>其中的Pkid=999&amp;TestValue=aaabbbcccdddeee 是Cookies的值，由于使用了subkey=subvalue的格式， 所以此Cookies是包含子键的。 </p>
+
+<h4>（2）Javascript中的Cookie格式</h4>
+
+<p>在Javascript中给的Cookie是一个字符串，通过document.cookies获取。字符格式如下：</p>
+
+<pre class="csharpcode"><strong>My.Common.SubKey</strong>=Pkid=999&amp;TestValue=aaabbbcccdddeee; <strong>SingleKey</strong>=SingleKeyValue</pre>
+<style type="text/css">
+
+
+
+.csharpcode, .csharpcode pre
+{
+	font-size: small;
+	color: black;
+	font-family: consolas, "Courier New", courier, monospace;
+	background-color: #ffffff;
+	/*white-space: pre;*/
+}
+.csharpcode pre { margin: 0em; }
+.csharpcode .rem { color: #008000; }
+.csharpcode .kwrd { color: #0000ff; }
+.csharpcode .str { color: #006080; }
+.csharpcode .op { color: #0000c0; }
+.csharpcode .preproc { color: #cc6633; }
+.csharpcode .asp { background-color: #ffff00; }
+.csharpcode .html { color: #800000; }
+.csharpcode .attr { color: #ff0000; }
+.csharpcode .alt 
+{
+	background-color: #f4f4f4;
+	width: 100%;
+	margin: 0em;
+}
+.csharpcode .lnum { color: #606060; }</style>
+
+<p>&nbsp; </p>
+
+<p>上面的字符串包含了两个Cookies，一个是不包含子键的SingleKey， 一个是包含pkid和TextValue两个子键的My.Common.SubKey，两个Cookie通过“;”分割。 </p>
+
+<h4>（3）Asp.Net中的Cookies格式</h4>
+
+<p>和所有的服务器端语言一样，Asp.Net中使用集合类保存Cookies集合：</p>
+
+<pre class="csharpcode"><span class="kwrd">public</span> <span class="kwrd">sealed</span> <span class="kwrd">class</span> HttpCookieCollection : NameObjectCollectionBase
+{...}</pre>
+<style type="text/css">
+
+
+
+.csharpcode, .csharpcode pre
+{
+	font-size: small;
+	color: black;
+	font-family: consolas, "Courier New", courier, monospace;
+	background-color: #ffffff;
+	/*white-space: pre;*/
+}
+.csharpcode pre { margin: 0em; }
+.csharpcode .rem { color: #008000; }
+.csharpcode .kwrd { color: #0000ff; }
+.csharpcode .str { color: #006080; }
+.csharpcode .op { color: #0000c0; }
+.csharpcode .preproc { color: #cc6633; }
+.csharpcode .asp { background-color: #ffff00; }
+.csharpcode .html { color: #800000; }
+.csharpcode .attr { color: #ff0000; }
+.csharpcode .alt 
+{
+	background-color: #f4f4f4;
+	width: 100%;
+	margin: 0em;
+}
+.csharpcode .lnum { color: #606060; }</style>
+
+<p>
+  <br>通过HttpResquest和HttpResponse对象的Cookies属性，可以获取和写入当前页面的Cookies。 </p>
+
+<p>&nbsp;</p>
+
+<h3>3.Cookies的内容编码格式</h3>
+
+<p>Cookies的值中<strong>可以保存除了“;”以外的标点符号。</strong>但是不能保存汉字。保存汉字会出现乱码。 </p>
+
+<p>所以对于Cookies中的内容要进行统一的编码和解码。为了在浏览器端和服务器端都能够进行解码和编码， 所以要统一使用UTF编码格式。 </p>
+
+<p>主要是因为javascript中只能使用UTF编码格式。 </p>
+
+<p>&nbsp;</p>
+
+<h3>4.Cookies的Path属性</h3>
+
+<p>Cookies的Path属性表示当前的Cookies可以作用在网站的那个路径下。</p>
+
+<p>比如下面的两个同名的Cookies：</p>
+
+<p><a href="http://images.cnblogs.com/cnblogs_com/zhangziqiu/WindowsLiveWriter/CookiesAsp.NetJavascript_A1EC/image_8.png"><img title="image" style="border-right: 0px; border-top: 0px; display: inline; border-left: 0px; border-bottom: 0px" height="431" alt="image" src="./Cookies揭秘 [Asp.Net, Javascript] - ziqiu.zhang - 博客园_files/image_thumb_3.png" width="500" border="0"></a> </p>
+
+<p><strong>允许存在两个同名但是Path不同的Cookies。</strong></p>
+
+<p><strong>无论是服务器端还是客户端，在获取时优先获取本页路径下面的Cookies。</strong></p>
+
+<p>也就是说如果在、/chapter10/路径下面的页面， 获取testKey这个Cookies的值，则只能获取到testValue222222这个值。</p>
+
+<p>&nbsp; </p>
+
+<h3>5.Cookies的过期时间</h3>
+
+<p>如果保存Cookies时未设置过期时间， 则Cookies的过期时间为“当前浏览器进程有效”，即和Session一样关闭浏览器后则消失。<strong>在asp.net中还可以通过设置HttpCookie对象的过期时间为DateTime.MinValue来指定此Cookies为跟随浏览器生效。（这句话来之不易啊，在脑袋等人的帮助下才查到的。）</strong> </p>
+
+<p>如果设置了过期时间并且大于当前时间，则会保存Cookies值。 </p>
+
+<p>如果设置了过期时间但是小于等于当前时间，则清除Cookies值。 </p>
+
+<p>&nbsp; </p>
+
+<h3>6.Cookies与Session</h3>
+
+<p>有时我们会忽略Cookies与Session的关系。但是两者是密不可分的。 </p>
+
+<p>Session的唯一标示：SessionID是通常保存在Cookies中的（也可以保存在URL中）。对于Asp.Net而言，SessionID保存在键值为“ASP.NET_SessionId”的Cookies中，如图： </p>
+
+<p><a href="http://images.cnblogs.com/cnblogs_com/zhangziqiu/WindowsLiveWriter/CookiesAsp.NetJavascript_A1EC/image_10.png"><img title="image" style="border-right: 0px; border-top: 0px; display: inline; border-left: 0px; border-bottom: 0px" height="185" alt="image" src="./Cookies揭秘 [Asp.Net, Javascript] - ziqiu.zhang - 博客园_files/image_thumb_4.png" width="395" border="0"></a> </p>
+
+<p>因为Cookies的存储数量是有限制的，所以我们的系统在保存Cookies的时候一定要注意防止冲掉这一个关键的Cookies。在下文介绍的最佳实践-以强对象方式保存Cookies的代码中特意对这个Cookies做了处理。 </p>
+
+<p><strong>注意，在客户端使用javascript脚本无法获取“ASP.NET_SessionId”的Cookies， 因为此Cookies在服务器端设置了HttpOnly属性为true。</strong></p>
+
+<p>ASP.Net中HttpCookie对象的HttpOnly 属性 指定一个Cookie 是否可通过客户端脚本访问。不能通过客户端脚本访问为 true；否则为 false。默认值为 false。此属性并不能完全阻止客户端在本地获取cookies，但是可以增加通过脚本直接获取的难度。</p>
+
+<p>Microsoft Internet Explorer 版本 6 Service Pack 1 和更高版本支持 Cookie 属性 HttpOnly<strong>。</strong></p>
+
+<p><strong></strong></p>
+
+<h3>7.Cookies加密</h3>
+
+<p>在设置Cookies的属性时，有一个选项Secure用来控制Cookie的加密特性。 </p>
+
+<p>如果通过 SSL 连接 (HTTPS) 传输 Cookie，则为 true；否则为 false。默认为 false。 </p>
+
+<p>如果我们保存一个Cookies并设置加密，那么在非HTTPS的页面中，无论是使用javascript还是服务器端都无法获得此Cookies。但是在本地依然可以看到此Cookies的存在。 </p>
+
+<p>&nbsp; </p>
+
+<h3>8.Cookies与Ajax</h3>
+
+<p>如果Ajax请求访问一个服务器页面，此服务器页面是可以向用户浏览器写入Cookies和Session的。 </p>
+
+<p>&nbsp; </p>
+
+<h2>四. Cookies最佳实践 </h2>
+
+<p>在了解了Cookies的相关知识后，下面提出最佳的事件方法。其中包括客户端和服务器端两部分。 </p>
+
+<h4>（1）Asp.Net 中保存Cookies</h4>
+
+<p>通常，我们使用Request和Response对象来直接操作Cookies： </p>
+
+<p><strong>写入Cookies：</strong></p>
+
+<pre class="csharpcode">Response.Cookies[<span class="str">"k1"</span>].<strong>Value</strong> = <span class="str">"k1Value"</span>;
+Response.Cookies[<span class="str">"k2"</span>][<span class="str">"k2-1"</span>] = <span class="str">"k2-1Value"</span>;
+Response.Cookies.Add(<span class="kwrd">new</span> HttpCookie(<span class="str">"k3"</span>, <span class="str">"k3Value"</span>));</pre>
+<style type="text/css">
+
+
+
+.csharpcode, .csharpcode pre
+{
+	font-size: small;
+	color: black;
+	font-family: consolas, "Courier New", courier, monospace;
+	background-color: #ffffff;
+	/*white-space: pre;*/
+}
+.csharpcode pre { margin: 0em; }
+.csharpcode .rem { color: #008000; }
+.csharpcode .kwrd { color: #0000ff; }
+.csharpcode .str { color: #006080; }
+.csharpcode .op { color: #0000c0; }
+.csharpcode .preproc { color: #cc6633; }
+.csharpcode .asp { background-color: #ffff00; }
+.csharpcode .html { color: #800000; }
+.csharpcode .attr { color: #ff0000; }
+.csharpcode .alt 
+{
+	background-color: #f4f4f4;
+	width: 100%;
+	margin: 0em;
+}
+.csharpcode .lnum { color: #606060; }</style>
+
+<p>&nbsp; </p>
+
+<p><strong>读取Cookies：</strong></p>
+
+<pre class="csharpcode"><strong>Request[<span class="str">"k1"</span>] ;</strong>
+Request.Cookies[<span class="str">"k1"</span>].<strong>Value</strong> ;
+Request.Cookies[<span class="str">"k2"</span>][<span class="str">"k2-1"</span>];
+Request.Cookies.Get(0).<strong>Value</strong>;</pre>
+<style type="text/css">
+
+
+
+.csharpcode, .csharpcode pre
+{
+	font-size: small;
+	color: black;
+	font-family: consolas, "Courier New", courier, monospace;
+	background-color: #ffffff;
+	/*white-space: pre;*/
+}
+.csharpcode pre { margin: 0em; }
+.csharpcode .rem { color: #008000; }
+.csharpcode .kwrd { color: #0000ff; }
+.csharpcode .str { color: #006080; }
+.csharpcode .op { color: #0000c0; }
+.csharpcode .preproc { color: #cc6633; }
+.csharpcode .asp { background-color: #ffff00; }
+.csharpcode .html { color: #800000; }
+.csharpcode .attr { color: #ff0000; }
+.csharpcode .alt 
+{
+	background-color: #f4f4f4;
+	width: 100%;
+	margin: 0em;
+}
+.csharpcode .lnum { color: #606060; }</style>
+
+<p>&nbsp; </p>
+
+<p><strong>注意Request[<span class="str">"k1"</span>]这个大家熟悉的获取get和post参数的方法，同时还能够获取Cookies的值！</strong> </p>
+
+<p>另外上面语句中的有些是必须通过Value属性访问的，有些则不需要。 </p>
+
+<h4>（2）以对象方式保存Cookies</h4>
+
+<p>下面提供一个可以以对象方式整体保存Cookies的工具类。并且只占用一条Cookies，所有的属性都存在子键上。 </p>
+
+<ul>
+  <li>
+    <h5>源代码：&nbsp;&nbsp; </h5>
+  </li>
+</ul>
+<style type="text/css">
+
+
+
+.csharpcode, .csharpcode pre
+{
+	font-size: small;
+	color: black;
+	font-family: consolas, "Courier New", courier, monospace;
+	background-color: #ffffff;
+	/*white-space: pre;*/
+}
+.csharpcode pre { margin: 0em; }
+.csharpcode .rem { color: #008000; }
+.csharpcode .kwrd { color: #0000ff; }
+.csharpcode .str { color: #006080; }
+.csharpcode .op { color: #0000c0; }
+.csharpcode .preproc { color: #cc6633; }
+.csharpcode .asp { background-color: #ffff00; }
+.csharpcode .html { color: #800000; }
+.csharpcode .attr { color: #ff0000; }
+.csharpcode .alt 
+{
+	background-color: #f4f4f4;
+	width: 100%;
+	margin: 0em;
+}
+.csharpcode .lnum { color: #606060; }</style><style type="text/css">
+
+
+
+.csharpcode, .csharpcode pre
+{
+	font-size: small;
+	color: black;
+	font-family: consolas, "Courier New", courier, monospace;
+	background-color: #ffffff;
+	/*white-space: pre;*/
+}
+.csharpcode pre { margin: 0em; }
+.csharpcode .rem { color: #008000; }
+.csharpcode .kwrd { color: #0000ff; }
+.csharpcode .str { color: #006080; }
+.csharpcode .op { color: #0000c0; }
+.csharpcode .preproc { color: #cc6633; }
+.csharpcode .asp { background-color: #ffff00; }
+.csharpcode .html { color: #800000; }
+.csharpcode .attr { color: #ff0000; }
+.csharpcode .alt 
+{
+	background-color: #f4f4f4;
+	width: 100%;
+	margin: 0em;
+}
+.csharpcode .lnum { color: #606060; }</style>
+
+<pre class="csharpcode">    <span class="rem">/// &lt;summary&gt;</span>
+    <span class="rem">/// Cookies基类。将需要保存Cookies的数据类此类派生，可以将强类型对象在Cookies中的保存和读取。</span>
+    <span class="rem">/// &lt;/summary&gt;</span>
+    <span class="rem">/// &lt;remarks&gt;</span>
+    <span class="rem">/// 2009.8.6    ziqiu.zhang     created</span>
+    <span class="rem">/// &lt;/remarks&gt;</span>
+    <span class="rem">/// &lt;example&gt;</span>
+    <span class="rem">/// 假设MyCookiesInfo是从 从Cookies中获取对象：</span>
+    <span class="rem">/// &lt;code&gt;</span>
+    <span class="rem">///     CookieInfo item = new CookieInfo(); //new以后已经从Cookies中构造了对象。</span>
+    <span class="rem">/// &lt;/code&gt;</span>
+    <span class="rem">/// 将对象保存在Cookies中：</span>
+    <span class="rem">/// &lt;code&gt;</span>
+    <span class="rem">///     CookieInfo item = new CookieInfo();</span>
+    <span class="rem">///     item.value = "test value";</span>
+    <span class="rem">///     item.SetCookies("1"); //Cookies有效期为1天</span>
+    <span class="rem">/// &lt;/code&gt;</span>
+    <span class="rem">/// &lt;/example&gt;</span>
+    [System.Serializable]
+    <span class="kwrd">public</span> <span class="kwrd">class</span> CookieInfo
+    {
+
+        <span class="preproc">#region</span> ==================== Constructed Method ====================
+        <span class="rem">/// &lt;summary&gt;</span>
+        <span class="rem">/// 构造函数</span>
+        <span class="rem">/// &lt;/summary&gt;</span>
+        <span class="kwrd">public</span> CookieInfo()
+        {
+
+        }
+        <span class="preproc">#endregion</span>
+
+
+        <span class="preproc">#region</span> ==================== Public Method ====================
+        <span class="rem">/// &lt;summary&gt;</span>
+        <span class="rem">/// 得到当前Cookies的过期时间</span>
+        <span class="rem">/// &lt;/summary&gt;</span>
+        <span class="rem">/// &lt;returns&gt;过期时间&lt;/returns&gt;</span>
+        <span class="kwrd">public</span> DateTime GetExpiresTime()
+        {
+            <span class="kwrd">string</span> cookieName = GetType().ToString();
+            <span class="kwrd">if</span> (HttpContext.Current.Request.Cookies[cookieName] != <span class="kwrd">null</span>)
+            {
+                <span class="kwrd">return</span> HttpContext.Current.Request.Cookies[cookieName].Expires;
+            }
+            <span class="kwrd">return</span> DateTime.MinValue;
+        }
+
+        <span class="rem">/// &lt;summary&gt;</span>
+        <span class="rem">/// 保存Cookies，过期时间为浏览器关闭则失效。</span>
+        <span class="rem">/// &lt;/summary&gt;</span>
+        <span class="rem">/// &lt;param name="expiresTime"&gt;Cookies过期事件&lt;/param&gt;</span>
+        <span class="rem">/// &lt;returns&gt;是否保存成功&lt;/returns&gt;</span>
+        <span class="kwrd">public</span> <span class="kwrd">bool</span> Save()
+        {
+            <span class="kwrd">return</span> <span class="kwrd">this</span>.Save(DateTime.MinValue);
+        }
+
+        <span class="rem">/// &lt;summary&gt;</span>
+        <span class="rem">/// 保存Cookies，需要指定过期时间。</span>
+        <span class="rem">/// &lt;/summary&gt;</span>
+        <span class="rem">/// &lt;param name="expiresTime"&gt;Cookies过期事件&lt;/param&gt;</span>
+        <span class="rem">/// &lt;returns&gt;是否保存成功&lt;/returns&gt;</span>
+        <span class="kwrd">public</span> <span class="kwrd">bool</span> Save(DateTime expiresTime)
+        {
+            <span class="kwrd">string</span> CookieName = GetType().ToString();
+            HttpCookie SessionCookie = <span class="kwrd">null</span>;
+
+            <span class="rem">//对 SessionId 进行备份.</span>
+            <span class="kwrd">if</span> (HttpContext.Current.Request.Cookies[<span class="str">"ASP.NET_SessionId"</span>] != <span class="kwrd">null</span>)
+            {
+                <span class="kwrd">string</span> SesssionId = HttpContext.Current.Request.Cookies[<span class="str">"ASP.NET_SessionId"</span>].Value.ToString();
+                SessionCookie = <span class="kwrd">new</span> HttpCookie(<span class="str">"ASP.NET_SessionId"</span>);
+                SessionCookie.Value = SesssionId;
+
+            }
+            <span class="rem">//设定cookie 过期时间.</span>
+            DateTime dtExpiry = expiresTime;
+            HttpContext.Current.Response.Cookies[CookieName].Expires = dtExpiry;
+
+            <span class="rem">//设定cookie 域名.</span>
+            <span class="kwrd">string</span> domain = <span class="kwrd">string</span>.Empty;
+            <span class="kwrd">if</span> (HttpContext.Current.Request.Params[<span class="str">"HTTP_HOST"</span>] != <span class="kwrd">null</span>)
+            {
+                <span class="rem">//domain = "www.elong.com";</span>
+                domain = HttpContext.Current.Request.Params[<span class="str">"HTTP_HOST"</span>].ToString();
+            }
+
+            <span class="rem">//如果是www.elong.com或多级域名,需要转化为elong.com</span>
+            <span class="kwrd">if</span> (domain.IndexOf(<span class="str">"."</span>) &gt; -1)
+            {
+                <span class="kwrd">string</span>[] temp = domain.Split(<span class="str">'.'</span>);
+
+                <span class="kwrd">if</span> (temp.Length &gt;= 3)
+                {
+                    domain = temp[temp.Length - 2].Trim() + <span class="str">"."</span> + temp[temp.Length - 1].Trim();
+                }
+
+                HttpContext.Current.Response.Cookies[CookieName].Domain = domain;
+            }
+
+
+            <span class="rem">//把类的属性, 写入Cookie.</span>
+            PropertyInfo[] Propertys = GetType().GetProperties();
+
+            <span class="kwrd">foreach</span> (PropertyInfo pi <span class="kwrd">in</span> Propertys)
+            {
+                <span class="kwrd">object</span> oj = pi.GetValue(<span class="kwrd">this</span>, <span class="kwrd">null</span>);
+                Type type = pi.PropertyType;
+                <span class="kwrd">string</span> valueStr = <span class="kwrd">string</span>.Empty;
+
+                <span class="kwrd">if</span> (oj != <span class="kwrd">null</span> &amp;&amp; oj.ToString() != <span class="kwrd">string</span>.Empty)
+                {
+                    <span class="kwrd">if</span> (type == Type.GetType(<span class="str">"System.DateTime"</span>))
+                    {
+                        valueStr = ((DateTime)oj).ToString(<span class="str">"yyyy/MM/dd HH:mm:ss"</span>, System.Globalization.DateTimeFormatInfo.InvariantInfo);
+                    }
+                    <span class="kwrd">else</span>
+                    {
+                        valueStr = oj.ToString();
+                    }
+
+                    HttpContext.Current.Response.Cookies[CookieName][pi.Name] = HttpUtility.UrlEncode(valueStr);
+                }
+
+            }
+
+            <span class="rem">//如果cookie总数超过20 个, 重写ASP.NET_SessionId, 以防Session 丢失.</span>
+            <span class="kwrd">if</span> (HttpContext.Current.Request.Cookies.Count &gt; 20 &amp;&amp; SessionCookie != <span class="kwrd">null</span>)
+            {
+                <span class="kwrd">if</span> (SessionCookie.Value != <span class="kwrd">string</span>.Empty)
+                {
+                    HttpContext.Current.Response.Cookies.Remove(<span class="str">"ASP.NET_SessionId"</span>);
+                    HttpContext.Current.Response.Cookies.Add(SessionCookie);
+                }
+            }
+
+            <span class="kwrd">return</span> <span class="kwrd">true</span>;
+        }
+
+        <span class="rem">/// &lt;summary&gt;</span>
+        <span class="rem">/// 找回Cookie值</span>
+        <span class="rem">/// &lt;/summary&gt;</span>
+        <span class="kwrd">public</span> <span class="kwrd">void</span> Load()
+        {
+            <span class="kwrd">string</span> cookieValue = <span class="kwrd">string</span>.Empty;
+            <span class="kwrd">string</span> CookieName = GetType().ToString();
+
+            <span class="rem">//通过遍历属性, 从cookie 中找回值, 回写到属性.</span>
+            PropertyInfo[] Propertys = GetType().GetProperties();
+
+            <span class="kwrd">foreach</span> (PropertyInfo pi <span class="kwrd">in</span> Propertys)
+            {
+                <span class="kwrd">try</span>
+                {
+                    cookieValue = HttpUtility.UrlDecode(HttpContext.Current.Request.Cookies[CookieName][pi.Name].ToString());
+                }
+                <span class="kwrd">catch</span>
+                {
+                    cookieValue = <span class="kwrd">string</span>.Empty;
+                }
+
+                <span class="kwrd">if</span> (pi.CanWrite &amp;&amp; cookieValue != <span class="kwrd">null</span> &amp;&amp; cookieValue != <span class="kwrd">string</span>.Empty)
+                {
+                    <span class="kwrd">try</span>
+                    {
+                        <span class="kwrd">object</span> obb = cookieValue;
+                        Type type = pi.PropertyType;
+
+                        obb = Convert.ChangeType(obb, type);
+                        pi.SetValue(<span class="kwrd">this</span>, obb, <span class="kwrd">null</span>);
+                    }
+                    <span class="kwrd">catch</span> { }
+
+                }
+            }
+
+        }
+        <span class="preproc">#endregion</span>
+
+    }</pre>
+<style type="text/css">
+
+
+
+.csharpcode, .csharpcode pre
+{
+	font-size: small;
+	color: black;
+	font-family: consolas, "Courier New", courier, monospace;
+	background-color: #ffffff;
+	/*white-space: pre;*/
+}
+.csharpcode pre { margin: 0em; }
+.csharpcode .rem { color: #008000; }
+.csharpcode .kwrd { color: #0000ff; }
+.csharpcode .str { color: #006080; }
+.csharpcode .op { color: #0000c0; }
+.csharpcode .preproc { color: #cc6633; }
+.csharpcode .asp { background-color: #ffff00; }
+.csharpcode .html { color: #800000; }
+.csharpcode .attr { color: #ff0000; }
+.csharpcode .alt 
+{
+	background-color: #f4f4f4;
+	width: 100%;
+	margin: 0em;
+}
+.csharpcode .lnum { color: #606060; }</style>
+
+<ul>
+  <li>
+    <h5>使用</h5>
+  </li>
+</ul>
+
+<p>首先说明如何使用此类。 </p>
+
+<p>为想要保存在Cookies中的类建立模型，并且继承自CookieInfo即可。比如下面建立了MyCookieInfo类，其中包含属性pkid，TestValue和TestDateTime：</p>
+
+<pre class="csharpcode">    <span class="rem">/// &lt;summary&gt;</span>
+    <span class="rem">/// 保存Cookies的数据对象</span>
+    <span class="rem">/// &lt;/summary&gt;</span>
+    [System.Serializable]
+    <span class="kwrd">public</span> <span class="kwrd">class</span> MyCookieInfo : CookieInfo
+    {    
+        <span class="kwrd">private</span> <span class="kwrd">int</span> m_Pkid = 0; 
+        <span class="kwrd">public</span> <span class="kwrd">int</span> Pkid
+        {
+            get
+            {
+                <span class="kwrd">return</span> m_Pkid ;
+            }
+            set
+            {
+                m_Pkid = <span class="kwrd">value</span> ;
+            }
+        }
+
+        <span class="kwrd">private</span> <span class="kwrd">string</span> m_TestValue = <span class="str">""</span>;
+        <span class="kwrd">public</span> <span class="kwrd">string</span> TestValue
+        {
+            get
+            {
+                <span class="kwrd">return</span> m_TestValue;
+            }
+            set
+            {
+                m_TestValue = <span class="kwrd">value</span>;
+            }
+        }
+
+        <span class="kwrd">private</span> DateTime m_TestDateTime = DateTime.Now;
+        <span class="kwrd">public</span> DateTime TestDateTime
+        {
+            get
+            {
+                <span class="kwrd">return</span> m_TestDateTime;
+            }
+            set
+            {
+                m_TestDateTime = <span class="kwrd">value</span>;
+            }
+        }
+    }</pre>
+<style type="text/css">
+
+
+
+.csharpcode, .csharpcode pre
+{
+	font-size: small;
+	color: black;
+	font-family: consolas, "Courier New", courier, monospace;
+	background-color: #ffffff;
+	/*white-space: pre;*/
+}
+.csharpcode pre { margin: 0em; }
+.csharpcode .rem { color: #008000; }
+.csharpcode .kwrd { color: #0000ff; }
+.csharpcode .str { color: #006080; }
+.csharpcode .op { color: #0000c0; }
+.csharpcode .preproc { color: #cc6633; }
+.csharpcode .asp { background-color: #ffff00; }
+.csharpcode .html { color: #800000; }
+.csharpcode .attr { color: #ff0000; }
+.csharpcode .alt 
+{
+	background-color: #f4f4f4;
+	width: 100%;
+	margin: 0em;
+}
+.csharpcode .lnum { color: #606060; }</style>
+
+<p>&nbsp; </p>
+
+<p>接下来就可以使用对象的Save和Load方法保存和读取Cookies： </p>
+
+<ul>
+  <li>
+    <h5>保存 
+      <br>Save方法有两个重载，不带参数的Save方法表示Cookies的过期时间与浏览器相同，即浏览器关闭则Cookies消失。否则需要传入Cookies过期时间。</h5>
+  </li>
+</ul>
+
+<pre class="csharpcode">    <strong>MyCookieInfo testCookies = <span class="kwrd">new</span> MyCookieInfo();</strong>
+    testCookies.Pkid = 1;
+    testCookies.TestValue = <span class="str">"中文测试"</span>;
+    <strong>testCookies.Save(); </strong></pre>
+<style type="text/css">
+
+
+
+.csharpcode, .csharpcode pre
+{
+	font-size: small;
+	color: black;
+	font-family: consolas, "Courier New", courier, monospace;
+	background-color: #ffffff;
+	/*white-space: pre;*/
+}
+.csharpcode pre { margin: 0em; }
+.csharpcode .rem { color: #008000; }
+.csharpcode .kwrd { color: #0000ff; }
+.csharpcode .str { color: #006080; }
+.csharpcode .op { color: #0000c0; }
+.csharpcode .preproc { color: #cc6633; }
+.csharpcode .asp { background-color: #ffff00; }
+.csharpcode .html { color: #800000; }
+.csharpcode .attr { color: #ff0000; }
+.csharpcode .alt 
+{
+	background-color: #f4f4f4;
+	width: 100%;
+	margin: 0em;
+}
+.csharpcode .lnum { color: #606060; }</style>
+
+<ul>
+  <li>
+    <h5>读取 
+      <br></h5>
+
+    <pre class="csharpcode"><strong>MyCookieInfo testCookies = <span class="kwrd">new</span> MyCookieInfo();
+testCookies.Load();</strong>
+<span class="kwrd">this</span>.lblMsg.Text = <span class="str">"Pkid:"</span> + testCookies.Pkid.ToString();
+<span class="kwrd">this</span>.lblMsg.Text += <span class="str">",TestValue:"</span> + testCookies.TestValue.ToString();
+<span class="kwrd">this</span>.lblMsg.Text += <span class="str">",TestDateTime:"</span> + <br>testCookies.TestDateTime.ToString(<span class="str">"yyyy/MM/dd HH:mm:ss"</span>, <br>System.Globalization.DateTimeFormatInfo.InvariantInfo);</pre>
+    <style type="text/css">
+
+
+
+.csharpcode, .csharpcode pre
+{
+	font-size: small;
+	color: black;
+	font-family: consolas, "Courier New", courier, monospace;
+	background-color: #ffffff;
+	/*white-space: pre;*/
+}
+.csharpcode pre { margin: 0em; }
+.csharpcode .rem { color: #008000; }
+.csharpcode .kwrd { color: #0000ff; }
+.csharpcode .str { color: #006080; }
+.csharpcode .op { color: #0000c0; }
+.csharpcode .preproc { color: #cc6633; }
+.csharpcode .asp { background-color: #ffff00; }
+.csharpcode .html { color: #800000; }
+.csharpcode .attr { color: #ff0000; }
+.csharpcode .alt 
+{
+	background-color: #f4f4f4;
+	width: 100%;
+	margin: 0em;
+}
+.csharpcode .lnum { color: #606060; }</style></li>
+</ul>
+
+<p>现在我们已经可以将一个强类型的对象读取和保存Cookies了。 </p>
+
+<p>
+  <br></p>
+
+<p></p>
+
+<h4>（3）使用Javascript操作Cookies</h4>
+
+<p>在客户端我们同样需要操作Cookies。 </p>
+
+<p>下面是封装了的专门用于操作Cookies的jQuery工具函数。如果还有人不知道jQuery是什么，请参考我的“从零开始学习jQuery”系列教程： </p>
+
+<p><a title="http://www.cnblogs.com/zhangziqiu/archive/2009/04/30/jQuery-Learn-1.html" href="http://www.cnblogs.com/zhangziqiu/archive/2009/04/30/jQuery-Learn-1.html">http://www.cnblogs.com/zhangziqiu/archive/2009/04/30/jQuery-Learn-1.html</a> </p>
+
+<p>当然此工具函数稍加修改，就可以变成标准的Javascript函数。 </p>
+
+<p><strong>下载地址：</strong><a title="http://files.cnblogs.com/zhangziqiu/jquery.extend-lastest.js" href="http://files.cnblogs.com/zhangziqiu/jquery.extend-lastest.js"><strong>http://files.cnblogs.com/zhangziqiu/jquery.extend-lastest.js</strong></a> </p>
+
+<p><strong>工具函数说明：</strong> </p>
+
+<p>方法签名： jQuery.cookie(name, subName, value,&nbsp; options) </p>
+
+<p>方法说明：读取、写入、删除Cookies </p>
+
+<p>方法参数：</p>
+
+<table cellspacing="1" cellpadding="2" width="771" border="1"><tbody>
+    <tr>
+      <td valign="top" width="73">名称</td>
+
+      <td valign="top" width="289">说明</td>
+
+      <td valign="top" width="403">举例</td>
+    </tr>
+
+    <tr>
+      <td valign="top" width="78">name</td>
+
+      <td valign="top" width="280">cookies的主键值</td>
+
+      <td valign="top" width="408">读取主键： 
+        <br>
+
+        <pre class="csharpcode">$.cookie(<span class="str">"singleKey"</span>)</pre>
+        <style type="text/css">
+
+
+
+.csharpcode, .csharpcode pre
+{
+	font-size: small;
+	color: black;
+	font-family: consolas, "Courier New", courier, monospace;
+	background-color: #ffffff;
+	/*white-space: pre;*/
+}
+.csharpcode pre { margin: 0em; }
+.csharpcode .rem { color: #008000; }
+.csharpcode .kwrd { color: #0000ff; }
+.csharpcode .str { color: #006080; }
+.csharpcode .op { color: #0000c0; }
+.csharpcode .preproc { color: #cc6633; }
+.csharpcode .asp { background-color: #ffff00; }
+.csharpcode .html { color: #800000; }
+.csharpcode .attr { color: #ff0000; }
+.csharpcode .alt 
+{
+	background-color: #f4f4f4;
+	width: 100%;
+	margin: 0em;
+}
+.csharpcode .lnum { color: #606060; }</style>
+
+        <br>
+
+        <br>写入cookies，值为字符串： 
+
+        <br>
+
+        <pre class="csharpcode">$.cookie(<span class="str">"singleKey"</span>, <span class="str">""</span>, <span class="str">"singleKey-value"</span>, { expires: 1, path: <span class="str">"/"</span>, secure: <span class="kwrd">false</span> })</pre>
+        <style type="text/css">
+
+
+
+.csharpcode, .csharpcode pre
+{
+	font-size: small;
+	color: black;
+	font-family: consolas, "Courier New", courier, monospace;
+	background-color: #ffffff;
+	/*white-space: pre;*/
+}
+.csharpcode pre { margin: 0em; }
+.csharpcode .rem { color: #008000; }
+.csharpcode .kwrd { color: #0000ff; }
+.csharpcode .str { color: #006080; }
+.csharpcode .op { color: #0000c0; }
+.csharpcode .preproc { color: #cc6633; }
+.csharpcode .asp { background-color: #ffff00; }
+.csharpcode .html { color: #800000; }
+.csharpcode .attr { color: #ff0000; }
+.csharpcode .alt 
+{
+	background-color: #f4f4f4;
+	width: 100%;
+	margin: 0em;
+}
+.csharpcode .lnum { color: #606060; }</style></td>
+    </tr>
+
+    <tr>
+      <td valign="top" width="81">subName</td>
+
+      <td valign="top" width="270">子键名称。在写入时请传递空或者null</td>
+
+      <td valign="top" width="414">读取子键： 
+        <br>
+
+        <pre class="csharpcode">$.cookie(<span class="str">"multiKey"</span>, <span class="str">"subName1"</span>)</pre>
+        <style type="text/css">
+
+
+
+.csharpcode, .csharpcode pre
+{
+	font-size: small;
+	color: black;
+	font-family: consolas, "Courier New", courier, monospace;
+	background-color: #ffffff;
+	/*white-space: pre;*/
+}
+.csharpcode pre { margin: 0em; }
+.csharpcode .rem { color: #008000; }
+.csharpcode .kwrd { color: #0000ff; }
+.csharpcode .str { color: #006080; }
+.csharpcode .op { color: #0000c0; }
+.csharpcode .preproc { color: #cc6633; }
+.csharpcode .asp { background-color: #ffff00; }
+.csharpcode .html { color: #800000; }
+.csharpcode .attr { color: #ff0000; }
+.csharpcode .alt 
+{
+	background-color: #f4f4f4;
+	width: 100%;
+	margin: 0em;
+}
+.csharpcode .lnum { color: #606060; }</style>
+
+        <br>
+
+        <br>写入cookies，值为对象： 
+
+        <br>
+
+        <pre class="csharpcode"><span class="kwrd">var</span> subNameObj = { subName1: <span class="str">"aaa"</span>, subName2: <span class="str">"bbb"</span>, subName3: <span class="str">"ccc"</span> };</pre>
+
+        <pre class="csharpcode">$.cookie(<span class="str">"multiKey"</span>, <span class="str">""</span>, subNameObj, { expires: 1, path: <span class="str">"/"</span>, secure: <span class="kwrd">false</span> });</pre>
+        <style type="text/css">
+
+
+
+.csharpcode, .csharpcode pre
+{
+	font-size: small;
+	color: black;
+	font-family: consolas, "Courier New", courier, monospace;
+	background-color: #ffffff;
+	/*white-space: pre;*/
+}
+.csharpcode pre { margin: 0em; }
+.csharpcode .rem { color: #008000; }
+.csharpcode .kwrd { color: #0000ff; }
+.csharpcode .str { color: #006080; }
+.csharpcode .op { color: #0000c0; }
+.csharpcode .preproc { color: #cc6633; }
+.csharpcode .asp { background-color: #ffff00; }
+.csharpcode .html { color: #800000; }
+.csharpcode .attr { color: #ff0000; }
+.csharpcode .alt 
+{
+	background-color: #f4f4f4;
+	width: 100%;
+	margin: 0em;
+}
+.csharpcode .lnum { color: #606060; }</style></td>
+    </tr>
+
+    <tr>
+      <td valign="top" width="86">value</td>
+
+      <td valign="top" width="263">Cookies值，可以是字符串或者对象。 
+        <br>如果是对象，则将对象的每个属性保存在Cookies子键。</td>
+
+      <td valign="top" width="418">参见上面实例。</td>
+    </tr>
+
+    <tr>
+      <td valign="top" width="89">options</td>
+
+      <td valign="top" width="258">参数： 
+        <br>expires：可以是数字或者Data类型的对象。 
+
+        <br>如果传入数字表示几天后过期。 
+
+        <br>path：路径，默认为域名根目录（“/”）。 
+
+        <br>secure：是否启用加密，默认为否。 
+
+        <br>
+
+        <br>
+
+        <br>
+
+        <br></td>
+
+      <td valign="top" width="422">
+        <p>指定过期时间：</p>
+
+        <pre class="csharpcode"><span class="kwrd">var</span> myDate = <span class="kwrd">new</span> Date();
+myDate.setFullYear(2009, 10, 10);
+$.cookie(<span class="str">"singleKey"</span>, <span class="str">""</span>, <span class="str">"singleKey-value"</span>, { expires: myDate, secure: <span class="kwrd">false</span> })</pre>
+        <style type="text/css">
+
+
+
+.csharpcode, .csharpcode pre
+{
+	font-size: small;
+	color: black;
+	font-family: consolas, "Courier New", courier, monospace;
+	background-color: #ffffff;
+	/*white-space: pre;*/
+}
+.csharpcode pre { margin: 0em; }
+.csharpcode .rem { color: #008000; }
+.csharpcode .kwrd { color: #0000ff; }
+.csharpcode .str { color: #006080; }
+.csharpcode .op { color: #0000c0; }
+.csharpcode .preproc { color: #cc6633; }
+.csharpcode .asp { background-color: #ffff00; }
+.csharpcode .html { color: #800000; }
+.csharpcode .attr { color: #ff0000; }
+.csharpcode .alt 
+{
+	background-color: #f4f4f4;
+	width: 100%;
+	margin: 0em;
+}
+.csharpcode .lnum { color: #606060; }</style>
+
+        <pre class="csharpcode">&nbsp;</pre>
+
+        <p>1天后过期：</p>
+
+        <pre class="csharpcode">var time = Date();</pre>
+
+        <pre class="csharpcode">$.cookie(<span class="str">"singleKey"</span>, <span class="str">""</span>, <span class="str">"singleKey-value"</span>, { expires: 1, path: <span class="str">"/"</span>, secure: <span class="kwrd">false</span> })</pre>
+      </td>
+    </tr>
+  </tbody></table>
+
+<p>&nbsp; </p>
+
+<h2>五.总结</h2>
+
+<p>很久没有发表文章了，作为博客园改版后我的第一篇文章， 希望对大家的工作能有所帮助。 欢迎拍砖！</p>
+
+<p>&nbsp; </p>
+
+<p>&nbsp; </p>
+
+<p>&nbsp;</p>
+<style type="text/css">
+
+
+
+.csharpcode, .csharpcode pre
+{
+	font-size: small;
+	color: black;
+	font-family: consolas, "Courier New", courier, monospace;
+	background-color: #ffffff;
+	/*white-space: pre;*/
+}
+.csharpcode pre { margin: 0em; }
+.csharpcode .rem { color: #008000; }
+.csharpcode .kwrd { color: #0000ff; }
+.csharpcode .str { color: #006080; }
+.csharpcode .op { color: #0000c0; }
+.csharpcode .preproc { color: #cc6633; }
+.csharpcode .asp { background-color: #ffff00; }
+.csharpcode .html { color: #800000; }
+.csharpcode .attr { color: #ff0000; }
+.csharpcode .alt 
+{
+	background-color: #f4f4f4;
+	width: 100%;
+	margin: 0em;
+}
+.csharpcode .lnum { color: #606060; }</style><style type="text/css">
+
+
+
+.csharpcode, .csharpcode pre
+{
+	font-size: small;
+	color: black;
+	font-family: consolas, "Courier New", courier, monospace;
+	background-color: #ffffff;
+	/*white-space: pre;*/
+}
+.csharpcode pre { margin: 0em; }
+.csharpcode .rem { color: #008000; }
+.csharpcode .kwrd { color: #0000ff; }
+.csharpcode .str { color: #006080; }
+.csharpcode .op { color: #0000c0; }
+.csharpcode .preproc { color: #cc6633; }
+.csharpcode .asp { background-color: #ffff00; }
+.csharpcode .html { color: #800000; }
+.csharpcode .attr { color: #ff0000; }
+.csharpcode .alt 
+{
+	background-color: #f4f4f4;
+	width: 100%;
+	margin: 0em;
+}
+.csharpcode .lnum { color: #606060; }</style></div><div id="MySignature">作者：<a href="http://www.cnblogs.com/zhangziqiu/">张子秋</a><br>
+出处：<a href="http://www.cnblogs.com/zhangziqiu/">http://www.cnblogs.com/zhangziqiu/</a>
+<br>
+本文版权归作者和博客园共有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。
+</div>
+<script type="text/javascript">
+var isLogined = true;
+var cb_blogId = 38867;
+var cb_entryId = 1540770;
+var cb_blogApp = currentBlogApp;
+var cb_blogUserGuid = "3a41420b-63cf-dd11-9e4d-001cf0cd104b";
+var cb_entryCreatedDate = '2009/8/6 22:23:00';
+var enableGoogleAd = true;
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+</script>
+<div id="blog_post_info_block">
+<div id="blog_post_info"><div id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/zhangziqiu/category/173657.html">Web原理</a>, <a href="http://www.cnblogs.com/zhangziqiu/category/174829.html">Javascript</a>, <a href="http://www.cnblogs.com/zhangziqiu/category/173656.html">ASP.NET</a></div>
+<div id="EntryTag">标签: <a href="http://www.cnblogs.com/zhangziqiu/tag/cookie/">cookie</a>, <a href="http://www.cnblogs.com/zhangziqiu/tag/cookie%20%E6%8F%AD%E7%A7%98/">cookie 揭秘</a>, <a href="http://www.cnblogs.com/zhangziqiu/tag/javascript%20cookie/">javascript cookie</a>, <a href="http://www.cnblogs.com/zhangziqiu/tag/asp.net%20cookie/">asp.net cookie</a></div>
+<div id="green_channel">
+绿色通道：
+<a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(cb_entryId,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+<a id="green_channel_follow" onclick="c_follow();" href="javascript:void(0);">关注我</a>
+<a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a><a id="green_channel_contact" href="http://space.cnblogs.com/msg/send/ziqiu.zhang" target="_blank">与我联系</a>
+<a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./Cookies揭秘 [Asp.Net, Javascript] - ziqiu.zhang - 博客园_files/icon_weibo_24.png" alt=""></a>
+</div>
+<div id="digg_block">
+<div id="author_profile">
+<div id="author_profile_info" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/zhangziqiu/" target="_blank"><img src="./Cookies揭秘 [Asp.Net, Javascript] - ziqiu.zhang - 博客园_files/u35304.jpg" class="author_avatar" alt=""></a>
+<div id="author_profile_detail" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/zhangziqiu/">ziqiu.zhang</a><br>
+<a href="http://home.cnblogs.com/u/zhangziqiu/followees">关注 - 7</a><br>
+<a href="http://home.cnblogs.com/u/zhangziqiu/followers">粉丝 - 938</a>
+</div>
+</div>
+<div class="clear"></div>
+<div id="author_profile_honor">荣誉：<a href="http://www.cnblogs.com/expert/" target="_blank">推荐博客</a></div>
+<div id="author_profile_follow">
+<a href="javascript:void(0);" onclick="c_follow();return false;">+加关注</a>
+</div>
+</div>
+<div id="div_digg">										
+	<div class="diggit" onclick="votePost(cb_entryId,&#39;Digg&#39;)"> 
+		<span class="diggnum" id="digg_count">57</span>
+	</div>
+	<div class="buryit" onclick="votePost(cb_entryId,&#39;Bury&#39;)"> 
+		<span class="burynum" id="bury_count">0</span>
+	</div>
+	<div class="clear"></div>	
+	<div class="diggword" id="digg_tips">
+    (请您对文章做出评价)
+    </div>	
+</div>
+</div></div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/zhangziqiu/archive/2009/05/26/jQuery-Learn-javascript.html" class="p_n_p_prefix">« </a> 博主前一篇：<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/05/26/jQuery-Learn-javascript.html" title="发布于2009-05-26 23:36">从零开始学习jQuery(剧场版) 你必须知道的javascript</a><br><a href="http://www.cnblogs.com/zhangziqiu/archive/2009/12/18/Sandcastle-1.html" class="p_n_p_prefix">» </a> 博主后一篇：<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/12/18/Sandcastle-1.html" title="发布于2009-12-18 11:53">Sandcastle 学习教程 （1） 基础入门</a><br></div>
+</div>
+<script type="text/javascript">
+    //SyntaxHighlighter.config.strings.expandSource = '<span><img src="http://static.cnblogs.com/images/expand-code.gif" alt="" class="expand-code-icon"/>View Code</span>';
+    $(function () {             
+        fixPostBodyFormat();
+        loadAdUnderPost();
+        loadBlogSignature();
+        LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+        GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);        
+        GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);        
+    });
+</script>
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2009-08-06 22:23</span> <a href="http://www.cnblogs.com/zhangziqiu/">ziqiu.zhang</a> 阅读(18013) 评论(<span id="post-comment-count">67</span>)  <a href="http://www.cnblogs.com/zhangziqiu/admin/EditPosts.aspx?postid=1540770" rel="nofollow">编辑</a> <a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#" onclick="AddToWz(1540770);return false;">收藏</a></div>
+	</div>
+	<img src="./Cookies揭秘 [Asp.Net, Javascript] - ziqiu.zhang - 博客园_files/1540770.html" width="1" height="1" alt="">
+	
+</div><!--end: topics 文章、评论容器-->
+<div id="blog-comments-placeholder"><div id="comments_pager_top"><div class="pager"><a href="javascript:void(0);" onclick="commentManager.loadPagedComments(false,1,50);return false;">1</a><span class="current">2</span></div></div>
+<!--done-->
+<div class="feedback_area_title">评论列表</div>
+<div class="feedbackNoItems"></div>
+	
+
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1607970,&#39;MR6df11JB1/VCYN0jEYwNrNXWV9EOXnuD+F+yO+XI/yP38zsZHHsjg==&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1607970,&#39;MR6df11JB1/VCYN0jEYwNrNXWV9EOXnuD+F+yO+XI/yP38zsZHHsjg==&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1607970" class="layer">#18楼</a><a name="1607970" id="comment_anchor_1607970"></a>  <span class="comment_date">2009-08-07 08:30</span> <a id="a_comment_author_1607970" href="http://home.cnblogs.com/u/274/" target="_blank">neverlost</a> <a href="http://space.cnblogs.com/msg/send/neverlost" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1607970" class="blog_comment_body">基础性的文章 好</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1607970,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1607970,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1607977,&#39;GgK4ia+rv3iFpNua9lDporFoaNmo3qRsHHYVtQuqBvLBd0jWprYmiA==&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1607977,&#39;GgK4ia+rv3iFpNua9lDporFoaNmo3qRsHHYVtQuqBvLBd0jWprYmiA==&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1607977" class="layer">#19楼</a><a name="1607977" id="comment_anchor_1607977"></a>  <span class="comment_date">2009-08-07 08:32</span> <a id="a_comment_author_1607977" href="http://home.cnblogs.com/u/33967/" target="_blank">10.06</a> <a href="http://space.cnblogs.com/msg/send/10.06" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1607977" class="blog_comment_body">学习了</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1607977,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1607977,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1607990,&#39;&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1607990,&#39;&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1607990" class="layer">#20楼</a><a name="1607990" id="comment_anchor_1607990"></a>  <span class="comment_date">2009-08-07 08:38</span> <a id="ctl00_CommentList_NameLink_2" target="_blank">niming[未注册用户]</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1607990" class="blog_comment_body">好文,顶一个! </div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1607992,&#39;Mk7+d6RwS1Gzt32d7zzZVmNPv5YNDH+eErvjkOilGQ6BLHCDlP0+AA==&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1607992,&#39;Mk7+d6RwS1Gzt32d7zzZVmNPv5YNDH+eErvjkOilGQ6BLHCDlP0+AA==&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1607992" class="layer">#21楼</a><a name="1607992" id="comment_anchor_1607992"></a>  <span class="comment_date">2009-08-07 08:40</span> <a id="a_comment_author_1607992" href="http://home.cnblogs.com/u/78176/" target="_blank">ting_gt</a> <a href="http://space.cnblogs.com/msg/send/ting_gt" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1607992" class="blog_comment_body">好文章</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1607992,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1607992,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1608001,&#39;icqWvqrDiOv5KKQBdvFAMAsyPuHYrdiCaN+l+Tlq6HzKHE65pzPHDQ==&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1608001,&#39;icqWvqrDiOv5KKQBdvFAMAsyPuHYrdiCaN+l+Tlq6HzKHE65pzPHDQ==&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1608001" class="layer">#22楼</a><a name="1608001" id="comment_anchor_1608001"></a>  <span class="comment_date">2009-08-07 08:43</span> <a id="a_comment_author_1608001" href="http://home.cnblogs.com/u/34105/" target="_blank">Crayon</a> <a href="http://space.cnblogs.com/msg/send/Crayon" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1608001" class="blog_comment_body">好文章<br></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1608001,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1608001,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1608018,&#39;u7M6ldULQtbiINgoTO7TeuQ44hND6Rr7NMbjZJPK84DHSuALlH0Ueg==&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1608018,&#39;u7M6ldULQtbiINgoTO7TeuQ44hND6Rr7NMbjZJPK84DHSuALlH0Ueg==&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1608018" class="layer">#23楼</a><a name="1608018" id="comment_anchor_1608018"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2009-08-07 08:54</span> <a id="a_comment_author_1608018" href="http://home.cnblogs.com/u/35304/" target="_blank">ziqiu.zhang</a> <a href="http://space.cnblogs.com/msg/send/ziqiu.zhang" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1608018" class="blog_comment_body"><a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1607932" title="查看所回复的评论">@</a>飞林沙<br>一般的企业系统都需要这个重量级别的。 小型的网站可能不需要：）</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1608018,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1608018,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1608020,&#39;u7M6ldULQtbiINgoTO7TeuQ44hND6Rr7NMbjZJPK84DHSuALlH0Ueg==&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1608020,&#39;u7M6ldULQtbiINgoTO7TeuQ44hND6Rr7NMbjZJPK84DHSuALlH0Ueg==&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1608020" class="layer">#24楼</a><a name="1608020" id="comment_anchor_1608020"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2009-08-07 08:54</span> <a id="a_comment_author_1608020" href="http://home.cnblogs.com/u/35304/" target="_blank">ziqiu.zhang</a> <a href="http://space.cnblogs.com/msg/send/ziqiu.zhang" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1608020" class="blog_comment_body"><a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1607927" title="查看所回复的评论">@</a>麒麟.NET<br>是啊，这不是眼看周日活动，赶紧出来露露脸。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1608020,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1608020,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1608027,&#39;/qcJuSeCVURGEJIflbeho4K/Pszqaq5vhEzqQ34ldcU/J1LtIVYoAA==&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1608027,&#39;/qcJuSeCVURGEJIflbeho4K/Pszqaq5vhEzqQ34ldcU/J1LtIVYoAA==&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1608027" class="layer">#25楼</a><a name="1608027" id="comment_anchor_1608027"></a>  <span class="comment_date">2009-08-07 09:01</span> <a id="a_comment_author_1608027" href="http://home.cnblogs.com/u/7418/" target="_blank">菌哥</a> <a href="http://space.cnblogs.com/msg/send/%e8%8f%8c%e5%93%a5" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1608027" class="blog_comment_body">子秋的文章为什么这么好！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1608027,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1608027,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1608029,&#39;a8T95VUnt0PoCmwTsMW/Y3W+hCWdF8R7VCpp1GzkKEiOO7NC5A0wbw==&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1608029,&#39;a8T95VUnt0PoCmwTsMW/Y3W+hCWdF8R7VCpp1GzkKEiOO7NC5A0wbw==&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1608029" class="layer">#26楼</a><a name="1608029" id="comment_anchor_1608029"></a>  <span class="comment_date">2009-08-07 09:01</span> <a id="a_comment_author_1608029" href="http://home.cnblogs.com/u/78311/" target="_blank">米客一族</a> <a href="http://space.cnblogs.com/msg/send/%e7%b1%b3%e5%ae%a2%e4%b8%80%e6%97%8f" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1608029" class="blog_comment_body">好文章 学习了</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1608029,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1608029,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1608041,&#39;SPZQQVAFFo5eCqngw6Hnf8olRdsz6rprzb4jfQsRj10HOzHs7sAOBQ==&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1608041,&#39;SPZQQVAFFo5eCqngw6Hnf8olRdsz6rprzb4jfQsRj10HOzHs7sAOBQ==&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1608041" class="layer">#27楼</a><a name="1608041" id="comment_anchor_1608041"></a>  <span class="comment_date">2009-08-07 09:07</span> <a id="a_comment_author_1608041" href="http://home.cnblogs.com/u/46907/" target="_blank">webaspx</a> <a href="http://space.cnblogs.com/msg/send/webaspx" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1608041" class="blog_comment_body">不错，学习了！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1608041,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1608041,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1608043,&#39;u7M6ldULQtbiINgoTO7TeuQ44hND6Rr7NMbjZJPK84DHSuALlH0Ueg==&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1608043,&#39;u7M6ldULQtbiINgoTO7TeuQ44hND6Rr7NMbjZJPK84DHSuALlH0Ueg==&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1608043" class="layer">#28楼</a><a name="1608043" id="comment_anchor_1608043"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2009-08-07 09:07</span> <a id="a_comment_author_1608043" href="http://home.cnblogs.com/u/35304/" target="_blank">ziqiu.zhang</a> <a href="http://space.cnblogs.com/msg/send/ziqiu.zhang" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1608043" class="blog_comment_body"><a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1607852" title="查看所回复的评论">@</a>MicroCoder<br>加到了Cookies与Session一节中， 正好解答了我为什么不能在js端获取SessionID的疑惑，十分感谢！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1608043,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1608043,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1608086,&#39;tzByfjArlZM6iYDLB7XzraH5zJDrdyx6Z9FOFr8wv7A+FZdjiq081Q==&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1608086,&#39;tzByfjArlZM6iYDLB7XzraH5zJDrdyx6Z9FOFr8wv7A+FZdjiq081Q==&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1608086" class="layer">#29楼</a><a name="1608086" id="comment_anchor_1608086"></a>  <span class="comment_date">2009-08-07 09:36</span> <a id="a_comment_author_1608086" href="http://home.cnblogs.com/u/29016/" target="_blank">平静中的疯狂</a> <a href="http://space.cnblogs.com/msg/send/%e5%b9%b3%e9%9d%99%e4%b8%ad%e7%9a%84%e7%96%af%e7%8b%82" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1608086" class="blog_comment_body">好文，又学习到了新东西，谢谢。cookie可以这样规范化管理</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1608086,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1608086,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1608135,&#39;zhkqTWBThXe8QrSlYI91qKE8h259Zn+18t+uSaba5hH9H+PafMqTSA==&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1608135,&#39;zhkqTWBThXe8QrSlYI91qKE8h259Zn+18t+uSaba5hH9H+PafMqTSA==&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1608135" class="layer">#30楼</a><a name="1608135" id="comment_anchor_1608135"></a>  <span class="comment_date">2009-08-07 09:58</span> <a id="a_comment_author_1608135" href="http://home.cnblogs.com/u/44137/" target="_blank">Parabola1827</a> <a href="http://space.cnblogs.com/msg/send/Parabola1827" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1608135" class="blog_comment_body">总结的很好，学习了！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1608135,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1608135,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1608162,&#39;UHwhucLMSurZIwjpY3ttqaAkVw/pZvroddJimaEOHrtohn+rLOYfDA==&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1608162,&#39;UHwhucLMSurZIwjpY3ttqaAkVw/pZvroddJimaEOHrtohn+rLOYfDA==&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1608162" class="layer">#31楼</a><a name="1608162" id="comment_anchor_1608162"></a>  <span class="comment_date">2009-08-07 10:09</span> <a id="a_comment_author_1608162" href="http://home.cnblogs.com/u/37619/" target="_blank">莫贝特(MBetter)</a> <a href="http://space.cnblogs.com/msg/send/%e8%8e%ab%e8%b4%9d%e7%89%b9(MBetter)" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1608162" class="blog_comment_body">不错</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1608162,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1608162,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1608173,&#39;a15B4158wnLnO/RO3mB079hocaVjR0sUSloQLshdDbrAmVmJlL1SGg==&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1608173,&#39;a15B4158wnLnO/RO3mB079hocaVjR0sUSloQLshdDbrAmVmJlL1SGg==&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1608173" class="layer">#32楼</a><a name="1608173" id="comment_anchor_1608173"></a>  <span class="comment_date">2009-08-07 10:16</span> <a id="a_comment_author_1608173" href="http://home.cnblogs.com/u/38921/" target="_blank">凌军</a> <a href="http://space.cnblogs.com/msg/send/%e5%87%8c%e5%86%9b" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1608173" class="blog_comment_body">一直关注楼主的文章。写的很用心...</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1608173,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1608173,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1608189,&#39;XAhQUGWe8QlUbaj7DKHUu6I64854zxqqsE5C4rxuMjPYVqKZP79GBw==&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1608189,&#39;XAhQUGWe8QlUbaj7DKHUu6I64854zxqqsE5C4rxuMjPYVqKZP79GBw==&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1608189" class="layer">#33楼</a><a name="1608189" id="comment_anchor_1608189"></a>  <span class="comment_date">2009-08-07 10:28</span> <a id="a_comment_author_1608189" href="http://home.cnblogs.com/u/28023/" target="_blank">伊牛娃</a> <a href="http://space.cnblogs.com/msg/send/%e4%bc%8a%e7%89%9b%e5%a8%83" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1608189" class="blog_comment_body">我有个简单的问题<br><br>如果我不用cookie去存网站访客的信息<br><br>那我怎么去获取系统保存的cookie的信息？<br><br></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1608189,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1608189,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1608195,&#39;xytX3eGPWbNonazGTfSC+oFMFBFyKQjf8Hk2ZWkK3rX/yzk1zu6rCQ==&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1608195,&#39;xytX3eGPWbNonazGTfSC+oFMFBFyKQjf8Hk2ZWkK3rX/yzk1zu6rCQ==&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1608195" class="layer">#34楼</a><a name="1608195" id="comment_anchor_1608195"></a>  <span class="comment_date">2009-08-07 10:32</span> <a id="a_comment_author_1608195" href="http://home.cnblogs.com/u/24955/" target="_blank">Martin(高超)</a> <a href="http://space.cnblogs.com/msg/send/Martin(%e9%ab%98%e8%b6%85)" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1608195" class="blog_comment_body">文章写的很不错，内容丰富，用心写的文章很好。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1608195,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1608195,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1608196,&#39;goaxQDKo3WOq1P5u4nAv/84giVDPeFBWBZReM6xQXpNyvYJfgwPZDQ==&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1608196,&#39;goaxQDKo3WOq1P5u4nAv/84giVDPeFBWBZReM6xQXpNyvYJfgwPZDQ==&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1608196" class="layer">#35楼</a><a name="1608196" id="comment_anchor_1608196"></a>  <span class="comment_date">2009-08-07 10:33</span> <a id="a_comment_author_1608196" href="http://home.cnblogs.com/u/18184/" target="_blank">逍遥海盗船</a> <a href="http://space.cnblogs.com/msg/send/%e9%80%8d%e9%81%a5%e6%b5%b7%e7%9b%97%e8%88%b9" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1608196" class="blog_comment_body">顶了。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1608196,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1608196,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1608213,&#39;4A09DijJPWdkoyhUi/E3vQvK1CkPNjniA9/MQ3ACcg1QOqGyYI5jMA==&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1608213,&#39;4A09DijJPWdkoyhUi/E3vQvK1CkPNjniA9/MQ3ACcg1QOqGyYI5jMA==&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1608213" class="layer">#36楼</a><a name="1608213" id="comment_anchor_1608213"></a>  <span class="comment_date">2009-08-07 10:48</span> <a id="a_comment_author_1608213" href="http://home.cnblogs.com/u/11800/" target="_blank">andy.wu</a> <a href="http://space.cnblogs.com/msg/send/andy.wu" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1608213" class="blog_comment_body">的确是好文章。全面，易懂。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1608213,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1608213,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1608291,&#39;+cd/MGbde8L/Sm+JNhxHhdkse4AdjryVyu9MXxoDiDKNNKfflGijag==&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1608291,&#39;+cd/MGbde8L/Sm+JNhxHhdkse4AdjryVyu9MXxoDiDKNNKfflGijag==&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1608291" class="layer">#37楼</a><a name="1608291" id="comment_anchor_1608291"></a>  <span class="comment_date">2009-08-07 11:35</span> <a id="a_comment_author_1608291" href="http://home.cnblogs.com/u/20214/" target="_blank">子风</a> <a href="http://space.cnblogs.com/msg/send/%e5%ad%90%e9%a3%8e" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1608291" class="blog_comment_body">jquery系列 什么时候更新啊<br>文章不错，学习了。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1608291,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1608291,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1608301,&#39;&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1608301,&#39;&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1608301" class="layer">#38楼</a><a name="1608301" id="comment_anchor_1608301"></a>  <span class="comment_date">2009-08-07 11:40</span> <a id="ctl00_CommentList_NameLink_20" target="_blank">woalang(马甲)[未注册用户]</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1608301" class="blog_comment_body">不错，顶 </div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1608337,&#39;zxjOl0x1Xaszc+l/jnWmxKLIzqxcZEzdneeXSZd+T19CU6FjRFfXFw==&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1608337,&#39;zxjOl0x1Xaszc+l/jnWmxKLIzqxcZEzdneeXSZd+T19CU6FjRFfXFw==&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1608337" class="layer">#39楼</a><a name="1608337" id="comment_anchor_1608337"></a>  <span class="comment_date">2009-08-07 12:08</span> <a id="a_comment_author_1608337" href="http://home.cnblogs.com/u/41558/" target="_blank">卡索</a> <a href="http://space.cnblogs.com/msg/send/%e5%8d%a1%e7%b4%a2" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1608337" class="blog_comment_body">好好的文章啊！<br>不过针对文中提到的一般浏览器现在Cookie在同一域名(比如cnblogs.com)下为20个，这个有待商榷，据知目前的浏览器除了Opera为30个外，IE、FF同为50，Safari/WebKit好像没有数量限制的<br></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1608337,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1608337,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1608384,&#39;u7M6ldULQtbiINgoTO7TeuQ44hND6Rr7NMbjZJPK84DHSuALlH0Ueg==&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1608384,&#39;u7M6ldULQtbiINgoTO7TeuQ44hND6Rr7NMbjZJPK84DHSuALlH0Ueg==&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1608384" class="layer">#40楼</a><a name="1608384" id="comment_anchor_1608384"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2009-08-07 13:17</span> <a id="a_comment_author_1608384" href="http://home.cnblogs.com/u/35304/" target="_blank">ziqiu.zhang</a> <a href="http://space.cnblogs.com/msg/send/ziqiu.zhang" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1608384" class="blog_comment_body"><a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1608189" title="查看所回复的评论">@</a>伊牛娃<br>没看懂，非敏感并且少量的信息可以保存在Cookies中。否则应该保存在Session中。比如只在cookies保存某些信息的主键，服务器端使用DBM等哈希表数据库快速存储的读取。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1608384,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1608384,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1608387,&#39;u7M6ldULQtbiINgoTO7TeuQ44hND6Rr7NMbjZJPK84DHSuALlH0Ueg==&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1608387,&#39;u7M6ldULQtbiINgoTO7TeuQ44hND6Rr7NMbjZJPK84DHSuALlH0Ueg==&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1608387" class="layer">#41楼</a><a name="1608387" id="comment_anchor_1608387"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2009-08-07 13:20</span> <a id="a_comment_author_1608387" href="http://home.cnblogs.com/u/35304/" target="_blank">ziqiu.zhang</a> <a href="http://space.cnblogs.com/msg/send/ziqiu.zhang" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1608387" class="blog_comment_body"><a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1608291" title="查看所回复的评论">@</a>子风<br>jQuery目前在重写稿件中</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1608387,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1608387,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1608389,&#39;u7M6ldULQtbiINgoTO7TeuQ44hND6Rr7NMbjZJPK84DHSuALlH0Ueg==&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1608389,&#39;u7M6ldULQtbiINgoTO7TeuQ44hND6Rr7NMbjZJPK84DHSuALlH0Ueg==&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1608389" class="layer">#42楼</a><a name="1608389" id="comment_anchor_1608389"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2009-08-07 13:21</span> <a id="a_comment_author_1608389" href="http://home.cnblogs.com/u/35304/" target="_blank">ziqiu.zhang</a> <a href="http://space.cnblogs.com/msg/send/ziqiu.zhang" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1608389" class="blog_comment_body"><a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1608337" title="查看所回复的评论">@</a>卡索<br>说的没错，这里的20是准对历史出现过的最少数量，为了浏览器的兼容性我们应该以这个最小值为准。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1608389,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1608389,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1608425,&#39;9c/iUFynjoiEGP9txBarn0bFYYJ7se6GfVzNXHVmcee2pnRZVoa4hA==&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1608425,&#39;9c/iUFynjoiEGP9txBarn0bFYYJ7se6GfVzNXHVmcee2pnRZVoa4hA==&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1608425" class="layer">#43楼</a><a name="1608425" id="comment_anchor_1608425"></a>  <span class="comment_date">2009-08-07 14:02</span> <a id="a_comment_author_1608425" href="http://home.cnblogs.com/u/79554/" target="_blank">莫等闲，白了少年头，空悲切。</a> <a href="http://space.cnblogs.com/msg/send/%e8%8e%ab%e7%ad%89%e9%97%b2%ef%bc%8c%e7%99%bd%e4%ba%86%e5%b0%91%e5%b9%b4%e5%a4%b4%ef%bc%8c%e7%a9%ba%e6%82%b2%e5%88%87%e3%80%82" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1608425" class="blog_comment_body">作者下了费了很长时间</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1608425,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1608425,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1608569,&#39;d+fVEuMPywu4WoHAN7OtIBEF1C1iW5LXbu8uUOm/j+Tmx51JX/foEQ==&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1608569,&#39;d+fVEuMPywu4WoHAN7OtIBEF1C1iW5LXbu8uUOm/j+Tmx51JX/foEQ==&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1608569" class="layer">#44楼</a><a name="1608569" id="comment_anchor_1608569"></a>  <span class="comment_date">2009-08-07 15:44</span> <a id="a_comment_author_1608569" href="http://home.cnblogs.com/u/61442/" target="_blank">小-G</a> <a href="http://space.cnblogs.com/msg/send/%e5%b0%8f-G" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1608569" class="blog_comment_body">總節的很好很全，LZ挺細心費心的，呵呵</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1608569,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1608569,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1608629,&#39;qrjQjQBEyCZPMT5zIj+7Dyi4aNXqQS/E0dUysrqi3mSeJGFQ+hnDFA==&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1608629,&#39;qrjQjQBEyCZPMT5zIj+7Dyi4aNXqQS/E0dUysrqi3mSeJGFQ+hnDFA==&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1608629" class="layer">#45楼</a><a name="1608629" id="comment_anchor_1608629"></a>  <span class="comment_date">2009-08-07 16:29</span> <a id="a_comment_author_1608629" href="http://home.cnblogs.com/u/51093/" target="_blank">xxx1013</a> <a href="http://space.cnblogs.com/msg/send/xxx1013" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1608629" class="blog_comment_body">总结的很好 学习了</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1608629,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1608629,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1608695,&#39;ckp69dq31JU7jq6WDmZmTM+gb6NQjWF/O1sm9a3dMILafho1xEvXrg==&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1608695,&#39;ckp69dq31JU7jq6WDmZmTM+gb6NQjWF/O1sm9a3dMILafho1xEvXrg==&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1608695" class="layer">#46楼</a><a name="1608695" id="comment_anchor_1608695"></a>  <span class="comment_date">2009-08-07 17:29</span> <a id="a_comment_author_1608695" href="http://home.cnblogs.com/u/14762/" target="_blank">Anytao</a> <a href="http://space.cnblogs.com/msg/send/Anytao" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1608695" class="blog_comment_body">费心啦，费心啦。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1608695,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1608695,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1608700,&#39;rVP/PEstPYWiSsFSObswbepgeF25GzGYhw7jIEEjjTTmfobMUDButg==&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1608700,&#39;rVP/PEstPYWiSsFSObswbepgeF25GzGYhw7jIEEjjTTmfobMUDButg==&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1608700" class="layer">#47楼</a><a name="1608700" id="comment_anchor_1608700"></a>  <span class="comment_date">2009-08-07 17:35</span> <a id="a_comment_author_1608700" href="http://home.cnblogs.com/u/39595/" target="_blank">郑希强</a> <a href="http://space.cnblogs.com/msg/send/%e9%83%91%e5%b8%8c%e5%bc%ba" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1608700" class="blog_comment_body">顶下</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1608700,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1608700,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1608730,&#39;Auh0hnxTMKwUGuu4SpjpIfiNB/ep+GYcSZN3OlbBlN+Fkyz8QDZ/Vg==&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1608730,&#39;Auh0hnxTMKwUGuu4SpjpIfiNB/ep+GYcSZN3OlbBlN+Fkyz8QDZ/Vg==&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1608730" class="layer">#48楼</a><a name="1608730" id="comment_anchor_1608730"></a>  <span class="comment_date">2009-08-07 17:59</span> <a id="a_comment_author_1608730" href="http://home.cnblogs.com/u/14291/" target="_blank">徐少侠</a> <a href="http://space.cnblogs.com/msg/send/%e5%be%90%e5%b0%91%e4%be%a0" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1608730" class="blog_comment_body">顶，要支持<br><br>写那么多哦</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1608730,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1608730,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1608836,&#39;+M8GxBfUZpr6fGYxq3zeCh+1TNXTZdyXXClcsyWsgqUkBVMNLt1O2A==&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1608836,&#39;+M8GxBfUZpr6fGYxq3zeCh+1TNXTZdyXXClcsyWsgqUkBVMNLt1O2A==&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1608836" class="layer">#49楼</a><a name="1608836" id="comment_anchor_1608836"></a>  <span class="comment_date">2009-08-07 22:02</span> <a id="a_comment_author_1608836" href="http://home.cnblogs.com/u/55123/" target="_blank">风枫峰</a> <a href="http://space.cnblogs.com/msg/send/%e9%a3%8e%e6%9e%ab%e5%b3%b0" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1608836" class="blog_comment_body">支持 <br></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1608836,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1608836,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1608840,&#39;k8AENZsoHn0GsDEsJT8GdQMEkLnIubjPwPBq3Y3F4i0O8EwMlxP+sw==&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1608840,&#39;k8AENZsoHn0GsDEsJT8GdQMEkLnIubjPwPBq3Y3F4i0O8EwMlxP+sw==&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1608840" class="layer">#50楼</a><a name="1608840" id="comment_anchor_1608840"></a>  <span class="comment_date">2009-08-07 22:03</span> <a id="a_comment_author_1608840" href="http://home.cnblogs.com/u/22931/" target="_blank">人生就是赌</a> <a href="http://space.cnblogs.com/msg/send/%e4%ba%ba%e7%94%9f%e5%b0%b1%e6%98%af%e8%b5%8c" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1608840" class="blog_comment_body">比较全的好文章！<br>两个地方需要注意：<br>1，cookies值不能存诸如：&amp;yy=jj<br>因为cookies也是以&amp;来分隔子键的<br>2，不设置cookies的expires属性，就相当于DateTime.MinValue<br>另外不设置expires属性，cookies不会在本地有文本记录</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1608840,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1608840,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1608847,&#39;k8AENZsoHn0GsDEsJT8GdQMEkLnIubjPwPBq3Y3F4i0O8EwMlxP+sw==&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1608847,&#39;k8AENZsoHn0GsDEsJT8GdQMEkLnIubjPwPBq3Y3F4i0O8EwMlxP+sw==&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1608847" class="layer">#51楼</a><a name="1608847" id="comment_anchor_1608847"></a>  <span class="comment_date">2009-08-07 22:09</span> <a id="a_comment_author_1608847" href="http://home.cnblogs.com/u/22931/" target="_blank">人生就是赌</a> <a href="http://space.cnblogs.com/msg/send/%e4%ba%ba%e7%94%9f%e5%b0%b1%e6%98%af%e8%b5%8c" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1608847" class="blog_comment_body">更正错误<br>以上第一点我是错误的，可以存&amp;<br>有&amp;jj=0可以以子键的方式读取</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1608847,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1608847,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1608963,&#39;QaLMe9vmkMuWipZEDrHBTJnvJNxGwXBH/rUeSAbcKzEC8HTeYeSuUw==&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1608963,&#39;QaLMe9vmkMuWipZEDrHBTJnvJNxGwXBH/rUeSAbcKzEC8HTeYeSuUw==&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1608963" class="layer">#52楼</a><a name="1608963" id="comment_anchor_1608963"></a>  <span class="comment_date">2009-08-08 00:50</span> <a id="a_comment_author_1608963" href="http://home.cnblogs.com/u/42303/" target="_blank">qianerHusbend</a> <a href="http://space.cnblogs.com/msg/send/qianerHusbend" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1608963" class="blog_comment_body">前几天刚好深入研究了这块儿， 真是好文章 ，强烈推荐并感谢楼主。<br><b>要是首页的文章 有30%像这样该多好！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！</b></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1608963,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1608963,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1609208,&#39;&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1609208,&#39;&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1609208" class="layer">#53楼</a><a name="1609208" id="comment_anchor_1609208"></a>  <span class="comment_date">2009-08-08 14:42</span> <a id="ctl00_CommentList_NameLink_35" target="_blank">走行寻[未注册用户]</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1609208" class="blog_comment_body">很好，很强大呀！</div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1611098,&#39;WbtVh6v7SUnlUJzDLtpydkZqNS9x4duHtITZecW/ae/F2cW73kZoig==&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1611098,&#39;WbtVh6v7SUnlUJzDLtpydkZqNS9x4duHtITZecW/ae/F2cW73kZoig==&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1611098" class="layer">#54楼</a><a name="1611098" id="comment_anchor_1611098"></a>  <span class="comment_date">2009-08-11 09:17</span> <a id="a_comment_author_1611098" href="http://home.cnblogs.com/u/66372/" target="_blank">曹赛楠</a> <a href="http://space.cnblogs.com/msg/send/%e6%9b%b9%e8%b5%9b%e6%a5%a0" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1611098" class="blog_comment_body">支持下~~~~~</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1611098,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1611098,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1612591,&#39;&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1612591,&#39;&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1612591" class="layer">#55楼</a><a name="1612591" id="comment_anchor_1612591"></a>  <span class="comment_date">2009-08-12 13:25</span> <a id="ctl00_CommentList_NameLink_37" target="_blank"> 曹赛喃[未注册用户]</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1612591" class="blog_comment_body">非常竞猜，谢谢自求。</div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1613293,&#39;pCy+ulGgVaSgt4+pljoQuSGDl0YKbqqvF+gI7wYQdqJqJBxtHbb67g==&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1613293,&#39;pCy+ulGgVaSgt4+pljoQuSGDl0YKbqqvF+gI7wYQdqJqJBxtHbb67g==&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1613293" class="layer">#56楼</a><a name="1613293" id="comment_anchor_1613293"></a>  <span class="comment_date">2009-08-13 09:28</span> <a id="a_comment_author_1613293" href="http://home.cnblogs.com/u/48423/" target="_blank">君仔</a> <a href="http://space.cnblogs.com/msg/send/%e5%90%9b%e4%bb%94" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1613293" class="blog_comment_body">我曾经遇到一个奇怪的现象，就是我在ASP.NET中写入一个COOKIE，在ASP程序中读取，没有问题，然后我在ASP.NET中设置该COOKIE过期，在ASP.net中是读不到了，但是在asp中仍然能读到，不知道是怎么回事，各位有知道的吗？</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1613293,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1613293,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1633396,&#39;i5/t5MABqzYMER3FX60PodTQeu14mGqYYRlVx935LKCbfQQJguCwlw==&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1633396,&#39;i5/t5MABqzYMER3FX60PodTQeu14mGqYYRlVx935LKCbfQQJguCwlw==&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1633396" class="layer">#57楼</a><a name="1633396" id="comment_anchor_1633396"></a>  <span class="comment_date">2009-09-02 14:35</span> <a id="a_comment_author_1633396" href="http://home.cnblogs.com/u/28762/" target="_blank">王金平</a> <a href="http://space.cnblogs.com/msg/send/%e7%8e%8b%e9%87%91%e5%b9%b3" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1633396" class="blog_comment_body">不错，讲的全面透彻</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1633396,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1633396,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1644960,&#39;&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1644960,&#39;&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1644960" class="layer">#58楼</a><a name="1644960" id="comment_anchor_1644960"></a>  <span class="comment_date">2009-09-13 10:26</span> <a id="ctl00_CommentList_NameLink_40" target="_blank">jamjia[未注册用户]</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1644960" class="blog_comment_body">学习啦......</div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1649192,&#39;Sdm7NKajYEn7d8Ya/m3QUq1da3bDQo/6+ey4yHC+gyyhXnKlGTBJ5Q==&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1649192,&#39;Sdm7NKajYEn7d8Ya/m3QUq1da3bDQo/6+ey4yHC+gyyhXnKlGTBJ5Q==&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1649192" class="layer">#59楼</a><a name="1649192" id="comment_anchor_1649192"></a>  <span class="comment_date">2009-09-16 23:09</span> <a id="a_comment_author_1649192" href="http://home.cnblogs.com/u/48394/" target="_blank">土农民</a> <a href="http://space.cnblogs.com/msg/send/%e5%9c%9f%e5%86%9c%e6%b0%91" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1649192" class="blog_comment_body">谢谢</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1649192,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1649192,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1662853,&#39;&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1662853,&#39;&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1662853" class="layer">#60楼</a><a name="1662853" id="comment_anchor_1662853"></a>  <span class="comment_date">2009-09-30 19:50</span> <a id="ctl00_CommentList_NameLink_42" rel="nofllow" href="http://www.cnitblog.com/r.aspx?url=http://www.mobansheji.com" target="_blank">采风者[未注册用户]</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1662853" class="blog_comment_body">很好的文章！ 一直以来对session和cookies都比较迷糊！<br>学习了！</div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1679686,&#39;&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1679686,&#39;&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1679686" class="layer">#61楼</a><a name="1679686" id="comment_anchor_1679686"></a>  <span class="comment_date">2009-10-23 17:43</span> <a id="ctl00_CommentList_NameLink_43" rel="nofllow" href="http://www.cnitblog.com/r.aspx?url=http://www.cnblogs08/.html" target="_blank">sfdsadfdsfdsfdsafdsfds[未注册用户]</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1679686" class="blog_comment_body">如果是你写的，支持你，支持原创</div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1886344,&#39;9SJJKl7r9PM8qjuJdpxm9ZZ3FvThZT54lex4njRstMBlE/N+ANA4xg==&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1886344,&#39;9SJJKl7r9PM8qjuJdpxm9ZZ3FvThZT54lex4njRstMBlE/N+ANA4xg==&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1886344" class="layer">#62楼</a><a name="1886344" id="comment_anchor_1886344"></a>  <span class="comment_date">2010-08-03 19:47</span> <a id="a_comment_author_1886344" href="http://home.cnblogs.com/u/150267/" target="_blank">小邹</a> <a href="http://space.cnblogs.com/msg/send/%e5%b0%8f%e9%82%b9" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1886344" class="blog_comment_body">看来我落后了 ,原来cookie也这么强大.<br></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1886344,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1886344,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1997232,&#39;ISv0GMMpxlBLYotUukvVaChhgwntIFHgrdicLloDhbz94K09WD3QWA==&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1997232,&#39;ISv0GMMpxlBLYotUukvVaChhgwntIFHgrdicLloDhbz94K09WD3QWA==&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1997232" class="layer">#63楼</a><a name="1997232" id="comment_anchor_1997232"></a>  <span class="comment_date">2010-12-25 20:12</span> <a id="a_comment_author_1997232" href="http://home.cnblogs.com/u/124954/" target="_blank">执手泪眼</a> <a href="http://space.cnblogs.com/msg/send/%e6%89%a7%e6%89%8b%e6%b3%aa%e7%9c%bc" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1997232" class="blog_comment_body">有几个小知识点倒是对我很有作用。谢谢</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1997232,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1997232,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(2155034,&#39;7OmyqAeacQRYCBRWJ9rgtyNTcUFmAIn55le+oyg9jvGyqp7Ns38EfA==&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(2155034,&#39;7OmyqAeacQRYCBRWJ9rgtyNTcUFmAIn55le+oyg9jvGyqp7Ns38EfA==&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#2155034" class="layer">#64楼</a><a name="2155034" id="comment_anchor_2155034"></a>  <span class="comment_date">2011-07-19 13:50</span> <a id="a_comment_author_2155034" href="http://home.cnblogs.com/u/310008/" target="_blank">入门→精通</a> <a href="http://space.cnblogs.com/msg/send/%e5%85%a5%e9%97%a8%e2%86%92%e7%b2%be%e9%80%9a" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2155034" class="blog_comment_body"><a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#1679686" title="查看所回复的评论">@</a>sfdsadfdsfdsfdsafdsfds<br>不错</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2155034,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2155034,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(2197383,&#39;kA59ubge87Myd3hmYBOtu4MLh/lJt9Sg5Pqk8EnM1eHHCDK6CYHQPA==&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(2197383,&#39;kA59ubge87Myd3hmYBOtu4MLh/lJt9Sg5Pqk8EnM1eHHCDK6CYHQPA==&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#2197383" class="layer">#65楼</a><a name="2197383" id="comment_anchor_2197383"></a>  <span class="comment_date">2011-09-11 23:48</span> <a id="a_comment_author_2197383" href="http://home.cnblogs.com/u/321522/" target="_blank">_小基</a> <a href="http://space.cnblogs.com/msg/send/_%e5%b0%8f%e5%9f%ba" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2197383" class="blog_comment_body">呵呵，有帮助</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2197383,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2197383,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(2344073,&#39;nG6MmeCzPoRma3bPyM/emMT+7GHvj7x23uTWYkqu6gl+71tmDSG2fQ==&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(2344073,&#39;nG6MmeCzPoRma3bPyM/emMT+7GHvj7x23uTWYkqu6gl+71tmDSG2fQ==&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#2344073" class="layer">#66楼</a><a name="2344073" id="comment_anchor_2344073"></a>  <span class="comment_date">2012-03-30 21:07</span> <a id="a_comment_author_2344073" href="http://home.cnblogs.com/u/333824/" target="_blank">菜鸟起步</a> <a href="http://space.cnblogs.com/msg/send/%e8%8f%9c%e9%b8%9f%e8%b5%b7%e6%ad%a5" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2344073" class="blog_comment_body">ASP3.5中 我刚写入了一个cookie值 然后就取出来 发现不是最新的。必须刷新下页面再用request 去取出来 才是最新的。。怎么解决啊？？</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2344073,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2344073,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(2391746,&#39;ek72+7lt95sdAVe0P+C+dy2pKzamH17u/Sfcmmg/8NQCctdjLiFGDA==&#39;)">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(2391746,&#39;ek72+7lt95sdAVe0P+C+dy2pKzamH17u/Sfcmmg/8NQCctdjLiFGDA==&#39;)">引用</a></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#2391746" class="layer">#67楼</a><a name="2391746" id="comment_anchor_2391746"></a><span id="comment-maxId" style="display:none;">2391746</span><span id="comment-maxDate" style="display:none;">2012/6/2 16:52:23</span>  <span class="comment_date">2012-06-02 16:52</span> <a id="a_comment_author_2391746" href="http://home.cnblogs.com/u/160438/" target="_blank">又是春来时</a> <a href="http://space.cnblogs.com/msg/send/%e5%8f%88%e6%98%af%e6%98%a5%e6%9d%a5%e6%97%b6" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2391746" class="blog_comment_body">好文章，顶起来</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2391746,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2391746,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	<div id="comments_pager_bottom"><div class="pager"><a href="javascript:void(0);" onclick="commentManager.loadPagedComments(false,1,50);return false;">1</a><span class="current">2</span></div></div></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.loadComments();</script>
+<div id="comment_form" class="commentform">
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" id="lnk_RefreshComments" onclick="return RefreshCommentList();">刷新评论</a><a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#" onclick="return RefreshPage();">刷新页面</a><a href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div id="commentform_title">发表评论</div>
+<span id="tip_comment" style="color:Red"></span>
+<p>
+昵称：<input type="text" id="tbCommentAuthor" class="author" disabled="disabled" value="FlyDragon">
+</p>
+<div class="commentbox_main">
+<div class="commentbox_title">
+<div class="commentbox_title_left">评论内容：</div>
+<div class="commentbox_title_right">
+<img id="ubb_quote" class="comment_icon" src="./Cookies揭秘 [Asp.Net, Javascript] - ziqiu.zhang - 博客园_files/quote.gif" alt="引用" title="添加引用" onclick="insertUBB(&#39;tbCommentBody&#39;,&#39;quote&#39;)">
+<img id="ubb_bold" class="comment_icon" src="./Cookies揭秘 [Asp.Net, Javascript] - ziqiu.zhang - 博客园_files/b.png" alt="粗体" title="添加粗体" onclick="insertUBB(&#39;tbCommentBody&#39;,&#39;b&#39;)">
+<img id="ubb_url" class="comment_icon" src="./Cookies揭秘 [Asp.Net, Javascript] - ziqiu.zhang - 博客园_files/lk.png" alt="链接" title="添加链接" onclick="insertUbbUrl(&#39;tbCommentBody&#39;)">
+<img id="ubb_indent" class="comment_icon" src="./Cookies揭秘 [Asp.Net, Javascript] - ziqiu.zhang - 博客园_files/indent.png" alt="缩进" title="添加首行缩进" onclick="insertIndent(&#39;tbCommentBody&#39;)">
+<img id="ubb_code" class="comment_icon" src="./Cookies揭秘 [Asp.Net, Javascript] - ziqiu.zhang - 博客园_files/InsertCode.gif" alt="代码" title="添加代码" onclick="insertUbbCode()">
+<img id="ubb_img" class="comment_icon" src="./Cookies揭秘 [Asp.Net, Javascript] - ziqiu.zhang - 博客园_files/img.gif" alt="图片" title="添加图片" onclick="insertUbbImg(&#39;tbCommentBody&#39;)">
+<a href="javascript:OpenImageUploadWindow();" class="comment_uploadimg_a" title="上传图片并插入评论框">上传图片</a>
+</div>
+</div>
+<div class="clear"></div>
+<textarea id="tbCommentBody" class="comment_textarea" rows="10"></textarea>
+</div>
+<p id="commentbox_opt">
+<input id="btn_comment_submit" type="button" class="comment_btn" value="提交评论">
+<span id="span_comment_canceledit" style="display:none"><a href="javascript:void(0);" onclick="return CancelCommentEdit()">不改了</a></span>
+<a href="javascript:void(0);" onclick="return logout();">注销</a>
+        <a id="commentbox_opt_sub" href="javascript:void(0);" title="订阅后有新评论时会邮件通知您" onclick="commentManager.Subscribe()">订阅评论</a>
+</p>
+<p>
+[使用Ctrl+Enter键快速提交]
+</p>
+<div style="display:none">
+<span id="comment_edit_id"></span><span id="span_parentcomment_id"></span>
+<span id="span_parent_id"></span>
+<span id="span_comment_replyto"></span>
+<span id="span_comment_posted"></span>
+</div>
+</div>
+
+<script type="text/javascript">
+    if (typeof commentManager === 'undefined') {
+        commentManager = new blogCommentManager();
+    }
+    commentManager.loadCommentForm();   
+</script>
+
+<div class="ad_text_commentbox"><a href="http://www.headin.cn/Themes/Activity/Details/?activityId=507e685a869d081774a5bdb8&from=cnblogs" target="_blank"><b>开发的云计算盛会：VMware vForum 2012（北京，免费）</b></a></div>
+<div id="site_nav_under"><a href="http://www.cnblogs.com/" target="_blank" title="程序员的网上家园">博客园首页</a><a href="http://q.cnblogs.com/" target="_blank" title="程序员问答社区">博问</a><a href="http://news.cnblogs.com/" target="_blank" title="IT新闻">新闻</a><a href="http://home.cnblogs.com/ing/" target="_blank">闪存</a><a href="http://job.cnblogs.com/" target="_blank">程序员招聘</a><a href="http://kb.cnblogs.com/" target="_blank">知识库</a></div>
+<div id="ad_under_post_holder">
+<div id="google_ad_c1" class="c_ad_block">
+<!-- cnblogs_blogpost_C1_sitehome -->
+<div id="div-gpt-ad-1346480159711-0" style="width: 300px; height: 250px; ">
+
+<iframe id="google_ads_iframe_/1090369/cnblogs_blogpost_C1_sitehome_0" name="google_ads_iframe_/1090369/cnblogs_blogpost_C1_sitehome_0" width="300" height="250" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border: 0px; "></iframe><iframe id="google_ads_iframe_/1090369/cnblogs_blogpost_C1_sitehome_0__hidden__" name="google_ads_iframe_/1090369/cnblogs_blogpost_C1_sitehome_0__hidden__" width="0" height="0" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border: 0px; visibility: hidden; display: none; "></iframe></div>
+</div>
+<div id="blog_news_kb"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/161982/" target="_blank">好奇号发现火星土壤含类似夏威夷岩石成分</a><br> ·  <a href="http://news.cnblogs.com/n/161981/" target="_blank">马云：成功与情商有关 与读书多少关系不大</a><br> ·  <a href="http://news.cnblogs.com/n/161979/" target="_blank">吴军：谁将拥有移动互联网的下一个机会</a><br> ·  <a href="http://news.cnblogs.com/n/161978/" target="_blank">传互动百科因业务受阻裁员 IPO或搁浅</a><br> ·  <a href="http://news.cnblogs.com/n/161977/" target="_blank">柯达第三季度净亏损3亿美元 同比扩大41%</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/160526/" target="_blank">一堂如何提高代码质量的培训课</a><br> ·  <a href="http://kb.cnblogs.com/page/161182/" target="_blank">程序江湖</a><br> ·  <a href="http://kb.cnblogs.com/page/161553/" target="_blank">使用阿里云云服务器一年多的感受</a><br> ·  <a href="http://kb.cnblogs.com/page/161551/" target="_blank">分布式系统测试在阿里云的实践</a><br> ·  <a href="http://kb.cnblogs.com/page/160480/" target="_blank">一个阿里巴巴码农的六年回眸</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="google_ad_c2" class="c_ad_block">
+<!-- cnblogs_blogpost_C2_sitehome -->
+<div id="div-gpt-ad-1346479110744-1" style="width: 468px; height: 60px; ">
+
+<iframe id="google_ads_iframe_/1090369/cnblogs_blogpost_C2_sitehome_0" name="google_ads_iframe_/1090369/cnblogs_blogpost_C2_sitehome_0" width="468" height="60" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border: 0px; "></iframe></div>
+</div>
+<div id="ad_under_google" class="c_ad_block">
+<a href="http://www.china-pub.com/static07/1206/12znq_dyb_20120618/12znq_dyb_20120618.asp" target="_blank" rel="nofollow"><img src="./Cookies揭秘 [Asp.Net, Javascript] - ziqiu.zhang - 博客园_files/china-pub-0620.jpg" alt="" style="border:0px;"></a><br>
+<a href="http://www.china-pub.com/sale/usedbook.aspx" target="_blank" rel="nofollow">China-Pub 低价书精选</a><br>
+<a href="http://www.china-pub.com/static07/0901/zh_jueba_090121.asp" target="_blank" rel="nofollow">China-Pub 计算机绝版图书按需印刷服务</a>
+</div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+</div>
+
+
+
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news" style=""><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/zhangziqiu/">ziqiu.zhang</a><br>园龄：<a href="http://home.cnblogs.com/u/zhangziqiu/" title="入园时间：2008-06-16">4年4个月</a><br>荣誉：<a href="http://www.cnblogs.com/expert/">推荐博客</a><br>粉丝：<a href="http://home.cnblogs.com/u/zhangziqiu/followers/">938</a><br>关注：<a href="http://home.cnblogs.com/u/zhangziqiu/followees/">7</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="cnblogs.UserManager.FollowBlogger(&#39;3a41420b-63cf-dd11-9e4d-001cf0cd104b&#39;)">+加关注</a></div></div></div>
+</div>
+
+			<div id="calendar"><div id="blog-calendar" style="displya:none"></div></div>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn">
+
+<div class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="widget_my_zzk" class="div_my_zzk"><input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="zzk_go()" type="button" value="找找看" id="btnZzk" class="btn_my_zzk"></div>
+
+</div>
+
+
+<div class="catListLink">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+
+		<li><a id="ctl01_rptMainLinks_lnkLinkItem_0" href="http://www.cnblogs.com/zhangziqiu/MyPosts.html">我的随笔</a></li>
+	
+		<li><a id="ctl01_rptMainLinks_lnkLinkItem_1" href="http://www.cnblogs.com/zhangziqiu/MyComments.html">我的评论</a></li>
+	
+		<li><a id="ctl01_rptMainLinks_lnkLinkItem_2" title="我发表过评论的随笔" href="http://www.cnblogs.com/zhangziqiu/OtherPosts.html">我的参与</a></li>
+	
+		<li><a id="ctl01_rptMainLinks_lnkLinkItem_3" href="http://www.cnblogs.com/zhangziqiu/RecentComments.html">最新评论</a></li>
+	
+		<li><a id="ctl01_rptMainLinks_lnkLinkItem_4" href="http://www.cnblogs.com/zhangziqiu/tag/">我的标签</a></li>
+	
+</ul>
+<div id="itemListLin_con" style="display:none;">
+<ul>
+
+</ul>
+</div>
+</div>
+<div class="catListTag">
+<h3 class="catListTitle">我的标签</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/zhangziqiu/tag/jQuery/">jQuery</a>(13)</li><li><a href="http://www.cnblogs.com/zhangziqiu/tag/jQuery%E6%95%99%E7%A8%8B/">jQuery教程</a>(12)</li><li><a href="http://www.cnblogs.com/zhangziqiu/tag/MVC/">MVC</a>(5)</li><li><a href="http://www.cnblogs.com/zhangziqiu/tag/ASP.NET%20MVC/">ASP.NET MVC</a>(5)</li><li><a href="http://www.cnblogs.com/zhangziqiu/tag/LINQ/">LINQ</a>(3)</li><li><a href="http://www.cnblogs.com/zhangziqiu/tag/jQueryUI/">jQueryUI</a>(3)</li><li><a href="http://www.cnblogs.com/zhangziqiu/tag/SandCastle/">SandCastle</a>(3)</li><li><a href="http://www.cnblogs.com/zhangziqiu/tag/Model/">Model</a>(2)</li><li><a href="http://www.cnblogs.com/zhangziqiu/tag/View/">View</a>(2)</li><li><a href="http://www.cnblogs.com/zhangziqiu/tag/%E6%B3%A8%E9%87%8A/">注释</a>(2)</li><li><a href="http://www.cnblogs.com/zhangziqiu/tag/">更多</a></li>
+</ul>
+</div>
+<div class="catListPostCategory">
+<h3 class="catListTitle">随笔分类<span style="font-size:11px;font-weight:normal">(42)</span></h3>
+
+<ul>
+
+<li><a id="ctl03_CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/zhangziqiu/category/173656.html">ASP.NET(3)</a> </li>
+
+<li><a id="ctl03_CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/zhangziqiu/category/177895.html">ASP.NET MVC(5)</a> </li>
+
+<li><a id="ctl03_CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/zhangziqiu/category/275128.html">C/C++(1)</a> </li>
+
+<li><a id="ctl03_CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/zhangziqiu/category/173658.html">Framework(6)</a> </li>
+
+<li><a id="ctl03_CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/zhangziqiu/category/174829.html">Javascript(19)</a> </li>
+
+<li><a id="ctl03_CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/zhangziqiu/category/173659.html">Other(2)</a> </li>
+
+<li><a id="ctl03_CatList_LinkList_0_Link_6" href="http://www.cnblogs.com/zhangziqiu/category/173657.html">Web原理(4)</a> </li>
+
+<li><a id="ctl03_CatList_LinkList_0_Link_7" href="http://www.cnblogs.com/zhangziqiu/category/290940.html">计算机基础(1)</a> </li>
+
+<li><a id="ctl03_CatList_LinkList_0_Link_8" href="http://www.cnblogs.com/zhangziqiu/category/174352.html">数据库(1)</a> </li>
+
+</ul>
+
+</div>
+
+<div class="catListPostArchive">
+<h3 class="catListTitle">随笔档案<span style="font-size:11px;font-weight:normal">(39)</span></h3>
+
+<ul>
+
+<li><a id="ctl03_CatList_LinkList_1_Link_0" href="http://www.cnblogs.com/zhangziqiu/archive/2011/06.html">2011年6月 (1)</a> </li>
+
+<li><a id="ctl03_CatList_LinkList_1_Link_1" href="http://www.cnblogs.com/zhangziqiu/archive/2011/03.html">2011年3月 (2)</a> </li>
+
+<li><a id="ctl03_CatList_LinkList_1_Link_2" href="http://www.cnblogs.com/zhangziqiu/archive/2009/12.html">2009年12月 (1)</a> </li>
+
+<li><a id="ctl03_CatList_LinkList_1_Link_3" href="http://www.cnblogs.com/zhangziqiu/archive/2009/08.html">2009年8月 (1)</a> </li>
+
+<li><a id="ctl03_CatList_LinkList_1_Link_4" href="http://www.cnblogs.com/zhangziqiu/archive/2009/05.html">2009年5月 (12)</a> </li>
+
+<li><a id="ctl03_CatList_LinkList_1_Link_5" href="http://www.cnblogs.com/zhangziqiu/archive/2009/04.html">2009年4月 (1)</a> </li>
+
+<li><a id="ctl03_CatList_LinkList_1_Link_6" href="http://www.cnblogs.com/zhangziqiu/archive/2009/03.html">2009年3月 (4)</a> </li>
+
+<li><a id="ctl03_CatList_LinkList_1_Link_7" href="http://www.cnblogs.com/zhangziqiu/archive/2009/02.html">2009年2月 (11)</a> </li>
+
+<li><a id="ctl03_CatList_LinkList_1_Link_8" href="http://www.cnblogs.com/zhangziqiu/archive/2009/01.html">2009年1月 (6)</a> </li>
+
+</ul>
+
+</div>
+
+<div class="catListImageCategory">
+<h3 class="catListTitle">相册</h3>
+
+<ul>
+
+<li><a id="ctl03_CatList_LinkList_2_Link_0" rel="nofollow" href="http://www.cnblogs.com/zhangziqiu/gallery/173869.html">文章用图</a> </li>
+
+<li><a id="ctl03_CatList_LinkList_2_Link_1" rel="nofollow" href="http://www.cnblogs.com/zhangziqiu/gallery/173634.html">系统使用</a> </li>
+
+<li><a id="ctl03_CatList_LinkList_2_Link_2" rel="nofollow" href="http://www.cnblogs.com/zhangziqiu/gallery/198220.html">照片</a> </li>
+
+</ul>
+
+</div>
+
+<div class="catList.Net高手们的博客地址.">
+<h3 class="catListTitle">.Net名人博客</h3>
+
+<ul>
+
+<li><a id="ctl03_CatList_LinkList_3_Link_0" rel="nofollow" href="http://ejohn.org/">John Resig</a> </li>
+<li class="c_b_p_link_desc">jQuery作者，js大湿。</li>
+<li><a id="ctl03_CatList_LinkList_3_Link_1" rel="nofollow" href="http://blog.joycode.com/scottgu/">Scott Guthrie 中文博客</a> <a id="ctl03_CatList_LinkList_3_RssLink_1" href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#" onclick="return open_link(&#39;http://blog.joycode.com/scottgu/rss.aspx&#39;);">(rss)</a></li>
+
+<li><a id="ctl03_CatList_LinkList_3_Link_2" rel="nofollow" href="http://it.dianping.com/">点评网技术部</a> <a id="ctl03_CatList_LinkList_3_RssLink_2" href="http://www.cnblogs.com/zhangziqiu/archive/2009/08/06/cookies-javascript-aspnet.html#" onclick="return open_link(&#39;http://it.dianping.com/feed&#39;);">(rss)</a></li>
+<li class="c_b_p_link_desc">点评网页面Yslow有99分！</li>
+</ul>
+
+</div>
+
+<div class="catList好友连接">
+<h3 class="catListTitle">好友连接</h3>
+
+<ul>
+
+<li><a id="ctl03_CatList_LinkList_4_Link_0" rel="nofollow" href="http://www.dozan.cn/" target="_blank">道然科技</a> </li>
+
+<li><a id="ctl03_CatList_LinkList_4_Link_1" rel="nofollow" href="http://www.gaotianpu.com/" target="_blank">高天蒲的博客</a> </li>
+
+</ul>
+
+</div>
+
+<div class="catList">
+<h3 class="catListTitle">我的作品</h3>
+
+<ul>
+
+<li><a id="ctl03_CatList_LinkList_5_Link_0" href="http://www.cnblogs.com/zhangziqiu/archive/2011/03/24/jQueryStormIntro.html">郑重推荐:</a> </li>
+<li class="c_b_p_link_desc"><a href="http://images.cnblogs.com/cnblogs_com/zhangziqiu/201103/201103240027568296.jpg"><img height="260" border="0" width="200" src="./Cookies揭秘 [Asp.Net, Javascript] - ziqiu.zhang - 博客园_files/20110324002757215.jpg" alt="jQuery风暴-封面出片0" style="border-width: 0px; display: inline;" title="jQuery风暴-封面出片0"></a></li>
+</ul>
+
+</div>
+
+<div class="catList">
+<h3 class="catListTitle">专题收藏</h3>
+
+<ul>
+
+<li><a id="ctl03_CatList_LinkList_6_Link_0" rel="nofollow" href="http://kb.cnblogs.com/zt/mvc/">ASP.NET MVC专题-博客园</a> </li>
+
+</ul>
+
+</div>
+
+
+<div class="catListBlogRank">
+<h3 class="catListTitle">积分与排名</h3>
+<ul>
+	<li class="liScore">
+		积分 -	610828
+	</li>
+	<li class="liRank">
+		排名 -	84
+	</li>
+</ul>
+</div>
+
+
+
+<div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/zhangziqiu/archive/2009/04/30/jQuery-Learn-1.html">1. 从零开始学习jQuery (一) 开天辟地入门篇(118628)</a></li><li><a href="http://www.cnblogs.com/zhangziqiu/archive/2009/02/27/ASPNET-MVC-1.html">2. 从零开始学习ASP.NET MVC 1.0 (一) 开天辟地入门篇(97591)</a></li><li><a href="http://www.cnblogs.com/zhangziqiu/archive/2009/05/03/jQuery-Learn-2.html">3. 从零开始学习jQuery (二) 万能的选择器(83350)</a></li><li><a href="http://www.cnblogs.com/zhangziqiu/archive/2009/05/06/jQuery-Learn-5.html">4. 从零开始学习jQuery (五) 事件与事件对象(47044)</a></li><li><a href="http://www.cnblogs.com/zhangziqiu/archive/2009/02/28/ASPNET-MVC-2.html">5. 从零开始学习 ASP.NET MVC 1.0 (二) 识别URL的Routing组件(45392)</a></li><li><a href="http://www.cnblogs.com/zhangziqiu/archive/2009/05/04/jQuery-Learn-3.html">6. 从零开始学习jQuery (三) 管理jQuery包装集(43002)</a></li><li><a href="http://www.cnblogs.com/zhangziqiu/archive/2009/05/08/jQuery-Learn-6.html">7. 从零开始学习jQuery (六) AJAX快餐(42399)</a></li><li><a href="http://www.cnblogs.com/zhangziqiu/archive/2009/05/05/jQuery-Learn-4.html">8. 从零开始学习jQuery (四) 使用jQuery操作元素的属性与样式(41167)</a></li><li><a href="http://www.cnblogs.com/zhangziqiu/archive/2009/03/11/Aspnet-MVC-3.html">9. 从零开始学习 ASP.NET MVC 1.0 (三) Controller/Action 深入解析与应用实例(36971)</a></li><li><a href="http://www.cnblogs.com/zhangziqiu/archive/2009/05/19/jQuery-Learn-10.html">10. 从零开始学习jQuery (十) jQueryUI常用功能实战(33159)</a></li></ul></div>
+</div>
+</div>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2012 ziqiu.zhang
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+<script type="text/javascript" src="./Cookies揭秘 [Asp.Net, Javascript] - ziqiu.zhang - 博客园_files/google-analytics.js"></script>
+
+
+</body></html>

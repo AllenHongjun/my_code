@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net">
+  <description>An  example that demonstrates simple IoC features.</description>
+   <!--将所有要配置内容单独的放置到一个文件当中
+   注意要讲该配置文件设置为复制 到debug的目录下面才会生效
+   注意 清理的时候 是会清理 debug下生成的一些文件
+   注意你自己的项目测试随便怎么玩的都可以 公司的项目就正常开发就行
+   自己项目 自己慢慢的玩 想怎么玩就怎么玩
+   一会生疏 两会熟悉 会用一个 其他的就会类似 知道他的原理是怎么一回事
+   一直遇到一个类似的东西 来如何配置和使用
+   
+   -->
+  <object name="UserInfoService"   type="SpringNetWin.UserInfoService, SpringNetWin">
+    <property name="Name" value="DingXiaona"/>
+    <property name="Person" ref="Person"/>
+  </object>
+  <object name="Person" type="SpringNetWin.Person, SpringNetWin">
+    <property name="Age" value="21"></property>
+  </object>
+</objects>

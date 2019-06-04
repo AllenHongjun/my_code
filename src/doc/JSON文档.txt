@@ -1,0 +1,11 @@
+JSON 是什么？
+JSON 的全称是 JavaScript Object Notation，是一种轻量级的数据交换格式。JSO N 与 XML 具有相同的特性，例如易于人编写和阅读，易于机器生成和解析。但是 JSON 比 XML 数据传输的性能要高出很多。JSON 完全独立与编程语言，使用文本格式保存。 JSON 数据有两种结构：
+? ?
+Name-Value 对构成的集合，类似于 Java 中的 Map。 Value 的有序列表，类似于 Java 中的 Array。
+一个 JSON 格式的数据示例： { "Name": "Apple", "Expiry": "2007/10/11 13:54", "Price": 3.99, "Sizes": [ "Small", "Medium", "Large" ] } 更多关于 JSON 数据格式的说明参看 JSON 官方网站： http://www.json.org（中文 内容参看：http://www.json.org/json-z h.html） GWT 与 JSON GWT 中支持的客户端服务器端方法调用和数据传递的标准格式是 RPC。 JSON 并不 是 GWT支持的标准的数据传递格式。那么如何使用 JSON 来作为 GWT 的数据传递格式 呢？需要以下几步。 第一，引用 HTTP 和 JSON 支持。 第二，在客户端创建 JSON 数据，提交到服务器 第三，在服务器上重写数据格式解析的代码，使之支持 JSON 格式的数据 第四，在服务器上组织 JSON 格式的数据，返回给客户端。 第五，客户端解析服务器传回的 JSON 数据，正确的显示 引用 HTTP 和 JSON 支持
+找到.gwt.xml 文件，在其中的 <inherits name='com.google.gwt.user.User'/> 在之后添加如下的内容： <inherits name="com.google.gwt.json.JSON"/> <inherits name="com.google.gwt.http.HTTP"/> 其中 com.google.gwt.json.JSON 指的是要使用 JSON，com.google.gwt.http.H TTP 值得是通过 HTTP 调用服务器上的服务方法。 客户端构造 JSON 数据 客户端需要使用 com.google.gwt.json.client 包内的类来组装 JSON 格式的数据， 数据格式如下：
+数据类型 JSONArray JSONBoolean
+说明 JSONValue 构成的数组类型 JSON boolean 值 访问 JSON 结构的数据出错的情况下可以抛出此异
+JSONException 常 JSONNull JSONNumber JSONObject JSON Null 根式的数据 JSON Number 类型的数据 JSON Object 类型的数据 将 String 格式的 JSON 数据解析为 JSONValue 类 JSONParser 型的数据 JSONString JSONValue JSON String 类型的数据 所有 JSON 类型值的超级类型
+组合一个简单的 JSON 数据：
+JSONObject input = new JSONObject(); JSONString value = new JSONString("mazhao"); input.put("name", value); JSON 数据格式为：{name: "mazhao"} 组合一个包含数组类型的复杂 JSON 数据： JSONObject input = new JSONObject(); JSONString value = new JSONString("mazhao"); input.put("name", value); JSONArray arrayValue = new JSONArray(); arrayValue.set(0, new JSONString("array item 0")); arrayValue.set(1, new JSONString("array item 1")); arrayValue.set(2, new JSONString("array item 2")); input.put("array", arrayValue); JSON 数据格式为： {name: "mazhao", array: {"array item 0", "array item 

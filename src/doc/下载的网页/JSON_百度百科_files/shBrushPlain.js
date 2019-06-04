@@ -1,0 +1,1 @@
+(function(){SyntaxHighlighter=SyntaxHighlighter||(typeof require!=="undefined"?require("/static/lemma/ui/shCore/shCore.js").SyntaxHighlighter:null);function a(){}a.prototype=new SyntaxHighlighter.Highlighter();a.aliases=["text","plain"];SyntaxHighlighter.brushes.Plain=a;typeof(exports)!="undefined"?exports.Brush=a:null})();

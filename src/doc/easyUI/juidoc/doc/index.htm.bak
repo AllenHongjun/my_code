@@ -1,0 +1,130 @@
+﻿<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<meta name="keywords" content="jquery,ui,easy,easyui,web framekwork,ajax framekwork,ria,web development">
+		<meta name="description" content="easyui help you build your web page easily!">
+		<title>jQuery EasyUI - 中文帮助手册</title>
+        <link rel="stylesheet" href="main.css" type="text/css">
+<script type="text/javascript">/*120*270，创建于2011-12-16*/ var cpro_id = 'u713814';</script><script src="http://cpro.baidu.com/cpro/ui/f.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<div id="header">
+						<div id="header-inner">
+				<table cellpadding="0" cellspacing="0" style="width:100%;">
+					<tbody><tr>
+						<td rowspan="2" style="width:20px;">
+						</td>
+						<td style="height:52px;">
+							<div style="color:#fff;font-size:22px;font-weight:bold;">
+								<a href="http://www.jeasyui.com/" style="color:#fff;font-size:22px;font-weight:bold;text-decoration:none">jQuery EasyUI</a>
+							</div>
+							<div style="color:#fff">
+								<a href="http://www.jeasyui.com/" style="color:#fff;text-decoration:none">jQuery EasyUI 框架帮助你轻松建立站点。</a>
+							</div>
+						</td>
+					</tr>
+				</tbody></table>
+			</div>
+			
+		</div>
+		<div id="mainwrap">
+			<div id="content">
+			
+
+<style type="text/css">
+	.item-p{
+		width:150px;
+		float:left;
+		margin-right:20px;
+	}
+	.item-p h4{
+		margin:0;
+		border-bottom:1px solid #ccc;
+		color:#666;
+	}
+	.item-p ul{
+		margin:0 0 20px 0;
+		padding-left:10px;
+	}
+	.item-p li{
+		line-height:150%;
+		list-style-type:none;
+		background:url('images/gears.png') no-repeat 0 center;
+		padding-left:20px;
+	}
+</style>
+
+<h3>jQuery EasyUI中文帮助手册</h3>
+
+<pre>
+<span style="color:red;"><strong>译者的话</strong>：</span>一直就想自己翻译一点技术资料，免费给大家参考使用。但是要么有的资料篇幅过长，本人精力又有限；要么有的资料已经有了比较详尽的中文文
+档。所以一直没有找到合适的资料来翻译。最近，一次偶然的机会让我发现了jQuery EasyUI这个国外插件。我试用了一下demo，觉得功能很强大，肯定很多人
+在用，英文文档内容也不是太多，虽然也有一些中文文档，但是我看了觉得要么不够详尽，要么就已经过时了。于是，我终于鼓起勇气，用了将近一周的时
+间把jQuery EasyUI的英文文档翻译成中文。
+
+翻译从来讲究"信达雅"，既要准确无误、流畅的表达原文意思又要文词优美，然而译者的文学造诣实在不高，如果刻意追求“雅”，恐怕会贻笑大方。毕竟，
+这是技术资料，让使用者准确的把握使用方法才是最主要的。所以翻译过程中，译者只能在着重准确表达原文意思的基础上力求辞藻优美，不管怎么说，实用
+最重要。
+
+限于译者的水平，文档中难免有错误疏漏之处，还望广大读者不吝斧正，不甚感激！
+
+译者邮箱：studyphp@yahoo.cn
+</pre>
+<p>jQuery EasyUI 框架帮助你轻松建立站点。</p>
+<ul>
+	<li>easyui是一个基于jquery的集成了各种用户界面的插件。</li>
+	<li>使用easyui你不需要写太多javascript代码，一般情况下你只需要使用一些html标记来定义用户接口。</li>
+	<li>easyui非常简单，但是功能非常强大。</li>
+</ul>
+
+<div style="height:20px"></div>
+<h3>所有插件</h3>
+
+<div class="item-p">
+	<h4>基本</h4>
+	<ul>
+		<li><a href="http://www.phptogether.com/juidoc/parser.html">语法解析</a></li><li><a href="http://www.phptogether.com/juidoc/easyloader.html">简单载入器</a></li><li><a href="http://www.phptogether.com/juidoc/draggable.html">一般拖动</a></li><li><a href="http://www.phptogether.com/juidoc/droppable.html">拖动至容器</a></li><li><a href="http://www.phptogether.com/juidoc/resizable.html">缩放</a></li><li><a href="http://www.phptogether.com/juidoc/pagination.html">分页</a></li><li><a href="http://www.phptogether.com/juidoc/searchbox.html">搜索框</a></li><li><a href="http://www.phptogether.com/juidoc/progressbar.html">进度条</a></li>	</ul>
+</div>
+<div class="item-p">
+	<h4>布局管理器</h4>
+	<ul>
+		<li><a href="http://www.phptogether.com/juidoc/panel.html">控制面板</a></li><li><a href="http://www.phptogether.com/juidoc/tabs.html">选项卡</a></li><li><a href="http://www.phptogether.com/juidoc/accordion.html">可伸缩面板</a></li><li><a href="http://www.phptogether.com/juidoc/layout.html">布局面板</a></li>	</ul>
+</div>
+<div class="item-p">
+	<h4>菜单和按钮</h4>
+	<ul>
+		<li><a href="http://www.phptogether.com/juidoc/menu.html">菜单</a></li><li><a href="http://www.phptogether.com/juidoc/linkbutton.html">链接按钮</a></li><li><a href="http://www.phptogether.com/juidoc/menubutton.html">菜单按钮</a></li><li><a href="http://www.phptogether.com/juidoc/splitbutton.html">分隔按钮</a></li>	</ul>
+</div>
+<div class="item-p">
+	<h4>表单</h4>
+	<ul>
+		<li><a href="http://www.phptogether.com/juidoc/form.html">表单</a></li><li><a href="http://www.phptogether.com/juidoc/validatebox.html">表单验证</a></li><li><a href="http://www.phptogether.com/juidoc/combo.html">自定义组合框</a></li><li><a href="http://www.phptogether.com/juidoc/combobox.html">可装载组合框</a></li><li><a href="http://www.phptogether.com/juidoc/combotree.html">组合树</a></li><li><a href="http://www.phptogether.com/juidoc/combogrid.html">组合表格</a></li><li><a href="http://www.phptogether.com/juidoc/numberbox.html">数字验证框</a></li><li><a href="http://www.phptogether.com/juidoc/datebox.html">日期组合框</a></li><li><a href="http://www.phptogether.com/juidoc/datetimebox.html">日期时间组合框</a></li><li><a href="http://www.phptogether.com/juidoc/calendar.html">日历</a></li><li><a href="http://www.phptogether.com/juidoc/spinner.html">调节器</a></li><li><a href="http://www.phptogether.com/juidoc/numberspinner.html">数字调节器</a></li><li><a href="http://www.phptogether.com/juidoc/timespinner.html">时间调节器</a></li>	</ul>
+</div>
+<div class="item-p">
+	<h4>窗口</h4>
+	<ul>
+		<li><a href="http://www.phptogether.com/juidoc/window.html">窗口</a></li><li><a href="http://www.phptogether.com/juidoc/dialog.html">对话窗口</a></li><li><a href="http://www.phptogether.com/juidoc/messager.html">消息窗口</a></li>	</ul>
+</div>
+<div class="item-p">
+	<h4>数据表格和树形菜单</h4>
+	<ul>
+		<li><a href="http://www.phptogether.com/juidoc/datagrid.html">数据表格</a></li><li><a href="http://www.phptogether.com/juidoc/propertygrid.html">属性表格</a></li><li><a href="http://www.phptogether.com/juidoc/tree.html">树形菜单</a></li><li><a href="http://www.phptogether.com/juidoc/treegrid.html">树形表格</a></li>	</ul>
+</div>
+
+<div style="clear:both">
+
+﻿			</div>
+		</div>
+		<div id="footer">
+			<div>Copyright © 2010-2011 www.jeasyui.com</div>
+<a target="_blank" href="http://sighttp.qq.com/authd?IDKEY=0d8f551beb86c567f5d026fc3af8f8a0c1cf318635116789"><img border="0"  src="http://wpa.qq.com/imgd?IDKEY=0d8f551beb86c567f5d026fc3af8f8a0c1cf318635116789&pic=45" alt="点击Q我" title="点击Q我"></a>
+|  
+<noscript><a href="http://www.51.la/?4095651" target="_blank">
+<img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/4095651.asp" style="border:none" /></a></noscript> 
+<script src="http://s17.cnzz.com/stat.php?id=2412230&web_id=2412230&show=pic" language="JavaScript"></script>|<script language="javascript" type="text/javascript" src="http://js.users.51.la/4095651.js"></script>
+|<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F9541ae759aad5b1e7083c2f63b8e8e9c' type='text/javascript'%3E%3C/script%3E"));
+</script>
+		</div>
+	
+</div></body></html>

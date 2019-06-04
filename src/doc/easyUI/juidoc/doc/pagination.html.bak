@@ -1,0 +1,377 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="keywords" content="jquery,ui,easy,easyui,web framekwork,ajax framekwork,ria,web development">
+		<meta name="description" content="easyui help you build your web page easily!">
+		<title>pagination - jQuery EasyUI中文帮助手册</title>
+        <link rel="stylesheet" href="main.css" type="text/css" />
+		<link type="text/css" rel="stylesheet" href="SyntaxHighlighter.css"></link>
+		<script src="shCore.js"></script>
+		<script src="shBrushJScript.js"></script>
+		<script src="shBrushXml.js"></script>
+	</head>
+	<body>
+		<div id="header">
+						<div id="header-inner">
+				<table cellpadding="0" cellspacing="0" style="width:100%;">
+					<tr>
+						<td rowspan="2" style="width:20px;">
+						</td>
+						<td style="height:52px;">
+							<div style="color:#fff;font-size:22px;font-weight:bold;">
+								<a href="http://www.jeasyui.com/" style="color:#fff;font-size:22px;font-weight:bold;text-decoration:none">jQuery EasyUI</a>
+							</div>
+							<div style="color:#fff">
+								<a href="http://www.jeasyui.com/" style="color:#fff;text-decoration:none">jQuery EasyUI 框架帮助你轻松建立站点。</a>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+			
+		</div>
+		<div id="mainwrap">
+			<div id="content">
+			
+
+
+<div style="padding:10px">
+
+
+
+<h3>分页</h3>
+
+<p>使用$.fn.pagination.defaults重载默认值。</p>
+
+
+
+<h4>依赖关系</h4>
+
+<ul>
+
+	<li>链接按钮</li>
+
+</ul>
+
+
+
+<h4>使用指南</h4>
+
+<textarea name="code-pagination" class="html">
+	<div id="pp" style="background:#efefef;border:1px solid #ccc;"></div>
+</textarea>
+
+<textarea name="code-pagination" class="js">
+	$('#pp').pagination({
+		total:2000,
+		pageSize:10
+	});
+</textarea>
+
+
+
+<h4>属性</h4>
+
+<table class="doc-table">
+
+<tr>
+
+<th><strong>名称</strong></th>
+<th><strong>类型</strong></th>
+<th><strong>描述</strong></th>
+<th><strong>默认值</strong></th>
+
+</tr>
+
+<tr>
+
+<td>total（总数）</td>
+
+<td>number（数字）</td>
+
+<td>总记录数，当创建分页时必须设置。</td>
+
+
+
+<td>1</td>
+
+</tr>
+
+<tr>
+
+<td>pageSize（每页记录数）</td>
+
+<td>number（数字）</td>
+
+<td>每页显示的记录数。</td>
+
+<td>10</td>
+
+</tr>
+
+<tr>
+
+<td>pageNumber（当前页码）</td>
+
+<td>number（数字）</td>
+
+
+
+<td>当分页创建完毕时显示当前页码。</td>
+
+<td>1</td>
+
+</tr>
+
+<tr>
+
+<td>pageList（可选择的每页记录数）</td>
+
+<td>array（数组）</td>
+
+<td>用户能够改变每页显示的记录数。</td>
+
+<td>[10,20,30,50]</td>
+
+</tr>
+
+<tr>
+
+<td>loading（是否正在载入）</td>
+
+
+
+<td>boolean（布尔型）</td>
+
+<td>定义数据是否正在载入。</td>
+
+<td>false</td>
+
+</tr>
+
+<tr>
+
+<td>buttons（按钮）</td>
+
+<td>array（数组）</td>
+
+<td>自定义按钮，每个按钮包含2个属性:<br />
+
+iconCls： 显示背景图片的CSS类<br />
+
+handler： 当按钮被点击时调用的一个句柄函数</td>
+
+
+
+<td>null</td>
+
+</tr>
+
+<tr>
+
+<td>showPageList（显示可选择的每页记录数）</td>
+
+<td>boolean（布尔型）</td>
+
+<td>定义是否显示可选择的每页记录数。</td>
+
+<td>true</td>
+
+</tr>
+
+<tr>
+
+<td>showRefresh（显示刷新）</td>
+
+<td>boolean（布尔型）</td>
+
+
+
+<td>定义是否显示刷新按钮。</td>
+
+<td>true</td>
+
+</tr>
+
+<tr>
+
+<td>beforePageText（输入框之前的文本）</td>
+
+<td>string（字符串）</td>
+
+<td>在输入框之前显示的符号。</td>
+
+<td>Page</td>
+
+</tr>
+
+<tr>
+
+<td>afterPageText（输入框之后的文本）</td>
+
+
+
+<td>string（字符串）</td>
+
+<td>在输入框之后显示的符号。</td>
+
+<td>of {pages}</td>
+
+</tr>
+
+<tr>
+
+<td>displayMsg（显示信息）</td>
+
+<td>string（字符串）</td>
+
+<td>在插件右上方显示分页信息。</td>
+
+<td>Displaying {from} to {to} of {total} items</td>
+
+</tr>
+
+
+
+</table>
+
+
+
+<h4>事件</h4>
+
+<table class="doc-table">
+
+<tr>
+
+<th><strong>名称</strong></th>
+<th><strong>参数</strong></th>
+<th><strong>描述</strong></th>
+
+
+
+</tr>
+
+<tr>
+
+<td>onSelectPage</td>
+
+<td>pageNumber, pageSize</td>
+
+<td>当用户进行翻页时触发，回调函数包含2个参数:<br />
+
+pageNumber： 下一页的页码<br />
+
+pageSize： 下一页的显示记录数</td>
+
+</tr>
+
+<tr>
+
+<td>onBeforeRefresh</td>
+
+<td>pageNumber, pageSize</td>
+
+
+
+<td>刷新之前触发, 返回false将取消刷新。</td>
+
+</tr>
+
+<tr>
+
+<td>onRefresh</td>
+
+<td>pageNumber, pageSize</td>
+
+<td>刷新之后触发。</td>
+
+</tr>
+
+<tr>
+
+<td>onChangePageSize</td>
+
+<td>pageSize</td>
+
+<td>当用户修改每页显示记录数时触发。</td>
+
+
+
+</tr>
+
+</table>
+
+
+
+<h4>方法</h4>
+<table class="doc-table">
+<tbody><tr>
+<th><strong>名称</strong></th>
+<th><strong>参数</strong></th>
+<th><strong>描述</strong></th>
+
+
+
+</tr>
+
+<tr>
+
+<td>options</td>
+
+<td>none</td>
+
+<td>返回分页属性对象。</td>
+
+</tr>
+
+<tr>
+
+<td>loading</td>
+
+<td>none</td>
+
+<td>提醒分页插件正在载入。</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>loaded</td>
+
+<td>none</td>
+
+<td>提醒分页插件已经载入。</td>
+
+</tr>
+
+</table>
+
+
+
+</div>
+
+
+
+﻿			</div>
+		</div>
+		<div id="footer">
+			<div>Copyright © 2010-2011 www.jeasyui.com</div>
+<a target="_blank" href="http://sighttp.qq.com/authd?IDKEY=0d8f551beb86c567f5d026fc3af8f8a0c1cf318635116789"><img border="0"  src="http://wpa.qq.com/imgd?IDKEY=0d8f551beb86c567f5d026fc3af8f8a0c1cf318635116789&pic=45" alt="点击Q我" title="点击Q我"></a>
+|  
+<noscript><a href="http://www.51.la/?4095651" target="_blank">
+<img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/4095651.asp" style="border:none" /></a></noscript> 
+<script src="http://s17.cnzz.com/stat.php?id=2412230&web_id=2412230&show=pic" language="JavaScript"></script>|<script language="javascript" type="text/javascript" src="http://js.users.51.la/4095651.js"></script>
+|<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F9541ae759aad5b1e7083c2f63b8e8e9c' type='text/javascript'%3E%3C/script%3E"));
+</script>
+		</div>
+		<script type="text/javascript">
+						dp.SyntaxHighlighter.ClipboardSwf = 'clipboard.swf';
+			dp.SyntaxHighlighter.HighlightAll('code-pagination');
+		</script>
+	</body>
+</html>

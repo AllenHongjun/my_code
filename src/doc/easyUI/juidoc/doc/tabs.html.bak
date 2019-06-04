@@ -1,0 +1,657 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="keywords" content="jquery,ui,easy,easyui,web framekwork,ajax framekwork,ria,web development">
+		<meta name="description" content="easyui help you build your web page easily!">
+		<title>tabs - jQuery EasyUI中文帮助手册</title>
+        <link rel="stylesheet" href="main.css" type="text/css" />
+		<link type="text/css" rel="stylesheet" href="SyntaxHighlighter.css"></link>
+		<script src="shCore.js"></script>
+		<script src="shBrushJScript.js"></script>
+		<script src="shBrushXml.js"></script>
+		<script type="text/javascript">/*120*270，创建于2011-12-16*/ var cpro_id = 'u713814';</script><script src="http://cpro.baidu.com/cpro/ui/f.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<div id="header">
+						<div id="header-inner">
+				<table cellpadding="0" cellspacing="0" style="width:100%;">
+					<tr>
+						<td rowspan="2" style="width:20px;">
+						</td>
+						<td style="height:52px;">
+							<div style="color:#fff;font-size:22px;font-weight:bold;">
+								<a href="http://www.jeasyui.com/" style="color:#fff;font-size:22px;font-weight:bold;text-decoration:none">jQuery EasyUI</a>
+							</div>
+							<div style="color:#fff">
+								<a href="http://www.jeasyui.com/" style="color:#fff;text-decoration:none">jQuery EasyUI 框架帮助你轻松建立站点。</a>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+			
+		</div>
+		<div id="mainwrap">
+			<div id="content">
+			
+
+
+<div style="padding:10px">
+
+
+
+<h3>选项卡切换</h3>
+
+<p>使用$.fn.tabs.defaults重载默认值。</p>
+
+<img src="images/tabs.png"/>
+
+
+
+<h4>依赖关系</h4>
+
+<ul>
+
+	<li>控制面板</li>
+
+	<li>链接按钮</li>
+
+</ul>
+
+
+
+<h4>使用方法</h4>
+
+<h5>创建选项卡</h5>
+
+<p>1. 使用HTML标签创建选项卡</p>
+
+<p>
+
+使用HTML标签创建选项卡十分简单，不需要写任何javascript代码，只需要&lt;div&gt;标签引用'easyui-panel'类。每个选项卡面板都可以使用闭合的&lt;div&gt;标签对创建，使用方法跟创建控制面板一样。
+
+</p>
+
+<textarea name="code-tabs" class="html">
+	<div id="tt" class="easyui-tabs" style="width:500px;height:250px;">
+		<div title="Tab1" style="padding:20px;display:none;">
+			tab1
+		</div>
+		<div title="Tab2" closable="true" style="overflow:auto;padding:20px;display:none;">
+			tab2
+		</div>
+		<div title="Tab3" iconCls="icon-reload" closable="true" style="padding:20px;display:none;">
+			tab3
+		</div>
+	</div>
+</textarea>
+
+
+
+<p>2. 使用脚本创建选项卡</p>
+
+<p>下面的代码演示如何使用脚本创建选项卡，当该选项卡被选择时将会触发'onSelect'事件。</p>
+
+<textarea name="code-tabs" class="js">
+	$('#tt').tabs({
+		border:false,
+		onSelect:function(title){
+			alert(title+' is selected');
+		}
+	});
+</textarea>
+
+
+
+<h5>添加一个选项卡面板</h5>
+
+<textarea name="code-tabs" class="js">
+	//添加一个选项卡面板
+	$('#tt').tabs('add',{
+		title:'New Tab',
+		content:'Tab Body',
+		closable:true
+	});
+</textarea>
+
+<h5>获取当前被选择的选项卡</h5>
+
+<textarea name="code-tabs" class="js">
+	//获取当前被选择的选项卡以及相应的选项卡对象
+	var pp = $('#tt').tabs('getSelected');
+	var tab = pp.panel('options').tab;    //相应的选项卡对象
+</textarea>
+
+
+
+<p>&nbsp;</p>
+
+<h4>属性</h4>
+
+<table class="doc-table">
+
+<tr>
+
+<th><strong>名称</strong></th>
+<th><strong>类型</strong></th>
+<th><strong>描述</strong></th>
+
+<th><strong>默认值</strong></th>
+
+</tr>
+
+<tr>
+
+<td>width（宽度）</td>
+
+
+
+<td>number（数字）</td>
+
+<td>选项卡所在容器（控制面板）的宽度。</td>
+
+<td>auto</td>
+
+</tr>
+
+<tr>
+
+<td>height（高度）</td>
+
+<td>number（数字）</td>
+
+<td>选项卡所在容器（控制面板）的高度。</td>
+
+<td>auto</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>plain（简洁模式）</td>
+
+<td>boolean（布尔型）</td>
+
+<td>如果设置为true，将不显示控制面板背景。</td>
+
+<td>false</td>
+
+</tr>
+
+<tr>
+
+<td>fit（铺满浏览器）</td>
+
+<td>boolean（布尔型）</td>
+
+<td>设置为true时，选项卡的大小将铺满它所在的容器（浏览器）。</td>
+
+
+
+<td>false</td>
+
+</tr>
+
+<tr>
+
+<td>border（边框）</td>
+
+<td>boolean（布尔型）</td>
+
+<td>如果设置true，将显示选项卡所在容器（控制面板）的边框。</td>
+
+<td>true</td>
+
+</tr>
+
+<tr>
+
+<td>scrollIncrement（滚动增量）</td>
+
+<td>number（数字）</td>
+
+
+
+<td>选项卡滚动条每次滚动的像素值。</td>
+
+<td>100</td>
+
+</tr>
+
+<tr>
+
+<td>scrollDuration（滚动时间）</td>
+
+<td>number（数字）</td>
+
+<td>每次滚动持续的时间，单位为毫秒。</td>
+
+<td>400</td>
+
+</tr>
+
+<tr>
+
+<td>tools（工具栏）</td>
+
+
+
+<td>array（数组）</td>
+
+<td>控制面板右侧的工具栏，每个工具选项都跟链接按钮一样。</td>
+
+<td>null</td>
+
+</tr>
+
+</table>
+
+
+
+<h4>事件</h4>
+
+<table class="doc-table">
+
+<tr>
+
+<th><strong>名称</strong></th>
+<th><strong>参数</strong></th>
+<th><strong>描述</strong></th>
+
+</tr>
+
+<tr>
+
+<td>onLoad</td>
+
+<td>panel</td>
+
+<td>当一个选项卡完成ajax远程载入对象时触发。</td>
+
+</tr>
+
+<tr>
+
+
+
+<td>onSelect</td>
+
+<td>title</td>
+
+<td>当用户选择一个选项卡时触发。</td>
+
+</tr>
+
+<tr>
+
+<td>onBeforeClose</td>
+
+<td>title</td>
+
+<td>在一个选项卡被关闭之前触发，返回false将取消关闭。</td>
+
+</tr>
+
+<tr>
+
+<td>onClose</td>
+
+
+
+<td>title</td>
+
+<td>在用户关闭一个选项卡面板后触发。</td>
+
+</tr>
+
+<tr>
+
+<td>onAdd</td>
+
+<td>title</td>
+
+<td>在一个选项卡面板被添加后触发。</td>
+
+</tr>
+
+<tr>
+
+<td>onUpdate</td>
+
+<td>title</td>
+
+
+
+<td>在一个选项卡面板被更新后触发。</td>
+
+</tr>
+
+<tr>
+
+<td>onContextMenu</td>
+
+<td>e, title</td>
+
+<td>在一个选项卡面板被鼠标右键单击后触发。</td>
+
+</tr>
+
+</table>
+
+
+
+<h4>方法</h4>
+
+<table class="doc-table">
+
+<tr>
+
+<th><strong>名称</strong></th>
+<th><strong>参数</strong></th>
+<th><strong>描述</strong></th>
+
+</tr>
+
+<tr>
+
+<td>options</td>
+
+<td>none</td>
+
+
+
+<td>返回选项卡属性对象。</td>
+
+</tr>
+
+<tr>
+
+<td>tabs</td>
+
+<td>none</td>
+
+<td>返回所有的选项卡面板。</td>
+
+</tr>
+
+<tr>
+
+<td>resize</td>
+
+<td>none</td>
+
+<td>重置选项卡容器（控制面板）大小并且自动布局。</td>
+
+
+
+</tr>
+
+<tr>
+
+<td>add</td>
+
+<td>options</td>
+
+<td>添加一个新的选项卡面板，options参数是一个可以配置的对象，查看选项卡控制面板属性获取更多信息。</td>
+
+</tr>
+
+<tr>
+
+<td>close</td>
+
+<td>title</td>
+
+<td>关闭一个选项卡面板，title参数表示哪个选项卡将被关闭。</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>getTab</td>
+
+<td>title</td>
+
+<td>获取特定的选项卡面板名称。</td>
+
+</tr>
+
+<tr>
+
+<td>getSelected</td>
+
+<td>none</td>
+
+<td>获取被选择的选项卡面板名称。</td>
+
+</tr>
+
+<tr>
+
+
+
+<td>select</td>
+
+<td>title</td>
+
+<td>选择一个选项卡面板。</td>
+
+</tr>
+
+<tr>
+
+<td>exists</td>
+
+<td>title</td>
+
+<td>验证一个特定的选项卡面板是否存在。</td>
+
+</tr>
+
+<tr>
+
+<td>update</td>
+
+
+
+<td>param</td>
+
+<td>更新特定的选项卡面板，param参数包含2个属性:<br />
+
+tab: 将被更新的选项卡。<br />
+
+options: 选项卡相关配置项。</td>
+
+</tr>
+
+</table>
+
+
+
+<h4>选项卡面板</h4>
+
+<p>选项卡面板属性在控制面板组件中定义，以下是一些常用属性。</p>
+
+<table class="doc-table">
+
+<tr>
+
+<th><strong>名称</strong></th>
+<th><strong>类型</strong></th>
+<th><strong>描述</strong></th>
+
+<th><strong>默认值</strong></th>
+
+</tr>
+
+<tr>
+
+<td>title（标题）</td>
+
+
+
+<td>string（字符串）</td>
+
+<td>选项卡面板的标题。</td>
+
+<td></td>
+
+</tr>
+
+<tr>
+
+<td>content（内容）</td>
+
+<td>string（字符串）</td>
+
+<td>选项卡面板的内容。</td>
+
+<td></td>
+
+</tr>
+
+<tr>
+
+<td>href（超链接）</td>
+
+
+
+<td>string（字符串）</td>
+
+<td>从超链接载入远程内容到选项卡 面板。</td>
+
+<td>null</td>
+
+</tr>
+
+<tr>
+
+<td>cache（缓存）</td>
+
+<td>boolean（布尔型）</td>
+
+<td>设置为true将缓存选项卡面板，当href（超链接）属性被设置时有效。</td>
+
+<td>true</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>iconCls（图标CSS类）</td>
+
+<td>string（字符串）</td>
+
+<td>一个显示选项卡面板标题图标的CSS类。</td>
+
+<td>null</td>
+
+</tr>
+
+<tr>
+
+<td>width（宽度）</td>
+
+<td>number（数字）</td>
+
+<td>选项卡面板的宽度。</td>
+
+
+
+<td>auto</td>
+
+</tr>
+
+<tr>
+
+<td>height（高度）</td>
+
+<td>number（数字）</td>
+
+<td>选项卡面板的高度。</td>
+
+<td>auto</td>
+
+</tr>
+
+</table>
+
+
+
+<p>一些额外属性</p>
+
+<table class="doc-table">
+
+<tr>
+
+<th><strong>名称</strong></th>
+<th><strong>类型</strong></th>
+<th><strong>描述</strong></th>
+
+<th><strong>默认值</strong></th>
+
+</tr>
+
+<tr>
+
+
+
+<td>closable（可关闭）</td>
+
+<td>boolean（布尔型）</td>
+
+<td>当这是为true时，选项卡面板将会显示一个关闭按钮，点击该按钮将关闭选项卡。</td>
+
+<td>false</td>
+
+</tr>
+
+<tr>
+
+<td>selected（默认选项卡）</td>
+
+<td>boolean（布尔型）</td>
+
+<td>当设置为true时，将会默认显示该选项卡下的内容。</td>
+
+<td>false</td>
+
+
+
+</tr>
+
+</table>
+
+
+
+</div>
+
+
+
+﻿			</div>
+		</div>
+		<div id="footer">
+			<div>Copyright © 2010-2011 www.jeasyui.com</div>
+<a target="_blank" href="http://sighttp.qq.com/authd?IDKEY=0d8f551beb86c567f5d026fc3af8f8a0c1cf318635116789"><img border="0"  src="http://wpa.qq.com/imgd?IDKEY=0d8f551beb86c567f5d026fc3af8f8a0c1cf318635116789&pic=45" alt="点击Q我" title="点击Q我"></a>
+|  
+<noscript><a href="http://www.51.la/?4095651" target="_blank">
+<img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/4095651.asp" style="border:none" /></a></noscript> 
+<script src="http://s17.cnzz.com/stat.php?id=2412230&web_id=2412230&show=pic" language="JavaScript"></script>|<script language="javascript" type="text/javascript" src="http://js.users.51.la/4095651.js"></script>
+|<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F9541ae759aad5b1e7083c2f63b8e8e9c' type='text/javascript'%3E%3C/script%3E"));
+</script>
+		</div>
+		<script type="text/javascript">
+						dp.SyntaxHighlighter.ClipboardSwf = '/SyntaxHighlighter/Scripts/clipboard.swf';
+			dp.SyntaxHighlighter.HighlightAll('code-tabs');
+		</script>
+	</body>
+</html>

@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+    浏览器
+
+    服务器 IIS 
+    
+    window server 2012 
+
+    sqlserver 
+
+    <p>
+        操作系统 和 .netFreamwork 底层中的。
+
+        操作系统内核模式
+        用户模式
+        http.sys  对请求内容 做最基本的处理 分析 IP地址 端口号
+
+        iis 处理 aspnet_isapi.dll  动态文件给这个程序处理
+
+        应用程序池 隔离机制  w3wp 进程  一个应用程序 相当于一个进程 一块资源  任务管理器当中
+
+        一个网站 一个IIS当中的进程
+
+        非托管模式  aspnet_isapi.dll 是运行在非托管模式 启动.net freamwork 运行时  C++ 的程序
+
+
+        托管模式  C#  在.net freamwork上写的程序都需要托管模式  需要.net freamwork运行时来运行 
+
+        托管模式的 集成 和经典模式
+
+        CLR 里面的源码 windows 的源码
+
+        How asp.net works   整个IIS中一个应用程序的进程。。还有 .net clr 里面的内容
+
+    </p>
+
+
+    <p>
+
+        在IIS的请求
+        .net freamwork的入口 Refalor.exe 反编译程序
+
+        IISAPi Runtime  进入IIS 请求 的入口
+        ISAPI RUntime
+
+        ProcessRequest  (InPtr  ecb)  ecb 一个句柄  操作系统 文件句柄 ecb请求报文的资源编号
+        将所有的资源都加了编号，根据资源编号找到资源进行操作
+
+        //通过查看源码 方法实现 引用 进入 来查看 一个流程
+
+
+        创建 httpworkRequest    --最原始的请求报文 封装到这个对象当中  每一个请求都会创建一个对象然后来处理
+        --我么
+
+
+        [processRequestNodemand wr  将句柄往下传递 直到创建 httpcontext对象]
+        HttpContext  是我们 使用的请求报文数据  是通过 HttpWokrRequest创建出来
+
+        HttpRequest HttpReponse
+
+        IISAPi Runtime applicationInstance
+
+        创建一个 httpApplication 来处理 通过一个抽象工厂类   ado.net 连接池 请求 保存 应用程序池 
+        避免了频繁的创建 某一个对象经常被创建 对象占用的资源比较大 比较多的时候
+
+        创建 HttpAppllicaton  通过一个池  一个对象栈 类保存对象数据 
+
+        接下来 走请求管道  ----
+
+        将 context对象 传递到 HttpApplication.PrecessRequest方法中  这个方法里 执行管道事件zhe
+
+
+        19个事件 20多个步骤 
+
+        每一个事件处理之后 
+        然后继续往下面传递   很想自来水 过滤的管道 想这个过程。
+
+
+        --第一个 开始处理请求
+
+        第8个事件   在请求管道的第8个事件中 创建一个对象页面 或者一般处理程序 的实例   mvc coreapi 都有模块 和请求管道
+        请求头包含请求的内容  必须实现 IHttpHandler接口 ProceeRequest(请求处理进程) 
+
+        -----这个就和Global 全局配置文件紧密相关  这些就自己的项目里面 折腾 公司项目 不要去动 了解就可以了。
+
+        -- 第11个 12个 执行 应用程序当中的代码 执行了页面类中的代码  直接执行了一般处理程序中的 PreocessRequest的代码
+
+
+
+
+        --第20几个 请求结束 
+
+        -- 把构建好的响应报文 返回给浏览器 接受请求的过程。
+
+
+
+
+
+
+
+
+
+
+    </p>
+</body>
+</html>

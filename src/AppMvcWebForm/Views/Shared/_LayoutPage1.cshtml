@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+
+    @*头部的内容渲染到这里  布局页面*@
+    @RenderSection("head")
+</head>
+<body>
+    <div>
+        <h2>这里是头部 放置导航条</h2>
+        <span>首页</span><span>新闻页</span><span>列表页</span><span>登陆</span>
+    </div>
+    <hr />
+    <div>
+
+
+        @*选择 布局页面 。 添加到这里  渲染body当中的内容  相当于挖了一个坑
+            如果有些东西 只要知道如何使用就可以了。。肯定是全部都帮你处理好了
+            如何来使用这些东西 更加的方便
+            
+            *@ 
+
+        @RenderBody()
+    </div>
+
+    <hr />
+    <div>这里是底部 放置友情链接 底部版权信息</div>
+
+    <span>这个是自己定义的布局页面</span>
+
+    @*指定这个标记是否使用*@
+    @RenderSection("footer", true);
+</body>
+</html>

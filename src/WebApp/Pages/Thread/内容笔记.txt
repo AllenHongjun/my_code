@@ -1,0 +1,160 @@
+﻿HttpModule
+
+Global:文件名称不能改，并且要放在网站的根目录下。
+
+http://fex.baidu.com/webuploader/
+
+1.复习委托与文件流
+
+2：线程与进程的概念
+ 寄存器。
+
+（1）进程概念：是Windows系统中的一个基本概念，它包含着一个运行程序所需要的资源。进程之间是相对独立的，一个进程无法直接访问另 一个进程的数据（除非利用分布式计算方式），一个进程运行的失败也不会影响其他进程的运行，Windows系统就是利用进程把工作划分为多个独立的区域 的。进程可以理解为一个程序的基本边界。
+Process.Start("notepad.exe", "a.txt");
+
+
+（2）线程概念。是Windows任务调度的最小单位。线程是程序中的一个执行流。
+
+解决问题：进程是一个资源的拥有者，因而在进程的创建、撤销、和切换的过程中，系统必须为之付出较大的时空开销，限制了并发程度的进一步提高。
+
+所有的代码都必须执行在线程。有线程才能有代码执行。
+
+
+（3）单线程问题:
+
+
+
+3：操作进程
+
+
+
+4：创建线程，以及线程的属性
+
+Priority
+
+Name
+
+Abort
+
+thread.Join(1000):主线程会阻塞等待  thread实例指向的线程，如果再1000毫秒内,thread 线程执行完成了的话，那么  主线程就立即往下执行。如果超时那么也往下执行
+
+
+线程应用场景:（1）:希望获得更多操作系统资源尽快处理我们的 业务，缩短处理的时间
+
+
+
+（2）:如果一个非常复杂的操作。需要占用非常长的时间。而WinFrom又不允许阻塞UI线程
+
+
+
+后台线程
+  ThreadStart threadStart = new ThreadStart(StartCaul);
+            Thread myThread = new Thread(threadStart);
+        //    myThread.Priority = ThreadPriority.Normal;//建议操作系统将创建的线程优先级设置为最高。
+           // myThread.Name = "";
+           // myThread.Abort();
+            myThread.IsBackground = true;//设置为后台线程。
+            myThread.Start();
+ 
+线程执行带参数的方法
+  
+5：跨线程访问
+
+
+public void MoveFor()
+        {
+            int a = 0;
+            for (int i = 0; i < 999999999; i++)
+            {
+                a = i;
+            }
+           // MessageBox.Show(a.ToString());
+            if (this.txtNum.InvokeRequired)//如果为true，表示跨线程访问
+            {
+                   //Invoke:会沿着TextBox标签去找 Form窗体  找到创建Form窗体的那个线程  执行下面的方法.谁创建了label的线程，就用该线程调用该委托
+                this.txtNum.Invoke(new Action<string, TextBox>(SetValue), a.ToString(), this.txtNum);
+            }
+            else
+            {
+                this.txtNum.Text = a.ToString();
+            }
+        }
+        public void SetValue(string num, TextBox txt)
+        {
+            txt.Text = num;
+        }
+
+
+6：线程 同步
+
+Lock（语法糖）
+Monitor.Enter(Obj)
+代码
+Monitor.Exit(Obj)
+
+7：线程池（都是后台线程）
+
+
+线程池原理
+  Stopwatch  sw =new Stopwatch();
+            sw.Start();
+
+            for (int i = 0; i < 1000; i++)
+            {
+               new Thread(() =>
+                 {
+                      int i2 = 1 + 1;
+                     
+                    }).Start();
+           }
+           sw.Stop();
+           Console.WriteLine(sw.Elapsed.TotalMilliseconds);
+
+
+		  sw.Reset();
+           sw.Restart();
+           for (int i = 0; i < 1000; i++)
+          {
+              ThreadPool.QueueUserWorkItem(new WaitCallback(PoolCallBack), "sssss"+i);
+           }
+           sw.Stop();
+           Console.WriteLine(sw.Elapsed.TotalMilliseconds); 
+
+		   
+		    private static void PoolCallBack(object state)
+        {
+            int i = 1 +1;
+            
+        }
+		   
+线程切换消耗资源,cpu在切换线程的时候，需要把当前线程执行的状态保持到寄存器里面去。
+			线程创建非常消耗资源。线程创建非常慢，占用大量的内存空间。每个线程最少1M内存开销。
+			
+	线程池：提高了线程的利用率，非常适合工作任务非常小，而且又需要使用单独的线程来解决的
+	问题。
+	
+	
+	什么时候用线程池？什么时候用手动创建线程？
+	1、能用线程池的就用线程池
+	2、我们想手动关闭线程的话那么必须手动创建了。 Abort（）   Join（）
+	3、我们需要对线程池的线程的优先级做设置的情景下，只能使用手动创建线程。
+	4、如果执行的线程执行时间特别长。建议手动创建线程。
+	
+
+	Socket.(了解)
+	
+9；模拟服务器。
+
+
+
+ //构建响应报文头.
+       public byte[] GetHeaderResponse()
+       {
+           StringBuilder builder = new StringBuilder();
+           builder.Append("HTTP/1.1 200 ok\r\n");
+           builder.Append("Content-Type:" + Content_Type + ";charset=utf-8\r\n");
+           builder.Append("Content-Length:" + buff.Length + "\r\n\r\n");//在相应报文头的最后一行下面有一个空行，所以在这里加两组"\r\n"
+           return System.Text.Encoding.UTF8.GetBytes(builder.ToString());
+
+       }
+       public string Content_Type{get;set;}

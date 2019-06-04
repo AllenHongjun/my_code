@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    服务器忙！！！！
+    <p>
+        倒计时<span id="num"></span>秒之后自动跳转回列表页面
+    </p>
+    <script>
+        var totalTime = 5000;
+        var numObj = document.querySelector("#num");
+        setInterval(function () {
+            console.log(totalTime);
+            totalTime = totalTime - 1000;
+            numObj.innerHTML = totalTime / 1000;
+            if (totalTime == 0) {
+                window.location.href = "User/UserInfoList.ashx";
+            }
+        }, 1000)
+    </script>
+</body>
+</html>
