@@ -1,0 +1,110 @@
+﻿@{
+                /**/
+
+                Layout = null;
+}
+@using CZBK.ItcastOA.WebApp.Models
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>搜索</title>
+    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.8.20.min.js"></script>
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+    <style type="text/css">
+        .search-text2 {
+            display: block;
+            width: 528px;
+            height: 26px;
+            line-height: 26px;
+            float: left;
+            margin: 3px 5px;
+            border: 1px solid gray;
+            outline: none;
+            font-family: 'Microsoft Yahei';
+            font-size: 14px;
+        }
+
+        .search-btn2 {
+            width: 102px;
+            height: 32px;
+            line-height: 32px;
+            cursor: pointer;
+            border: 0px;
+            background-color: #d6000f;
+            font-family: 'Microsoft Yahei';
+            font-size: 16px;
+            color: #f3f3f3;
+        }
+
+        .search-list-con {
+            width: 640px;
+            background-color: #fff;
+            overflow: hidden;
+            margin-top: 0px;
+            padding-bottom: 15px;
+            padding-top: 5px;
+        }
+
+        .search-list {
+            width: 600px;
+            overflow: hidden;
+            margin: 15px 20px 0px 20px;
+        }
+
+            .search-list dt {
+                font-family: 'Microsoft Yahei';
+                font-size: 16px;
+                line-height: 20px;
+                margin-bottom: 7px;
+                font-weight: normal;
+            }
+
+                .search-list dt a {
+                    color: #2981a9;
+                }
+
+                    .search-list dt a em {
+                        font-style: normal;
+                        color: #cc0000;
+                    }
+
+        .ui-autocomplete-loading {
+            background: white url('/Content/images/ui-anim_basic_16x16.gif') right center no-repeat;
+        }
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            $("#txtSearchContent").autocomplete({
+                source: "/Search/AutoComplete"
+
+            });
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <form method="get" action="/Search/SearchContent">
+            <input type="text" name="txtSearch" class="search-text2" id="txtSearchContent" />
+            <input type="submit" value="搜一搜" name="btnSearch" class="search-btn2" />
+            @*   <input type="submit" value="创建索引库" name="btnCreate" />*@
+        </form>
+        <br />
+        <div class="search-list-con">
+            <dl class="search-list">
+                @if (ViewData["list"] != null)
+                {
+                    foreach (ViewModelContent viewModel in (List<ViewModelContent>)ViewData["list"])
+                    {
+                        <dt><a href="javascript:void(0)"> @viewModel.Title</a></dt>
+                        <dd>@MvcHtmlString.Create(viewModel.Content)</dd>
+
+                    }
+                }
+            </dl>
+        </div>
+    </div>
+</body>
+</html>
