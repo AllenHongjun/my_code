@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="/node_modules/echarts/dist/echarts.min.js"></script>
+
+    <div id="main" style="width: 600px;height:400px;">
+
+    </div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        // var option = {
+        //     title: {
+        //         text: 'Echart第一个例子'
+        //     },
+        //     tooltip: {},
+        //     legend: {
+        //         data:['服装销量']
+        //     },
+        //     //x 坐标轴上的
+        //     xAxis: {
+        //         data: ["衬衫1","羊毛衫222","雪纺衫","裤子","高跟鞋","袜子"]
+        //     },
+        //     yAxis: {},
+        //     series: [{
+        //         name: '服装销量',
+        //         type: 'bar',
+        //         data: [66, 20, 36, 10, 99, 20]
+        //     }]
+        // };
+        
+        option = {
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [{
+                data: [820, 932, 901, 934, 1290, 1330, 1320],
+                type: 'line',
+                areaStyle: {}
+            }]
+        };
+
+
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+
+
+</body>
+</html>
