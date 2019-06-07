@@ -207,6 +207,9 @@
     <Content Include="Areas\Admin\Asset\login\panel-c.gif" />
     <Content Include="Areas\Admin\Asset\login\panel-f.gif" />
     <Content Include="Areas\Admin\Asset\login\panel-h.gif" />
+    <Content Include="Areas\Admin\Content\Conmmon.css" />
+    <Content Include="Areas\Admin\Content\Reset.css" />
+    <Content Include="Areas\Admin\Scripts\ActionManage.js" />
     <Content Include="Config\controllers.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -705,6 +708,9 @@
     <Content Include="Areas\Admin\Views\Test\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Error\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Login\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Areas\Admin\Views\ActionInfo\Index.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.0.3.js" />
@@ -816,17 +822,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Views\ActionInfo\" />
     <Folder Include="Areas\Admin\Views\Base\" />
     <Folder Include="Areas\Admin\Views\Category\" />
-    <Folder Include="Areas\Admin\Views\Home\" />
     <Folder Include="Areas\Admin\Views\Member\" />
     <Folder Include="Areas\Admin\Views\Memcached\" />
     <Folder Include="Areas\Admin\Views\MenuInfo\" />
     <Folder Include="Areas\Admin\Views\Product\" />
     <Folder Include="Areas\Admin\Views\RoleInfo\" />
     <Folder Include="Areas\Admin\Views\Search\" />
-    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Log\" />
     <Folder Include="Models\" />
     <Folder Include="Views\SprintNet\" />

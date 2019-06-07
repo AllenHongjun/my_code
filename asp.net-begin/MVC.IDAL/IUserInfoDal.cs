@@ -6,7 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace MVC.IDAL
-{
+{   
+    /// <summary>
+    /// 用户信息接口
+    /// </summary>
     public interface IUserInfoDal:IBaseDal<UserInfo> 
     {
         //定义这类数据层 自己单独的处理的方法 除了基本的增删改查之外的

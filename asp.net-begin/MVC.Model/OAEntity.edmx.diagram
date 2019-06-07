@@ -27,7 +27,7 @@
         <EntityTypeShape EntityType="OAEntityModel.UserInfo" Width="1.5" PointX="10.5" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="OAEntityModel.Users" Width="1.5" PointX="3" PointY="15.75" IsExpanded="true" />
         <EntityTypeShape EntityType="OAEntityModel.UserStates" Width="1.5" PointX="0.75" PointY="16.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="OAEntityModel.VidoFile" Width="1.5" PointX="7.75" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OAEntityModel.VidoFile" Width="1.5" PointX="10.125" PointY="13.75" IsExpanded="true" />
         <AssociationConnector Association="OAEntityModel.FK_R_UserInfo_ActionInfoActionInfo" ManuallyRouted="false" />
         <AssociationConnector Association="OAEntityModel.FK_Book_Category" ManuallyRouted="false" />
         <AssociationConnector Association="OAEntityModel.FK_Books_Publishers" ManuallyRouted="false" />

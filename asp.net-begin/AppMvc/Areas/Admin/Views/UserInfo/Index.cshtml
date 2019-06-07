@@ -1,8 +1,8 @@
 ﻿
 @{
-                /**/
+    /**/
 
-                Layout = null;
+    Layout = null;
 }
 
 <!DOCTYPE html>
@@ -13,17 +13,11 @@
     <title>用户列表</title>
     @*<link href="~/Content/themes/metro/easyui.css" rel="stylesheet" />*@
     <link href="~/Content/themes/material/easyui.css" rel="stylesheet" />
-
     <link href="~/Content/themes/color.css" rel="stylesheet" />
     <link href="~/Content/themes/icon.css" rel="stylesheet" />
-
     <script src="~/Scripts/jquery-3.0.0.js"></script>
     <script src="~/Scripts/jquery.easyui-1.4.5.js"></script>
-
-
     <script src="~/Scripts/locale/easyui-lang-zh_CN.js"></script>
-
-
     <script src="~/Scripts/jquery.validate.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
@@ -50,22 +44,29 @@
     <div id="addDiv" style="display:none;">
         @using (Ajax.BeginForm("AddUserInfo", "UserInfo", new { }, new AjaxOptions() { HttpMethod = "post", OnSuccess = "afterAdd" }, new { id = "addForm" }))
         {
-            <div style="width:290px;margin:5px auto;padding:30px 60px">
-                <div style="margin-bottom:20px">
+            <div style="width:290px;margin:5px auto;padding:5px 10px">
+                <div style="margin-bottom:5px">
                     <div>用户名:</div>
                     <input type="text" name="UserName" class="easyui-textbox" data-options="required:true,validType:'length[3,10]'" style="width:100%;height:32px">
                 </div>
-                <div style="margin-bottom:20px">
+                <div style="margin-bottom:5px">
                     <div>密码:</div>
                     <input type="password" name="UserPass" class="easyui-textbox" style="width:100%;height:32px" data-options="required:true,validType:'length[3,10]'">
                 </div>
-                <div style="margin-bottom:20px">
+                <div style="margin-bottom:5px">
                     <div>邮箱:</div>
                     <input type="text" name="Email" class="easyui-textbox" style="width:100%;height:32px" data-options="prompt:'请输入邮箱.',required:true,validType:'email'">
                 </div>
-                <div style="margin-bottom:20px">
-                    <div>排序:</div>
-                    <input type="text" name="Sort" class="easyui-textbox" style="width:100%;height:32px" data-options="required:true,validType:'length[1,3]'">
+                <div style="margin-bottom:5px">
+                    <div>角色:</div>
+                    <select class="easyui-combobox" style="width:100%;height:32px">
+                        <option value="1">管理员</option>
+                        <option value="2">技术总监</option>
+                        <option value="3">财务总监</option>
+                        <option value="4">客服</option>
+                        <option value="5">采购</option>
+                    </select>
+                    @*<input type="text" name="Sort" class="easyui-textbox" style="width:100%;height:32px" data-options="required:true,validType:'length[1,3]'">*@
                 </div>
             </div>
         }
@@ -73,25 +74,25 @@
 
 
     <div id="editDiv" style="display:none;">
-        @using (Ajax.BeginForm("EditUserInfo", "UserInfo", new { }, new AjaxOptions() { HttpMethod = "post", OnBegin="beforeEdit", OnSuccess = "afterEdit" }, new { id = "editForm" }))
+        @using (Ajax.BeginForm("EditUserInfo", "UserInfo", new { }, new AjaxOptions() { HttpMethod = "post", OnBegin = "beforeEdit", OnSuccess = "afterEdit" }, new { id = "editForm" }))
         {
             <input type="hidden" name="ID" id="txtId" />
             <input type="hidden" name="RegTime" id="txtRegTime" />
             <input type="hidden" name="DelFlag" id="txtDelFlag" />
-            <div style="width:290px;margin:5px auto;padding:30px 60px">
-                <div style="margin-bottom:20px">
+            <div style="width:230px;margin:5px auto;padding:5px 10px">
+                <div style="margin-bottom:10px">
                     <div>用户名:</div>
                     <input id="txtUserName" type="text" name="UserName" class="easyui-textbox" data-options="required:true,validType:'length[3,10]'" style="width:100%;height:32px">
                 </div>
-                <div style="margin-bottom:20px">
+                <div style="margin-bottom:10px">
                     <div>密码:</div>
                     <input id="txtUserPass" type="password" name="UserPass" class="easyui-textbox" style="width:100%;height:32px" data-options="required:true,validType:'length[3,10]'">
                 </div>
-                <div style="margin-bottom:20px">
+                <div style="margin-bottom:10px">
                     <div>邮箱:</div>
                     <input id="txtEmail" type="text" name="Email" class="easyui-textbox" style="width:100%;height:32px" data-options="prompt:'请输入邮箱.',required:true,validType:'email'">
                 </div>
-                <div style="margin-bottom:20px">
+                <div style="margin-bottom:10px">
                     <div>排序:</div>
                     <input id="txtSort" type="text" name="Sort" class="easyui-textbox" style="width:100%;height:32px" data-options="required:true,validType:'length[1,5]'">
                 </div>
@@ -102,19 +103,19 @@
 
     <!--------------修改数据---------------------->
     @*<div id="editDiv" style="display:none;">
-        @using (Ajax.BeginForm("EditUserInfo", "UserInfo", new { }, new AjaxOptions() { HttpMethod = "post", OnSuccess = "afterEdit" }, new { id = "editForm" }))
-        {
-            <input type="hidden" name="ID" id="txtId" />
-            <input type="hidden" name="SubTime" id="txtSubTime" />
-            <input type="hidden" name="DelFlag" id="txtDelFlag" />
-            <table>
-                <tr><td>用户名</td><td><input type="text" name="UName" id="txtUName" /></td></tr>
-                <tr><td>密码</td><td><input type="text" name="UPwd" id="txtUPwd" /></td></tr>
-                <tr><td>备注</td><td><input type="text" name="Remark" id="txtRemark" /></td></tr>
-                <tr><td>排序</td><td><input type="text" name="Sort" id="txtSort" /></td></tr>
-            </table>
-        }
-    </div>*@
+            @using (Ajax.BeginForm("EditUserInfo", "UserInfo", new { }, new AjaxOptions() { HttpMethod = "post", OnSuccess = "afterEdit" }, new { id = "editForm" }))
+            {
+                <input type="hidden" name="ID" id="txtId" />
+                <input type="hidden" name="SubTime" id="txtSubTime" />
+                <input type="hidden" name="DelFlag" id="txtDelFlag" />
+                <table>
+                    <tr><td>用户名</td><td><input type="text" name="UName" id="txtUName" /></td></tr>
+                    <tr><td>密码</td><td><input type="text" name="UPwd" id="txtUPwd" /></td></tr>
+                    <tr><td>备注</td><td><input type="text" name="Remark" id="txtRemark" /></td></tr>
+                    <tr><td>排序</td><td><input type="text" name="Sort" id="txtSort" /></td></tr>
+                </table>
+            }
+        </div>*@
 
     <script type="text/javascript">
         $(function () {
@@ -140,8 +141,8 @@
             $('#tt').datagrid({
                 url: '/Admin/UserInfo/GetUserInfoList',
                 title: '用户数据表格',
-                width: 1200,
-                height: 600,
+                width: '95%',
+                height: '400px',
                 fitColumns: true, //列自适应
                 nowrap: false,
                 idField: 'ID',//主键列的列明
@@ -170,8 +171,8 @@
                     text: '删除',
                     iconCls: 'icon-remove',
                     handler: function () {
-                        //点击删除按钮要执行的操作 
-                        //前后端分离 
+                        //点击删除按钮要执行的操作
+                        //前后端分离
                         //如果做 手机版 要做的前后端分离 是要用到的技术 合适的技术 使用合适的地方
                         deleteInfo();
                     }
@@ -195,13 +196,13 @@
             });
         }
 
-        //客户端的业务逻辑判断 EasyUI的组件的使用 非常适合后台开发 
+        //客户端的业务逻辑判断 EasyUI的组件的使用 非常适合后台开发
         //UI组件 一套已经全部都是有了 批量删除用户信息 一套的每一个点都是要知道 有一个点不知道就会卡组
         //js程序的作用于 程序的运行 执行顺序 问题
         function deleteInfo() {
             //获取选中了哪一行 可以去查看手册 查看官方文档 测试一
             var rows = $("#tt").datagrid("getSelections");
-           
+
             if (!rows || rows.length == 0) {
                 $.messager.alert("提醒", "请选择要删除的记录！", "error");
                 return false;
@@ -209,23 +210,23 @@
             //判断是否选中了那一行 选中了几行
 
 
-            //弹出提示提示框是否要删除数据 
+            //弹出提示提示框是否要删除数据
             $.messager.confirm("提示", "确定要删除数据吗?", function (r) {
-                
+
                 //r是提示框的返回
                 if (r) {
-                    //将要删除的数据  
+                    //将要删除的数据
                     //拼接 1，2，3，4，5，6 字符串拼接 处理数据
-                    //不是你想想的那么简单的 做一遍 
+                    //不是你想想的那么简单的 做一遍
                     var rowsLength = rows.length;
                     var strId = "";
                     for (var i = 0; i < rowsLength; i++) {
-                        strId += rows[i].ID+",";
+                        strId += rows[i].ID + ",";
                     }
                     console.log(strId);
                     //一个函数的用户就要查一下手册了又是一个点这么多的函数使用
                     //其实是很好理解的 就是讲最后一个字符串截取掉
-                    //不要纠结于哪个语言  那种技术 
+                    //不要纠结于哪个语言  那种技术
                     console.log(strId.length);
 
                     strId = strId.substr(0, strId.length - 1);
@@ -234,11 +235,11 @@
                     //application/x-www-form-urlencod 默认的表单提交的方式
                     //有些东西 就是都已经帮你处理好了
 
-                    //这个还是比较基础的版本 你要做的比较完善的话 肯定还是有一些效果 东西可以做可以添加的 
+                    //这个还是比较基础的版本 你要做的比较完善的话 肯定还是有一些效果 东西可以做可以添加的
                     //挺不错的列表 增加 修改 批量删除  基本上代码 都是一行一行 有敲过的。这个感觉确实是不太一样。
                     $.post("/Admin/UserInfo/DeleteUserInfo", { "strId": strId }, function (data) {
                         if (data == "ok") {
-                            //表格重新加载 
+                            //表格重新加载
                             //就还可以继续封装
                             $("#tt").datagrid("reload");
                             $("#tt").datagrid("clearSelections");
@@ -259,21 +260,21 @@
 
             //删除成功提示 删除失败提示
 
-            //其他更加新的前端框架的使用 
+            //其他更加新的前端框架的使用
 
             //多表的复杂的业务逻辑的使用
 
 
         }
-   
+
 
         //添加数据
         function addInfo() {
             $("#addDiv").css("display", "block");
             $('#addDiv').dialog({
                 title: '添加用户数据',
-                width: 430,
-                height: 600,
+                width: 400,
+                height: 320,
                 collapsible: true,
                 maximizable: true,
                 resizable: true,
@@ -308,7 +309,7 @@
         }
 
 
-        
+
 
         //完成添加后调用该方法
         function afterAdd(data) {
@@ -323,7 +324,7 @@
             }
         }
 
-        
+
         //表单校验
         //function validateInfo(control) {
         //    console.log("Begin-Validate");

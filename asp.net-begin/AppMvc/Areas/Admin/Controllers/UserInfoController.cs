@@ -21,10 +21,10 @@ namespace AppMvc.Areas.Admin.Controllers
         public ActionResult Index()
         {
 
-            if (Session["UserInfo"] == null)
-            {
-                return Redirect("/Admin/Login/Index");
-            }
+            //if (Session["UserInfo"] == null)
+            //{
+            //    return Redirect("/Admin/Login/Index");
+            //}
 
             return View();
         }
