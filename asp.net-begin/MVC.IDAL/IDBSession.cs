@@ -68,6 +68,11 @@ namespace MVC.IDAL
         IBookDal BookDal { get; set; }
 
         /// <summary>
+        /// 书籍评论
+        /// </summary>
+        IBookCommentDal BookCommentDal { get; set; }
+
+        /// <summary>
         /// 商品分类
         /// </summary>
         ICategoryDal CategoryDal { get; set; }

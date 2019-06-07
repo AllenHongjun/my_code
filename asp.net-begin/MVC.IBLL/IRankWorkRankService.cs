@@ -10,7 +10,7 @@ namespace MVC.IBLL
     /// <summary>
     /// 热词统计
     /// </summary>
-    public interface IRankWorkRankService:IBaseService<keyWordsRank>
+    public interface IKeyWorkRankService:IBaseService<keyWordsRank>
     {
     }
 }
