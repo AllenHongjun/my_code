@@ -8,11 +8,10 @@ using MVC.Model;
 namespace MVC.IDAL
 {   
     /// <summary>
-    /// 视频文件管理接口
+    /// 权限组接口
     /// </summary>
-    public interface IVideoFileDal:IBaseDal<VidoFile>
+    public interface IActionGroupDal:IBaseDal<ActionGroup>
     {
-        //中间的关系表如何建立维护
-        //User相当于是会员 UserInfo 相当于是管理员。
+
     }
 }

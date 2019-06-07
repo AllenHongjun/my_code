@@ -9,10 +9,11 @@ using MVC.Model;
 namespace MVC.DAL
 {   
     /// <summary>
-    /// 角色
+    /// 部门
     /// </summary>
-    public class RoleDal:BaseDal<Role>,IRoleDal
+    public class DepartmentDal:BaseDal<Department>,IDepartmentDal
     {
 
+        //世界访问数据的 通过 EF已经可以了 还要封装了好几层 
     }
 }

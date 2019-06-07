@@ -9,9 +9,9 @@ using MVC.Model;
 namespace MVC.DAL
 {   
     /// <summary>
-    /// 角色
+    /// 站点设置
     /// </summary>
-    public class RoleDal:BaseDal<Role>,IRoleDal
+    public class SettingDal:BaseDal<Settings>,ISettingsDal
     {
 
     }

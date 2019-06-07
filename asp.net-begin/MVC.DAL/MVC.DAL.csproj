@@ -48,11 +48,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionInfoDal.cs" />
+    <Compile Include="ActionGroupDal.cs" />
     <Compile Include="BaseDal.cs" />
+    <Compile Include="BookCommentDal.cs" />
+    <Compile Include="BookDal.cs" />
+    <Compile Include="CartDal.cs" />
+    <Compile Include="CategoryDal.cs" />
+    <Compile Include="CheckEmailDal.cs" />
     <Compile Include="DBContextFactory.cs" />
+    <Compile Include="DepartmentDal.cs" />
+    <Compile Include="KeyWordRankDal.cs" />
+    <Compile Include="OrderBookDal.cs" />
+    <Compile Include="OrderDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PublishDal.cs" />
     <Compile Include="RoleDal.cs" />
+    <Compile Include="SettingDal.cs" />
+    <Compile Include="UserDal.cs" />
     <Compile Include="UserInfoDal.cs" />
+    <Compile Include="VedioFileDal.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

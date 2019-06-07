@@ -1,17 +1,16 @@
-﻿using System;
+﻿using MVC.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MVC.IDAL;
-using MVC.Model;
 
-namespace MVC.DAL
+namespace MVC.IDAL
 {   
     /// <summary>
-    /// 角色
+    /// 会员接口
     /// </summary>
-    public class RoleDal:BaseDal<Role>,IRoleDal
+    public interface IUserDal:IBaseDal<Users>
     {
 
     }

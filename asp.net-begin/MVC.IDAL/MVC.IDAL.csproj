@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IActionGroupDal.cs" />
     <Compile Include="IActionInfoDal.cs" />
     <Compile Include="IBaseDal.cs" />
     <Compile Include="IBookCommentDal.cs" />
@@ -63,6 +64,8 @@
     <Compile Include="IPublishDal.cs" />
     <Compile Include="IRoleDal.cs" />
     <Compile Include="ISettingsDal.cs" />
+    <Compile Include="IUserDal.cs" />
+    <Compile Include="IUserInfoActionDal.cs" />
     <Compile Include="IUserInfoDal.cs" />
     <Compile Include="IUserInfoRoleDal.cs" />
     <Compile Include="IVideoFileDal.cs" />

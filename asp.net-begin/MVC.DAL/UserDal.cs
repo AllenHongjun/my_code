@@ -9,9 +9,9 @@ using MVC.Model;
 namespace MVC.DAL
 {   
     /// <summary>
-    /// 角色
+    /// 会员数据访问层
     /// </summary>
-    public class RoleDal:BaseDal<Role>,IRoleDal
+    public class UserDal:BaseDal<Users>,IUserDal
     {
 
     }

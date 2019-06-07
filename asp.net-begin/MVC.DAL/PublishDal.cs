@@ -9,10 +9,10 @@ using MVC.Model;
 namespace MVC.DAL
 {   
     /// <summary>
-    /// 角色
+    /// 出版社
     /// </summary>
-    public class RoleDal:BaseDal<Role>,IRoleDal
+    public class PublishDal:BaseDal<Publishers>,IPublishDal
     {
-
+        //这些类都是要别的层来调用 当然是要public  可以T4模板来生成
     }
 }

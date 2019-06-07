@@ -9,9 +9,9 @@ using MVC.Model;
 namespace MVC.DAL
 {   
     /// <summary>
-    /// 角色
+    /// 热词排名
     /// </summary>
-    public class RoleDal:BaseDal<Role>,IRoleDal
+    public class KeyWordRankDal:BaseDal<keyWordsRank>,IKeyWordRank
     {
 
     }

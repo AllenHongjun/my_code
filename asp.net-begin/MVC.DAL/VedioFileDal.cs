@@ -1,17 +1,17 @@
-﻿using System;
+﻿using MVC.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MVC.IDAL;
-using MVC.Model;
 
 namespace MVC.DAL
 {   
     /// <summary>
-    /// 角色
+    /// 视频文件地址
     /// </summary>
-    public class RoleDal:BaseDal<Role>,IRoleDal
+    public class VedioFileDal:BaseDal<VidoFile>,IVideoFileDal
     {
 
     }

@@ -9,9 +9,9 @@ using MVC.Model;
 namespace MVC.DAL
 {   
     /// <summary>
-    /// 角色
+    /// 邮箱验证码
     /// </summary>
-    public class RoleDal:BaseDal<Role>,IRoleDal
+    public class CheckEmailDal:BaseDal<CheckEmail>,ICheckEmailDal
     {
 
     }

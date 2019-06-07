@@ -9,9 +9,9 @@ using MVC.Model;
 namespace MVC.DAL
 {   
     /// <summary>
-    /// 角色
+    /// 商品分类(书籍分类)
     /// </summary>
-    public class RoleDal:BaseDal<Role>,IRoleDal
+    public class CategoryDal:BaseDal<Categories>,ICategoryDal
     {
 
     }

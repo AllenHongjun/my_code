@@ -9,10 +9,10 @@ using MVC.Model;
 namespace MVC.DAL
 {   
     /// <summary>
-    /// 角色
+    /// 书籍评论
     /// </summary>
-    public class RoleDal:BaseDal<Role>,IRoleDal
+    public class BookCommentDal:BaseDal<BookComment>,IBookCommentDal
     {
-
+        //基类已经把基类接口全部都实现了。父类 子类 基类 父类接口 子类接口 基类接口
     }
 }
