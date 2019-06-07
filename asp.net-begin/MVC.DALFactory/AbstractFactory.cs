@@ -92,6 +92,36 @@ namespace MVC.DALFactory
             return CreateInstance(fullClassName) as ISettingsDal;
         }
 
+        /// <summary>
+        /// 邮箱验证码管理数据层实例
+        /// </summary>
+        /// <returns></returns>
+        public static ICheckEmailDal CreateCheckEmailDal()
+        {
+            string fullClassName = NameSpace + ".CheckEmailDal";
+            return CreateInstance(fullClassName) as ICheckEmailDal;
+        }
+
+        /// <summary>
+        /// 视频文件管理数据层实例创建
+        /// </summary>
+        /// <returns></returns>
+        public static IVideoFileDal CreateVideoFileDal()
+        {
+            string fullClassName = NameSpace + ".VideoFileDal";
+            return CreateInstance(fullClassName) as IVideoFileDal;
+        }
+
+
+        /// <summary>
+        /// 创建会员数据层的实例
+        /// </summary>
+        /// <returns></returns>
+        public static IUserDal CreateUserDal()
+        {
+            string fullClassName = NameSpace + ".UserDal";
+            return CreateInstance(fullClassName) as IUserDal;
+        }
 
         /// <summary>
         /// 书籍数据层实例创建
@@ -101,6 +131,12 @@ namespace MVC.DALFactory
         {
             string fullClassName = NameSpace + ".BookDal";
             return CreateInstance(fullClassName) as IBookDal;
+        }
+
+        public static IBookCommentDal CreateBookCommentDal()
+        {
+            string fullClassName = NameSpace + ".BookCommentDal";
+            return CreateInstance(fullClassName) as IBookCommentDal;
         }
 
         public static ICategoryDal CretaeCategoryDal()
@@ -135,6 +171,16 @@ namespace MVC.DALFactory
         {
             string fullClassName = NameSpace + ".PublishDal";
             return CreateInstance(fullClassName) as IPublishDal;
+        }
+
+        /// <summary>
+        /// 创建热词排名的类的实例。
+        /// </summary>
+        /// <returns></returns>
+        public static IKeyWordRank CreateKeyWordRank()
+        {
+            string fullClassName = NameSpace + ".KeyWordRankDal";
+            return CreateInstance(fullClassName) as IKeyWordRank;
         }
 
     }

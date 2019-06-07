@@ -184,8 +184,187 @@ namespace MVC.DALFactory
             set { _departmentDal = value; }
         }
 
+        private ICheckEmailDal _checkEmailDal;
+
+        public ICheckEmailDal CheckEmailDal
+        {
+            get
+            {
+                if (_checkEmailDal == null)
+                {
+                    _checkEmailDal = AbstractFactory.CreateCheckEmailDal();
+                }
+
+                return _checkEmailDal;
+            }
+            set { _checkEmailDal = value; }
+
+        }
+
+
+
+
+
         #endregion
 
+        private IBookDal _bookDal;
+
+        public IBookDal BookDal
+        {
+            get
+            {
+                if (_bookDal == null)
+                {
+                    _bookDal = AbstractFactory.CreateBookDal();
+                }
+
+                return _bookDal;
+            }
+            set { _bookDal = value; }
+        }
+
+
+
+        private IBookCommentDal _bookCommentDal;
+
+        public IBookCommentDal BookCommentDal
+        {
+            get
+            {
+                if (_bookCommentDal == null)
+                {
+                    _bookCommentDal = AbstractFactory.CreateBookCommentDal();
+                }
+
+                return _bookCommentDal;
+            }
+            set { _bookCommentDal = value; }
+        }
+
+
+
+        private ICartDal _cartDal;
+
+        public ICartDal CartDal
+        {
+            get
+            {
+                if (_cartDal == null)
+                {
+                    _cartDal = AbstractFactory.CreateCartDal();
+                }
+
+                return _cartDal;
+            }
+            set { _cartDal = value; }
+        }
+
+
+
+        private ICategoryDal _categoryDal;
+
+        public ICategoryDal CategoryDal
+        {
+            get
+            {
+                if (_categoryDal == null)
+                {
+                    _categoryDal = AbstractFactory.CretaeCategoryDal();
+                }
+
+                return _categoryDal;
+            }
+            set { _categoryDal = value; }
+        }
+
+
+
+        private IOrderDal _orderDal;
+
+        public IOrderDal OrderDal
+        {
+            get
+            {
+                if (_orderDal == null)
+                {
+                    _orderDal = AbstractFactory.CreateOrderDal();
+                }
+
+                return _orderDal;
+            }
+            set { _orderDal = value; }
+        }
+
+
+
+        private IOrderBooksDal _orderBooksDal;
+
+        public IOrderBooksDal OrderBooksDal
+        {
+            get
+            {
+                if (_orderBooksDal == null)
+                {
+                    _orderBooksDal = AbstractFactory.CreateOrderBooksDal();
+                }
+
+                return _orderBooksDal;
+            }
+            set { _orderBooksDal = value; }
+        }
+
+
+
+        private IPublishDal _publishDal;
+
+        public IPublishDal PublishDal
+        {
+            get
+            {
+                if (_publishDal == null)
+                {
+                    _publishDal = AbstractFactory.CreatePublishDal();
+                }
+
+                return _publishDal;
+            }
+            set { _publishDal = value; }
+        }
+
+
+
+        private IUserDal _userDal;
+
+        public IUserDal UserDal
+        {
+            get
+            {
+                if (_userDal == null)
+                {
+                    _userDal = AbstractFactory.CreateUserDal();
+                }
+
+                return _userDal;
+            }
+            set { _userDal = value; }
+        }
+
+
+        private IKeyWordRank _keyWordRank;
+
+        public IKeyWordRank KeyWordRank
+        {
+            get
+            {
+                if (_keyWordRank == null)
+                {
+                    _keyWordRank = AbstractFactory.CreateKeyWordRank();
+                }
+
+                return _keyWordRank;
+            }
+            set { _keyWordRank = value; }
+        }
 
     }
 }
