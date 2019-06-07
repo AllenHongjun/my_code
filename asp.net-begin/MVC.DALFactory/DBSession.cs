@@ -29,7 +29,8 @@ namespace MVC.DALFactory
 
         //每一层多了 写的稍微麻烦一些 。 其实也还好。。
         #endregion
-        
+
+        #region 作用说明
         //每一次都是new一下 是不同的对象  表现层调用数据层 必须是同一个对象 每次请求必须保证是同一个EF对象
         //项目架构的设计 数据库架构的设计 项目的内容比较的庞大的时候就需要设计了
 
@@ -41,8 +42,9 @@ namespace MVC.DALFactory
         //设计数据操作 和业务的都是封装了一个方法
         //合理的设计 的好处 有一个架构 
 
-        
-        //book_shop3Entities Db2 = new book_shop3Entities();
+
+        //book_shop3Entities Db2 = new book_shop3Entities(); 
+        #endregion
 
         public DbContext Db
         {
