@@ -201,7 +201,22 @@ namespace MVC.DALFactory
 
         }
 
+        private IVideoFileDal _videoFileDal;
 
+        public IVideoFileDal VideoFileDal
+        {
+            get
+            {
+                if (_videoFileDal == null)
+                {
+                    _videoFileDal = AbstractFactory.CreateVideoFileDal();
+                }
+
+                return _videoFileDal;
+            }
+
+            set { _videoFileDal = value; }
+        }
 
 
 

@@ -20,6 +20,23 @@ namespace MVC.BLL
 
     public abstract class BaseService<T> where T:class,new()
     {
+        /*
+         创建子类的时候 父类的够着方法也是会调用
+         父类的够着方法被调用时候 会调用子类当中够着方法的实现
+         如果有参数的话 构造方法需要base显示的调用一下
+             */
+        public BaseService()
+        {
+            SetCurrentDal();//子类一定要实现抽象方法。
+        }
+
+        /// <summary>
+        /// 如果是实例化子类的话 就把子类和父类 合并成一个类来理解
+        /// </summary>
+        public abstract void SetCurrentDal();
+
+        //这个构造方法中调用这个抽象方法 
+
         public IDBSession CurrentDBSession
         {
             get
@@ -43,21 +60,9 @@ namespace MVC.BLL
         // 经过了一比较的复杂的操作之后 
         public IDAL.IBaseDal<T> CurrentDal { get; set; }
 
-        /// <summary>
-        /// 如果是实例化子类的话 就把子类和父类 合并成一个类来理解
-        /// </summary>
-        public abstract void SetCurrentDal();
+       
 
-        //这个构造方法中调用这个抽象方法 
-
-        /*
-         创建子类的时候 父类的够着方法也是会调用
-         父类的够着方法被调用时候 会调用子类当中够着方法的实现
-             */
-        public BaseService()
-        {
-            SetCurrentDal();//子类一定要实现抽象方法。
-        }
+        
 
 
         /// <summary>

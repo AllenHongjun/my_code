@@ -53,11 +53,16 @@
     <Compile Include="ICartService.cs" />
     <Compile Include="ICategoryService.cs" />
     <Compile Include="ICheckEmailService.cs" />
+    <Compile Include="IDepartmentService.cs" />
     <Compile Include="IOrderBookService.cs" />
     <Compile Include="IOrderService.cs" />
+    <Compile Include="IPublishService.cs" />
+    <Compile Include="IRankWorkRankService.cs" />
     <Compile Include="IRoleService.cs" />
+    <Compile Include="ISettingService.cs" />
     <Compile Include="IUserInfoService.cs" />
     <Compile Include="IUserService.cs" />
+    <Compile Include="IVedioFileService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

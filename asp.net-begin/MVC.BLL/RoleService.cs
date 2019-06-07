@@ -8,10 +8,15 @@ using MVC.Model;
 
 namespace MVC.BLL
 {
-    //public class RoleService : BaseService<Role>, IRoleService
-    //{
-    //    public RoleService()
-    //    {
-    //    }
-    //}
+    public class RoleService : BaseService<Role>, IRoleService
+    {
+        //public RoleService():base()
+        //{
+        //}
+
+        public override void SetCurrentDal()
+        {
+            this.CurrentDal = this.CurrentDBSession.RoleDal;
+        }
+    }
 }
