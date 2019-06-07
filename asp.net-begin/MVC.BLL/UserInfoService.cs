@@ -20,10 +20,11 @@ namespace MVC.BLL
         public override void SetCurrentDal()
         {
             ///throw new NotImplementedException();
-
+            //从子类里面来确定 CurrentDal的属性是什么 
             CurrentDal = this.CurrentDBSession.UserInfoDal;
         }
 
+        #region 批量操作数据 调用多个数据层的方法
         //如果请求不是和复杂 知识单纯的添加一条数据 就不能在表现层 处理 
         //在业务层里面在添加响应的方法 批量数据更新 链接一次数据库 完成多掉数据的更新 重要重要 
         //public void SetUserInfo(UserInfo userInfo)
@@ -32,7 +33,8 @@ namespace MVC.BLL
         //    this.CurrentDBSession.UserInfoDal.DeleteEntity(userInfo);
         //    this.CurrentDBSession.UserInfoDal.EditEntity(userInfo);
         //    this.CurrentDBSession.SaveChanges();
-        //}
+        //} 
+        #endregion
 
         /// <summary>
         /// 批量删除多条用户数据

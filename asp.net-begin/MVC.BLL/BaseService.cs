@@ -17,6 +17,7 @@ namespace MVC.BLL
     //这个好像是我看的的第三遍的吧。  字的方法父类调用  抽象方法 必须要实现 这个东东还是有些复杂 
     //有些点 。也不是所有的。简单的可以很简单。复杂的也就有他的复杂之处
     //从底层到数据层 数据访问层 业务层 表现层 每一层之间的访问都是通过接口来条用
+
     public abstract class BaseService<T> where T:class,new()
     {
         public IDBSession CurrentDBSession
@@ -41,6 +42,10 @@ namespace MVC.BLL
         // 最终这个 就是一个DAL数据层的 操作对象 类型是一个父类的类型 
         // 经过了一比较的复杂的操作之后 
         public IDAL.IBaseDal<T> CurrentDal { get; set; }
+
+        /// <summary>
+        /// 如果是实例化子类的话 就把子类和父类 合并成一个类来理解
+        /// </summary>
         public abstract void SetCurrentDal();
 
         //这个构造方法中调用这个抽象方法 

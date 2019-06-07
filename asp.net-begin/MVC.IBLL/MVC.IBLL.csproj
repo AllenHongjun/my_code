@@ -31,19 +31,33 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IActionGroupService.cs" />
+    <Compile Include="IActionInfoService.cs" />
     <Compile Include="IBaseService.cs" />
+    <Compile Include="IBookCommetService.cs" />
+    <Compile Include="IBookService.cs" />
+    <Compile Include="ICartService.cs" />
+    <Compile Include="ICategoryService.cs" />
+    <Compile Include="ICheckEmailService.cs" />
+    <Compile Include="IOrderBookService.cs" />
+    <Compile Include="IOrderService.cs" />
     <Compile Include="IRoleService.cs" />
     <Compile Include="IUserInfoService.cs" />
+    <Compile Include="IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 namespace MVC.IBLL
 {
 
+    #region 说明
     /// 自己想搭建一个项目的架构
     /// 工厂类  数据层
     /// 数据会话层 
@@ -27,7 +28,8 @@ namespace MVC.IBLL
     /// 接口的继承 这个接口 主要是给别的代码 继承来使用的。
     /// 集合这个接口的子类  其他的类 也就都要实现 子类接口要实现的方法
     /// 接口都是给上一层 的内容来访问   接口的实现都是要访问 底层的内容
-    /// 在表现层依赖注入对象的时候 就可以了
+    /// 在表现层依赖注入对象的时候 就可以了 
+    #endregion
 
 
     /// <summary>
@@ -43,7 +45,10 @@ namespace MVC.IBLL
         /// 他的类型 就是这样的 
 
         //数据会话层的接口 要访问的数据层的接口 是必须的 不然不知道访问哪个数据层的对象
+        //当前请求 当前线程中 的数据会话层的实例
         IDBSession CurrentDBSession { get; }
+
+        //当前业务要操作的数据访问层中的对象
         IDAL.IBaseDal<T> CurrentDal { get; set; }
 
         /// <summary>
