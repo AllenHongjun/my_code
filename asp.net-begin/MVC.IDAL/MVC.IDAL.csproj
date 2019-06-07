@@ -48,9 +48,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IActionInfoDal.cs" />
     <Compile Include="IBaseDal.cs" />
+    <Compile Include="IBookCommentDal.cs" />
+    <Compile Include="IBookDal.cs" />
+    <Compile Include="ICartDal.cs" />
+    <Compile Include="ICategoryDal.cs" />
+    <Compile Include="ICheckEmailDal.cs" />
     <Compile Include="IDBSession.cs" />
+    <Compile Include="IDepartmentDal.cs" />
+    <Compile Include="IKeyWordRank.cs" />
+    <Compile Include="IOrderBooksDal.cs" />
+    <Compile Include="IOrderDal.cs" />
+    <Compile Include="IPublishDal.cs" />
+    <Compile Include="IRoleDal.cs" />
+    <Compile Include="ISettingsDal.cs" />
     <Compile Include="IUserInfoDal.cs" />
+    <Compile Include="IUserInfoRoleDal.cs" />
+    <Compile Include="IVideoFileDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

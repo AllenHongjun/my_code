@@ -187,6 +187,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\doc\说明.txt" />
     <Content Include="Areas\Admin\Asset\Images\3DSMAX.png" />
     <Content Include="Areas\Admin\Asset\Images\7_7.jpg" />
     <Content Include="Areas\Admin\Asset\Images\Alien Folder.png" />
@@ -210,6 +211,7 @@
     <Content Include="Areas\Admin\Content\Conmmon.css" />
     <Content Include="Areas\Admin\Content\Reset.css" />
     <Content Include="Areas\Admin\Scripts\ActionManage.js" />
+    <Content Include="Areas\Admin\Scripts\UserInfo.js" />
     <Content Include="Config\controllers.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -799,6 +801,7 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\vue.js" />
     <Content Include="Scripts\vue.min.js" />
+    <Content Include="SqlScript\CreateDataBase.sql" />
     <Content Include="Views\MyPage\First.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -821,7 +824,6 @@
     <Content Include="Views\Demo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Base\" />
     <Folder Include="Areas\Admin\Views\Category\" />
     <Folder Include="Areas\Admin\Views\Member\" />

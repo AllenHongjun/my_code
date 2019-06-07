@@ -13,7 +13,5 @@ namespace MVC.IDAL
     public interface ICategoryDal:IBaseDal<Categories>
     {
 
-
-
     }
 }
