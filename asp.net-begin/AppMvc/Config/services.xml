@@ -4,4 +4,7 @@
   <object name="UserInfoService" type="MVC.BLL.UserInfoService, MVC.BLL" singleton="false" >
   </object>
 
+  <object name="ActionInfoService" type="MVC.BLL.ActionInfoService, MVC.BLL" singleton="false" >
+  </object>
+
 </objects>
