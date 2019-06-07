@@ -55,7 +55,21 @@ namespace MVC.DALFactory
         }
 
 
+        /// <summary>
+        ///  一个业务中经常涉及到对多张操作，我们希望链接一次数据库，完成对张表数据的操作。提高性能。 工作单元模式。
+        ///  就是一个事务 可以连接一次数据库 sql语句提前都拼接好。
+        ///  这个也要引入EF
+        ///  
+        /// 工作单元的设计模式  工厂模式  单例模式 
+        /// </summary>
+        /// <returns></returns>
+        public bool SaveChange()
+        {
+            return Db.SaveChanges() > 0;
+        }
 
+
+        #region 用户权限模块
         private IUserInfoDal _UserInfoDal;
 
         /// <summary>
@@ -70,35 +84,108 @@ namespace MVC.DALFactory
                     //这个来创建 一个UserInfodal的对象实例 
                     //这个是一个工厂模式的  的一种设计模式
                     //_UserInfoDal = new UserInfoDal();
-
                     //通过反射的方式来创建类的实例  //很多工作都是有一些组建来完成的。
                     _UserInfoDal = AbstractFactory.CreateUserInfoDal();
 
                 }
-
                 return _UserInfoDal;
             }
-
-            set
-            {
-
-            }
+            set { _UserInfoDal = value; }
         }
-
-
 
         /// <summary>
-        ///  一个业务中经常涉及到对多张操作，我们希望链接一次数据库，完成对张表数据的操作。提高性能。 工作单元模式。
-        ///  就是一个事务 可以连接一次数据库 sql语句提前都拼接好。
-        ///  这个也要引入EF
-        ///  
-        /// 工作单元的设计模式  工厂模式  单例模式 
+        /// 权限
         /// </summary>
-        /// <returns></returns>
-        public bool SaveChange()
+        private IActionInfoDal _ActionInfoDal;
+        public IActionInfoDal ActionInfoDal
         {
-            return Db.SaveChanges() > 0;
+            get
+            {
+                if (_ActionInfoDal == null)
+                {
+                    _ActionInfoDal = AbstractFactory.CreateActionInfoDal();
+                }
+
+                return _ActionInfoDal;
+            }
+            set { _ActionInfoDal = value; }
         }
+
+        /// <summary>
+        /// 权限组
+        /// </summary>
+        private IActionGroupDal _actionGroupDal;
+
+        public IActionGroupDal ActionGroupDal
+        {
+            get
+            {
+                if (_actionGroupDal == null)
+                {
+                    _actionGroupDal = AbstractFactory.CreateActionGroupDal();
+                }
+
+                return _actionGroupDal;
+            }
+            set { _actionGroupDal = value; }
+        }
+
+        /// <summary>
+        /// 角色
+        /// </summary>
+        private IRoleDal _roleDal;
+
+        public IRoleDal RoleDal
+        {
+            get
+            {
+                if (_roleDal == null)
+                {
+                    _roleDal = AbstractFactory.CreateRoleDal();
+                }
+
+                return _roleDal;
+            }
+            set { _roleDal = value; }
+        }
+
+        /// <summary>
+        /// 站点设置
+        /// </summary>
+        private ISettingsDal _settingsDal;
+
+        public ISettingsDal SettingsDal
+        {
+            get
+            {
+                if (_settingsDal == null)
+                {
+                    _settingsDal = AbstractFactory.CreateSettingsDal();
+                }
+
+                return _settingsDal;
+            }
+            set { _settingsDal = value; }
+        }
+
+        private IDepartmentDal _departmentDal;
+
+        public IDepartmentDal DepartmentDal
+        {
+            get
+            {
+                if (_departmentDal == null)
+                {
+                    _departmentDal = AbstractFactory.CreateDepartmentDal();
+                }
+
+                return _departmentDal;
+            }
+            set { _departmentDal = value; }
+        }
+
+        #endregion
+
 
     }
 }
