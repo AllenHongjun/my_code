@@ -22,6 +22,7 @@ namespace AppMvc.Controllers
         IUserInfoService UserInfoService = new UserInfoService();
         public ActionResult Index()
         {
+            return  Redirect("/Admin/Login/Index");
             IQueryable<UserInfo> users =  UserInfoService.LoadEntities(u => u.ID < 100);
             ViewData.Model = users;
             return View();

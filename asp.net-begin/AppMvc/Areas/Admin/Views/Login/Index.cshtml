@@ -32,7 +32,7 @@
         function afterLogin(data) {
             var serverData = data.split(":");
             if (serverData[0] == "ok") {
-                window.location.href = "/Admin/UserInfo/Index";
+                window.location.href = "/Admin/Home/Index";
             } else {
 
                 $("#errMsg").css({ "display": "block"});

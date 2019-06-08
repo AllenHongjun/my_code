@@ -13,6 +13,13 @@ namespace AppMvc
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            //routes.MapRoute(
+            //    name: "AdminDefault",
+            //    url: "admin/{controller}/{action}/{id}",
+            //    defaults: new { controller = "Login", action = "Index", id = UrlParameter.Optional },
+            //    namespaces: new string[] { "AppMvc.Areas.Admin.Controllers" }
+            //);
+
 
             routes.MapRoute(
                 name: "Default",
@@ -20,6 +27,8 @@ namespace AppMvc
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
                 namespaces: new string[] { "AppMvc.Controllers" }
             );
+
+
         }
     }
 }
