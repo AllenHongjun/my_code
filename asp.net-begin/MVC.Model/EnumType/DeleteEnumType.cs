@@ -9,7 +9,7 @@ namespace MVC.Model
     public enum DeleteEnumType
     {   
         /// <summary>
-        /// 正常删除
+        /// 正常 未删除
         /// </summary>
         Normal  = 0,
 

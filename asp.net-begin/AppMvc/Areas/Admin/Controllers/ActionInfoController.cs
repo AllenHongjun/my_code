@@ -8,7 +8,7 @@ using MVC.Model;
 
 namespace AppMvc.Areas.Admin.Controllers
 {
-    public class ActionInfoController : Controller
+    public class ActionInfoController : BaseController
     {
         private IActionInfoService ActionInfoService { get; set; }
         // GET: Admin/ActionInfo
@@ -45,24 +45,35 @@ namespace AppMvc.Areas.Admin.Controllers
 
             int pageIndex = Request["page"] != null ? Convert.ToInt32(Request["page"]) : 1;
             int pageSize = Request["rows"] != null ? Convert.ToInt32(Request["rows"]) : 10;
-            int total = 0;
-            var pageList = ActionInfoService.LoadPageEntities(pageIndex, pageSize, out total, x => x.ID > 1, x => x.ID, true)
+
+            //搜索条件 只有条件有值的时候才把条件拼接上去
+            string actionInfoName = Request["name"] !=null? Request["name"] : "";
+
+            bool isMenu = !string.IsNullOrEmpty(Request["isMenu"]) ? Convert.ToBoolean(Request["isMenu"]) : true;
+            
+
+
+            DateTime beginTime = !string.IsNullOrEmpty(Request["beginTime"])
+                ? Convert.ToDateTime(Request["beginTime"])
+                : DateTime.Now.AddYears(-30);
+            DateTime endTime = !string.IsNullOrEmpty(Request["endTime"])
+                ? Convert.ToDateTime(Request["endTime"])
+                : DateTime.Now;
+
+            //int total ;
+            var pageList = ActionInfoService.LoadPageEntities(pageIndex, pageSize, out int total, 
+                    x => x.DelFalg == (int)DeleteEnumType.Normal && x.ActionInfoName.Contains(actionInfoName)
+                    &&( x.IsMenu == isMenu) && x.SubTime > beginTime && x.SubTime < endTime, x => x.ID, false)
                 .Select( x => new
                 {
                     x.ID,
                     x.ActionInfoName,
-                    x.IsMenu,
+                    Menu =  x.IsMenu ? "是":"不是",
                     x.SubTime,
+                    HttpMethod = x.HttpMethod == 1?"POST":"GET",
                     x.Url
                 }).ToList();
             return Json(new {rows = pageList, total = total},JsonRequestBehavior.AllowGet);
-        }
-
-        // GET: Admin/ActionInfo/Details/5
-        public ActionResult Details(int id)
-        {
-            var action = ActionInfoService.LoadEntities(x => x.ID == id).FirstOrDefault();
-            return Json(new {code = 1, data = action},JsonRequestBehavior.AllowGet);
         }
 
 
@@ -71,47 +82,78 @@ namespace AppMvc.Areas.Admin.Controllers
         public ActionResult Create(ActionInfo actionInfo)
         {
             try
-            {
+            {   
+                /*接收参数判断 调用service 返回结果*/
                 // TODO: Add insert logic here
+                if (actionInfo != null)
+                {   
+                    actionInfo.SubTime = DateTime.Now;
+                    actionInfo.DelFalg = 0;
+                    actionInfo.Url = actionInfo.Url.ToLower();
+                    var action = ActionInfoService.AddEntity(actionInfo);
+                    return Json(new Result() { code = 1, msg = "添加陈工" });
 
-                return RedirectToAction("Index");
+                }
+                else
+                {
+                    return Json(new Result() {code = -1, msg = "参数错误!"});
+                }
+
             }
-            catch
+            catch(Exception exception)
             {
-                return View();
+                return Json(new Result() { code = -1, msg = exception.ToString() });
             }
         }
 
+
+        /// <summary>
+        /// 显示要修改的数据
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult Detail(int id)
+        {
+            var actionInfo = ActionInfoService.LoadEntities(x => x.ID == id).FirstOrDefault();
+            return Json(new Result { code = 1, data = actionInfo }, JsonRequestBehavior.AllowGet);
+        }
 
         // POST: Admin/ActionInfo/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(ActionInfo actionInfo)
         {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+           actionInfo.SubTime = DateTime.Now;
+           bool res = ActionInfoService.EditEntity(actionInfo);
+           if (res)
+           {
+               return Json(new Result {code = 1, msg = "修改成功!"});
             }
-            catch
-            {
-                return View();
-            }
+           else
+           {
+               return Json(new Result {code = -1, msg = "修改失败"});
+           }
         }
 
-        // POST: Admin/ActionInfo/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
 
-                return RedirectToAction("Index");
-            }
-            catch
+
+        // POST: Admin/ActionInfo/Delete/5
+        /// <summary>
+        /// 批量删除用户
+        /// </summary>
+        /// <param name="ids"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult Delete(string ids)
+        {
+            var actionIds = ids.Split(',').Select(x => Convert.ToInt32(x)).ToList();
+            bool res = ActionInfoService.DeleteEntities(actionIds);
+            if (res)
             {
-                return View();
+                return Json(new Result() {code = 1, msg = "批量删除成功"});
+            }
+            else
+            {
+                return Json(new Result() {code = -1, msg = "删除失败"});
             }
         }
     }

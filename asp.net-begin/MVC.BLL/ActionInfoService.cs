@@ -36,5 +36,23 @@ namespace MVC.BLL
             */
             CurrentDal = CurrentDBSession.ActionInfoDal;
         }
+
+
+        /// <summary>
+        /// 批量删除数据
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public bool DeleteEntities(List<int> list)
+        {
+            
+            var actionInfoList = this.CurrentDBSession.ActionInfoDal.LoadEntities(u => list.Contains(u.ID));
+            foreach (var action in actionInfoList)
+            {
+                CurrentDBSession.ActionInfoDal.DeleteEntity(action);
+            }
+            bool res = CurrentDBSession.SaveChange();
+            return res;
+        }
     }
 }

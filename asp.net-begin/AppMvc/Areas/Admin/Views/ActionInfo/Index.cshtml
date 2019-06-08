@@ -8,47 +8,94 @@
 {
     @*//这里渲染头部内容*@
 }
-
+<script src="~/Areas/Admin/Scripts/ActionManage.js"></script>
 
 <div>
-    <div style="margin:1px 0;"></div>
-    <table class="easyui-datagrid" title="DataGrid Complex Toolbar" style="width:100%;height:400px;"
-           data-options="rownumbers:true,singleSelect:true,url:'datagrid_data1.json',method:'get',toolbar:'#tb',footer:'#ft'">
-        <thead>
-        <tr>
-            <th data-options="field:'itemid',width:80">Item ID</th>
-            <th data-options="field:'productid',width:100">Product</th>
-            <th data-options="field:'listprice',width:80,align:'right'">List Price</th>
-            <th data-options="field:'unitcost',width:80,align:'right'">Unit Cost</th>
-            <th data-options="field:'attr1',width:240">Attribute</th>
-            <th data-options="field:'status',width:60,align:'center'">Status</th>
-        </tr>
-        </thead>
-    </table>
-    <div id="tb" style="padding:2px 5px;">
-        开始时间: <input class="easyui-datebox" style="width:110px">
-        结束时间: <input class="easyui-datebox" style="width:110px">
-        语言: 
-        <select class="easyui-combobox" panelHeight="auto" style="width:100px">
-            <option value="java">Java</option>
-            <option value="c">C</option>
-            <option value="basic">Basic</option>
-            <option value="perl">Perl</option>
-            <option value="python">Python</option>
+    <div  style="padding:2px 5px;">
+        名称: <input id="txtSearchName" class="easyui-textbox"/>
+        开始时间: <input id="txtBeginTime" name="beginTime" class="easyui-datebox" style="width:110px">
+        结束时间: <input id="txtEndTime" name="endTime" class="easyui-datebox" style="width:110px">
+        菜单:
+        <select id="searchIsMenu" name="searchIsMenu" class="easyui-combobox" panelHeight="auto" style="width:100px">
+            @*<option value="-1">全部</option>*@
+            <option value="true">是</option>
+            <option value="false">不是</option>
         </select>
-        <a href="#" class="easyui-linkbutton" iconCls="icon-search">Search</a>
+        <a href="javascript:void(0);" id="btnSearch" class="easyui-linkbutton" iconCls="icon-search">搜索</a>
     </div>
-    <div id="ft" style="padding:2px 5px;">
-        <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true"></a>
-        <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true"></a>
-        <a href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true"></a>
-        <a href="#" class="easyui-linkbutton" iconCls="icon-cut" plain="true"></a>
-        <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true"></a>
-    </div>
+    <div style="margin:1px 0;"></div>
+    <table id="tt" class="easyui-datagrid" title="权限列表" style="width:100%;height:400px;">
+    </table>
 </div>
 
+<div id="addDiv" style="display:none;">
+    @using (Ajax.BeginForm("Create", "ActionInfo", new { }, new AjaxOptions() { HttpMethod = "post", OnSuccess = "afterAdd" }, new { id = "addForm" }))
+    {
+        <div style="width:290px;margin:5px auto;padding:5px 10px">
+            <div style="margin-bottom:5px">
+                <div>权限名称:</div>
+                <input type="text" name="ActionInfoName" class="easyui-textbox" data-options="required:true,validType:'length[3,10]'" style="width:100%;height:32px">
+            </div>
+            <div style="margin-bottom:5px">
+                <div>权限地址:</div>
+                <input type="text" name="Url" class="easyui-textbox" style="width:100%;height:32px" data-options="required:true,validType:'length[3,50]'">
+            </div>
+            <div style="margin-bottom:5px">
+                <div>备注信息:</div>
+                <input type="text" name="Remark" class="easyui-textbox" style="width:100%;height:32px" data-options="prompt:'请输入备注信息.',required:true,validType:'length[1,50]'">
+            </div>
+            <div style="margin-bottom:5px">
+                <div>请求方式:</div>
+                <select name="HttpMethod" class="easyui-combobox" style="width:100%;height:32px">
+                    <option value="1">POST</option>
+                    <option value="2">GET</option>
+                </select>
+            </div>
+            <div style="margin-bottom:5px">
+                <div>是否菜单权限:</div>
+                <select name="IsMenu" class="easyui-combobox" style="width:100%;height:32px">
+                    <option value="true">是</option>
+                    <option value="false">否</option>
+                </select>
+            </div>
+        </div>
+    }
+</div>
 
-
+<div id="editDiv" style="display:none;">
+    @using (Ajax.BeginForm("Edit", "ActionInfo", new { }, new AjaxOptions() { HttpMethod = "post", OnSuccess = "afterEdit" }, new { id = "editForm" }))
+    {   
+        <input type="hidden" id="txtID" name="ID"/>
+        <div style="width:290px;margin:5px auto;padding:5px 10px">
+            <div style="margin-bottom:5px">
+                <div>权限名称:</div>
+                <input id="txtActionInfoName" type="text" name="ActionInfoName" class="easyui-textbox" data-options="required:true,validType:'length[3,10]'" style="width:100%;height:32px">
+            </div>
+            <div style="margin-bottom:5px">
+                <div>权限地址:</div>
+                <input id="txtUrl" type="text" name="Url" class="easyui-textbox" style="width:100%;height:32px" data-options="required:true,validType:'length[3,50]'">
+            </div>
+            <div style="margin-bottom:5px">
+                <div>备注信息:</div>
+                <input id="txtRemark" type="text" name="Remark" class="easyui-textbox" style="width:100%;height:32px" data-options="prompt:'请输入备注信息.',required:true,validType:'length[1,50]'">
+            </div>
+            <div style="margin-bottom:5px">
+                <div>请求方式:</div>
+                <select id="txtHttpMethod" name="HttpMethod" class="easyui-combobox" style="width:100%;height:32px">
+                    <option value="1">POST</option>
+                    <option value="2">GET</option>
+                </select>
+            </div>
+            <div style="margin-bottom:5px">
+                <div>是否菜单权限:</div>
+                <select id="txtIsMenu" name="IsMenu" class="easyui-combobox" style="width:100%;height:32px">
+                    <option value="true">是</option>
+                    <option value="false">否</option>
+                </select>
+            </div>
+        </div>
+    }
+</div>
 
 @section footer {
     @Scripts.Render("~/bundles/jqueryval")

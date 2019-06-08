@@ -104,6 +104,27 @@ namespace MVC.BLL
         }
 
 
+        ///// <summary>
+        ///// 批量删除多条用户数据
+        ///// </summary>
+        ///// <param name="list">存放要删除数据主键ID集合</param>
+        ///// <returns></returns>
+        //public bool DeleteEntities(List<int> list)
+        //{
+        //    //分装多不操作一起执行  这里其实是where和 Contain两个方法一起调用
+        //    //UserID 在 list集合中就返回true where里面也是一个循环遍历 每一条数据 循环判断 是的话就取出来
+        //    //看一下视频只有有一个印象 关键还是要自己来写 
+        //    //也不是说写了一遍就结束了
+        //    //数据会话层 是获取 Dal的对象 然后就可以调用DAL里面的方法了
+        //    var userInfoList = this.CurrentDal.LoadEntities(u => list.Contains(u.));
+        //    foreach (var user in userInfoList)
+        //    {
+        //        CurrentDBSession.UserInfoDal.DeleteEntity(user);
+        //    }
+        //    bool res = CurrentDBSession.SaveChange();
+        //    return res;
+        //}
+
 
 
         public bool EditEntity(T entity)

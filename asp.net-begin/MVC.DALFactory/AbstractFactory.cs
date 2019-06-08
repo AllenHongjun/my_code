@@ -48,7 +48,7 @@ namespace MVC.DALFactory
         public static IActionInfoDal CreateActionInfoDal()
         {   
             //命名空间加上类名通过反射就可以创建出这个类的实例
-            string fullClassName = NameSpace + ".ActionInfo";
+            string fullClassName = NameSpace + ".ActionInfoDal";
             return CreateInstance(fullClassName) as IActionInfoDal;
         }
         /// <summary>
