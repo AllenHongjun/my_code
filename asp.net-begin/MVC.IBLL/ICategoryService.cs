@@ -12,6 +12,6 @@ namespace MVC.IBLL
     /// </summary>
     public interface ICategoryService:IBaseService<Categories>
     {
-
+        bool DeleteEntities(List<int> list);
     }
 }

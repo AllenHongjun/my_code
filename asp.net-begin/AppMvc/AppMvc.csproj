@@ -223,6 +223,7 @@
     <Content Include="Areas\Admin\Content\Conmmon.css" />
     <Content Include="Areas\Admin\Content\Reset.css" />
     <Content Include="Areas\Admin\Scripts\ActionManage.js" />
+    <Content Include="Areas\Admin\Scripts\Category.js" />
     <Content Include="Areas\Admin\Scripts\UserInfo.js" />
     <Content Include="Config\controllers.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -725,6 +726,7 @@
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Areas\Admin\Views\ActionInfo\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.0.3.js" />
@@ -841,7 +843,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Views\Base\" />
-    <Folder Include="Areas\Admin\Views\Category\" />
     <Folder Include="Areas\Admin\Views\Member\" />
     <Folder Include="Areas\Admin\Views\Memcached\" />
     <Folder Include="Areas\Admin\Views\MenuInfo\" />

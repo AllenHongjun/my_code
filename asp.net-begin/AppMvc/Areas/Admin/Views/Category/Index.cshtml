@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<script src="~/Areas/Admin/Scripts/Category.js"></script>
+
+<div style="margin:20px 0;"></div>
+<table id="tt" class="easyui-datagrid" title="商品分类管理" style="width:95%;height:450px"
+       data-options="rownumbers:true,
+       url:'/Admin/Category/GetCategoryList',
+       method:'get',toolbar:'#tb',footer:'#ft',
+       pagination:true,
+	   pageSize:10">
+    <thead>
+        <tr>
+            <th data-options="field:'ck',checkbox:true"></th>
+            <th data-options="field:'Id',width:80">分类ID</th>
+            <th data-options="field:'Name',width:100">分类名称</th>
+        </tr>
+    </thead>
+</table>
+<div id="tb" style="padding:2px 5px;">
+    分类名称: <input id="txtSearchName" name="searchName" class="easyui-textbox" style="width: 80px;"/>
+    @*开始日期: <input class="easyui-datebox" style="width:110px">
+    -结束日期: <input class="easyui-datebox" style="width:110px">
+    父级分类名称:
+    <select class="easyui-combobox" panelHeight="auto" style="width:100px">
+        <option value="java">Java</option>
+        <option value="c">C</option>
+        <option value="basic">Basic</option>
+        <option value="perl">Perl</option>
+        <option value="python">Python</option>
+    </select>*@
+    <a id="btnSearch" class="easyui-linkbutton" iconCls="icon-search">搜索</a>
+</div>
+<div id="ft" style="padding:2px 5px;">
+    <a id="btnAdd" class="easyui-linkbutton" iconCls="icon-add" plain="true"></a>
+    <a id="btnEdit" class="easyui-linkbutton" iconCls="icon-edit" plain="true"></a>
+    <a id="btnRemove" class="easyui-linkbutton" iconCls="icon-remove" plain="true"></a>
+</div>
+
+<div id="addDiv" style="display:none;">
+    @using (Ajax.BeginForm("Create", "Category", new { }, new AjaxOptions() { HttpMethod = "post", OnSuccess = "afterAdd" }, new { id = "addForm" }))
+    {
+        <div style="width:290px;margin:5px auto;padding:5px 10px">
+            <div style="margin-bottom:5px">
+                <div>分类名称:</div>
+                <input type="text" name="Name" class="easyui-textbox" data-options="required:true,validType:'length[1,10]'" style="width:100%;height:32px">
+            </div>
+        </div>
+    }
+</div>
+
+<div id="editDiv" style="display:none;">
+    @using (Ajax.BeginForm("Edit", "Category", new { }, new AjaxOptions() { HttpMethod = "post", OnSuccess = "afterEdit" }, new { id = "editForm" }))
+    {
+        <input type="hidden" id="txtID" name="ID" />
+        <div style="width:290px;margin:5px auto;padding:5px 10px">
+            <div style="margin-bottom:5px">
+                <div>分类名称:</div>
+                <input id="txtCategoryName" type="text" name="Name" class="easyui-textbox" data-options="required:true,validType:'length[1,10]'" style="width:100%;height:32px">
+            </div>
+        </div>
+    }
+</div>
+
