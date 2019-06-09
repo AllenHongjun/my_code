@@ -135,11 +135,11 @@ namespace AppMvc.Areas.Admin.Controllers
                 .ToList();
             //获取该角色已经分配的权限
             var roleInfo = RoleService.LoadEntities(r => r.ID == id).FirstOrDefault();
-            var roleIds  = roleInfo.ActionInfo.Select(x => new {x.ID}).ToList();
+            List<int> roleActionIds  = roleInfo.ActionInfo.Select(x => x.ID).ToList();
 
             ViewBag.RoleInfo = roleInfo;
             ViewBag.ActionInfoList = actionInfoList;
-            ViewBag.RoleIds = roleIds;
+            ViewBag.roleActionIds = roleActionIds;
             return View();
         }
 

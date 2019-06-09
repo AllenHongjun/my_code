@@ -87,6 +87,14 @@ function loadData(pars) {
 
                     showEditInfo();
                 }
+            }, {
+                id: 'btnSetRoleAction',
+                text: '分配权限',
+                iconCls: 'icon-edit',
+                handler: function() {
+
+                    showRoleAction();
+                }
             }
         ]
     });
@@ -278,5 +286,49 @@ function afterEdit(data) {
         $('#tt').datagrid('reload');//加载表格不会跳到第一页。
     } else {
         $.messager.alert("提示", "修改的数据失败", "error");
+    }
+}
+
+
+//为角色分配权限
+function showRoleAction() {
+    //判断是否选择了一个角色.
+    var rows = $('#tt').datagrid('getSelections');//获取所选择的行
+    if (rows.length !== 1) {
+        $.messager.alert("提示", "请选择要分配权限的角色", "error");
+        return;
+    }
+    //指定iframe的src.
+    $("#setActionFrame").attr("src", "/Admin/RoleInfo/ShowRoleAction/?id=" + rows[0].ID);
+    $("#setActionDiv").css("display", "block");
+    $('#setActionDiv').dialog({
+        title: '为角色分配权限',
+        width: 720,
+        height: 420,
+        collapsible: true,
+        maximizable: true,
+        resizable: true,
+        modal: true,
+        buttons: [{
+            text: 'Ok',
+            iconCls: 'icon-ok',
+            handler: function () {
+                //提交表单
+                //调用子窗口的方法.
+                var childWindow = $("#setActionFrame")[0].contentWindow;//表示获取了嵌入在iframe中的子窗体的window对象。
+                childWindow.subForm();//调用子窗体中的方法，完成表单的提交。
+            }
+        }, {
+            text: 'Cancel',
+            handler: function () {
+                $('#setActionDiv').dialog('close');
+            }
+        }]
+    });
+}
+//为角色分配完成权限后调用该方法
+function afterSet(data) {
+    if (data === "ok") {
+        $('#setActionDiv').dialog('close');
     }
 }

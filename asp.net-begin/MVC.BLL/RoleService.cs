@@ -43,7 +43,7 @@ namespace MVC.BLL
                     roleInfo.ActionInfo.Add(actionInfo);
                 }
 
-                return true;
+                return this.CurrentDBSession.SaveChange();
             }
             else
             {

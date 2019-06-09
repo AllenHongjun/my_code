@@ -735,6 +735,9 @@
     <Content Include="Areas\Admin\Views\SettingDemo1\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\SettingDemo1\Index.cshtml" />
     <Content Include="Areas\Admin\Views\RoleInfo\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\UserInfo\ShowUserRoleInfo.cshtml" />
+    <Content Include="Areas\Admin\Views\UserInfo\ShowUserAction.cshtml" />
+    <Content Include="Areas\Admin\Views\RoleInfo\ShowRoleAction.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.0.3.js" />

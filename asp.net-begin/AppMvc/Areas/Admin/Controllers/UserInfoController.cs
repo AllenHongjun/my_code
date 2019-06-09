@@ -213,7 +213,7 @@ namespace AppMvc.Areas.Admin.Controllers
             var roleIdList = new List<int>();
             foreach (string key in allKeys)
             {
-                if (key.StartsWith("cba_")
+                if (key.StartsWith("cba_"))
                 {
                     string k = key.Replace("cba_", "");
                     roleIdList.Add(Convert.ToInt32(k));

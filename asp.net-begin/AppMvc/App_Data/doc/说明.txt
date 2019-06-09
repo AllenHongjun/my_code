@@ -44,4 +44,8 @@
 
 - 登陆的时候权限的判断。。所有的权限存在session 或者缓存当中。
 
+ 要么在tt 模板里面修改一下 属性不序列话 或者 数据 序列化的时候 做一下筛选
+-序列化类型为“System.Data.Entity.DynamicProxies
+.Role_9EE4940CDC889804C041E2245ADD2F67041A8BC3C2B7E5465C73CF9836868B13”的对象时检测到循环引用。
+
 
