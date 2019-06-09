@@ -3,7 +3,7 @@
 
   <object name="UserInfoService" type="MVC.BLL.UserInfoService, MVC.BLL" singleton="false" >
   </object>
-  <object name="RoleInfoService" type="MVC.BLL.RoleinfoService, MVC.BLL" singleton="false" >
+  <object name="RoleService" type="MVC.BLL.RoleService, MVC.BLL" singleton="false" >
   </object>
   <object name="ActionInfoService" type="MVC.BLL.ActionInfoService, MVC.BLL" singleton="false" >
   </object>

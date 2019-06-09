@@ -9,15 +9,19 @@ using System.Web.Mvc;
 
 namespace AppMvc.Areas.Admin.Controllers
 {
-    public class UserInfoController : Controller
+    public class UserInfoController : BaseController
     {
         // GET: Admin/UserInfo
 
         //MVC.IBLL.IUserInfoService UserInfoService = new UserInfoService();
 
         //就是为了解耦才没有引用那一层。。为了学习这个方式 企业里面可以使用什么组件 可以如何来使用
+        //只要效果能够做出来为主 优先 不管是什么方式
         //public UserInfoService UserInfoService { get; set; }
         public IUserInfoService UserInfoService { get; set; }
+
+        public  IRoleService RoleService { get; set; }
+
         public ActionResult Index()
         {
 
@@ -131,7 +135,6 @@ namespace AppMvc.Areas.Admin.Controllers
                     u.RegTime,
                     u.ID,
                     u.Email
-
                 }).FirstOrDefault();
             if (userinfo !=null)
             {   
@@ -163,7 +166,16 @@ namespace AppMvc.Areas.Admin.Controllers
         }
 
 
-
+        public ActionResult GetRoleInfo()
+        {
+            var roleList = RoleService.LoadEntities(x => x.DelFlag == (short) DeleteEnumType.Normal)
+                .Select( x => new
+                {
+                    x.ID,
+                    x.RoleName
+                }).ToList();
+            return Json(roleList, JsonRequestBehavior.AllowGet);
+        }
 
 
         public ActionResult Test()

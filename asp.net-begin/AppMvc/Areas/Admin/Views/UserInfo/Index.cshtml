@@ -60,13 +60,13 @@
                 <div style="margin-bottom:5px">
                     <div>角色:</div>
                     <select class="easyui-combobox" style="width:100%;height:32px">
-                        <option value="1">管理员</option>
+                        <option value="请选择">请选择</option>
+                        @*<option value="1">管理员</option>
                         <option value="2">技术总监</option>
                         <option value="3">财务总监</option>
                         <option value="4">客服</option>
-                        <option value="5">采购</option>
+                        <option value="5">采购</option>*@
                     </select>
-                    @*<input type="text" name="Sort" class="easyui-textbox" style="width:100%;height:32px" data-options="required:true,validType:'length[1,3]'">*@
                 </div>
             </div>
         }
@@ -92,9 +92,16 @@
                     <div>邮箱:</div>
                     <input id="txtEmail" type="text" name="Email" class="easyui-textbox" style="width:100%;height:32px" data-options="prompt:'请输入邮箱.',required:true,validType:'email'">
                 </div>
-                <div style="margin-bottom:10px">
-                    <div>排序:</div>
-                    <input id="txtSort" type="text" name="Sort" class="easyui-textbox" style="width:100%;height:32px" data-options="required:true,validType:'length[1,5]'">
+                <div style="margin-bottom:5px">
+                    <div>角色:</div>
+                    <select class="easyui-combobox" style="width:100%;height:32px">
+                       
+                        @*<option value="1">管理员</option>
+        <option value="2">技术总监</option>
+        <option value="3">财务总监</option>
+        <option value="4">客服</option>
+        <option value="5">采购</option>*@
+                    </select>
                 </div>
             </div>
         }
@@ -133,6 +140,11 @@
             });
             loadData();
 
+            $('.easyui-combobox').combobox({
+                url:'/Admin/UserInfo/GetRoleInfo',
+                valueField:'ID',
+                textField:'RoleName'
+            });
 
         });
 
@@ -437,13 +449,6 @@
 
 
     </script>
-
-
-
-
-
-
-
 
 
 </body>

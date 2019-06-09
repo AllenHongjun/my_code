@@ -174,6 +174,7 @@
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\RoleInfoController.cs" />
     <Compile Include="Areas\Admin\Controllers\SearchController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SettingDemo1Controller.cs" />
     <Compile Include="Areas\Admin\Controllers\TestController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserInfoController.cs" />
     <Compile Include="Areas\Admin\Models\ActionGroupViewModel.cs" />
@@ -222,6 +223,7 @@
     <Content Include="Areas\Admin\Asset\login\panel-h.gif" />
     <Content Include="Areas\Admin\Content\Conmmon.css" />
     <Content Include="Areas\Admin\Content\Reset.css" />
+    <Content Include="Areas\Admin\Scripts\Role.js" />
     <Content Include="Areas\Admin\Scripts\ActionManage.js" />
     <Content Include="Areas\Admin\Scripts\Category.js" />
     <Content Include="Areas\Admin\Scripts\UserInfo.js" />
@@ -727,6 +729,12 @@
     <Content Include="Areas\Admin\Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Areas\Admin\Views\ActionInfo\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\SettingDemo1\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\SettingDemo1\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\SettingDemo1\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\SettingDemo1\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\SettingDemo1\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\RoleInfo\Index.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.0.3.js" />
@@ -847,7 +855,6 @@
     <Folder Include="Areas\Admin\Views\Memcached\" />
     <Folder Include="Areas\Admin\Views\MenuInfo\" />
     <Folder Include="Areas\Admin\Views\Product\" />
-    <Folder Include="Areas\Admin\Views\RoleInfo\" />
     <Folder Include="Areas\Admin\Views\Search\" />
     <Folder Include="Log\" />
     <Folder Include="Models\" />
