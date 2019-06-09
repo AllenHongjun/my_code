@@ -11,6 +11,9 @@ namespace MVC.IDAL
     /// 用户权限关系接口
     /// 用户直接和权限关联(方便特殊情况简单操作。)
     /// 权限的功能可以设置的简单一些。
+    ///
+    /// 只要是一个实体就建立一个数据库访问层。
+    /// 除非是只有一个关系没有其他的字段的
     /// </summary>
     public interface IUserInfoActionDal:IBaseDal<R_UserInfo_ActionInfo>
     {

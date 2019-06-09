@@ -66,6 +66,7 @@
     <Compile Include="RoleDal.cs" />
     <Compile Include="SettingDal.cs" />
     <Compile Include="UserDal.cs" />
+    <Compile Include="UserInfoActionDal.cs" />
     <Compile Include="UserInfoDal.cs" />
     <Compile Include="VedioFileDal.cs" />
   </ItemGroup>

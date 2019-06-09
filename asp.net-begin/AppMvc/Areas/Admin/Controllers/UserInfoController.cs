@@ -19,8 +19,8 @@ namespace AppMvc.Areas.Admin.Controllers
         //只要效果能够做出来为主 优先 不管是什么方式
         //public UserInfoService UserInfoService { get; set; }
         public IUserInfoService UserInfoService { get; set; }
-
         public  IRoleService RoleService { get; set; }
+        public  IActionInfoService ActionInfoService { get; set; }
 
         public ActionResult Index()
         {
@@ -176,6 +176,136 @@ namespace AppMvc.Areas.Admin.Controllers
                 }).ToList();
             return Json(roleList, JsonRequestBehavior.AllowGet);
         }
+
+
+        #region 为用户分配角色
+        /// <summary>
+        /// 展示用户已经有的角色信息
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult ShowUserRoleInfo(int id)
+        {
+            /// 获取所有角色  用户已经有的角色都返回
+            /// 让已经有的角色打钩
+            /// 公司项目 每一个权限还有增加修改删除 增加了复杂度。
+            var userInfo = UserInfoService.LoadEntities(u => u.ID == id).FirstOrDefault();
+            short delFlag = (short)DeleteEnumType.Normal;
+            var allRoleList = RoleService.LoadEntities(r => r.DelFlag == delFlag)
+                .ToList();
+            var allUserRoleIdList = userInfo.Role.Select(r => r.ID).ToList();
+            ViewBag.AllRoleList = allRoleList;
+            ViewBag.AllUserRoleIdList = allUserRoleIdList;
+            ViewBag.UserInfo = userInfo;
+            return View();
+
+        }
+
+        /// <summary>
+        /// 为用户分配角色
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult SetUserRole(int userId)
+        {
+            //从提交的数据中 整合获得一个 角色的ID的数组
+            //循环一下 查询一下 导航一下 判断一下 返回一下 就可以了。
+            //获取所有表单元素name的属性值
+            string[] allKeys = Request.Form.AllKeys;
+            var roleIdList = new List<int>();
+            foreach (string key in allKeys)
+            {
+                if (key.StartsWith("cba_")
+                {
+                    string k = key.Replace("cba_", "");
+                    roleIdList.Add(Convert.ToInt32(k));
+                }
+            }
+
+            //为用户分配权限
+            var res = UserInfoService.SetUserRoleInfo(userId, roleIdList);
+            if (res)
+            {
+                return Json(new Result { code = 1, msg = "修改成功!" });
+            }
+            else
+            {
+                return Json(new Result { code = -1, msg = "修改失败!" });
+            }
+        } 
+        #endregion
+
+
+        /// <summary>
+        /// 展示用户的权限
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public ActionResult ShowUserAction(int userId)
+        {
+            var userInfo = UserInfoService.LoadEntities(u => u.ID == userId)
+                .FirstOrDefault();
+            short delFlag = (short) DeleteEnumType.Normal;
+            var allActionList = ActionInfoService.LoadEntities(x => x.DelFalg == delFlag).ToList();
+            var allUserActionList = (from action in userInfo.R_UserInfo_ActionInfo
+                select action).ToList();
+            //这里不需要通过角色过滤 只有验证的时候需要 合并去重复
+            ViewBag.UserInfo = userInfo;
+            ViewBag.AllActionList = allActionList;
+            ViewBag.AllUserActionList = allUserActionList;
+            return View();
+        }
+
+
+        /*分配权限有两种做法 没点击一次就分配一次
+          或者所有的一起 保存
+        */
+
+        /// <summary>
+        /// 每次打钩都为用户设置上权限
+        /// </summary>
+        /// <param name="actionId"></param>
+        /// <param name="userId"></param>
+        /// <param name="isPass"></param>
+        /// <returns></returns>
+        public ActionResult SetUserAction(int actionId,int userId,short isPass)
+        {
+            if (UserInfoService.SetUserActionInfo(actionId,userId,isPass))
+            {
+                return Json(new {code = 1, msg = "修改成功"});
+            }
+            else
+            {
+                return Json(new {code = -1, msg = "系统错误!"});
+            }
+        }
+
+        /// <summary>
+        /// 删除用户直接管理的权限
+        /// </summary>
+        /// <returns></returns>
+        //public ActionResult ClearActionResult(int actionId, int userId)
+        //{
+        //    var r_userInfo_actionInfo = R_UserInfo_ActionInfoService.LoadEntities(r => r.ActionInfoID == actionId && r.UserInfoID == userId).FirstOrDefault();
+        //    if (r_userInfo_actionInfo != null)
+        //    {
+        //        if (R_UserInfo_ActionInfoService.DeleteEntity(r_userInfo_actionInfo))
+        //        {
+        //            return Content("ok:删除成功!!");
+        //        }
+        //        else
+        //        {
+        //            return Content("ok:删除失败!!");
+        //        }
+        //    }
+        //    else
+        //    {
+        //        return Content("no:数据不存在!!");
+        //    }
+
+        //}
+        
+
+
+
 
 
         public ActionResult Test()

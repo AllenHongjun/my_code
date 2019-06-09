@@ -29,5 +29,24 @@ namespace MVC.IBLL
         /// <param name="list">删除用户的ID集合</param>
         /// <returns></returns>
         bool DeleteEntities(List<int> list);
+
+
+        /// <summary>
+        /// 为用户分配角色
+        /// </summary>
+        /// <param name="userId">用户ID</param>
+        /// <param name="roleIdList">要分配的角色ID的集合</param>
+        /// <returns></returns>
+        bool SetUserRoleInfo(int userId, List<int> roleIdList);
+
+
+        /// <summary>
+        /// 直接为用户分配权限
+        /// </summary>
+        /// <param name="actionId">权限ID</param>
+        /// <param name="userId">用户ID</param>
+        /// <param name="isPass">1启用 2禁用</param>
+        /// <returns></returns>
+        bool SetUserActionInfo(int actionId, int userId, short isPass);
     }
 }

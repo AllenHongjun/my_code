@@ -144,8 +144,36 @@ namespace AppMvc.Areas.Admin.Controllers
         }
 
 
-        // 为角色分配权限 这个也算是一个难点吧。
+       
+        /// <summary>
+        /// 为角色分配权限 
+        /// </summary>
+        /// <param name="roleId">角色ID</param>
+        /// <returns></returns>
+        public ActionResult SetRoleAction(int roleId)
+        {
+            //获取表单元素所有name的属性值  这个也算是一个难点吧。
+            string[] allKeys = Request.Form.AllKeys;
+            var list = new List<int>();
+            foreach (var key in allKeys)
+            {
+                if (key.StartsWith("cba"))
+                {
+                    string k = key.Replace("cba_", "");
+                    list.Add(Convert.ToInt32(k));
+                }
+            }
 
+            if (RoleService.SetRoleAction(roleId,list))
+            {
+                return Content("ok");
+            }
+            else
+            {
+                return Content("no");
+            }
+
+        }
 
 
     }

@@ -93,6 +93,21 @@ namespace MVC.DALFactory
             set { _UserInfoDal = value; }
         }
 
+        private IUserInfoActionDal _userInfoActionDal;
+        public IUserInfoActionDal UserInfoActionDal
+        {
+            get
+            {
+                if (_userInfoActionDal == null)
+                {
+                    _userInfoActionDal = AbstractFactory.CreateUserInfoActionDal();
+                }
+
+                return _userInfoActionDal;
+            }
+            set { _userInfoActionDal = value; }
+        }
+
         /// <summary>
         /// 权限
         /// </summary>

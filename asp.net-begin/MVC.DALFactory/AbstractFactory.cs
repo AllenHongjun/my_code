@@ -51,6 +51,13 @@ namespace MVC.DALFactory
             string fullClassName = NameSpace + ".ActionInfoDal";
             return CreateInstance(fullClassName) as IActionInfoDal;
         }
+
+        public static IUserInfoActionDal CreateUserInfoActionDal()
+        {
+            //命名空间加上类名通过反射就可以创建出这个类的实例
+            string fullClassName = NameSpace + ".UserInfoActionDal";
+            return CreateInstance(fullClassName) as IUserInfoActionDal;
+        }
         /// <summary>
         /// 创建权限组的数据层实例
         /// </summary>

@@ -32,6 +32,8 @@ namespace MVC.IDAL
         /// </summary>
         IUserInfoDal UserInfoDal { get; set; }
 
+        IUserInfoActionDal UserInfoActionDal { get; set; }
+
         /// <summary>
         /// 角色
         /// </summary>
