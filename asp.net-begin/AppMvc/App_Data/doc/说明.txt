@@ -48,4 +48,7 @@
 -序列化类型为“System.Data.Entity.DynamicProxies
 .Role_9EE4940CDC889804C041E2245ADD2F67041A8BC3C2B7E5465C73CF9836868B13”的对象时检测到循环引用。
 
+. 需要安装memcached  
+. 我这个只是学习。。这个过程是如何来使用。。这个流程。。和实际开发还是有一定的差距的。
+
 

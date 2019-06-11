@@ -85,7 +85,13 @@ namespace AppMvc.Areas.Admin.Controllers
         /// <returns></returns>
         public ActionResult Detail(int id)
         {
-            var role = RoleService.LoadEntities(x => x.ID == id).FirstOrDefault();
+            var role = RoleService.LoadEntities(x => x.ID == id).Select(x=>new
+            {
+                x.ID,
+                x.RoleName,
+                x.Remark,
+                x.RoleType
+            }).FirstOrDefault();
             return Json(new Result {code = 1,data=role, msg = "获取成功"});
         }
 
