@@ -20,6 +20,8 @@ namespace swaggerUIdemo1
         public static string PublicClientId { get; private set; }
 
         // 有关配置身份验证的详细信息，请访问 https://go.microsoft.com/fwlink/?LinkId=301864
+
+        //就 建立一个很简单的项目  然后写一篇博客 .. github  博客也就都弄起来了.
         public void ConfigureAuth(IAppBuilder app)
         {
             // 将数据库上下文和用户管理器配置为对每个请求使用单个实例
