@@ -17,10 +17,16 @@ namespace BookService.Models
     
         public BookServiceContext() : base("name=BookServiceContext")
         {
+
+            // New code:  查看 EF生成的sql语句 调试 
+            this.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
         }
 
         public System.Data.Entity.DbSet<BookService.Models.Book> Books { get; set; }
 
         public System.Data.Entity.DbSet<BookService.Models.Author> Authors { get; set; }
     }
+
+
+
 }
