@@ -47,6 +47,8 @@ namespace ProductsApp.Controllers
 
             // 从 产品的集合当中查找 产品p.id == id 的第一条数据 或者 返回null 这个方法就是返回满足条件的第一条数据
             //自带过滤的功能  都是可以不用 where 看起来好像一个简单的东西。。其实 你不理解。。
+
+
             var product = products.FirstOrDefault((p) => p.Id == id);
             if (product == null)
             {
