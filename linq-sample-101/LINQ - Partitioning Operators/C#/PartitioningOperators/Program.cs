@@ -15,25 +15,25 @@ namespace PartitioningOperators
 
             //Comment or uncomment the method calls below to run or not
 
-              samples.Linq20(); // This sample uses Take to get only the first 3 elements of the array
+            //samples.Linq20(); // This sample uses Take to get only the first 3 elements of the array
 
             //samples.Linq21(); // This sample uses Take to get the first 3 orders from customers in Washington
 
             //samples.Linq22(); // This sample uses Skip to get all but the first four elements of the array
 
-            //samples.Linq23(); // This sample uses Take to get all but the first 2 orders from customers in Washington
+            samples.Linq23(); // This sample uses Take to get all but the first 2 orders from customers in Washington
 
             //samples.Linq24(); // This sample uses TakeWhile to return elements starting from the beginning of the array 
-                                // until a number is read whose value is not less than 6
+            // until a number is read whose value is not less than 6
 
             //samples.Linq25(); // This sample uses TakeWhile to return elements starting from the beginning of the array 
-                                // until a number is hit that is less than its position in the array
+            // until a number is hit that is less than its position in the array
 
             //samples.Linq26(); // This sample  uses SkipWhile to get the  elements of the array  starting from the first 
-                                // element divisible by 3
+            // element divisible by 3
 
-            //samples.Linq27(); // This sample  uses SkipWhile to get the  elements of the array  starting from the first 
-                                // element less than its position
+            samples.Linq27(); // This sample  uses SkipWhile to get the  elements of the array  starting from the first 
+            // element less than its position
         }
 
         public class Order
@@ -83,7 +83,7 @@ namespace PartitioningOperators
             public void Linq21()
             {
                 List<Customer> customers = GetCustomerList();
-
+                // 查询 华盛顿地区 所有用户的 所有订单
                 var first3WAOrders = (
                     from cust in customers
                     from order in cust.Orders
@@ -121,6 +121,7 @@ namespace PartitioningOperators
             {
                 List<Customer> customers = GetCustomerList();
 
+                // 可以取出数据  去个集合中字数据 然后 cross join   返回 华盛顿的订单 跳过 前面的两条订单 
                 var waOrders =
                     from cust in customers
                     from order in cust.Orders
