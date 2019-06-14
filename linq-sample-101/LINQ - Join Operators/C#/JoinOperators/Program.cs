@@ -15,29 +15,29 @@ namespace JoinOperators
 
             //Comment or uncomment the method calls below to run or not
 
-             // samples.Linq102(); // This sample shows how to perform a simple inner equijoin of two sequences to produce 
-                                 // a flat  result set  that consists  of each  element in suppliers that has a matching 
-                                 // element in customers
+            // samples.Linq102(); // This sample shows how to perform a simple inner equijoin of two sequences to produce 
+            // a flat  result set  that consists  of each  element in suppliers that has a matching 
+            // element in customers
 
             //samples.Linq103(); // A group join produces a hierarchical sequence.  The following query is an inner join 
-                                 // that produces a sequence of objects, each of which has a key and an inner sequence of 
-                                 // all matching elements
+            // that produces a sequence of objects, each of which has a key and an inner sequence of 
+            // all matching elements
 
-            //samples.Linq104(); // The group join operator is more general than join, as this slightly more verbose 
-                                 // version of the cross join sample shows
+            samples.Linq104(); // The group join operator is more general than join, as this slightly more verbose 
+                               // version of the cross join sample shows
 
-            samples.Linq105(); // For each customer in the table of customers, this query returns all the suppliers from 
-                                 // that same country,  or else a string  indicating  that no suppliers  from that country 
-                                 // were found
+            //samples.Linq105(); // For each customer in the table of customers, this query returns all the suppliers from 
+            // that same country,  or else a string  indicating  that no suppliers  from that country 
+            // were found
 
             //samples.Linq106(); // For each customer in the table of customers, this query returns all the suppliers from 
-                                 // that same country,  or else a string  indicating  that no suppliers  from that country 
-                                 // were found
+            // that same country,  or else a string  indicating  that no suppliers  from that country 
+            // were found
 
             //samples.Linq107(); // For each supplier in the table of suppliers, this query returns all the customers from 
-                                 // the same city and country,  or else a string  indicating  that no customers  from that 
-                                 // city/country were found.  Note the use of anonymous  types to encapsulate the multiple 
-                                 // key values
+            // the same city and country,  or else a string  indicating  that no customers  from that 
+            // city/country were found.  Note the use of anonymous  types to encapsulate the multiple 
+            // key values
         }
 
         public class Product
@@ -117,6 +117,7 @@ namespace JoinOperators
                 }
             }
 
+            //组联接等效于左外部联接，它返回第一个（左侧）数据源的每个元素（即使其他数据源中没有关联元素）。
             [Category("Join Operators")]
             [Description("A group join produces a hierarchical sequence. The following query is an inner join " +
                         " that produces a sequence of objects, each of which has a key and an inner sequence of all matching elements.")]
@@ -161,16 +162,20 @@ namespace JoinOperators
 
                 // linq 这种写法 帮你组合成sql语句 join  又分为 查询表达式 和 为 null 的情况。。 into ps 就是 帮你 把 所有组合的情况 
                 //有导航属性的写法 没有导航属性的写法  是什么样子的。。 1对多 的关联 如果我要左链接 应该如何 写 如果有导航属性 这个又应该怎么来写？？、
-                // 这个from  后面又接上一个 from这个如何来理解》》》
+                // 这个from  后面又接上一个 from这个如何来理解》》》  具体是想要一个什么样子的需求 要理解清楚 理解透彻 
+
+
                 var prodByCategory =
                     from cat in categories
                     join prod in products on cat equals prod.Category into ps
+
+                    // 这里链接的时候 ps是一个集合 在from p in ps 重新查询一下 问题就解决了。。 注意 这个ps 是一个产品集合 当 某一个分类相等的 集合数据
                     from p in ps
                     select new
                     {
                         Category = cat,
                         p.ProductName,
-                        cat.Length,
+                        catLength = cat.Length,
                         Count = ps.Count(),
                         p.UnitPrice,
                         pCategory = p.Category,
@@ -181,7 +186,7 @@ namespace JoinOperators
                 //这边就 使用viewmodel 的类型 然后 可以从这个集合中 在分页获取一下数据 然后 toList 再去查询一下数据库 
                 foreach (var item in prodByCategory)
                 {
-                    Console.WriteLine(item.ProductName + ": " + item.Category);
+                    Console.WriteLine(item.ProductName + ": " + item.Category +":"+item.catLength+":"+item.Count);
                 }
             }
             [Category("Join Operators")]
@@ -210,6 +215,11 @@ namespace JoinOperators
                 }
             }
 
+            // 遍历每一个客户 返回同一个国家 的所有供应商  和客户同一个国家的所有供应商 或者 返回 这个国家 没有找到供应商。。 JOIN GroupJoin的例子没有呀。。。
+            // 我日的。。  LINQ 投 entity  要安装 sqlserver 2017 安装 adventurework 然后才能调试。。 他要的就是 每一个渠道 每一个 站点 的左外链接 全部的 
+            // 使用sql 也会 只出来一条呀。。没有数据了 那还不是只有一条。。。1对1的连接 可以select 1对多的链接 如何投影 。。
+
+                //还没哟组合查询。。
             [Category("Join Operators")]
             [Description("For each customer in the table of customers, this query returns all the suppliers " +
                          "from that same country, or else a string indicating that no suppliers from that country were found.")]
@@ -237,6 +247,7 @@ namespace JoinOperators
                 }
             }
 
+            //请注意使用匿名类型来封装多个键值。
             [Category("Join Operators")]
             [Description("For each supplier in the table of suppliers, this query returns all the customers " +
                          "from the same city and country, or else a string indicating that no customers from that city/country were found. " +
@@ -246,6 +257,11 @@ namespace JoinOperators
                 List<Customer> customers = GetCustomerList();
                 List<Supplier> suppliers = GetSupplierList();
 
+                // 可使用 into 上下文关键字创建临时标识符，将 group、join 或 select 子句的结果存储至新标识符。 此标识符本身可以是附加查询命令的生成器。 有时称在 group 或 select 子句中使用新标识符为“延续”。 它这里de  join 智慧把 join 字句后面的对象存放懂啊临时的变量当中来使用
+
+                // 左外全部连接的效果 还是没有达到  左外连接 就是 一对一 才可以 1对多 左外连接 没法连接吗？？ 如果右边数据 为空肯定也只返回一条呀。
+
+                // 就这个 DeFaultIfEmpty()  然后就是要过滤一下条件  但是 返回 一个集合 你就要配合selectManay 
                 var supplierCusts =
                     from sup in suppliers
                     join cust in customers on new { sup.City, sup.Country } equals new { cust.City, cust.Country } into cs
@@ -261,7 +277,7 @@ namespace JoinOperators
 
                 foreach (var item in supplierCusts)
                 {
-                    Console.WriteLine("{0} ({1}, {2}): {3}", item.SupplierName, item.City, item.Country, item.CompanyName);
+                    Console.WriteLine("{0} ({1}, {2}):{3}", item.SupplierName, item.City, item.Country, item.CompanyName);
                 }
             }
 
