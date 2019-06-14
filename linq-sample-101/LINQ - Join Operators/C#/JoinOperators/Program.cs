@@ -19,14 +19,14 @@ namespace JoinOperators
                                  // a flat  result set  that consists  of each  element in suppliers that has a matching 
                                  // element in customers
 
-            samples.Linq103(); // A group join produces a hierarchical sequence.  The following query is an inner join 
+            //samples.Linq103(); // A group join produces a hierarchical sequence.  The following query is an inner join 
                                  // that produces a sequence of objects, each of which has a key and an inner sequence of 
                                  // all matching elements
 
             //samples.Linq104(); // The group join operator is more general than join, as this slightly more verbose 
                                  // version of the cross join sample shows
 
-            //samples.Linq105(); // For each customer in the table of customers, this query returns all the suppliers from 
+            samples.Linq105(); // For each customer in the table of customers, this query returns all the suppliers from 
                                  // that same country,  or else a string  indicating  that no suppliers  from that country 
                                  // were found
 

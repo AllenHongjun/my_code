@@ -15,28 +15,28 @@ namespace SetOperators
 
             //Comment or uncomment the method calls below to run or not
 
-              samples.Linq46(); // This sample uses Distinct to remove  duplicate  elements in a sequence of factors of 300
+            //samples.Linq46(); // This sample uses Distinct to remove  duplicate  elements in a sequence of factors of 300
 
             //samples.Linq47(); // This sample uses Distinct to find the unique Category names
 
-            //samples.Linq48(); // This sample uses Union to create  one sequence that contains the unique values from both 
-                                // arrays
+            samples.Linq48(); // This sample uses Union to create  one sequence that contains the unique values from both 
+            // arrays
 
             //samples.Linq49(); // This sample uses the Union method to create  one sequence that contains the unique first 
-                                // letter from both product and customer names. Union is only available through method 
-                                // syntax
+            // letter from both product and customer names. Union is only available through method 
+            // syntax
 
             //samples.Linq50(); // This sample uses Intersect to create one sequence that contains the common values shared 
-                                // by both arrays
+            // by both arrays
 
             //samples.Linq51(); // This sample uses Intersect  to create one sequence that contains the common first letter 
-                                // from both product and customer names
+            // from both product and customer names
 
             //samples.Linq52(); // This sample uses Except to create a sequence that contains the values from numbersA that 
-                                // are not also in numbersB
+            // are not also in numbersB
 
             //samples.Linq53(); // This sample uses Except to create one  sequence that contains the 1st letters of product 
-                                // names that are not also first letters of customer names
+            // names that are not also first letters of customer names
         }
 
         public class Product
@@ -81,6 +81,9 @@ namespace SetOperators
             {
                 int[] factorsOf300 = { 2, 2, 3, 5, 5 };
 
+                // 扩展方法 已经定义好了。。扩展方法内容 可以获得当前这个对象的内容。。 直接使用。  传递进去什么类型的集合 就返回什么类型的集合
+
+                // 筛选出 300 以内 不重复的素数
                 var uniqueFactors = factorsOf300.Distinct();
 
                 Console.WriteLine("Prime factors of 300:");
@@ -96,6 +99,19 @@ namespace SetOperators
             {
                 List<Product> products = GetProductList();
 
+                /*
+                 查询出当前所有商品不重复的分类
+
+                 linq 可以to object 可以方便很多东西
+
+                 研究透彻 这些demo   系列的博客 官方的文档。。
+
+                自己写代码调试。。
+
+                项目中 代码调试  
+
+                其他的知识点
+                 */
                 var categoryNames = (
                     from prod in products
                     select prod.Category)
