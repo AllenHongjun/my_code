@@ -6,6 +6,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Xml.Linq;
 
+/// <summary>
+/// 投影 运算符号
+/// </summary>
 namespace ProjectionOperators
 {
     class Program
@@ -15,7 +18,7 @@ namespace ProjectionOperators
             LinqSamples samples = new LinqSamples();
 
             // Comment or uncomment the method calls below to run or not
-            samples.DataSetLinq6();     // This sample uses select to produce a sequence of ints one higher than those in an existing array of ints.
+            //samples.DataSetLinq6();     // This sample uses select to produce a sequence of ints one higher than those in an existing array of ints.
             //samples.DataSetLinq7();     // This sample uses select to return a sequence of just the names of a list of products.
             //samples.DataSetLinq8();     // This sample uses select to produce a sequence of strings representing the text version of a sequence of ints.
             //samples.DataSetLinq9();     // This sample uses select to produce a sequence of the uppercase and lowercase versions of each word in the original array.
@@ -28,7 +31,7 @@ namespace ProjectionOperators
             //samples.DataSetLinq16();    // This sample uses a compound from clause to select all orders where the order was made in 1998 or later.
             //samples.DataSetLinq17();    // This sample uses a compound from clause to select all orders where order total is greater than 2000.00...
             //samples.DataSetLinq18();    // This sample uses multiple from clauses so that filtering on customers can be done before selecting their orders...
-            //samples.DataSetLinq19();    // This sample uses an indexed SelectMany clause to select all orders...
+            samples.DataSetLinq19();    // This sample uses an indexed SelectMany clause to select all orders...
         }
 
         private class LinqSamples
@@ -49,7 +52,7 @@ namespace ProjectionOperators
             {
 
                 var numbers = testDS.Tables["Numbers"].AsEnumerable();
-
+                // 赛选出所有的 值加1
                 var numsPlusOne =
                     from n in numbers
                     select n.Field<int>(0) + 1;
@@ -70,6 +73,7 @@ namespace ProjectionOperators
 
                 var productNames =
                     from p in products
+                    //  这个就可以 当中 p.ProductName 来理解  筛选出 数据中 所有商品的名字。
                     select p.Field<string>("ProductName");
 
                 Console.WriteLine("Product Names:");
@@ -88,6 +92,11 @@ namespace ProjectionOperators
                 var numbers = testDS.Tables["Numbers"].AsEnumerable();
                 string[] strings = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
 
+                // select 筛选数据。。 对几个中的每一个数据 进行处理。然后有 重新处理过的数据  重新返回一个新的集合
+                // 使用一个匿名的类 给 新的集合 添加自己定义的字段 
+                // 返回的集合 还是一个集合 。。可以当作一个子查询来裂解。。重新筛选新的数据返回。。
+
+                // 输出 每一个 数字 对应 的字符  特别注意 一下  这里 它使用 查询 表达式的方法  。。这个 你绝对 是不能着急 你绝世 着急  你绝世 弄不明白 
                 var textNums = numbers.Select(p => strings[p.Field<int>("number")]);
 
                 Console.WriteLine("Number strings:");
@@ -105,6 +114,13 @@ namespace ProjectionOperators
 
                 var words = testDS.Tables["Words"].AsEnumerable();
 
+
+                // select 之前 这个对象 有多少 数据 select 之后的 就可以有多少数据 但是 可以 添加 修改 删除 显示的字段。。
+                /*
+                 可以自己定义 想显示什么字段 就显示什么字段。。
+                 EF LINQ ADO.NET SQLserver  显示 所有的 大写字母 显示 所有的 小写字母   查询表达式 
+                 
+                 */
                 var upperLowerWords = words.Select(p => new
                 {
                     Upper = (p.Field<string>(0)).ToUpper(),
@@ -129,7 +145,9 @@ namespace ProjectionOperators
 
                 var digitOddEvens = numbers.
                     Select(n => new
-                    {
+                    {   
+
+                        //  这个数字 二维数组中的数据 是如何获取的？？
                         Digit = digits.Rows[n.Field<int>("number")]["digit"],
                         Even = (n.Field<int>("number") % 2 == 0)
                     });
@@ -170,7 +188,7 @@ namespace ProjectionOperators
                          "in an array match their position in the array.")]
             public void DataSetLinq12()
             {
-
+                // 判断 每一个数字 是否 和他的 位置的大小 是一致的。。  select 这种方法 里面 都有一个index
                 var numbers = testDS.Tables["Numbers"].AsEnumerable();
 
                 var numsInPlace = numbers.Select((num, index) => new
@@ -193,11 +211,13 @@ namespace ProjectionOperators
             {
 
                 var numbers = testDS.Tables["Numbers"].AsEnumerable();
+                //数字 使用 字符来表示
                 var digits = testDS.Tables["Digits"];
 
                 var lowNums =
                     from n in numbers
                     where n.Field<int>("number") < 5
+                    // 就理解为 第几行 第几列的方法。。 数字 1 对应处理结果的值 程序的执行 流程 执行步骤 
                     select digits.Rows[n.Field<int>("number")].Field<string>("digit");
 
                 Console.WriteLine("Numbers < 5:");
@@ -218,9 +238,14 @@ namespace ProjectionOperators
                 var numbersB = testDS.Tables["NumbersB"].AsEnumerable();
 
                 var pairs =
+                    // 这个 两个 from 连起来 写 这个怎么理解
                     from a in numbersA
                     from b in numbersB
-                    where a.Field<int>("number") < b.Field<int>("number")
+                    where a.Field<int>("number") < b.Field<int>("number") 
+                   //就是一个cross join 之前 的join from from  就都是组合 数据 然后再筛选 
+
+                    // 显示 笛卡尔积  然后 是 join 的集合 1对1  对多 多对多。。 left join 的集合数据 
+                    // 返回 集合 a 当中 比 集合 笔 小的 所有 数据集合
                     select new { a = a.Field<int>("number"), b = b.Field<int>("number") };
 
                 Console.WriteLine("Pairs where a < b:");
@@ -238,7 +263,9 @@ namespace ProjectionOperators
 
                 var customers = testDS.Tables["Customers"].AsEnumerable();
                 var orders = testDS.Tables["Orders"].AsEnumerable();
+                // 可以先计算出 每一个订单的 总额 然后 根据 订单的 总额 连接上 订单 。。然后返回订单 的列表。。
 
+                // 对投影之前的数据 是什么样子 的要有一个概念 。。 熟练 数据 查询 和使用。。精通存储过程。。
                 var smallOrders =
                     from c in customers
                     from o in orders
@@ -254,12 +281,15 @@ namespace ProjectionOperators
                 ObjectDumper.Write(smallOrders);
             }
 
+            // 数据层 数据筛选 数据查询 分组 连接 查询 linq  查询 表达式 能问题 自己能尽力解决  
+
+            // 还有那一些 查询 如何 追捕 这些差距 。。别人 说的 不能全相信 也不能 不信 
             [Category("Projection Operators")]
             [Description("This sample uses a compound from clause to select all orders where the " +
                          "order was made in 1998 or later.")]
             public void DataSetLinq16()
             {
-
+                //筛选出  每一个用户 在1998年 1月1日之后 下单 的结果 全部求出来。
                 var customers = testDS.Tables["Customers"].AsEnumerable();
                 var orders = testDS.Tables["Orders"].AsEnumerable();
 
@@ -287,7 +317,7 @@ namespace ProjectionOperators
 
                 var customers = testDS.Tables["Customers"].AsEnumerable();
                 var orders = testDS.Tables["Orders"].AsEnumerable();
-
+                // 求出 每一个 顾客 下单 操作 2000元的订单  一个 顾客 可能有多个订单  这个是典型的一 对多的 关系 但是 这个不是 左外连接   
                 var myOrders =
                     from c in customers
                     from o in orders
@@ -311,6 +341,9 @@ namespace ProjectionOperators
                 DateTime cutoffDate = new DateTime(1997, 1, 1);
 
                 var myOrders =
+
+                    // 注意 一下  这个 两个 from 字句 祝贺 那个 才是一个增提。。。要使用就集合 的子类   注意 一下 两个 from  就会 祝贺一个笛卡尔积 
+                    // 哪些是可以拆出来  哪些是可以组合起来的。。。  有一开内容 是自己使用的熟练 的。。
                     from c in customers
                     where c.Field<string>("Region") == "WA"
                     from o in orders
@@ -321,6 +354,10 @@ namespace ProjectionOperators
                 ObjectDumper.Write(myOrders);
             }
 
+
+            // selectMany 子句的使用 用户退款。。首先 你要决定 这个 两个集合 是什么关系 1对多 1对1  还是多对多 。。 多对多的肯定是有一个中间的关系表。。
+
+            // 相关子查询  对sectc manay 稍微有了一点理解。。这个 例子 说的也不是 很多。。但是 确定 这些例子还是不错的。。
             [Category("Projection Operators")]
             [Description("This sample uses an indexed SelectMany clause to select all orders, " +
                          "while referring to customers by the order in which they are returned " +
@@ -334,6 +371,14 @@ namespace ProjectionOperators
                 var customerOrders =
                     customers.SelectMany(
                         (cust, custIndex) =>
+                        // 先筛选 每一个用户的 订单 然后 根据每一个用户 1对多  组合成一个集合 。。 如何 组合 想要什么数据 就要什么数据
+
+                        // selectManay 其实就自带了 join 的作用。。  这个 lamda 表达式的结果 就是 我们 要 要的类型 自己自己全部定义
+
+                        // 如果 linq  sql 的查询弄熟练的话 也会自信很多。。这个多加强。。 反过来  先求出 订单列表 中 某一个客户的订单 然后祝贺起来 
+
+                        // 这个也可以求出 每一个 关联用户的订单信息  有很多方法  方法 有不同的 重载 注意 一下 不同 的重载 使用 也是不同的。。
+                        // 是根据lamda b表达式 当中返回的结果来推断类型的
                         orders.Where(o => cust.Field<string>("CustomerID") == o.Field<string>("CustomerID"))
                             .Select(o => new { CustomerIndex = custIndex + 1, OrderID = o.Field<int>("OrderID") }));
 
@@ -352,7 +397,14 @@ namespace ProjectionOperators
     internal class TestHelper
     {
         internal static DataSet CreateTestDataset()
-        {
+        {   
+
+            /*
+             dataSet 就可以理解一个 一些表的集合
+             dataTable 
+             row
+             culoms 列 
+             */ 
             DataSet ds = new DataSet();
 
             // Customers Table
