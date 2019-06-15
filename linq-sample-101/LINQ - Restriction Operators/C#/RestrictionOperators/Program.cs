@@ -6,6 +6,9 @@ using System.ComponentModel;
 using System.IO;
 using System.Xml.Linq;
 
+/// <summary>
+/// 限制 运算符  restriction operators  restriction opreators    调试一下 这个 就搞定了。。就变成自己的代码了 nice
+/// </summary>
 namespace RestrictionOperators
 {
     class Program
@@ -16,28 +19,38 @@ namespace RestrictionOperators
 
             //Comment or uncomment the method calls below to run or not
 
-              samples.Linq1(); // This sample  uses the where clause  to find all elements  of an array with a value 
-                               // less than 5
+            //samples.Linq1(); // This sample  uses the where clause  to find all elements  of an array with a value 
+            // less than 5
 
             //samples.Linq2(); // This sample uses the where clause to find all products that are out of stock
 
-            //samples.Linq3(); // This sample uses the where clause to find all products that are in  stock and cost 
-                               // more than 3.00 per unit
+            samples.Linq3(); // This sample uses the where clause to find all products that are in  stock and cost 
+            // more than 3.00 per unit
 
             //samples.Linq4(); // This sample uses the where  clause to find all customers in Washington and then it 
-                               // uses a foreach loop to iterate over the orders collection that belongs to each 
-                               // customer
+            // uses a foreach loop to iterate over the orders collection that belongs to each 
+            // customer
 
             //samples.Linq5(); // This sample demonstrates an indexed where clause that returns digits whose name is 
-                               // shorter than their value
+            // shorter than their value
         }
 
         public class Product
-        {
+        {   
+            /// <summary>
+            /// 产品的ID
+            /// </summary>
             public int ProductID { get; set; }
             public string ProductName { get; set; }
             public string Category { get; set; }
+            /// <summary>
+            /// 商品的单价
+            /// </summary>
             public decimal UnitPrice { get; set; }
+
+            /// <summary>
+            /// UnitsInStock 
+            /// </summary>
             public int UnitsInStock { get; set; }
         }
 
@@ -67,6 +80,7 @@ namespace RestrictionOperators
             private List<Product> productList;
             private List<Customer> customerList;
 
+            /* clause where 条件 条款 字句   */
             [Description("This sample uses the where clause to find all elements of an array with a value less than 5.")]
             public void Linq1()
             {
@@ -76,7 +90,7 @@ namespace RestrictionOperators
                     from num in numbers
                     where num < 5
                     select num;
-
+                // 测试了一下 这个顺序是 按照  数组中 原来排列的顺序来的。。
                 Console.WriteLine("Numbers < 5:");
                 foreach (var x in lowNums)
                 {
@@ -93,7 +107,7 @@ namespace RestrictionOperators
                     from prod in products
                     where prod.UnitsInStock == 0
                     select prod;
-
+                // 筛选出所有库存量为0 的 商品
                 Console.WriteLine("Sold out products:");
                 foreach (var product in soldOutProducts)
                 {
@@ -147,6 +161,11 @@ namespace RestrictionOperators
             {
                 string[] digits = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
 
+                /*
+                 where 是过滤集合中的每一个元素 会把 不满足条件的 元素 过滤掉。。
+                 0- 9 的单词 单词的长度 要比 它的值更加小的  单词 筛选出来。  where 的条件 第二个 参数 是一个索引
+
+                 */
                 var shortDigits = digits.Where((digit, index) => digit.Length < index);
 
                 Console.WriteLine("Short digits:");

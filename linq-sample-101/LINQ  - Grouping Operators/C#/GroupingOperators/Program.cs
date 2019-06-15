@@ -15,12 +15,12 @@ namespace GroupingOperators
             LinqSamples samples = new LinqSamples();
 
             // Comment or uncomment the method calls below to run or not
-            samples.DataSetLinq40();    // This sample uses group by to partition a list of numbers by their remainder when divided by 5.
+            //samples.DataSetLinq40();    // This sample uses group by to partition a list of numbers by their remainder when divided by 5.
             //samples.DataSetLinq41();    // This sample uses group by to partition a list of words by their first letter.
             //samples.DataSetLinq42();    // This sample uses group by to partition a list of products by category.
             //samples.DataSetLinq43();    // This sample uses group by to partition a list of each customer's orders, first by year, and then by month.
             //samples.DataSetLinq44();    // This sample uses GroupBy to partition trimmed elements of an array using a custom comparer that matches words that are anagrams of each other.
-            //samples.DataSetLinq45();    // This sample uses GroupBy to partition trimmed elements of an array using a custom comparer that matches words that are anagrams of each other, and then converts the results to uppercase.
+            samples.DataSetLinq45();    // This sample uses GroupBy to partition trimmed elements of an array using a custom comparer that matches words that are anagrams of each other, and then converts the results to uppercase.
         }
 
         private class LinqSamples
@@ -37,12 +37,17 @@ namespace GroupingOperators
                         "their remainder when divided by 5.")]
             public void DataSetLinq40()
             {
-
+                //    int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+                // 根据除以 5的余数进行分组
                 var numbers = testDS.Tables["Numbers"].AsEnumerable();
 
                 var numberGroups =
                     from n in numbers
                     group n by n.Field<int>("number") % 5 into g
+
+                    // 第一个就是分组的 key 值  第二个就是 分组的集合类型的数据  集合外面 又报了一个结合 IGroup() 这个类型如何来理解 
+
+                    // 分组的数据 如何来投影  into g  就是 分组 投影 选择操作后一个一个数据集合 全部放到了 g当中。。 g 就是一个分组的数据 
                     select new { Remainder = g.Key, Numbers = g };
 
                 foreach (var g in numberGroups)
@@ -60,12 +65,21 @@ namespace GroupingOperators
                          "their first letter.")]
             public void DataSetLinq41()
             {
+                // IGroup 又没有实现 IDictionary 摘要也说了 可以 有公共的键。。
+                //string[] words = { "blueberry", "chimpanzee", "abacus", "banana", "apple", "cheese" };
+
+                // 分组 又 实现统计 。。  根据分组获得的数据是 可以 toDictionary 的 。。但是   ==》 如何应用到实际的代码中 。实际的代码 中是如何写的。
+                // 和EF 结合 的代码 又是怎么样子的。。 分组和排序 和连接 如何结合 顺序是什么样子的 如何  琢磨 研究 
+
+                // C# 这个 Linq 的分组 和 join 看的真的是有些蛋疼。。
 
                 var words4 = testDS.Tables["Words4"].AsEnumerable();
 
                 var wordGroups =
                     from w in words4
                     group w by w.Field<string>("word")[0] into g
+                    //orderby g.LastOrDefault().Field<string>("word")
+                    orderby g.Key descending
                     select new { FirstLetter = g.Key, Words = g };
 
                 foreach (var g in wordGroups)
@@ -74,6 +88,7 @@ namespace GroupingOperators
                     foreach (var w in g.Words)
                     {
                         Console.WriteLine(w.Field<string>("word"));
+                        //Console.WriteLine(w.HasErrors);
                     }
                 }
             }
@@ -90,6 +105,10 @@ namespace GroupingOperators
                     group p by p.Field<string>("Category") into g
                     select new { Category = g.Key, Products = g };
 
+                    // 分组之后 p 就点出出来了。。  分组的键 和 里面单条的数据组合成一个 IGrouping     ，， 使用 分组的键  和  分组的数据集合 有 这和 IGrouping 的枚举 
+                    // 但是要注意 IGrouping 是不能够被枚举的。。
+                    //select new { Category = p , Products = g };
+
                 foreach (var g in productGroups)
                 {
                     Console.WriteLine("Category: {0}", g.Category);
@@ -100,6 +119,7 @@ namespace GroupingOperators
                 }
             }
 
+            // 使用 group by 对客户的订单 先 进行用月分组 然后进行用年分组。。
             [Category("Grouping Operators")]
             [Description("This sample uses group by to partition a list of each customer's orders, " +
                          "first by year, and then by month.")]
@@ -172,7 +192,7 @@ namespace GroupingOperators
                          "a custom comparer that matches words that are anagrams of each other.")]
             public void DataSetLinq44()
             {
-
+                //string[] anagrams = { "from   ", " salt", " earn ", "  last   ", " near ", " form  " };
                 var anagrams = testDS.Tables["Anagrams"].AsEnumerable();
 
                 var orderGroups = anagrams.GroupBy(w => w.Field<string>("anagram").Trim(), new AnagramEqualityComparer());
@@ -187,6 +207,9 @@ namespace GroupingOperators
                 }
             }
 
+
+            // GroupJoin 和 GroupBy 是一点关系都没有的。。  如何筛选 过滤 选择  分组 连接 组合出我们想要的数据。。这个要多训练 。。有空就可以坐下这个事情。。
+
             [Category("Grouping Operators")]
             [Description("This sample uses GroupBy to partition trimmed elements of an array using " +
                          "a custom comparer that matches words that are anagrams of each other, " +
@@ -198,6 +221,7 @@ namespace GroupingOperators
 
                 var orderGroups = anagrams.GroupBy(
                     w => w.Field<string>("anagram").Trim(),
+                    // 要映射的 数据处理
                     a => a.Field<string>("anagram").ToUpper(),
                     new AnagramEqualityComparer()
                     );

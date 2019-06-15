@@ -15,42 +15,42 @@ namespace OrderingOperators
 
             //Comment or uncomment the method calls below to run or not
 
-              samples.Linq28(); // This sample uses orderby to sort a list of words alphabetically
+            //samples.Linq28(); // This sample uses orderby to sort a list of words alphabetically
 
             //samples.Linq29(); // This sample uses orderby to sort a list of words by length
 
             //samples.Linq30(); // This sample uses orderby to sort a list of products by name. Use the \"descending\" 
-                                // keyword at the end of the clause to perform a reverse ordering
+            // keyword at the end of the clause to perform a reverse ordering
 
-            //samples.Linq31(); // This sample uses an  OrderBy clause with a custom comparer to do a case-insensitive 
-                                // sort of the words in an array
+            samples.Linq31(); // This sample uses an  OrderBy clause with a custom comparer to do a case-insensitive 
+            // sort of the words in an array
 
             //samples.Linq32(); // This sample uses  orderby and  descending to sort a list of doubles from highest to 
-                                // lowest
+            // lowest
 
             //samples.Linq33(); // This sample uses  orderby to sort a list of products by units in stock from highest 
-                                // to lowest
+            // to lowest
 
             //samples.Linq34(); // This sample uses method syntax to call OrderByDescending  because it enables you to 
-                                // use a custom comparer
+            // use a custom comparer
 
             //samples.Linq35(); // This sample uses a compound  orderby to  sort a list of digits,  first by length of 
-                                // their name, and then alphabetically by the name itself
+            // their name, and then alphabetically by the name itself
 
             //samples.Linq36(); // The first query in this sample uses method syntax to call OrderBy and ThenBy with a 
-                                // custom comparer to sort first by word length and then by a case-insensitive sort of 
-                                // the words in an array.  The second two queries show another way to perform the same 
-                                // task
+            // custom comparer to sort first by word length and then by a case-insensitive sort of 
+            // the words in an array.  The second two queries show another way to perform the same 
+            // task
 
             //samples.Linq37(); // This sample uses a compound  orderby to sort a list of products,  first by category, 
-                                // and then by unit price, from highest to lowest
+            // and then by unit price, from highest to lowest
 
             //samples.Linq38(); // This sample uses an OrderBy and a ThenBy clause with a custom comparer to sort first 
-                                // by word length and  then by a case-insensitive  descending  sort of  the words in an 
-                                // array
+            // by word length and  then by a case-insensitive  descending  sort of  the words in an 
+            // array
 
             //samples.Linq39(); // This sample uses Reverse to  create a list of  all digits in the  array whose second 
-                                // letter is 'i' that is reversed from the order in the original array
+            // letter is 'i' that is reversed from the order in the original array
         }
 
         public class Product
@@ -117,7 +117,9 @@ namespace OrderingOperators
                 ObjectDumper.Write(sortedProducts);
             }
 
-            // Custom comparer for use with ordering operators
+            // Custom comparer for use with ordering operators  
+
+            // 自定义比较器  使用。。
             public class CaseInsensitiveComparer : IComparer<string>
             {
                 public int Compare(string x, string y)
@@ -130,7 +132,9 @@ namespace OrderingOperators
             [Description("This sample uses an OrderBy clause with a custom comparer to " +
                          "do a case-insensitive sort of the words in an array.")]
             public void Linq31()
-            {
+            {   
+
+                // 字符串 比较分类。。
                 string[] words = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
 
                 var sortedWords = words.OrderBy(a => a, new CaseInsensitiveComparer());
@@ -193,6 +197,7 @@ namespace OrderingOperators
 
                 var sortedDigits =
                     from digit in digits
+                    // 排序条件 两个 
                     orderby digit.Length, digit
                     select digit;
 
@@ -213,6 +218,8 @@ namespace OrderingOperators
 
                 var sortedWords =
                     words.OrderBy(a => a.Length)
+
+                    //order by  ThenBy 就可以很容易的 写出阿里
                          .ThenBy(a => a, new CaseInsensitiveComparer());
 
                 // Another way. TODO is this use of ThenBy correct? It seems to work on this sample array.

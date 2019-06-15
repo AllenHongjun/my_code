@@ -15,28 +15,28 @@ namespace SetOperators
 
             //Comment or uncomment the method calls below to run or not
 
-              samples.Linq46(); // This sample uses Distinct to remove  duplicate  elements in a sequence of factors of 300
+            //samples.Linq46(); // This sample uses Distinct to remove  duplicate  elements in a sequence of factors of 300
 
             //samples.Linq47(); // This sample uses Distinct to find the unique Category names
 
             //samples.Linq48(); // This sample uses Union to create  one sequence that contains the unique values from both 
-                                // arrays
+            // arrays
 
-            //samples.Linq49(); // This sample uses the Union method to create  one sequence that contains the unique first 
-                                // letter from both product and customer names. Union is only available through method 
-                                // syntax
+            samples.Linq49(); // This sample uses the Union method to create  one sequence that contains the unique first 
+            // letter from both product and customer names. Union is only available through method 
+            // syntax
 
             //samples.Linq50(); // This sample uses Intersect to create one sequence that contains the common values shared 
-                                // by both arrays
+            // by both arrays
 
             //samples.Linq51(); // This sample uses Intersect  to create one sequence that contains the common first letter 
-                                // from both product and customer names
+            // from both product and customer names
 
             //samples.Linq52(); // This sample uses Except to create a sequence that contains the values from numbersA that 
-                                // are not also in numbersB
+            // are not also in numbersB
 
             //samples.Linq53(); // This sample uses Except to create one  sequence that contains the 1st letters of product 
-                                // names that are not also first letters of customer names
+            // names that are not also first letters of customer names
         }
 
         public class Product
@@ -81,6 +81,10 @@ namespace SetOperators
             {
                 int[] factorsOf300 = { 2, 2, 3, 5, 5 };
 
+                // 扩展方法 已经定义好了。。扩展方法内容 可以获得当前这个对象的内容。。 直接使用。  传递进去什么类型的集合 就返回什么类型的集合
+
+                // 筛选出 300 以内 不重复的素数   join Cross join GroupBy 相对还好理解 select 里面 又包含select 的时候 这个执行顺序是什么样子的。？？
+                // 差集 交集 去重 并集  其他两个使用不是很多。。现在这个用法
                 var uniqueFactors = factorsOf300.Distinct();
 
                 Console.WriteLine("Prime factors of 300:");
@@ -96,6 +100,19 @@ namespace SetOperators
             {
                 List<Product> products = GetProductList();
 
+                /*
+                 查询出当前所有商品不重复的分类
+
+                 linq 可以to object 可以方便很多东西
+
+                 研究透彻 这些demo   系列的博客 官方的文档。。
+
+                自己写代码调试。。
+
+                项目中 代码调试  
+
+                其他的知识点
+                 */
                 var categoryNames = (
                     from prod in products
                     select prod.Category)
@@ -111,11 +128,14 @@ namespace SetOperators
             [Category("Set Operators")]
             [Description("This sample uses Union to create one sequence that contains the unique values " +
                          "from both arrays.")]
+
+            // union 会帮你自动过滤重复的数据。。数据库中要union 的话就需要 浙两个表的 字段 是一模一样的。。或者 你要筛选出一样的字段才可以
             public void Linq48()
             {
                 int[] numbersA = { 0, 2, 4, 5, 6, 8, 9 };
                 int[] numbersB = { 1, 3, 5, 7, 8 };
 
+                // 连接两个集合
                 var uniqueNumbers = numbersA.Union(numbersB);
 
                 Console.WriteLine("Unique numbers from both arrays:");
@@ -140,7 +160,7 @@ namespace SetOperators
                     from cust in customers
                     select cust.CompanyName[0];
 
-                var uniqueFirstChars = productFirstChars.Union(customerFirstChars);
+                var uniqueFirstChars = productFirstChars.Union(customerFirstChars).OrderBy(x=>x);
 
                 Console.WriteLine("Unique first letters from Product names and Customer names:");
                 foreach (var ch in uniqueFirstChars)
