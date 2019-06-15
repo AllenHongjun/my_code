@@ -575,6 +575,7 @@
     <Content Include="Custom\Themes\Standard\src\css\font-awesome.min.css" />
     <Content Include="Custom\Themes\Standard\src\css\styles.min.css" />
     <Content Include="Custom\Themes\Standard\src\fonts\fontawesome-webfont.svg" />
+    <Content Include="Custom\Themes\Standard\src\img\logo2.jpg" />
     <Content Include="Custom\Themes\Standard\src\img\logo.png" />
     <Content Include="Custom\Themes\Standard\src\js\bootstrap.min.js" />
     <Content Include="Custom\Themes\Standard\src\js\custom.js" />
@@ -609,6 +610,7 @@
     <Content Include="Custom\Widgets\TagCloud\widget.xml" />
     <Content Include="Custom\Widgets\TextBox\screenshot.png" />
     <Content Include="Custom\Widgets\TextBox\widget.xml" />
+    <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="FrontPageExample.aspx" />
