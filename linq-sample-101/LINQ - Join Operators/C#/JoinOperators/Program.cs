@@ -19,14 +19,14 @@ namespace JoinOperators
                                  // a flat  result set  that consists  of each  element in suppliers that has a matching 
                                  // element in customers
 
-            samples.Linq103(); // A group join produces a hierarchical sequence.  The following query is an inner join 
+            //samples.Linq103(); // A group join produces a hierarchical sequence.  The following query is an inner join 
                                  // that produces a sequence of objects, each of which has a key and an inner sequence of 
                                  // all matching elements
 
-            //samples.Linq104(); // The group join operator is more general than join, as this slightly more verbose 
+           // samples.Linq104(); // The group join operator is more general than join, as this slightly more verbose 
                                  // version of the cross join sample shows
 
-            //samples.Linq105(); // For each customer in the table of customers, this query returns all the suppliers from 
+            samples.Linq105(); // For each customer in the table of customers, this query returns all the suppliers from 
                                  // that same country,  or else a string  indicating  that no suppliers  from that country 
                                  // were found
 
@@ -76,17 +76,53 @@ namespace JoinOperators
             public string Country { get; set; }
         }
 
+
+        /*
+         *一个客户有多个订单  一个订单对应一个客户
+         *一个产品对应一个分类  一个分类下有多个产品
+         *一个客户 有一个或者多个供应商  或者没有供应商  一个供应商下 有多个客户
+         */
         public class Customer
-        {
+        {   
+            /// <summary>
+            /// 客户ID
+            /// </summary>
             public string CustomerID { get; set; }
+            /// <summary>
+            /// 客户 公司名称
+            /// </summary>
             public string CompanyName { get; set; }
+            /// <summary>
+            /// 客户地址
+            /// </summary>
             public string Address { get; set; }
+            /// <summary>
+            /// 客户所在城市
+            /// </summary>
             public string City { get; set; }
+            /// <summary>
+            /// 客户所在区域 可以为空
+            /// </summary>
             public string Region { get; set; }
+            /// <summary>
+            /// 邮政编码
+            /// </summary>
             public string PostalCode { get; set; }
+            /// <summary>
+            /// 国家
+            /// </summary>
             public string Country { get; set; }
+            /// <summary>
+            /// 手机号
+            /// </summary>
             public string Phone { get; set; }
+            /// <summary>
+            /// 传真
+            /// </summary>
             public string Fax { get; set; }
+            /// <summary>
+            /// 订单 
+            /// </summary>
             public Order[] Orders { get; set; }
         }
 
@@ -195,13 +231,19 @@ namespace JoinOperators
                 var supplierCusts =
                     from sup in suppliers
                     join cust in customers on sup.Country equals cust.Country into cs
+                    //如果没有元素就 保留为空  是整个元素保留为空
+                    // 这个查询结果 是什么意思 如何来查询 这个查询的结果 
+                    // 所有的连接的结果 都合并到 一个集合当中 然后遍历 这个新的集合 。然后筛选出一个 新的序列。。 查询方法 又是不一样的。。
                     from c in cs.DefaultIfEmpty()  // DefaultIfEmpty preserves left-hand elements that have no matches on the right side 
                     orderby sup.SupplierName
                     select new
                     {
-                        Country = sup.Country,
+                        
+
+                        //然后再判断 元素是否为空 是的话 就显示 没有东西 。否则就 显示 元素的名字。。
                         CompanyName = c == null ? "(No customers)" : c.CompanyName,
-                        SupplierName = sup.SupplierName
+                        SupplierName = sup.SupplierName,
+                        Country = sup.Country
                     };
 
                 foreach (var item in supplierCusts)
