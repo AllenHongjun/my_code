@@ -85,5 +85,11 @@ namespace AppMvc
 
 
         }
+
+
+        //protected override void Application_BeginRequest(object sender, EventArgs e)
+        //{
+        //    if (Context.Request.FilePath == "/") Context.RewritePath("index.html");
+        //}
     }
 }

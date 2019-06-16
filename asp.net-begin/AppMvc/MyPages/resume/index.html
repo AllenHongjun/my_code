@@ -1,0 +1,445 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="renderer" content="webkit">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>[简历]Allen-.NET开发工程师/金华</title>
+    <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/css/typo.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+    <script>
+        function loading() {
+            document.getElementsByClassName('avatar')[0].style.display = 'block';
+            document.getElementsByClassName('loading')[0].style.display = 'none';
+        }
+    </script>
+</head>
+<body>
+    <header class="header"></header>
+    <article class="container">
+        <section class="side" id="side">
+            <!-- 左栏固定开关，记得及时删除这段代码 Start-->
+            <label class="switch" style="display: none;" onchange="switchFixed()">
+                <script type="text/javaScript">
+                    function switchFixed() {
+                        var value = document.getElementById('side').style.position === 'fixed' ? 'absolute' : 'fixed';
+                        document.getElementById('side').style.position = value;
+                    }
+                </script>
+                <input id="cb" type="checkbox">
+                <span class="slider round"></span>
+            </label>
+            <style>
+
+                @media (min-width: 414px) {
+                    .switch {
+                        position: relative;
+                        display: inline-block !important;
+                        width: 60px;
+                        height: 34px;
+                    }
+
+                        .switch input {
+                            display: none;
+                        }
+
+                    .slider {
+                        position: absolute;
+                        cursor: pointer;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        background-color: #ccc;
+                        -webkit-transition: .4s;
+                        transition: .4s;
+                    }
+
+                        .slider:before {
+                            position: absolute;
+                            content: "";
+                            height: 26px;
+                            width: 26px;
+                            left: 4px;
+                            bottom: 4px;
+                            background-color: white;
+                            -webkit-transition: .4s;
+                            transition: .4s;
+                        }
+
+                    input:checked + .slider {
+                        background-color: #1abc9c;
+                    }
+
+                    input:focus + .slider {
+                        box-shadow: 0 0 1px #1abc9c;
+                    }
+
+                    input:checked + .slider:before {
+                        -webkit-transform: translateX(26px);
+                        -ms-transform: translateX(26px);
+                        transform: translateX(26px);
+                    }
+
+                    .slider.round {
+                        border-radius: 34px;
+                    }
+
+                        .slider.round:before {
+                            border-radius: 50%;
+                        }
+                }
+            </style>
+            <!-- 左侧固定开关，记得及时删除这段代码 End-->
+            <!-- 个人肖像 -->
+            <section class="me">
+                <section class="portrait">
+                    <div class="loading">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <!-- 头像照片 -->
+                    <img class="avatar" src="assets/images/avater-2.jpg" onload="loading()">
+                </section>
+                <h1 class="name">Allen</h1>
+                <h4 class="info-job">.NET开发工程师 / 金华</h4>
+            </section>
+            <!-- 基本信息 -->
+            <section class="profile info-unit">
+                <h2>
+                    <i class="fa fa-user" aria-hidden="true"></i>基本信息
+                </h2>
+                <hr />
+                <ul>
+                    <li>
+                        <label>个人信息</label>
+                        <span>Allen / 男 / 91年</span>
+                    </li>
+                    <li>
+                        <label>英语水平</label>
+                        <span>CET-4</span>
+                    </li>
+                    <li>
+                        <label>计算机水平</label>
+                        <span>计算机二级</span>
+                    </li>
+                </ul>
+            </section>
+            <!-- 联系方式 -->
+            <section class="contact info-unit">
+                <h2>
+                    <i class="fa fa-phone" aria-hidden="true"></i>联系方式
+                </h2>
+                <hr />
+                <ul>
+                    <li>
+                        <label>手机</label>
+                        <a href="tel:15168285219" target="_blank">159-5845-6864</a>
+                    </li>
+                    <li>
+                        <label>邮箱</label>
+                        <a href="mailto:ze.zh@hotmail.com" target="_blank">652971723@qq.com</a>
+                    </li>
+                    <li>
+                        <label>个人主页</label>
+                        <a href="http://allen.tinnygod.com/" target="_blank">http://allen.tinnygod.com/</a>
+                    </li>
+                    <li>
+                        <label>Github</label>
+                        <a href="https://github.com/AllenHongjun" target="_blank">https://github.com/AllenHongjun</a>
+                    </li>
+                </ul>
+            </section>
+            <!-- 技能点 -->
+            <section class="skill info-unit">
+                <h2>
+                    <i class="fa fa-code" aria-hidden="true"></i>技能点
+                </h2>
+                <hr />
+                <ul>
+                    <li>
+                        <label>HTML</label>
+                        <progress value="80" max="100"></progress>
+                    </li>
+                    <li>
+                        <label>CSS</label>
+                        <progress value="70" max="100"></progress>
+                    </li>
+                    <li>
+                        <label>JavaScript</label>
+                        <progress value="75" max="100"></progress>
+                    </li>
+                    <li>
+                        <label>SqlServer</label>
+                        <progress value="80" max="100"></progress>
+                    </li>
+                    <li>
+                        <label>ASP.NET</label>
+                        <progress value="85" max="100"></progress>
+                    </li>
+                    <li>
+                        <label>EF</label>
+                        <progress value="80" max="100"></progress>
+                    </li>
+                    <li>
+                        <label>AutoFac</label>
+                        <progress value="70" max="100"></progress>
+                    </li>
+                </ul>
+            </section>
+            <section class="qrcode info-unit">
+                <h2><i class="fa fa-qrcode" aria-hidden="true"></i>二维码</h2>
+                <hr />
+                <img src="https://github.com/if2er/FeZaoDuKe-Collection/blob/master/ifeees.jpg?raw=true" style="width: 100%;" alt="">
+            </section>
+            <!-- 技术栈 -->
+            <div class="stack info-unit">
+                <h2><i class="fa fa-code" aria-hidden="true"></i>其他</h2>
+                <hr />
+                <ul>
+                    <li>
+                        <label>前端</label>
+                        <span>Vue、jQuery、Bootstrap、</span>
+                    </li>
+                    <li>
+                        <label>后端</label>
+                        <span>ASP.NET MVC WebAPI SQLserver Redis EF BlogEngine</span>
+                    </li>
+                    <li>
+                        <label>其他</label>
+                        <span>Git、SVN、Markdown</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <section class="main">
+            <!-- 教育经历 -->
+            <section class="edu info-unit">
+                <h2>
+                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>教育经历
+                </h2>
+                <hr />
+                <ul>
+                    <li>
+                        <h3>
+                            <span>宁波工程学院 - 电气自动化专业（本科）</span>
+                            <time>2009.9-2013.6</time>
+                        </h3>
+                        <p>
+                            专业排名
+                            <mark>45/90</mark>，三等奖学金1次。
+                        </p>
+                    </li>
+                </ul>
+            </section>
+            <!-- 工作经历 -->
+            <section class="work info-unit">
+                <h2>
+                    <i class="fa fa-shopping-bag" aria-hidden="true"></i>工作经历
+                </h2>
+                <hr />
+                <ul>
+                    <li>
+                        <h3>
+                            <span>[经历1]金华微赢网络科技有限公司－前端开发工程师（实习）</span>
+                            <time>2015.4 至 2016.7</time>
+                        </h3>
+                        <ul class="info-content">
+                            <li>
+                                html5小游戏功能 修改。企业网站制作。系统功能开发。产品相关功能测试。
+                                根据客户要求。定制小游戏功能修改。微信大屏幕系统开发。
+                                <mark>html+js+css</mark>
+                            </li>
+                            <li>
+                                配合UI和后端，根据产品需求提供H5小游戏页面嵌入到微信公众号，要求
+                                <mark>移动端显示正常</mark>。
+                            </li>
+                            <li>
+                                主要开发豆蔻企业网站的开发
+                                <mark>带后台版本</mark>。
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h3>
+                            <span>[经历2]浙江大通网络科技有限公司－ASP.NET开发工程师</span>
+                            <time>2016.7-2018.11</time>
+                        </h3>
+                        <ul class="info-content">
+                            <li>
+                                公司官网「http://www.39y.com」的后台开发工作，完成整个站点内容搭建、
+                                <mark>注册登陆支付</mark>、活动banner、资讯管理（使用dtcms内容管理系统）等功能。项目采用技术栈asp.net sqlserver。
+                                <a href="http://www.39y.com" target="_blank">
+                                    <i class="fa fa-link" aria-hidden="true"></i>博客文章
+                                </a>。
+                            </li>
+                            <li>
+                                主要参与公司产品「圣手捕鱼」的后台开发工作，实现接入支付宝支付、微信、QQ等
+                                <mark>第三方账号登录，登陆</mark>等功能。项目采用技术栈EF,Sqlserver,WebForm等。
+                            </li>
+                            <li>活动页面的功能开发（七夕活动、抽奖活动,元旦活动，砸金蛋，签到等）。</li>
+                            <li>
+                                微信公众号
+                                <mark>渠道sdk对接</mark>（盛派SDK,U8server）
+                                <a href="#" target="_blank">
+                                    <i class="fa fa-link" aria-hidden="true"></i>博客文章
+                                </a>。
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h3>
+                            <span>[经历3]金华虾笨网络科技有限公司－.NET开发工程师</span>
+                            <time>2019.3-至今</time>
+                        </h3>
+                        <ul class="info-content">
+                            <li>
+                                APP商品模块接口对接「http://www.xiaben.com」
+                                <mark>商品分类</mark>、商品列表、商品搜索（使用autofac,webapi,swaggerUI）等功能。项目采用技术栈webapi,EF,autofac, sqlserver。
+                                <a href="http://allen.tinnygod.com" target="_blank">
+                                    <i class="fa fa-link" aria-hidden="true"></i>博客文章
+                                </a>。
+                            </li>
+                            <li>
+                                主要参与公司产品「虾本生鲜」的后台开发工作，实现接入商品管理，站点设置，发票管理，回访用户统计等
+                                项目采用技术栈webform,Sqlserver,linq等。
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            <!-- 项目经验 -->
+            <section class="project info-unit">
+                <h2>
+                    <i class="fa fa-terminal" aria-hidden="true"></i>个人项目
+                </h2>
+                <hr />
+                <ul>
+                    <li>
+                        <h3>
+                            <span>[项目1]仿小米商城系统开发</span>
+                            <span class="link">
+                                <a href="http://www.tinnygod.com/admin/login" target="_blank">Demo</a>
+                            </span>
+                            <time>2018.3-2018.6</time>
+                        </h3>
+                        <ul class="info-content">
+                            <li>技术栈：ASP.NET MVC WEBForm Memcached SQLserver EF</li>
+                            <li>
+                                <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                                [目标]实现商品列表，商品详情，购物车，下单订单，登陆，注册的功能，包括后台权限的管理
+                                <br />
+                                <i class="fa fa-users" aria-hidden="true"></i>
+                                [团队]同 0 位同专业同学一起
+                                <br />
+                                <i class="fa fa-bars" aria-hidden="true"></i>
+                                [贡献]完成从
+                                <mark>“调研-设计-实现-文档”</mark>等工作，主要数据库设计建立，项目架构的搭建，数据的展示，和现有模块的系统开发等工作
+                                <br />
+                                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h3>
+                            <span>[项目2]圣手捕鱼官网搭建</span>
+                            <span class="link">
+                                <a href="http://tp.tinnygod.com/admin/login.aspx" target="_blank">Demo后台</a>
+                            </span>
+                            <span class="link">
+                                <a href="http://0u.com" target="_blank">Demo</a>
+                            </span>
+                            <time>2017.3-2017.9</time>
+                        </h3>
+                        <ul class="info-content">
+                            <li>技术栈：webform jquery html ASP.NET SQLserver</li>
+                            <li>
+                                <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                                [目标]实现圣手捕鱼官网的后台搭建，对接支付功能
+                                <br />
+                                <i class="fa fa-users" aria-hidden="true"></i>
+                                [团队]与 2 位同学
+                                <br />
+                                <i class="fa fa-bars" aria-hidden="true"></i>
+                                [贡献]分析项目需求，
+                                <mark>dtcms</mark> 和
+                                <mark>jquery</mark> 实现页面数据的展示，公众号支付分享等相关接口的对接
+                                <br />
+
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h3>
+                            <span>[项目3]虾本鲜生</span>
+                            <span class="link">
+                                <a href="http://www.xiaben.com" target="_blank">Demo</a>
+                            </span>
+                            <time>2019.3-至今</time>
+                        </h3>
+                        <ul class="info-content">
+                            <li>技术栈：EF codeFirst 存储过程 webapi autofac ace </li>
+                            <li>
+                                <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                                [目标]维护和开发虾本B2B B2C 项目
+                                <br />
+                                <i class="fa fa-users" aria-hidden="true"></i>
+                                [团队]与 7 位同学
+                                <br />
+                                <i class="fa fa-bars" aria-hidden="true"></i>
+                                [贡献] 开发B2B项目的商品的接口模块功能。
+                                
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            <!-- 自我评价 -->
+            <section class="work info-unit">
+                <h2>
+                    <i class="fa fa-pencil" aria-hidden="true"></i>自我评价/期望
+                </h2>
+                <hr />
+                <p>
+                    熟悉asp.net具备 B/S 开发经验，可独立使用三层架构、MVC 架构完成指派的系统开发任务,熟练使用 SqlServer 数据库，熟练运用 SQL 语句，具备独立编写存储过程、函数的能力。
+                    <span class="mark-txt">“多静多思考，反省不张扬”</span>是我给自己总结的“十字箴言”，鞭策自己做人既不能以己度人，也不以人观己，要脚踏实地做事，坚持自己的梦想和本心。
+                </p>
+            </section>
+        </section>
+    </article>
+
+    <footer class="footer">
+        <p>
+            © 2019 Allen.文档最后更新时间为
+            <time>2019年06月16日</time>.
+        </p>
+    </footer>
+    <!-- 侧栏 -->
+    <aside>
+        <ul>
+            <li>
+                <a href="https://github.com/AllenHongjun" target="_blank">源代码</a>
+            </li>
+            <li>
+                <a href="http://allen.tinnygod.com/" target="_blank">Blog</a>
+            </li>
+        </ul>
+    </aside>
+    <script src="./assets/js/index.js"></script>
+</body>
+</html>

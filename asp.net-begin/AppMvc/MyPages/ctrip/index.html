@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta charset="utf-8">
+        <style type="text/css">
+        	 * {
+        	 	margin: 0;
+        	 	padding: 0;
+        	 }
+        	 html,body {
+        	 	 width: 100%;
+        	 	 height: 100%;
+        	 }
+        	 .header {
+				 width: 100%;
+				 display: flex;
+        	 }
+        	 .header a {
+        	 	 flex: 1;
+        	 }
+        	 .header img {
+        	  	 width: 100%; 
+        	 }
+
+        	 .content {
+        	 	 padding: 10px;
+        	 	 display: flex;
+        	 	 flex-direction: column;
+        	 }
+        	 .public {
+        	 	 flex: 1;
+        	 	 height: 90px;
+        	 	 background-color: #ff697a;
+        	 	 border-radius: 10px;
+        	 	 margin: 5px;
+        	 	 display: flex;
+        	 }
+
+        	 .public>div {
+        	 	 flex: 1;
+        	 	 border-right: 1px solid #fff;
+        	 }
+
+        	 .public>div:last-child{
+        	 	 border: 0 none;
+        	 }
+
+        	 .top {
+        	 	 height: 44px;
+        	 	 line-height: 44px;
+        	 	 text-align: center;
+        	 	 border-bottom: 1px solid #fff;
+        	 }
+        	 .bot {
+        	 	 text-align: center;
+        	 	 line-height: 45px;
+        	 }
+
+
+        	 .public:nth-child(2) {
+        	 	 background-color: #3d98ff;
+        	 }
+
+        	 .public:nth-child(3) {
+        	 	 background-color: #44c522;
+        	 }
+
+        	 .public:nth-child(4) {
+        	 	 background-color: #fc9720;
+        	 }
+
+			
+			.footer {
+				display: flex;
+
+				flex-direction: column;
+			}
+
+			.footer .imgs {
+				 flex: 1;
+				 display: flex;
+			}
+
+			.footer .imgs a {
+				 flex: 1;
+			}
+			.footer .imgs img {
+				 width: 100%;
+			}
+
+			.link {
+				 flex: 1;
+				 border-top: 1px solid #ccc;
+				 height: 55px;
+				 line-height: 55px;
+				 display: flex;
+			}
+			.link a {
+				 flex: 1;
+				 text-align: center;
+			}
+        </style>
+    </head>
+    <body>
+		  <div class="header">
+		  		<a href="#">
+		  			<img src="img/banner.jpg" alt="">
+		  		</a>
+		  </div>
+		  <div class="content">
+		  	 <div class="public">
+		  	 	  <div class="left"></div>
+		  	 	  <div class="middle">
+		  	 	  	  <div class="top">首页</div>
+		  	 	  	  <div class="bot">携程旅游</div>
+		  	 	  </div>
+		  	 	  <div class="right">
+		  	 	  	  <div class="top">联系我们</div>
+		  	 	  	  <div class="bot">关于我们</div>
+		  	 	  </div>
+		  	 </div>
+		  	 <div class="public">
+		  	 	  <div class="left"></div>
+		  	 	  <div class="middle">
+		  	 	  	  <div class="top">首页</div>
+		  	 	  	  <div class="bot">携程旅游</div>
+		  	 	  </div>
+		  	 	  <div class="right">
+		  	 	  	  <div class="top">联系我们</div>
+		  	 	  	  <div class="bot">关于我们</div>
+		  	 	  </div>
+		  	 </div>
+		  	 <div class="public">
+		  	 	<div class="left"></div>
+		  	 	  <div class="middle">
+		  	 	  	  <div class="top">首页</div>
+		  	 	  	  <div class="bot">携程旅游</div>
+		  	 	  </div>
+		  	 	  <div class="right">
+		  	 	  	  <div class="top">联系我们</div>
+		  	 	  	  <div class="bot">关于我们</div>
+		  	 	  </div>
+		  	 </div>
+		  	 <div class="public">
+		  	 	<div class="left">
+		  	 		<div class="top">首页</div>
+		  	 	  	<div class="bot">携程旅游</div>
+		  	 	</div>
+		  	 	  <div class="middle">
+		  	 	  	  <div class="top">首页</div>
+		  	 	  	  <div class="bot">携程旅游</div>
+		  	 	  </div>
+		  	 	  <div class="right">
+		  	 	  	  <div class="top">联系我们</div>
+		  	 	  	  <div class="bot">关于我们</div>
+		  	 	  </div>
+		  	 </div>
+		  </div>
+		  <div class="footer">
+		  	 <div class="imgs">
+		  	 	 <a href="#">
+		  	 	 	 <img src="img/extra_1.png" alt="">
+		  	 	 </a>
+		  	 	 <a href="#">
+		  	 	 	 <img src="img/extra_2.png" alt="">
+		  	 	 </a>
+		  	 </div>
+		  	 <div class="link">
+		  	 	 <a href="#">联系我们</a>
+		  	 	 <a href="#">联系我们</a>
+		  	 	 <a href="#">联系我们</a>
+		  	 </div>
+		  </div>
+    </body>
+</html>
