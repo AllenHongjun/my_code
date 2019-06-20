@@ -23,10 +23,19 @@ namespace AppMvc.Controllers
         public ActionResult Index()
         {
             //return  Redirect("/MyPages/jd/index.html");
+            //return Redirect("/index.html");
             IQueryable<UserInfo> users =  UserInfoService.LoadEntities(u => u.ID < 100);
             ViewData.Model = users;
             return View();
         }
+
+        public ActionResult IndexHome()
+        {
+           
+
+            return View();
+        }
+
 
         public ActionResult About()
         {
