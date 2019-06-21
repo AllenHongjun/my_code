@@ -714,6 +714,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="index.html" />
     <Content Include="MyPages\ctrip\img\banner.jpg" />
     <Content Include="MyPages\ctrip\img\extra_1.png" />
     <Content Include="MyPages\ctrip\img\extra_2.png" />
@@ -751,6 +752,20 @@
     <Content Include="MyPages\resume\assets\images\pc.png" />
     <Content Include="MyPages\resume\assets\js\index.js" />
     <Content Include="MyPages\resume\index.html" />
+    <Content Include="MyPages\Intro\assets\css\split.css" />
+    <Content Include="MyPages\Intro\images\508518a4ae8e1.jpg" />
+    <Content Include="MyPages\Intro\images\background.jpg" />
+    <Content Include="MyPages\Intro\images\background2.jpg" />
+    <Content Include="MyPages\Intro\images\background3.jpg" />
+    <Content Include="MyPages\Intro\images\favicon.png" />
+    <Content Include="MyPages\Intro\images\social.jpg" />
+    <Content Include="MyPages\Intro\images\timg %287%29.jpg" />
+    <Content Include="MyPages\Intro\images\timg22.jpg" />
+    <Content Include="MyPages\Intro\index-old.html" />
+    <Content Include="MyPages\Intro\index-youtube.html" />
+    <Content Include="MyPages\Intro\index.html" />
+    <Content Include="MyPages\Intro\readme.txt" />
+    <Content Include="MyPages\Intro\videos\background.mp4" />
     <Content Include="MyPages\xczx\css\base.css" />
     <Content Include="MyPages\xczx\css\index.css" />
     <Content Include="MyPages\xczx\favicon.ico" />
@@ -822,6 +837,13 @@
     <Content Include="MyPages\resume\assets\sass\index.scss" />
     <Content Include="MyPages\resume\LICENSE" />
     <Content Include="MyPages\resume\README.md" />
+    <Content Include="MyPages\Intro\.DS_Store" />
+    <Content Include="MyPages\Intro\assets\.DS_Store" />
+    <Content Include="MyPages\Intro\assets\sass\00-reset.scss" />
+    <Content Include="MyPages\Intro\assets\sass\01-content.scss" />
+    <Content Include="MyPages\Intro\assets\sass\split.scss" />
+    <Content Include="MyPages\Intro\readme.md" />
+    <Content Include="MyPages\Intro\videos\.DS_Store" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.0.3.js" />
@@ -935,6 +957,7 @@
     <Content Include="Views\Demo\Details.cshtml" />
     <Content Include="Views\Demo\Edit.cshtml" />
     <Content Include="Views\Demo\Index.cshtml" />
+    <Content Include="Views\Home\IndexHome.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Views\Base\" />

@@ -21,11 +21,11 @@
         <td>
             @Html.DisplayFor(modelItem => item.Email)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-        </td>
+        @*<td>
+            @Html.ActionLink("Edit", "/#", new { id = item.ID }) |
+            @Html.ActionLink("Details", "/#", new { id = item.ID }) |
+            @Html.ActionLink("Delete", "/#", new { id = item.ID })
+        </td>*@
     </tr>
 }
 </table>
