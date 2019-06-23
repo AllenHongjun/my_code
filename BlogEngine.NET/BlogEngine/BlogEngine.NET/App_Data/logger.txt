@@ -13,3 +13,27 @@ RazorHelper, ParseRazor, VirtualPath: /Custom/Widgets/TagCloud/widget.cshtml: �
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 日期: 2019/6/16 3:55:05
 RazorHelper, ParseRazor, VirtualPath: /Custom/Widgets/TagCloud/widget.cshtml: 序列不包含任何元素
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+日期: 2019/6/22 20:46:06
+RazorHelper, ParseRazor, VirtualPath: /Custom/Widgets/TagCloud/widget.cshtml: 序列不包含任何元素
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+日期: 2019/6/22 20:46:53
+Error sending email in SendMailMessage:  发送邮件失败。 无法从传输连接中读取数据: net_io_connectionclosed。
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+日期: 2019/6/22 20:49:13
+BlogEngine.Core.Packaging.Load: 操作超时
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+日期: 2019/6/22 21:03:25
+Uninstalled package Germaniumify by admin
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+日期: 2019/6/23 8:20:07
+POST http://localhost:64079/api/blogs: Blog Name contains invalid characters.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+日期: 2019/6/23 8:20:27
+POST http://localhost:64079/api/blogs: Blog Name contains invalid characters.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+日期: 2019/6/23 8:22:11
+POST http://localhost:64079/api/blogs: Blog Name contains invalid characters.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+日期: 2019/6/23 11:34:22
+RazorHelper, ParseRazor, VirtualPath: /Custom/Widgets/TagCloud/widget.cshtml: 序列不包含任何元素

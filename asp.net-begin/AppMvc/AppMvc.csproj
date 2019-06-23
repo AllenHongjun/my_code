@@ -837,13 +837,11 @@
     <Content Include="MyPages\resume\assets\sass\index.scss" />
     <Content Include="MyPages\resume\LICENSE" />
     <Content Include="MyPages\resume\README.md" />
-    <Content Include="MyPages\Intro\.DS_Store" />
     <Content Include="MyPages\Intro\assets\.DS_Store" />
     <Content Include="MyPages\Intro\assets\sass\00-reset.scss" />
     <Content Include="MyPages\Intro\assets\sass\01-content.scss" />
     <Content Include="MyPages\Intro\assets\sass\split.scss" />
     <Content Include="MyPages\Intro\readme.md" />
-    <Content Include="MyPages\Intro\videos\.DS_Store" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.0.3.js" />
