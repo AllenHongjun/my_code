@@ -1,0 +1,68 @@
+1、复习
+	->select查询详解***********
+		select distinct\top  ...  --(5)投影
+		from  -- （1）找到表
+		where -- （2）过滤掉我们不需要的数据
+		group by  --（3）分组操作
+		having    --（4）对分组后的数据进行过滤。
+		order by  --（6）排序操作
+	->union：去重  union all：不去重
+	->datediff(month,startdate,enddate)**********	
+	->join:内连接*******
+	
+2、Ado.Net 连接数据库
+	->类库：一组 C#操作数据库的类库。
+	->连接字符串：server=.;uid=sa;pwd=123456;database=demo
+	->连接字符串配置文件配置化
+	->Sql连接字符串辅助类型：SqlConnStringBuilder
+	->SqlConnection类型
+		->ConnectionString:链接字符串
+		->Open() 打开链接
+		->Close()关闭连接（还可以继续打开）
+		->Dispose() 把管道关闭
+	->连接池技术
+		->启用和禁用连接池
+		->设置连接池的大小
+		->内连接对象
+3、SqlCommond类型
+	->CmdText:Sql命令
+	->CmdType：Sql类型
+	->关联SqlConnection
+	->执行Sql语句
+		->ExcuteNoneQuery()
+		->ExcuteScalar()		
+
+4、用户操作案例
+	->编写一个用户注册的案例
+	->编写一个用户登录案例
+	
+	
+5、SQL注入
+	->登陆窗体破解
+		->配置文件
+			->首先在 app.Config文件中添加 节点，如下：
+				 <connectionStrings>
+					<add name="sql2" connectionString="server=.;uid=sa;pwd=123456;database=demo"/>
+				</connectionStrings>
+			->在项目中添加System.Configuration程序集引用（控制台和WinFrm才需要）
+			->在项目中使用ConfigurationManager获取链接字符串。
+				例如：ConfigurationManager.ConnectionStrings["配置的节点的Name名字"].ConnectionString
+		->ExcuteScalar()		
+	
+	->所有数据进行参数化
+	
+6、案例：数据库数据导出和导入
+	思路：
+		--思路：
+		1、找到文件
+		2、读取文件
+		3、第一行 忽略
+		4、insert
+	
+7、SqlCommond ExcuteReader
+8、作业：
+    ->省市选择Demo
+	->把省市的数据导出到一个文本文件。
+
+
+User ID=s
