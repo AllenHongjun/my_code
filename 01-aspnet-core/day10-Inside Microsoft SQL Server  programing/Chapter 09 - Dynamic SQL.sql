@@ -1,0 +1,1629 @@
+---------------------------------------------------------------------
+-- Inside Microsoft SQL Server 2008: T-SQL Programming (MSPress, 2009)
+-- Chapter 09 - Dynamic SQL
+-- Copyright Itzik Ben-Gan, 2009
+-- All Rights Reserved
+---------------------------------------------------------------------
+
+---------------------------------------------------------------------
+-- EXEC
+---------------------------------------------------------------------
+
+---------------------------------------------------------------------
+-- Simple EXEC Example
+---------------------------------------------------------------------
+
+-- Sample data
+USE tempdb;
+
+DECLARE @year AS CHAR(4) = CAST(YEAR(CURRENT_TIMESTAMP) AS CHAR(4));
+EXEC('IF OBJECT_ID(''dbo.Orders' + @year + ''', ''U'') IS NOT NULL
+  DROP TABLE dbo.Orders' + @year + ';
+CREATE TABLE dbo.Orders' + @year + '(orderid INT PRIMARY KEY);');
+GO
+
+-- Query the table representing the current year
+DECLARE @year AS CHAR(4) = CAST(YEAR(CURRENT_TIMESTAMP) AS CHAR(4));
+EXEC('SELECT orderid FROM dbo.Orders' + @year + ';');
+GO
+
+-- EXEC doesn't work
+EXEC('SELECT orderid FROM dbo.Orders'
+       + CAST(YEAR(CURRENT_TIMESTAMP) AS CHAR(4)) + ';');
+GO
+
+-- Construct code in a variable
+DECLARE @sql AS VARCHAR(500) =
+  'SELECT orderid FROM dbo.Orders'
+     + CAST(YEAR(CURRENT_TIMESTAMP) AS CHAR(4)) + ';';
+EXEC(@sql);
+GO
+
+---------------------------------------------------------------------
+-- EXEC Has No Interface
+---------------------------------------------------------------------
+
+-- Accessing input arguments
+
+-- Doesn't work
+USE InsideTSQL2008;
+
+DECLARE @lastname AS NVARCHAR(40) = N'Davis';
+DECLARE @sql AS NVARCHAR(500) =
+  N'SELECT empid, firstname, lastname
+FROM HR.Employees
+WHERE lastname = @lastname;';
+EXEC(@sql);
+GO
+
+-- Works
+DECLARE @lastname AS NVARCHAR(40) = N'Davis';
+DECLARE @sql AS NVARCHAR(500) =
+  N'SELECT empid, firstname, lastname
+FROM HR.Employees
+WHERE lastname = ' + QUOTENAME(@lastname, N'''') + N';';
+EXEC(@sql);
+GO
+
+-- Could use static query here
+DECLARE @lastname AS NVARCHAR(40) = N'Davis';
+
+SELECT empid, firstname, lastname
+FROM HR.Employees
+WHERE lastname = @lastname;
+GO
+
+-- Add GUID as a comment
+
+-- Run with Davis
+DECLARE @lastname AS NVARCHAR(40) = N'Davis';
+DECLARE @sql AS NVARCHAR(500) =
+  N'SELECT empid, firstname, lastname
+/* 65353E43-7E73-4094-84AC-D632ABB0FF7F */
+FROM HR.Employees
+WHERE lastname = ' + QUOTENAME(@lastname, N'''') + N';';
+EXEC(@sql);
+GO
+
+-- Run with King
+DECLARE @lastname AS NVARCHAR(40) = N'King';
+DECLARE @sql AS NVARCHAR(500) =
+  N'SELECT empid, firstname, lastname
+/* 65353E43-7E73-4094-84AC-D632ABB0FF7F */
+FROM HR.Employees
+WHERE lastname = ' + QUOTENAME(@lastname, N'''') + N';';
+EXEC(@sql);
+GO
+
+-- Examine cached objects
+SELECT cacheobjtype, objtype, usecounts, sql
+FROM sys.syscacheobjects
+WHERE sql LIKE N'%65353E43-7E73-4094-84AC-D632ABB0FF7F%'
+  AND sql NOT LIKE N'%sys%';
+GO
+
+-- Returning output
+DECLARE @sql AS VARCHAR(500) = 
+  'DECLARE @result AS INT = 42;
+SELECT @result AS result;';
+EXEC(@sql);
+GO
+
+-- Returning output into a variable
+
+-- Using INSERT EXEC
+DECLARE @sql AS VARCHAR(500) =
+  'DECLARE @result AS INT = 42;
+SELECT @result AS result;';
+
+DECLARE @myresult AS INT;
+CREATE TABLE #T(result INT);
+INSERT INTO #T(result) EXEC(@sql);
+SET @myresult = (SELECT result FROM #T);
+SELECT @myresult AS result;
+DROP TABLE #T;
+GO
+
+-- Using INSERT INTO
+DECLARE @sql AS VARCHAR(500) =
+  'DECLARE @result AS INT = 42;
+INSERT INTO #T(result) VALUES(@result);'
+
+DECLARE @myresult AS INT;
+CREATE TABLE #T(result INT);
+EXEC(@sql);
+SET @myresult = (SELECT result FROM #T);
+SELECT @myresult AS result;
+DROP TABLE #T;
+GO
+
+-- Using context info
+
+-- Example with static code
+DECLARE @ci AS VARBINARY(128) =
+  CAST(42 AS BINARY(4)) + COALESCE(SUBSTRING(CONTEXT_INFO(), 5, 124), 0x);
+
+SET CONTEXT_INFO @ci;
+GO
+
+DECLARE @myval AS INT = 
+  CAST(SUBSTRING(CONTEXT_INFO(), 1, 4) AS INT);
+
+SELECT @myval AS val;
+GO
+
+-- Example with dynamic SQL
+DECLARE @sql AS VARCHAR(500) =
+  'DECLARE @result AS INT = 42;
+DECLARE @ci AS VARBINARY(128) = 
+  CAST(@result AS BINARY(4))
+         + COALESCE(SUBSTRING(CONTEXT_INFO(), 5, 124), 0x);
+
+SET CONTEXT_INFO @ci;';
+EXEC(@sql);
+
+DECLARE @myresult AS INT = 
+  CAST(SUBSTRING(CONTEXT_INFO(), 1, 4) AS INT);
+
+SELECT @myresult AS result;
+GO
+
+---------------------------------------------------------------------
+-- Concatenating Variables
+---------------------------------------------------------------------
+
+-- Concatenating Variables
+DECLARE
+  @sql1 AS VARCHAR(8000),
+  @sql2 AS VARCHAR(8000),
+  @sql3 AS VARCHAR(8000);
+
+SET @sql1 = <part 1>;
+SET @sql2 = <part 2>;
+SET @sql3 = <part 3>;
+
+EXEC(@sql1 + @sql2 + @sql3);
+GO
+
+/*
+------ ------ ------
+Part 1 Part 2 Part 3
+*/
+
+-- Use MAX types instead
+DECLARE @sql AS VARCHAR(MAX) = 
+  'PRINT ''This output was generated by'
+    + REPLICATE(CAST('.' AS VARCHAR(MAX)), 100000) + ''''
+    + CHAR(13) + CHAR(10)
+    + 'PRINT ''a long batch.''';
+EXEC(@sql);
+
+SELECT LEN(@sql) AS batch_length;
+GO
+
+---------------------------------------------------------------------
+-- EXEC AT
+---------------------------------------------------------------------
+
+-- Create a linked server
+EXEC sp_addlinkedserver [Dojo], 'SQL Server';
+GO
+
+-- Using constant
+EXEC
+(
+ 'SELECT productid, productname, unitprice
+FROM InsideTSQL2008.Production.Products
+WHERE ProductID = ?;', 3
+) AT [Dojo];
+GO
+
+-- Using variable
+DECLARE @pid AS INT;
+SET @pid = 3;
+EXEC
+(
+ 'SELECT productid, productname, unitprice
+FROM InsideTSQL2008.Production.Products
+WHERE ProductID = ?;', @pid
+) AT [Dojo];
+GO
+
+-- Using variables for both text and input
+DECLARE @sql AS NVARCHAR(500), @pid AS INT;
+
+SET @sql = 
+ 'SELECT productid, productname, unitprice
+FROM InsideTSQL2008.Production.Products
+WHERE ProductID = ?;'
+SET @pid = 3;
+
+EXEC(@sql, @pid) AT [Dojo];
+GO
+
+-- Executable code works; not just queries
+EXEC
+(
+ 'USE tempdb;
+IF OBJECT_ID(''dbo.T1'', ''U'') IS NOT NULL
+  DROP TABLE dbo.T1;
+CREATE TABLE dbo.T1
+(
+  keycol INT NOT NULL PRIMARY KEY,
+  datacol VARCHAR(10) NOT NULL
+);'
+) AT [Dojo];
+GO
+
+-- Create a linked server to an Access database
+EXEC sp_addlinkedserver
+   @server = 'AccessDatabase1',
+   @provider = 'Microsoft.ACE.OLEDB.12.0',
+   @srvproduct = 'OLE DB Provider for ACE',
+   @datasrc = 'C:\temp\Database1.accdb';
+
+-- Remove default self-mapping added for all local logins
+EXEC sp_droplinkedsrvlogin 'AccessDatabase1', NULL;
+-- Add login mappings
+EXEC sp_addlinkedsrvlogin
+  'AccessDatabase1', 'false', '<specify_local_login_name_here>', Admin, NULL;
+GO
+
+-- Allow RPC out
+EXEC sp_serveroption 'AccessDatabase1', 'rpc out', true;
+GO
+
+-- Create and populate Orders table
+EXEC('DROP TABLE Orders;') AT AccessDatabase1;
+
+EXEC('CREATE TABLE Orders
+(
+  orderid   INT  NOT NULL PRIMARY KEY,
+  orderdate DATE NOT NULL,
+  empid     INT  NOT NULL
+)') AT AccessDatabase1;
+
+INSERT INTO AccessDatabase1...Orders
+  SELECT orderid, orderdate, empid
+  FROM InsideTSQL2008.Sales.Orders;
+
+-- Invoke TRANSFORM query against Access linked server
+EXEC
+(
+ 'TRANSFORM Count(*) AS cnt
+  SELECT YEAR(orderdate) AS orderyear
+  FROM Orders
+  WHERE empid = ?
+  GROUP BY YEAR(orderdate) 
+  PIVOT MONTH(orderdate);', 3
+) AT AccessDatabase1;
+GO
+
+EXEC 
+( 
+ 'USE tempdb;
+IF OBJECT_ID(''dbo.T1'', ''U'') IS NOT NULL
+  DROP TABLE dbo.T1;' 
+) AT [Dojo]; 
+EXEC sp_droplinkedsrvlogin 'AccessDatabase1', '<specify_local_login_name_here>';
+EXEC sp_dropserver AccessDatabase1;
+EXEC sp_dropserver Dojo;
+GO
+
+---------------------------------------------------------------------
+-- sp_executesql
+---------------------------------------------------------------------
+
+---------------------------------------------------------------------
+-- Has Interface
+---------------------------------------------------------------------
+
+-- Input Parameters
+
+USE InsideTSQL2008;
+GO
+DECLARE @mylastname AS NVARCHAR(40) = N'Davis';
+DECLARE @sql AS NVARCHAR(500) =
+  N'SELECT empid, firstname, lastname
+FROM HR.Employees
+WHERE lastname = @lastname';
+
+EXEC sp_executesql
+  @stmt = @sql,
+  @params = N'@lastname AS NVARCHAR(40)',
+  @lastname = @mylastname;
+GO
+
+-- Run with Davis
+DECLARE @mylastname AS NVARCHAR(40) = N'Davis';
+DECLARE @sql AS NVARCHAR(500) =
+  N'SELECT empid, firstname, lastname
+/* A2E6C9ED-E75A-42F7-BD22-EB671798B0DC */
+FROM HR.Employees
+WHERE lastname = @lastname';
+
+EXEC sp_executesql
+  @stmt = @sql,
+  @params = N'@lastname AS NVARCHAR(40)',
+  @lastname = @mylastname;
+GO
+
+-- Run with King
+DECLARE @mylastname AS NVARCHAR(40) = N'King';
+DECLARE @sql AS NVARCHAR(500) =
+  N'SELECT empid, firstname, lastname
+/* A2E6C9ED-E75A-42F7-BD22-EB671798B0DC */
+FROM HR.Employees
+WHERE lastname = @lastname';
+
+EXEC sp_executesql
+  @stmt = @sql,
+  @params = N'@lastname AS NVARCHAR(40)',
+  @lastname = @mylastname;
+GO
+
+-- Examine cached objects
+SELECT cacheobjtype, objtype, usecounts, sql
+FROM sys.syscacheobjects
+WHERE sql LIKE N'%A2E6C9ED-E75A-42F7-BD22-EB671798B0DC%'
+  AND sql NOT LIKE N'%sys%';
+GO
+
+/*
+cacheobjtype   objtype   usecounts  sql
+-------------- --------- ---------- -------------------------------
+Compiled Plan  Prepared  2          ... WHERE lastname = @lastname
+*/
+
+-- Returning output
+DECLARE @sql AS NVARCHAR(500), @myresult AS INT
+
+SET @sql = N'SET @result = 42;';
+
+EXEC sp_executesql
+  @stmt   = @sql,
+  @params = N'@result AS INT OUTPUT',
+  @result = @myresult OUTPUT;
+
+SELECT @myresult;
+GO
+
+-- Converting between binary and character
+
+-- Character to binary
+DECLARE @sql AS NVARCHAR(MAX),
+  @b AS VARBINARY(MAX), @s AS NVARCHAR(MAX);
+SET @s = N'0x4775696E6E657373';
+
+IF @s NOT LIKE N'0x%' OR @s LIKE N'0x%[^0-9a-fA-F]%'
+BEGIN
+  RAISERROR('Possible SQL injection attempt.', 16, 1);
+  RETURN;
+END
+
+SET @sql = N'SET @o = ' + @s + N';';
+EXEC sp_executesql
+  @stmt = @sql,
+  @params = N'@o AS VARBINARY(MAX) OUTPUT',
+  @o = @b OUTPUT;
+
+SELECT @b;
+GO
+
+-- Binary to character
+DECLARE @sql AS NVARCHAR(MAX),
+  @b AS VARBINARY(MAX), @s AS VARCHAR(MAX);
+SET @b = 0x4775696E6E657373;
+SET @s = sys.fn_varbintohexstr(@b);
+SELECT @s;
+GO
+
+-- Use style argument of CONVERT function
+SELECT
+  CONVERT(VARCHAR(20), 0x4775696E6E657373, 1) AS bin_to_prefixed_char,
+  CONVERT(VARCHAR(20), 0x4775696E6E657373, 2) AS bin_to_nonprefixed_char;
+
+SELECT
+  CONVERT(VARBINARY(10), '0x4775696E6E657373', 1) AS prefixed_char_to_bin,
+  CONVERT(VARBINARY(10),   '4775696E6E657373', 2) AS nonprefixed_char_to_bin;
+
+---------------------------------------------------------------------
+-- Statement Limit
+---------------------------------------------------------------------
+
+-- In 2008 can use NVARCHAR(MAX)
+DECLARE @sql AS NVARCHAR(MAX) = 
+  N'PRINT ''This output was generated by'
+    + REPLICATE(CAST(N'.' AS NVARCHAR(MAX)), 100000) + ''''
+    + NCHAR(13) + NCHAR(10)
+    + N'PRINT ''a long batch.''';
+EXEC sp_executesql @sql;
+
+SELECT LEN(@sql) AS batch_length;
+GO
+
+---------------------------------------------------------------------
+-- Environmental Settings
+---------------------------------------------------------------------
+
+-- Changes don't affect outer batch
+USE InsideTSQL2008;
+DECLARE @db AS NVARCHAR(258) = QUOTENAME(N'tempdb');
+EXEC(N'USE ' + @db + ';');
+SELECT DB_NAME();
+GO
+
+-- Changes affect inner batch
+USE InsideTSQL2008;
+DECLARE @db AS NVARCHAR(258) = QUOTENAME(N'tempdb');
+EXEC(N'USE ' + @db + N'; SELECT DB_NAME();');
+GO
+
+-- Changes affect nested batches
+USE InsideTSQL2008;
+DECLARE @db AS NVARCHAR(258) = QUOTENAME(N'tempdb');
+EXEC(N'USE ' + @db + N'; EXEC(''SELECT DB_NAME();'');');
+
+---------------------------------------------------------------------
+-- Uses of Dynamic SQL
+---------------------------------------------------------------------
+
+---------------------------------------------------------------------
+-- Dynamic Maintenance Activities
+---------------------------------------------------------------------
+
+-- Dealing with Fragmentation, adapted from Books Online
+
+-- Ensure a USE <databasename> statement has been executed first.
+SET NOCOUNT ON;
+DECLARE @objectid int;
+DECLARE @indexid int;
+DECLARE @partitioncount bigint;
+DECLARE @schemaname nvarchar(130); 
+DECLARE @objectname nvarchar(130); 
+DECLARE @indexname nvarchar(130); 
+DECLARE @partitionnum bigint;
+DECLARE @partitions bigint;
+DECLARE @frag float;
+DECLARE @command nvarchar(4000); 
+-- Conditionally select tables and indexes from the
+-- sys.dm_db_index_physical_stats function and convert object and index IDs to names.
+SELECT
+    object_id AS objectid,
+    index_id AS indexid,
+    partition_number AS partitionnum,
+    avg_fragmentation_in_percent AS frag
+INTO #work_to_do
+FROM sys.dm_db_index_physical_stats (DB_ID(), NULL, NULL , NULL, 'LIMITED')
+WHERE avg_fragmentation_in_percent > 10.0 AND index_id > 0;
+
+-- Declare the cursor for the list of partitions to be processed.
+DECLARE partitions CURSOR FOR SELECT * FROM #work_to_do;
+
+-- Open the cursor.
+OPEN partitions;
+
+-- Loop through the partitions.
+WHILE (1=1)
+    BEGIN;
+        FETCH NEXT
+           FROM partitions
+           INTO @objectid, @indexid, @partitionnum, @frag;
+        IF @@FETCH_STATUS < 0 BREAK;
+        SELECT @objectname = QUOTENAME(o.name), @schemaname = QUOTENAME(s.name)
+        FROM sys.objects AS o
+        JOIN sys.schemas as s ON s.schema_id = o.schema_id
+        WHERE o.object_id = @objectid;
+        SELECT @indexname = QUOTENAME(name)
+        FROM sys.indexes
+        WHERE  object_id = @objectid AND index_id = @indexid;
+        SELECT @partitioncount = count (*)
+        FROM sys.partitions
+        WHERE object_id = @objectid AND index_id = @indexid;
+
+-- 30 is an arbitrary decision point at which to switch between reorganizing
+-- and rebuilding.
+        IF @frag < 30.0
+            SET @command = N'ALTER INDEX ' + @indexname + N' ON ' + @schemaname + N'.'
+              + @objectname + N' REORGANIZE';
+        IF @frag >= 30.0
+            SET @command = N'ALTER INDEX ' + @indexname + N' ON ' + @schemaname + N'.'
+              + @objectname + N' REBUILD';
+        IF @partitioncount > 1
+            SET @command = @command + N' PARTITION='
+              + CAST(@partitionnum AS nvarchar(10));
+        EXEC (@command);
+        PRINT N'Executed: ' + @command;
+    END;
+
+-- Close and deallocate the cursor.
+CLOSE partitions;
+DEALLOCATE partitions;
+
+-- Drop the temporary table.
+DROP TABLE #work_to_do;
+GO
+
+---------------------------------------------------------------------
+-- Storing Computations
+---------------------------------------------------------------------
+
+-- Creating the Computations Table
+USE tempdb;
+
+IF OBJECT_ID('dbo.Computations', 'U') IS NOT NULL
+  DROP TABLE dbo.Computations;
+
+CREATE TABLE dbo.Computations
+(
+  keycol      INT            NOT NULL IDENTITY PRIMARY KEY,
+  arg1        INT            NULL,
+  arg2        INT            NULL,
+  arg3        INT            NULL,
+  computation VARCHAR(4000) NOT NULL,
+  result      INT            NULL,
+  CONSTRAINT CHK_Computations_SQL_Injection
+    CHECK (REPLACE(computation,'@arg','') NOT LIKE '%[^0-9.+/* -]%')
+);
+GO
+
+-- Trigger that calculates the result of the computations
+CREATE TRIGGER trg_Computations_iu_calc_result
+  ON dbo.Computations FOR INSERT, UPDATE
+AS
+
+DECLARE @rc AS INT = 
+  (SELECT COUNT(*) FROM (SELECT TOP (2) * FROM inserted) AS D);
+
+-- If no rows affected, return
+IF @rc = 0 RETURN;
+
+-- If none of the columns: arg1, arg2, arg3, computation
+-- were updated, return
+IF COLUMNS_UPDATED() & 30 /* 00011110 binary */ = 0 RETURN;
+
+-- Not allowed to update result
+IF    EXISTS(SELECT * FROM inserted)
+  AND EXISTS(SELECT * FROM deleted)
+  AND UPDATE(result)
+BEGIN
+  RAISERROR('Not allowed to update result.', 16, 1);
+  ROLLBACK;
+  RETURN;
+END
+
+DECLARE
+  @key        AS INT,            -- keycol
+  @in_arg1    AS INT,            -- arg1
+  @in_arg2    AS INT,            -- arg2
+  @in_arg3    AS INT,            -- arg3
+  @out_result AS INT,            -- result of computation
+  @comp       AS NVARCHAR(4000), -- computation
+  @params     AS NVARCHAR(100);  -- parameter’s list for sp_executesql
+
+-- If only one row was affected, don't use a cursor
+IF @rc = 1
+BEGIN
+  -- Grab values from inserted
+  SELECT @key = keycol, @in_arg1 = arg1, @in_arg2 = arg2,
+    @in_arg3 = arg3, @comp = N'SET @result = ' + computation
+  FROM inserted;
+
+  -- Generate a string with the in/out parameters
+  SET @params = N'@result INT output, @arg1 INT, @arg2 INT, @arg3 INT';
+
+  -- Calculate computation and store the result in @out_result
+  EXEC sp_executesql
+    @comp,
+    @params,
+    @result = @out_result OUTPUT,
+    @arg1   = @in_arg1,
+    @arg2   = @in_arg2,
+    @arg3   = @in_arg3;
+
+  -- Update the result column in the row with the current key
+  UPDATE dbo.Computations
+    SET result = @out_result
+  WHERE keycol = @key;
+END
+-- If only multiple rows were affected, use a cursor
+ELSE
+BEGIN
+  -- Loop through all keys in inserted
+  DECLARE CInserted CURSOR FAST_FORWARD FOR
+    SELECT keycol, arg1, arg2, arg3, N'SET @result = ' + computation
+    FROM inserted;
+
+  OPEN CInserted;
+
+  -- Get first row from inserted
+  FETCH NEXT FROM CInserted
+    INTO @key, @in_arg1, @in_arg2, @in_arg3, @comp ;
+
+  WHILE @@fetch_status = 0
+  BEGIN
+
+    -- Generate a string with the in/out parameters
+    SET @params = N'@result INT output, @arg1 INT, @arg2 INT, @arg3 INT';
+
+    -- Calculate computation and store the result in @out_result
+    EXEC sp_executesql
+      @comp,
+      @params,
+      @result = @out_result OUTPUT,
+      @arg1   = @in_arg1,
+      @arg2   = @in_arg2,
+      @arg3   = @in_arg3;
+
+    -- Update the result column in the row with the current key
+    UPDATE dbo.Computations
+      SET result = @out_result
+    WHERE keycol = @key;
+
+    -- Get next row from inserted
+    FETCH NEXT FROM CInserted
+      INTO @key, @in_arg1, @in_arg2, @in_arg3, @comp;
+  END
+
+  CLOSE CInserted;
+  DEALLOCATE CInserted;
+END
+GO
+
+-- Test inserts
+INSERT INTO dbo.Computations(arg1, arg2, arg3, computation) VALUES
+  (1, 2, 3, '@arg1 + @arg2 + @arg3'),
+  (4, 5, 6, '@arg1 * @arg2 - @arg3'),
+  (7, 8, DEFAULT, '2. * @arg2 / @arg1');
+
+SELECT * FROM dbo.Computations;
+
+-- Test update
+UPDATE dbo.Computations SET arg1 *= 2;
+SELECT * FROM dbo.Computations;
+GO
+
+---------------------------------------------------------------------
+-- Dynamic Filters
+---------------------------------------------------------------------
+
+-- Script That Creates and Populates the Orders Table
+SET NOCOUNT ON;
+USE tempdb;
+
+IF OBJECT_ID('dbo.GetOrders', 'P') IS NOT NULL DROP PROC dbo.GetOrders;
+IF OBJECT_ID('dbo.Orders', 'U') IS NOT NULL DROP TABLE dbo.Orders;
+GO
+
+CREATE TABLE dbo.Orders
+(
+  orderid   INT       NOT NULL,
+  custid    INT       NOT NULL,
+  empid     INT       NOT NULL,
+  orderdate DATETIME  NOT NULL,
+  filler    CHAR(200) NOT NULL DEFAULT('a'),
+  CONSTRAINT PK_Orders PRIMARY KEY NONCLUSTERED(orderid)
+);
+
+CREATE CLUSTERED INDEX idx_orderdate ON dbo.Orders(orderdate);
+CREATE INDEX idx_custid ON dbo.Orders(custid);
+CREATE INDEX idx_empid ON dbo.Orders(empid);
+
+INSERT INTO dbo.Orders(orderid, custid, empid, orderdate)
+  SELECT orderid, custid, empid, orderdate
+  FROM InsideTSQL2008.Sales.Orders;
+GO
+
+-- Stored Procedure GetOrders
+-- Static Code with col = @param, OR @param IS NULL
+CREATE PROC dbo.GetOrders
+  @orderid   AS INT      = NULL,
+  @custid    AS INT      = NULL,
+  @empid     AS INT      = NULL,
+  @orderdate AS DATETIME = NULL
+WITH RECOMPILE
+AS
+
+SELECT orderid, custid, empid, orderdate, filler
+FROM dbo.Orders
+WHERE (orderid   = @orderid   OR @orderid   IS NULL)
+  AND (custid    = @custid    OR @custid    IS NULL)
+  AND (empid     = @empid     OR @empid     IS NULL)
+  AND (orderdate = @orderdate OR @orderdate IS NULL);
+GO
+
+-- Test the Stored Procedure
+EXEC dbo.GetOrders @orderid   = 10248;
+EXEC dbo.GetOrders @orderdate = '20070101';
+EXEC dbo.GetOrders @custid    = 3;
+EXEC dbo.GetOrders @empid     = 5;
+GO
+
+-- Stored Procedure GetOrders
+-- Static Code with col = COALESCE(@param, col)
+ALTER PROC dbo.GetOrders
+  @orderid   AS INT      = NULL,
+  @custid    AS INT      = NULL,
+  @empid     AS INT      = NULL,
+  @orderdate AS DATETIME = NULL
+WITH RECOMPILE
+AS
+
+SELECT orderid, custid, empid, orderdate, filler
+FROM dbo.Orders
+WHERE orderid   = COALESCE(@orderid, orderid)
+  AND custid    = COALESCE(@custid, custid)
+  AND empid     = COALESCE(@empid, empid)
+  AND orderdate = COALESCE(@orderdate, orderdate);
+GO
+
+-- Test the Stored Procedure
+EXEC dbo.GetOrders @orderid   = 10248;
+EXEC dbo.GetOrders @orderdate = '20070101';
+EXEC dbo.GetOrders @custid    = 3;
+EXEC dbo.GetOrders @empid     = 5;
+GO
+
+-- Using the RECOMPILE statement option
+ALTER PROC dbo.GetOrders
+  @orderid   AS INT      = NULL,
+  @custid    AS INT      = NULL,
+  @empid     AS INT      = NULL,
+  @orderdate AS DATETIME = NULL
+AS
+
+SELECT orderid, custid, empid, orderdate, filler
+FROM dbo.Orders
+WHERE (orderid   = @orderid   OR @orderid   IS NULL)
+  AND (custid    = @custid    OR @custid    IS NULL)
+  AND (empid     = @empid     OR @empid     IS NULL)
+  AND (orderdate = @orderdate OR @orderdate IS NULL)
+OPTION (RECOMPILE);
+GO
+
+-- Test the Stored Procedure
+EXEC dbo.GetOrders @orderid   = 10248;
+EXEC dbo.GetOrders @orderdate = '20070101';
+EXEC dbo.GetOrders @custid    = 3;
+EXEC dbo.GetOrders @empid     = 5;
+GO
+
+-- Using an inline table UDF
+IF OBJECT_ID('dbo.fn_GetOrders', 'IF') IS NOT NULL
+  DROP FUNCTION dbo.fn_GetOrders;
+GO
+CREATE FUNCTION dbo.fn_GetOrders
+(
+  @orderid   AS INT      = NULL,
+  @custid    AS INT      = NULL,
+  @empid     AS INT      = NULL,
+  @orderdate AS DATETIME = NULL
+) RETURNS TABLE
+AS
+RETURN
+  SELECT orderid, custid, empid, orderdate, filler
+  FROM dbo.Orders
+  WHERE (orderid   = @orderid   OR @orderid   IS NULL)
+    AND (custid    = @custid    OR @custid    IS NULL)
+    AND (empid     = @empid     OR @empid     IS NULL)
+    AND (orderdate = @orderdate OR @orderdate IS NULL);
+GO
+
+-- Test the Stored Procedure
+SELECT * FROM dbo.fn_GetOrders(10248, NULL , NULL, NULL);
+SELECT * FROM dbo.fn_GetOrders(NULL , NULL, NULL, '20070101');
+SELECT * FROM dbo.fn_GetOrders(NULL , 3 , NULL, NULL);
+SELECT * FROM dbo.fn_GetOrders(NULL , NULL , 5, NULL);
+GO
+
+-- Calling the function from the procedure
+ALTER PROC dbo.GetOrders
+  @orderid   AS INT      = NULL,
+  @custid    AS INT      = NULL,
+  @empid     AS INT      = NULL,
+  @orderdate AS DATETIME = NULL
+WITH RECOMPILE
+AS
+
+SELECT * FROM dbo.fn_GetOrders(@orderid, @custid , @empid, @orderdate);
+GO
+
+EXEC dbo.GetOrders @orderid   = 10248;
+EXEC dbo.GetOrders @orderdate = '20070101';
+EXEC dbo.GetOrders @custid    = 3;
+EXEC dbo.GetOrders @empid     = 5;
+GO
+
+-- Separate proc for each combination of arguments
+IF OBJECT_ID('dbo.GetOrders0', 'P') IS NOT NULL DROP PROC dbo.GetOrders0;
+IF OBJECT_ID('dbo.GetOrders1', 'P') IS NOT NULL DROP PROC dbo.GetOrders1;
+IF OBJECT_ID('dbo.GetOrders2', 'P') IS NOT NULL DROP PROC dbo.GetOrders2;
+
+/* ... other procedures ... */
+
+IF OBJECT_ID('dbo.GetOrders15', 'P') IS NOT NULL DROP PROC dbo.GetOrders15;
+GO
+
+CREATE PROC dbo.GetOrders0
+AS
+SELECT orderid, custid, empid, orderdate, filler
+FROM dbo.Orders;
+GO
+
+CREATE PROC dbo.GetOrders1
+  @orderdate AS DATETIME
+AS
+SELECT orderid, custid, empid, orderdate, filler
+FROM dbo.Orders
+WHERE orderdate = @orderdate;
+GO
+
+CREATE PROC dbo.GetOrders2
+  @empid AS INT
+AS
+SELECT orderid, custid, empid, orderdate, filler
+FROM dbo.Orders
+WHERE empid = @empid;
+GO
+
+/* ... other procedures ... */
+
+CREATE PROC dbo.GetOrders15
+  @orderid   AS INT,
+  @custid    AS INT,
+  @empid     AS INT,
+  @orderdate AS DATETIME
+AS
+SELECT orderid, custid, empid, orderdate, filler
+FROM dbo.Orders
+WHERE orderid   = @orderid
+  AND custid    = @custid
+  AND empid     = @empid
+  AND orderdate = @orderdate;
+GO
+
+-- Proc that redirects
+ALTER PROC dbo.GetOrders
+  @orderid   AS INT      = NULL,
+  @custid    AS INT      = NULL,
+  @empid     AS INT      = NULL,
+  @orderdate AS DATETIME = NULL
+AS
+
+IF      @orderid   IS     NULL
+    AND @custid    IS     NULL
+    AND @empid     IS     NULL
+    AND @orderdate IS     NULL
+
+  EXEC dbo.GetOrders0;
+
+ELSE IF @orderid   IS     NULL
+    AND @custid    IS     NULL
+    AND @empid     IS     NULL
+    AND @orderdate IS NOT NULL
+  EXEC dbo.GetOrders1
+    @orderdate = @orderdate;
+  
+ELSE IF @orderid   IS     NULL
+    AND @custid    IS     NULL
+    AND @empid     IS NOT NULL
+    AND @orderdate IS     NULL
+  EXEC dbo.GetOrders2
+    @empid     = @empid;
+
+/* ... other procedures ... */
+
+ELSE IF @orderid   IS NOT NULL
+    AND @custid    IS NOT NULL
+    AND @empid     IS NOT NULL
+    AND @orderdate IS NOT NULL
+  EXEC dbo.GetOrders15
+    @orderid   = @orderid,
+    @custid    = @custid,
+    @empid     = @empid,
+    @orderdate = @orderdate;
+GO
+
+-- Stored Procedure GetOrders,
+-- Using Dynamic SQL
+ALTER PROC dbo.GetOrders
+  @orderid   AS INT      = NULL,
+  @custid    AS INT      = NULL,
+  @empid     AS INT      = NULL,
+  @orderdate AS DATETIME = NULL
+AS
+
+DECLARE @sql AS NVARCHAR(1000);
+
+SET @sql = 
+    N'SELECT orderid, custid, empid, orderdate, filler'
+  + N' /* 27702431-107C-478C-8157-6DFCECC148DD */'
+  + N' FROM dbo.Orders'
+  + N' WHERE 1 = 1'
+  + CASE WHEN @orderid IS NOT NULL THEN
+      N' AND orderid = @oid' ELSE N'' END
+  + CASE WHEN @custid IS NOT NULL THEN
+      N' AND custid = @cid' ELSE N'' END
+  + CASE WHEN @empid IS NOT NULL THEN
+      N' AND empid = @eid' ELSE N'' END
+  + CASE WHEN @orderdate IS NOT NULL THEN
+      N' AND orderdate = @dt' ELSE N'' END;
+
+EXEC sp_executesql
+  @stmt = @sql,
+  @params = N'@oid AS INT, @cid AS INT, @eid AS INT, @dt AS DATETIME',
+  @oid = @orderid,
+  @cid = @custid,
+  @eid = @empid,
+  @dt  = @orderdate;
+GO
+
+-- Test the Stored Procedure
+EXEC dbo.GetOrders @orderid   = 10248;
+EXEC dbo.GetOrders @orderdate = '20070101';
+EXEC dbo.GetOrders @custid    = 3;
+EXEC dbo.GetOrders @empid     = 5;
+
+SELECT cacheobjtype, objtype, usecounts, sql
+FROM sys.syscacheobjects
+WHERE sql LIKE '%27702431-107C-478C-8157-6DFCECC148DD%'
+  AND sql NOT LIKE '%sys%';
+GO
+
+-- Cleanup
+IF OBJECT_ID('dbo.GetOrders', 'P') IS NOT NULL DROP PROC dbo.GetOrders;
+IF OBJECT_ID('dbo.Orders', 'U') IS NOT NULL DROP TABLE dbo.Orders;
+IF OBJECT_ID('dbo.fn_GetOrders', 'IF') IS NOT NULL DROP FUNCTION dbo.fn_GetOrders;
+IF OBJECT_ID('dbo.GetOrders0', 'P') IS NOT NULL DROP PROC dbo.GetOrders0;
+IF OBJECT_ID('dbo.GetOrders1', 'P') IS NOT NULL DROP PROC dbo.GetOrders1;
+IF OBJECT_ID('dbo.GetOrders2', 'P') IS NOT NULL DROP PROC dbo.GetOrders2;
+/* ... other procedures ... */
+IF OBJECT_ID('dbo.GetOrders15', 'P') IS NOT NULL DROP PROC dbo.GetOrders15;
+GO
+
+---------------------------------------------------------------------
+-- Dynamic PIVOT/UNPIVOT
+---------------------------------------------------------------------
+
+---------------------------------------------------------------------
+-- Dynamic PIVOT
+---------------------------------------------------------------------
+
+-- Static PIVOT
+USE InsideTSQL2008;
+
+WITH PivotInput AS
+(
+  SELECT shipperid, shipcountry, freight
+  FROM Sales.Orders
+)
+SELECT *
+FROM PivotInput
+  PIVOT(SUM(freight) FOR shipcountry IN
+    ([Argentina],[Austria],[Belgium]/* other countries */)) AS P;
+GO
+
+-- Dynamic PIVOT
+DECLARE
+  @cols AS NVARCHAR(MAX),
+  @sql  AS NVARCHAR(MAX);
+
+-- Construct the column list for the IN clause
+-- e.g., [Argentina],[Austria],[Belgium]
+SET @cols = STUFF(
+  (SELECT N',' + QUOTENAME(shipcountry) AS [text()]
+   FROM (SELECT DISTINCT shipcountry FROM Sales.Orders) AS D
+   ORDER BY shipcountry
+   FOR XML PATH(''), TYPE).value('.[1]', 'VARCHAR(MAX)'),
+  1, 1, N'');
+
+-- Check @cols for possible SQL injection attempt
+-- Use when example is extended to concatenating strings
+-- (not required in this particular example
+--  since concatenated elements are integers)
+IF   UPPER(@cols) LIKE UPPER(N'%0x%')
+  OR UPPER(@cols) LIKE UPPER(N'%;%')
+  OR UPPER(@cols) LIKE UPPER(N'%''%')
+  OR UPPER(@cols) LIKE UPPER(N'%--%')
+  OR UPPER(@cols) LIKE UPPER(N'%/*%*/%')
+  OR UPPER(@cols) LIKE UPPER(N'%EXEC%')
+  OR UPPER(@cols) LIKE UPPER(N'%xp[_]%')
+  OR UPPER(@cols) LIKE UPPER(N'%sp[_]%')
+  OR UPPER(@cols) LIKE UPPER(N'%SELECT%')
+  OR UPPER(@cols) LIKE UPPER(N'%INSERT%')
+  OR UPPER(@cols) LIKE UPPER(N'%UPDATE%')
+  OR UPPER(@cols) LIKE UPPER(N'%DELETE%')
+  OR UPPER(@cols) LIKE UPPER(N'%TRUNCATE%')
+  OR UPPER(@cols) LIKE UPPER(N'%CREATE%')
+  OR UPPER(@cols) LIKE UPPER(N'%ALTER%')
+  OR UPPER(@cols) LIKE UPPER(N'%DROP%')
+  -- look for other possible strings used in SQL injection here
+BEGIN
+  RAISERROR('Possible SQL injection attempt.', 16, 1);
+  RETURN;
+END
+
+-- Construct the full T-SQL statement
+-- and execute dynamically
+SET @sql = N'WITH PivotInput AS
+(
+  SELECT shipperid, shipcountry, freight
+  FROM Sales.Orders
+)
+SELECT *
+FROM PivotInput
+  PIVOT(SUM(freight) FOR shipcountry IN
+    (' + @cols + N')) AS P;';
+
+EXEC sp_executesql @sql;
+GO
+
+---------------------------------------------------------------------
+-- Generalizing Dynamic Pivoting
+---------------------------------------------------------------------
+
+-- Listing 9-1: Creation Script for the sp_pivot Stored Procedure
+USE master;
+IF OBJECT_ID('dbo.sp_pivot', 'P') IS NOT NULL DROP PROC dbo.sp_pivot;
+GO
+
+CREATE PROC dbo.sp_pivot
+  @query    AS NVARCHAR(MAX),  -- The query, or a table/view name.
+  @on_rows  AS NVARCHAR(MAX),  -- The columns that will be regular rows.
+  @on_cols  AS NVARCHAR(MAX),  -- The columns that are to be pivoted.
+  @agg_func AS NVARCHAR(257) = N'MAX', -- Aggregate function.
+  @agg_col  AS NVARCHAR(MAX),  -- Column to aggregate.
+  @debug    AS BIT = 1         -- Statement will be printed if 1.
+AS
+
+-- Input validation
+IF @query IS NULL OR @on_rows IS NULL OR @on_cols IS NULL
+   OR @agg_func IS NULL OR @agg_col IS NULL
+BEGIN
+  RAISERROR('Invalid input parameters.', 16, 1);
+  RETURN;
+END
+
+BEGIN TRY
+  DECLARE
+    @sql     AS NVARCHAR(MAX),
+    @cols    AS NVARCHAR(MAX),
+    @newline AS NVARCHAR(2);
+
+  SET @newline = NCHAR(13) + NCHAR(10);
+
+  -- If input is a valid table or view
+  -- construct a SELECT statement against it
+  IF COALESCE(OBJECT_ID(@query, N'U'),
+              OBJECT_ID(@query, N'V')) IS NOT NULL
+    SET @query = N'SELECT * FROM ' + @query;
+
+  -- Make the query a derived table
+  SET @query = N'(' + @query + N') AS Query';
+
+  -- Handle * input in @agg_col
+  IF @agg_col = N'*' SET @agg_col = N'1';
+
+  -- Construct column list
+  SET @sql =
+    N'SET @result = '                                    + @newline +
+    N'  STUFF('                                          + @newline +
+    N'    (SELECT N'','' +  QUOTENAME('
+             + 'CAST(pivot_col AS sysname)' +
+             + ') AS [text()]'                           + @newline +
+    N'     FROM (SELECT DISTINCT('
+             + @on_cols + N') AS pivot_col'              + @newline +
+    N'           FROM' + @query + N') AS DistinctCols'   + @newline +
+    N'     ORDER BY pivot_col'                           + @newline +
+    N'     FOR XML PATH(''''), TYPE)'
+             + N'.value(''.[1]'', ''VARCHAR(MAX)'')'     + @newline +
+    N'    ,1, 1, N'''');'
+
+  IF @debug = 1 PRINT @sql;
+
+  EXEC sp_executesql
+    @stmt   = @sql,
+    @params = N'@result AS NVARCHAR(MAX) OUTPUT',
+    @result = @cols OUTPUT;
+
+  -- Create the PIVOT query
+  SET @sql =
+    N'SELECT *'                                          + @newline +
+    N'FROM (SELECT '
+              + @on_rows
+              + N', ' + @on_cols + N' AS pivot_col'
+              + N', ' + @agg_col + N' AS agg_col'        + @newline +
+    N'      FROM ' + @query + N')' +
+              + N' AS PivotInput'                        + @newline +
+    N'  PIVOT(' + @agg_func + N'(agg_col)'               + @newline +
+    N'    FOR pivot_col IN(' + @cols + N')) AS PivotOutput;'
+
+  IF @debug = 1 PRINT @sql;
+
+  EXEC sp_executesql @sql;
+
+END TRY
+BEGIN CATCH
+  DECLARE
+    @error_message  AS NVARCHAR(2047),
+    @error_severity AS INT,
+    @error_state    AS INT;
+
+  SET @error_message  = ERROR_MESSAGE();
+  SET @error_severity = ERROR_SEVERITY();
+  SET @error_state    = ERROR_STATE();
+
+  RAISERROR(@error_message, @error_severity, @error_state);
+
+  RETURN;
+END CATCH
+GO
+
+-- Count of orders per employee and order year
+-- pivoted by order month
+EXEC InsideTSQL2008.dbo.sp_pivot
+  @query    = N'Sales.Orders',
+  @on_rows  = N'empid, YEAR(orderdate) AS orderyear',
+  @on_cols  = N'MONTH(OrderDate)',
+  @agg_func = N'COUNT',
+  @agg_col  = N'*';
+
+-- Sum of value (quantity * unitprice) per employee
+-- pivoted by order year
+EXEC InsideTSQL2008.dbo.sp_pivot
+  @query    = N'
+SELECT O.orderid, empid, orderdate, qty, unitprice
+FROM Sales.Orders AS O
+  JOIN Sales.OrderDetails AS OD
+    ON OD.orderid = O.orderid',
+  @on_rows  = N'empid',
+  @on_cols  = N'YEAR(OrderDate)',
+  @agg_func = N'SUM',
+  @agg_col  = N'qty*unitprice';
+
+-- Count of orders per employee pivoted by shipper ID and order year
+EXEC InsideTSQL2008.dbo.sp_pivot
+  @query    = N'
+SELECT empid, shipperid, YEAR(orderdate) AS orderyear
+FROM Sales.Orders',
+  @on_rows  = N'empid',
+  @on_cols  =
+N'CAST(shipperid AS VARCHAR(10)) + ''_''
+        + CAST(orderyear AS VARCHAR(4))',
+  @agg_func = N'COUNT',
+  @agg_col  = N'*';
+GO
+
+-- SQL injection Example
+EXEC InsideTSQL2008.dbo.sp_pivot
+  @query    = N'Sales.Orders',
+  @on_rows  = N'1 AS dummy_col ) DummyTable;
+PRINT ''SQL injection...
+This could have been a DROP TABLE or xp_cmdshell command!'';
+SELECT * FROM (SELECT empid',
+  @on_cols  = N'MONTH(orderdate)',
+  @agg_func = N'COUNT',
+  @agg_col  = N'*';
+GO
+
+-- Cleanup
+USE master;
+IF OBJECT_ID('dbo.sp_pivot', 'P') IS NOT NULL DROP PROC dbo.sp_pivot;
+GO
+
+-- Creation script for the usp_pivot stored procedure
+USE InsideTSQL2008;
+IF OBJECT_ID('dbo.usp_pivot', 'P') IS NOT NULL DROP PROC dbo.usp_pivot;
+GO
+
+CREATE PROC dbo.usp_pivot
+  @schema_name AS sysname      = N'dbo', -- schema of table/view
+  @object_name AS sysname      = NULL,   -- name of table/view
+  @on_rows     AS sysname      = NULL,   -- group by column
+  @on_cols     AS sysname      = NULL,   -- rotation column
+  @agg_func    AS NVARCHAR(12) = N'MAX', -- aggregate function
+  @agg_col     AS sysname      = NULL,   -- aggregate column
+  @debug    AS BIT = 1                   -- debug flag
+AS
+
+DECLARE 
+  @object  AS NVARCHAR(600),
+  @sql     AS NVARCHAR(MAX),
+  @cols    AS NVARCHAR(MAX),
+  @newline AS NVARCHAR(2),
+  @msg     AS NVARCHAR(500);
+
+SET @newline = NCHAR(13) + NCHAR(10);
+SET @object  = QUOTENAME(@schema_name) + N'.' + QUOTENAME(@object_name);
+
+-- Check for missing input
+IF   @schema_name IS NULL
+  OR @object_name IS NULL
+  OR @on_rows     IS NULL
+  OR @on_cols     IS NULL
+  OR @agg_func    IS NULL
+  OR @agg_col     IS NULL
+BEGIN
+  SET @msg = N'Missing input parameters: '
+    + CASE WHEN @schema_name IS NULL THEN N'@schema_name;' ELSE N'' END
+    + CASE WHEN @object_name IS NULL THEN N'@object_name;' ELSE N'' END
+    + CASE WHEN @on_rows     IS NULL THEN N'@on_rows;'     ELSE N'' END
+    + CASE WHEN @on_cols     IS NULL THEN N'@on_cols;'     ELSE N'' END
+    + CASE WHEN @agg_func    IS NULL THEN N'@agg_func;'    ELSE N'' END
+    + CASE WHEN @agg_col     IS NULL THEN N'@agg_col;'     ELSE N'' END
+  RAISERROR(@msg, 16, 1);
+  RETURN;
+END
+
+-- Allow only existing table or view name as input object
+IF COALESCE(OBJECT_ID(@object, N'U'),
+            OBJECT_ID(@object, N'V')) IS NULL
+BEGIN
+  SET @msg = N'%s is not an existing table or view in the database.';
+  RAISERROR(@msg, 16, 1, @object);
+  RETURN;
+END
+
+-- Verify that column names specified in @on_rows, @on_cols, @agg_col exist
+IF   COLUMNPROPERTY(OBJECT_ID(@object), @on_rows, 'ColumnId') IS NULL
+  OR COLUMNPROPERTY(OBJECT_ID(@object), @on_cols, 'ColumnId') IS NULL
+  OR COLUMNPROPERTY(OBJECT_ID(@object), @agg_col, 'ColumnId') IS NULL
+BEGIN
+  SET @msg = N'%s, %s and %s must'
+    + N' be existing column names in %s.';
+  RAISERROR(@msg, 16, 1, @on_rows, @on_cols, @agg_col, @object);
+  RETURN;
+END
+
+-- Verify that @agg_func is in a known list of functions
+-- Add to list as needed and adjust @agg_func size accordingly
+IF @agg_func NOT IN
+  (N'AVG', N'COUNT', N'COUNT_BIG', N'SUM', N'MIN', N'MAX',
+   N'STDEV', N'STDEVP', N'VAR', N'VARP')
+BEGIN
+  SET @msg = N'%s is an unsupported aggregate function.';
+  RAISERROR(@msg, 16, 1, @agg_func);
+  RETURN;
+END
+
+BEGIN TRY
+
+  -- Construct column list
+  SET @sql =
+    N'SET @result = '                                    + @newline +
+    N'  STUFF('                                          + @newline +
+    N'    (SELECT N'','' +  QUOTENAME('
+             + 'CAST(pivot_col AS sysname)' +
+             + ') AS [text()]'                           + @newline +
+    N'     FROM (SELECT DISTINCT('
+             + QUOTENAME(@on_cols) + N') AS pivot_col'   + @newline +
+    N'           FROM' + @object + N') AS DistinctCols'  + @newline +
+    N'     ORDER BY pivot_col'                           + @newline +
+    N'     FOR XML PATH(''''), TYPE)'
+             + N'.value(''.[1]'', ''VARCHAR(MAX)'')'     + @newline +
+    N'    ,1, 1, N'''');'
+
+  IF @debug = 1 PRINT @sql;
+
+  EXEC sp_executesql
+    @stmt   = @sql,
+    @params = N'@result AS NVARCHAR(MAX) OUTPUT',
+    @result = @cols OUTPUT;
+
+  -- Check @cols for possible SQL injection attempt
+  IF   UPPER(@cols) LIKE UPPER(N'%0x%')
+    OR UPPER(@cols) LIKE UPPER(N'%;%')
+    OR UPPER(@cols) LIKE UPPER(N'%''%')
+    OR UPPER(@cols) LIKE UPPER(N'%--%')
+    OR UPPER(@cols) LIKE UPPER(N'%/*%*/%')
+    OR UPPER(@cols) LIKE UPPER(N'%EXEC%')
+    OR UPPER(@cols) LIKE UPPER(N'%xp[_]%')
+    OR UPPER(@cols) LIKE UPPER(N'%sp[_]%')
+    OR UPPER(@cols) LIKE UPPER(N'%SELECT%')
+    OR UPPER(@cols) LIKE UPPER(N'%INSERT%')
+    OR UPPER(@cols) LIKE UPPER(N'%UPDATE%')
+    OR UPPER(@cols) LIKE UPPER(N'%DELETE%')
+    OR UPPER(@cols) LIKE UPPER(N'%TRUNCATE%')
+    OR UPPER(@cols) LIKE UPPER(N'%CREATE%')
+    OR UPPER(@cols) LIKE UPPER(N'%ALTER%')
+    OR UPPER(@cols) LIKE UPPER(N'%DROP%')
+    -- look for other possible strings used in SQL injection here
+  BEGIN
+    SET @msg = N'Possible SQL injection attempt.';
+    RAISERROR(@msg, 16, 1);
+    RETURN;
+  END
+
+  -- Create the PIVOT query
+  SET @sql =
+    N'SELECT *'                                              + @newline +
+    N'FROM (SELECT '
+              + QUOTENAME(@on_rows)
+              + N', ' + QUOTENAME(@on_cols) + N' AS pivot_col'
+              + N', ' + QUOTENAME(@agg_col) + N' AS agg_col' + @newline +
+    N'      FROM ' + @object + N')' +
+              + N' AS PivotInput'                            + @newline +
+    N'  PIVOT(' + @agg_func + N'(agg_col)'                   + @newline +
+    N'    FOR pivot_col IN(' + @cols + N')) AS PivotOutput;'
+
+  IF @debug = 1 PRINT @sql;
+
+  EXEC sp_executesql @sql;
+END TRY
+BEGIN CATCH
+  DECLARE
+    @error_message  AS NVARCHAR(2047),
+    @error_severity AS INT,
+    @error_state    AS INT;
+
+  SET @error_message  = ERROR_MESSAGE();
+  SET @error_severity = ERROR_SEVERITY();
+  SET @error_state    = ERROR_STATE();
+
+  RAISERROR(@error_message, @error_severity, @error_state);
+
+  RETURN;
+END CATCH
+GO
+
+-- Creation script for ViewForPivot view
+USE InsideTSQL2008;
+IF OBJECT_ID('dbo.ViewForPivot', 'V') IS NOT NULL
+  DROP VIEW dbo.ViewForPivot;
+GO
+
+CREATE VIEW dbo.ViewForPivot
+AS
+
+SELECT
+  o.orderid       AS orderid,
+  empid           AS empid,
+  YEAR(orderdate) AS orderyear,
+  qty * unitprice AS val
+FROM Sales.Orders AS O
+  JOIN Sales.OrderDetails AS OD
+    ON OD.orderid = O.orderid;
+GO
+
+-- Sum of value (quantity * unit price) per employee
+-- pivoted by order year
+EXEC dbo.usp_pivot
+  @object_name = N'ViewForPivot',
+  @on_rows  = N'empid',
+  @on_cols  = N'orderyear',
+  @agg_func = N'SUM',
+  @agg_col  = N'val';
+GO
+
+-- Cleanup
+USE InsideTSQL2008;
+IF OBJECT_ID('dbo.ViewForPivot', 'U') IS NOT NULL
+  DROP VIEW dbo.ViewForPivot;
+IF OBJECT_ID('dbo.usp_pivot', 'P') IS NOT NULL
+  DROP PROC dbo.usp_pivot;
+GO
+
+---------------------------------------------------------------------
+-- Dynamic UNPIVOT
+---------------------------------------------------------------------
+
+-- Creating and Populating the CustOrders Table
+USE InsideTSQL2008;
+IF OBJECT_ID('dbo.CustOrders', 'U') IS NOT NULL
+  DROP TABLE dbo.CustOrders;
+GO
+
+CREATE TABLE dbo.CustOrders
+(
+  custid    INT            NOT NULL,
+  [2006]    NUMERIC(12, 2) NULL,
+  [2007]    NUMERIC(12, 2) NULL,
+  [2008]    NUMERIC(12, 2) NULL,
+  CONSTRAINT PK_CustOrders PRIMARY KEY(custid)
+);
+
+WITH PivotInput AS
+(
+  SELECT custid, YEAR(orderdate) AS orderyear, val
+  FROM Sales.OrderValues
+)
+INSERT INTO dbo.CustOrders(custid, [2006], [2007], [2008])
+SELECT custid, [2006], [2007], [2008]
+FROM PivotInput
+  PIVOT(SUM(val) FOR orderyear IN([2006],[2007],[2008])) AS P;
+GO
+
+-- Static UNPIVOT
+SELECT custid, orderyear, val
+FROM dbo.CustOrders
+  UNPIVOT(val FOR orderyear IN([2006],[2007],[2008])) AS U;
+GO
+
+-- Dynamic UNPIVOT
+DECLARE
+  @cols AS NVARCHAR(MAX),
+  @sql  AS NVARCHAR(MAX);
+
+-- Construct the column list for the IN clause
+-- e.g., [2006],[2007],[2008]
+SET @cols = STUFF(
+  (SELECT N','+ QUOTENAME(name) AS [text()]
+   FROM (SELECT name
+         FROM sys.columns
+         WHERE object_id = OBJECT_ID(N'dbo.CustOrders')
+           AND name NOT IN(N'custid')) AS D
+   ORDER BY name
+   FOR XML PATH(''), TYPE).value('.[1]','VARCHAR(MAX)'),
+  1, 1, N'');
+
+-- Construct the full T-SQL statement
+-- and execute dynamically
+SET @sql = N'SELECT custid, orderyear, val
+FROM dbo.CustOrders
+  UNPIVOT(val FOR orderyear IN(' + @cols + N')) AS U;';
+
+EXEC sp_executesql @sql;
+GO
+
+---------------------------------------------------------------------
+-- SQL Injection
+---------------------------------------------------------------------
+
+---------------------------------------------------------------------
+-- SQL Injection, Code Constructed Dynamically at Client
+---------------------------------------------------------------------
+
+-- Creating and Populating the Users Table
+USE tempdb;
+IF OBJECT_ID('dbo.Users', 'U') IS NOT NULL DROP TABLE Users;
+
+CREATE TABLE dbo.Users
+(
+  username VARCHAR(30) NOT NULL PRIMARY KEY,
+  pass     VARCHAR(16) NOT NULL
+);
+
+INSERT INTO Users(username, pass) VALUES('user1', '123');
+INSERT INTO Users(username, pass) VALUES('user2', '456');
+GO
+
+-- At client
+/*
+sql = "SELECT COUNT(*) AS cnt FROM dbo.Users WHERE username = '" _
+  & InputUserName & "' AND pass = '" & InputPass & "';"
+
+InputUserName = "user1"
+InputPass     = "123"
+*/
+
+SELECT COUNT(*) AS cnt FROM dbo.Users WHERE username = 'user1' AND pass = '123';
+
+/*
+InputUserName = "' OR 1 = 1 --"
+InputPass = ""
+*/
+
+SELECT COUNT(*) AS cnt FROM dbo.Users WHERE username = '' OR 1 = 1 --' AND pass = '';
+GO
+
+---------------------------------------------------------------------
+-- SQL Injection, Code Constructed Dynamically at Server
+---------------------------------------------------------------------
+
+USE InsideTSQL2008;
+IF OBJECT_ID('dbo.GetOrders', 'P') IS NOT NULL DROP PROC dbo.GetOrders;
+GO
+
+CREATE PROC dbo.GetOrders
+  @orders AS VARCHAR(1000)
+AS
+
+DECLARE @sql AS NVARCHAR(1100);
+
+SET @sql = N'SELECT orderid, shipcountry
+FROM Sales.Orders
+WHERE orderid IN(' + @orders + ');';
+
+EXEC sp_executesql @sql;
+GO
+
+EXEC dbo.GetOrders '10248,10249,10250';
+
+EXEC dbo.GetOrders ' --';
+
+-- Error tells us that there's unclosed parenthesis
+/*
+Msg 102, Level 15, State 1, Line 1
+Incorrect syntax near '('.
+*/
+
+-- Returns empty set
+EXEC dbo.GetOrders '-1) --';
+
+-- Returns table information
+EXEC dbo.GetOrders '-1)
+UNION ALL
+SELECT object_id, QUOTENAME(SCHEMA_NAME(schema_id)) + ''.'' + QUOTENAME(name)
+FROM sys.objects --';
+
+-- Returns column information
+EXEC dbo.GetOrders '-1)
+UNION ALL
+SELECT column_id, name
+FROM sys.columns
+WHERE object_id = 389576426 --';
+
+-- Returns data
+EXEC dbo.GetOrders '-1)
+UNION ALL
+SELECT custid, companyname + '';'' + phone
+FROM Sales.Customers --';
+
+-- Change data
+BEGIN TRAN
+
+EXEC GetOrders '-1);
+UPDATE Sales.Customers
+  SET phone = ''9999999''
+WHERE custid = 1; --';
+
+EXEC GetOrders '-1)
+UNION
+ALL SELECT custid, companyname + '';'' + phone
+FROM Sales.Customers
+WHERE custid = 1 --';
+
+ROLLBACK
+GO
+
+-- Protecting against SQL injection
+
+-- Check if there's a character that is not a digit or a comma
+IF @orders LIKE '%[^0-9,]%'
+BEGIN
+  -- Raise an error
+  -- Send an alert
+  RETURN;
+END
+GO
+
+-- Use QUOTENAME
+DECLARE @lastname AS NVARCHAR(40), @sql AS NVARCHAR(200);
+SET @lastname = N'Davis';
+SET @sql = N'SELECT * FROM HR.Employees WHERE lastname = N'''
+  + @lastname + ''';';
+PRINT @sql;
+GO
+
+DECLARE @lastname AS NVARCHAR(40), @sql AS NVARCHAR(200);
+SET @lastname = N''' DROP TABLE HR.Employees --';
+SET @sql = N'SELECT * FROM HR.Employees WHERE lastname = N'''
+  + @lastname + ''';';
+PRINT @sql;
+GO
+
+DECLARE @lastname AS NVARCHAR(40), @sql AS NVARCHAR(200);
+SET @lastname = N''' DROP TABLE HR.Employees --';
+SET @sql = N'SELECT * FROM HR.Employees WHERE lastname = N'
+  + QUOTENAME(@lastname, '''') + ';';
+PRINT @sql;
+GO
+
+DECLARE @entered_lastname AS NVARCHAR(40), @sql AS NVARCHAR(200);
+-- user input
+SET @entered_lastname = N''' DROP TABLE HR.Employees --';
+
+SET @sql = N'SELECT * FROM HR.Employees WHERE lastname = @lastname;'
+
+EXEC sp_executesql
+  @stmt = @sql,
+  @params = N'@lastname AS NVARCHAR(40)',
+  @lastname = @entered_lastname;
+GO
+
+DECLARE @lastname AS NVARCHAR(40);
+-- user input
+SET @lastname = N''' DROP TABLE dbo.Employees --';
+
+SELECT * FROM HR.Employees WHERE lastname = @lastname;
+GO

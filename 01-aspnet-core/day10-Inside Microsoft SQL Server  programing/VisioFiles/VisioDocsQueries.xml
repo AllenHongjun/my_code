@@ -1,0 +1,713 @@
+<ShowPlanXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/sqlserver/2004/07/showplan" Version="1.1" Build="10.0.1600.22">
+  <BatchSequence>
+    <Batch>
+      <Statements>
+        <StmtSimple StatementCompId="1" StatementEstRows="1" StatementId="1" StatementOptmLevel="FULL" StatementOptmEarlyAbortReason="GoodEnoughPlanFound" StatementSubTreeCost="0.0781787" StatementText="SELECT id, doc &#xD;&#xA;FROM dbo.VisioDocs &#xD;&#xA;WHERE doc.value( &#xD;&#xA;  'declare namespace VI=&quot;http://schemas.microsoft.com/visio/2003/core&quot;; &#xD;&#xA;  (/VI:VisioDocument/VI:DocumentProperties/VI:Company)[1]', &#xD;&#xA;  'nvarchar(50)') LIKE N'Unknown%'; &#xD;&#xA;-- Drop the index&#xD;" StatementType="SELECT" QueryHash="0x9AD2BEE546FB996B" QueryPlanHash="0x8EAD16950DC558B7">
+          <StatementSetOptions ANSI_NULLS="true" ANSI_PADDING="true" ANSI_WARNINGS="true" ARITHABORT="true" CONCAT_NULL_YIELDS_NULL="true" NUMERIC_ROUNDABORT="false" QUOTED_IDENTIFIER="true" />
+          <QueryPlan DegreeOfParallelism="0" MemoryGrant="1024" CachedPlanSize="32" CompileTime="0" CompileCPU="0" CompileMemory="464">
+            <RelOp AvgRowSize="4027" EstimateCPU="2.64E-06" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="1" LogicalOp="Filter" NodeId="0" Parallel="false" PhysicalOp="Filter" EstimatedTotalSubtreeCost="0.0781787">
+              <OutputList>
+                <ColumnReference Database="[InsideTSQL2008]" Schema="[dbo]" Table="[VisioDocs]" Column="id" />
+                <ColumnReference Database="[InsideTSQL2008]" Schema="[dbo]" Table="[VisioDocs]" Column="doc" />
+              </OutputList>
+              <RunTimeInformation>
+                <RunTimeCountersPerThread Thread="0" ActualRows="1" ActualEndOfScans="1" ActualExecutions="1" />
+              </RunTimeInformation>
+              <Filter StartupExpression="false">
+                <RelOp AvgRowSize="4079" EstimateCPU="1.254E-05" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="3" LogicalOp="Inner Join" NodeId="1" Parallel="false" PhysicalOp="Nested Loops" EstimatedTotalSubtreeCost="0.078176">
+                  <OutputList>
+                    <ColumnReference Database="[InsideTSQL2008]" Schema="[dbo]" Table="[VisioDocs]" Column="id" />
+                    <ColumnReference Database="[InsideTSQL2008]" Schema="[dbo]" Table="[VisioDocs]" Column="doc" />
+                    <ColumnReference Column="Expr1020" />
+                  </OutputList>
+                  <RunTimeInformation>
+                    <RunTimeCountersPerThread Thread="0" ActualRows="3" ActualEndOfScans="1" ActualExecutions="1" />
+                  </RunTimeInformation>
+                  <NestedLoops Optimized="false">
+                    <OuterReferences>
+                      <ColumnReference Database="[InsideTSQL2008]" Schema="[dbo]" Table="[VisioDocs]" Column="id" />
+                    </OuterReferences>
+                    <RelOp AvgRowSize="4027" EstimateCPU="0.0001603" EstimateIO="0.003125" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="3" LogicalOp="Clustered Index Scan" NodeId="2" Parallel="false" PhysicalOp="Clustered Index Scan" EstimatedTotalSubtreeCost="0.0032853" TableCardinality="3">
+                      <OutputList>
+                        <ColumnReference Database="[InsideTSQL2008]" Schema="[dbo]" Table="[VisioDocs]" Column="id" />
+                        <ColumnReference Database="[InsideTSQL2008]" Schema="[dbo]" Table="[VisioDocs]" Column="doc" />
+                      </OutputList>
+                      <RunTimeInformation>
+                        <RunTimeCountersPerThread Thread="0" ActualRows="3" ActualEndOfScans="1" ActualExecutions="1" />
+                      </RunTimeInformation>
+                      <IndexScan Ordered="false" ForcedIndex="false" NoExpandHint="false">
+                        <DefinedValues>
+                          <DefinedValue>
+                            <ColumnReference Database="[InsideTSQL2008]" Schema="[dbo]" Table="[VisioDocs]" Column="id" />
+                          </DefinedValue>
+                          <DefinedValue>
+                            <ColumnReference Database="[InsideTSQL2008]" Schema="[dbo]" Table="[VisioDocs]" Column="doc" />
+                          </DefinedValue>
+                        </DefinedValues>
+                        <Object Database="[InsideTSQL2008]" Schema="[dbo]" Table="[VisioDocs]" Index="[PK_VisioDocs]" IndexKind="Clustered" />
+                      </IndexScan>
+                    </RelOp>
+                    <RelOp AvgRowSize="61" EstimateCPU="0.00042998" EstimateIO="0" EstimateRebinds="2" EstimateRewinds="0" EstimateRows="1" LogicalOp="Aggregate" NodeId="3" Parallel="false" PhysicalOp="Stream Aggregate" EstimatedTotalSubtreeCost="0.0748782">
+                      <OutputList>
+                        <ColumnReference Column="Expr1020" />
+                      </OutputList>
+                      <RunTimeInformation>
+                        <RunTimeCountersPerThread Thread="0" ActualRows="3" ActualEndOfScans="0" ActualExecutions="3" />
+                      </RunTimeInformation>
+                      <StreamAggregate>
+                        <DefinedValues>
+                          <DefinedValue>
+                            <ColumnReference Column="Expr1020" />
+                            <ScalarOperator ScalarString="MIN(CASE WHEN datalength([Expr1017])&gt;=(128) THEN CONVERT_IMPLICIT(nvarchar(50),[Expr1018],0) ELSE CONVERT_IMPLICIT(nvarchar(50),[Expr1017],0) END)">
+                              <Aggregate AggType="MIN" Distinct="false">
+                                <ScalarOperator>
+                                  <IF>
+                                    <Condition>
+                                      <ScalarOperator>
+                                        <Compare CompareOp="GE">
+                                          <ScalarOperator>
+                                            <Intrinsic FunctionName="datalength">
+                                              <ScalarOperator>
+                                                <Identifier>
+                                                  <ColumnReference Column="Expr1017" />
+                                                </Identifier>
+                                              </ScalarOperator>
+                                            </Intrinsic>
+                                          </ScalarOperator>
+                                          <ScalarOperator>
+                                            <Const ConstValue="(128)" />
+                                          </ScalarOperator>
+                                        </Compare>
+                                      </ScalarOperator>
+                                    </Condition>
+                                    <Then>
+                                      <ScalarOperator>
+                                        <Convert DataType="nvarchar" Length="100" Style="0" Implicit="true">
+                                          <ScalarOperator>
+                                            <Identifier>
+                                              <ColumnReference Column="Expr1018" />
+                                            </Identifier>
+                                          </ScalarOperator>
+                                        </Convert>
+                                      </ScalarOperator>
+                                    </Then>
+                                    <Else>
+                                      <ScalarOperator>
+                                        <Convert DataType="nvarchar" Length="100" Style="0" Implicit="true">
+                                          <ScalarOperator>
+                                            <Identifier>
+                                              <ColumnReference Column="Expr1017" />
+                                            </Identifier>
+                                          </ScalarOperator>
+                                        </Convert>
+                                      </ScalarOperator>
+                                    </Else>
+                                  </IF>
+                                </ScalarOperator>
+                              </Aggregate>
+                            </ScalarOperator>
+                          </DefinedValue>
+                        </DefinedValues>
+                        <RelOp AvgRowSize="8033" EstimateCPU="0.0007158" EstimateIO="0" EstimateRebinds="2" EstimateRewinds="0" EstimateRows="715.8" LogicalOp="UDX" NodeId="4" Parallel="false" PhysicalOp="UDX" EstimatedTotalSubtreeCost="0.0735883">
+                          <OutputList>
+                            <ColumnReference Column="Expr1017" />
+                            <ColumnReference Column="Expr1018" />
+                          </OutputList>
+                          <RunTimeInformation>
+                            <RunTimeCountersPerThread Thread="0" ActualRows="3" ActualEndOfScans="3" ActualExecutions="3" />
+                          </RunTimeInformation>
+                          <Extension UDXName="XQUERY DATA">
+                            <DefinedValues>
+                              <DefinedValue>
+                                <ColumnReference Column="Expr1015" />
+                              </DefinedValue>
+                              <DefinedValue>
+                                <ColumnReference Column="Expr1016" />
+                              </DefinedValue>
+                              <DefinedValue>
+                                <ColumnReference Column="Expr1017" />
+                              </DefinedValue>
+                              <DefinedValue>
+                                <ColumnReference Column="Expr1018" />
+                              </DefinedValue>
+                              <DefinedValue>
+                                <ColumnReference Column="Expr1019" />
+                              </DefinedValue>
+                            </DefinedValues>
+                            <UsedUDXColumns>
+                              <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Desc:2]" Column="id" />
+                              <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Desc:2]" Column="nid" />
+                              <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Desc:2]" Column="tid" />
+                              <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Desc:2]" Column="value" />
+                              <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Desc:2]" Column="lvalue" />
+                              <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Desc:2]" Column="lvaluebin" />
+                              <ColumnReference Column="Expr1009" />
+                              <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Company:1]" Column="pk1" />
+                              <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Company:1]" Column="id" />
+                              <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Desc:2]" Column="id" />
+                            </UsedUDXColumns>
+                            <RelOp AvgRowSize="12534" EstimateCPU="0.00374006" EstimateIO="0" EstimateRebinds="2" EstimateRewinds="0" EstimateRows="894.75" LogicalOp="Inner Join" NodeId="5" Parallel="false" PhysicalOp="Nested Loops" EstimatedTotalSubtreeCost="0.0714409">
+                              <OutputList>
+                                <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Company:1]" Column="id" />
+                                <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Company:1]" Column="pk1" />
+                                <ColumnReference Column="Expr1009" />
+                                <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Desc:2]" Column="id" />
+                                <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Desc:2]" Column="nid" />
+                                <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Desc:2]" Column="tid" />
+                                <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Desc:2]" Column="value" />
+                                <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Desc:2]" Column="lvalue" />
+                                <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Desc:2]" Column="lvaluebin" />
+                              </OutputList>
+                              <RunTimeInformation>
+                                <RunTimeCountersPerThread Thread="0" ActualRows="6" ActualEndOfScans="3" ActualExecutions="3" />
+                              </RunTimeInformation>
+                              <NestedLoops Optimized="false">
+                                <OuterReferences>
+                                  <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Company:1]" Column="id" />
+                                  <ColumnReference Column="Expr1021" />
+                                </OuterReferences>
+                                <RelOp AvgRowSize="928" EstimateCPU="2.25E-07" EstimateIO="0" EstimateRebinds="2" EstimateRewinds="0" EstimateRows="1" LogicalOp="Compute Scalar" NodeId="6" Parallel="false" PhysicalOp="Compute Scalar" EstimatedTotalSubtreeCost="0.0377255">
+                                  <OutputList>
+                                    <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Company:1]" Column="id" />
+                                    <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Company:1]" Column="pk1" />
+                                    <ColumnReference Column="Expr1009" />
+                                    <ColumnReference Column="Expr1021" />
+                                  </OutputList>
+                                  <ComputeScalar>
+                                    <DefinedValues>
+                                      <DefinedValue>
+                                        <ColumnReference Column="Expr1009" />
+                                        <ScalarOperator ScalarString="0x58">
+                                          <Const ConstValue="0x58" />
+                                        </ScalarOperator>
+                                      </DefinedValue>
+                                    </DefinedValues>
+                                    <RelOp AvgRowSize="476" EstimateCPU="0.000104582" EstimateIO="0.0112613" EstimateRebinds="2" EstimateRewinds="0" EstimateRows="1" LogicalOp="TopN Sort" NodeId="7" Parallel="false" PhysicalOp="Sort" EstimatedTotalSubtreeCost="0.0377252">
+                                      <OutputList>
+                                        <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Company:1]" Column="id" />
+                                        <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Company:1]" Column="pk1" />
+                                        <ColumnReference Column="Expr1021" />
+                                      </OutputList>
+                                      <MemoryFractions Input="1" Output="1" />
+                                      <RunTimeInformation>
+                                        <RunTimeCountersPerThread Thread="0" ActualRebinds="3" ActualRewinds="0" ActualRows="3" ActualEndOfScans="3" ActualExecutions="3" />
+                                      </RunTimeInformation>
+                                      <TopSort Distinct="false" Rows="1">
+                                        <OrderBy>
+                                          <OrderByColumn Ascending="true">
+                                            <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Company:1]" Column="id" />
+                                          </OrderByColumn>
+                                        </OrderBy>
+                                        <RelOp AvgRowSize="476" EstimateCPU="2.25E-07" EstimateIO="0" EstimateRebinds="2" EstimateRewinds="0" EstimateRows="2.25" LogicalOp="Compute Scalar" NodeId="8" Parallel="false" PhysicalOp="Compute Scalar" EstimatedTotalSubtreeCost="0.00362867">
+                                          <OutputList>
+                                            <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Company:1]" Column="id" />
+                                            <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Company:1]" Column="pk1" />
+                                            <ColumnReference Column="Expr1021" />
+                                          </OutputList>
+                                          <ComputeScalar>
+                                            <DefinedValues>
+                                              <DefinedValue>
+                                                <ColumnReference Column="Expr1021" />
+                                                <ScalarOperator ScalarString="getdescendantlimit([InsideTSQL2008].[sys].[xml_index_nodes_885578193_256000].[id] as [Company:1].[id])">
+                                                  <Intrinsic FunctionName="getdescendantlimit">
+                                                    <ScalarOperator>
+                                                      <Identifier>
+                                                        <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Company:1]" Column="id" />
+                                                      </Identifier>
+                                                    </ScalarOperator>
+                                                  </Intrinsic>
+                                                </ScalarOperator>
+                                              </DefinedValue>
+                                            </DefinedValues>
+                                            <RelOp AvgRowSize="24" EstimateCPU="0.000164425" EstimateIO="0.003125" EstimateRebinds="0" EstimateRewinds="2" EstimateRows="2.25" LogicalOp="Index Seek" NodeId="9" Parallel="false" PhysicalOp="Index Seek" EstimatedTotalSubtreeCost="0.00361828" TableCardinality="29825">
+                                              <OutputList>
+                                                <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Company:1]" Column="id" />
+                                                <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Company:1]" Column="pk1" />
+                                              </OutputList>
+                                              <RunTimeInformation>
+                                                <RunTimeCountersPerThread Thread="0" ActualRows="3" ActualEndOfScans="3" ActualExecutions="3" />
+                                              </RunTimeInformation>
+                                              <IndexScan Ordered="true" ScanDirection="FORWARD" ForcedIndex="false" ForceSeek="false" NoExpandHint="false">
+                                                <DefinedValues>
+                                                  <DefinedValue>
+                                                    <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Company:1]" Column="id" />
+                                                  </DefinedValue>
+                                                  <DefinedValue>
+                                                    <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Company:1]" Column="pk1" />
+                                                  </DefinedValue>
+                                                </DefinedValues>
+                                                <Object Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Index="[idx_xml_path]" Alias="[Company:1]" IndexKind="SecondaryXML" />
+                                                <SeekPredicates>
+                                                  <SeekPredicateNew>
+                                                    <SeekKeys>
+                                                      <Prefix ScanType="EQ">
+                                                        <RangeColumns>
+                                                          <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Company:1]" Column="hid" />
+                                                        </RangeColumns>
+                                                        <RangeExpressions>
+                                                          <ScalarOperator ScalarString="'Ãâ‚¬ÃŠâ‚¬Ã€â‚¬'">
+                                                            <Const ConstValue="'Ãâ‚¬ÃŠâ‚¬Ã€â‚¬'" />
+                                                          </ScalarOperator>
+                                                        </RangeExpressions>
+                                                      </Prefix>
+                                                    </SeekKeys>
+                                                  </SeekPredicateNew>
+                                                </SeekPredicates>
+                                                <Predicate>
+                                                  <ScalarOperator ScalarString="[InsideTSQL2008].[dbo].[VisioDocs].[id]=[InsideTSQL2008].[sys].[xml_index_nodes_885578193_256000].[pk1] as [Company:1].[pk1]">
+                                                    <Compare CompareOp="EQ">
+                                                      <ScalarOperator>
+                                                        <Identifier>
+                                                          <ColumnReference Database="[InsideTSQL2008]" Schema="[dbo]" Table="[VisioDocs]" Column="id" />
+                                                        </Identifier>
+                                                      </ScalarOperator>
+                                                      <ScalarOperator>
+                                                        <Identifier>
+                                                          <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Company:1]" Column="pk1" />
+                                                        </Identifier>
+                                                      </ScalarOperator>
+                                                    </Compare>
+                                                  </ScalarOperator>
+                                                </Predicate>
+                                              </IndexScan>
+                                            </RelOp>
+                                          </ComputeScalar>
+                                        </RelOp>
+                                      </TopSort>
+                                    </RelOp>
+                                  </ComputeScalar>
+                                </RelOp>
+                                <RelOp AvgRowSize="12066" EstimateCPU="0.00114123" EstimateIO="0.00905093" EstimateRebinds="2" EstimateRewinds="0" EstimateRows="894.75" LogicalOp="Clustered Index Seek" NodeId="16" Parallel="false" PhysicalOp="Clustered Index Seek" EstimatedTotalSubtreeCost="0.0224948" TableCardinality="29825">
+                                  <OutputList>
+                                    <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Desc:2]" Column="id" />
+                                    <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Desc:2]" Column="nid" />
+                                    <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Desc:2]" Column="tid" />
+                                    <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Desc:2]" Column="value" />
+                                    <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Desc:2]" Column="lvalue" />
+                                    <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Desc:2]" Column="lvaluebin" />
+                                  </OutputList>
+                                  <RunTimeInformation>
+                                    <RunTimeCountersPerThread Thread="0" ActualRows="6" ActualEndOfScans="3" ActualExecutions="3" />
+                                  </RunTimeInformation>
+                                  <IndexScan Ordered="true" ScanDirection="FORWARD" ForcedIndex="false" ForceSeek="false" NoExpandHint="false">
+                                    <DefinedValues>
+                                      <DefinedValue>
+                                        <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Desc:2]" Column="id" />
+                                      </DefinedValue>
+                                      <DefinedValue>
+                                        <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Desc:2]" Column="nid" />
+                                      </DefinedValue>
+                                      <DefinedValue>
+                                        <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Desc:2]" Column="tid" />
+                                      </DefinedValue>
+                                      <DefinedValue>
+                                        <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Desc:2]" Column="value" />
+                                      </DefinedValue>
+                                      <DefinedValue>
+                                        <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Desc:2]" Column="lvalue" />
+                                      </DefinedValue>
+                                      <DefinedValue>
+                                        <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Desc:2]" Column="lvaluebin" />
+                                      </DefinedValue>
+                                    </DefinedValues>
+                                    <Object Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Index="[idx_xml_primary]" Alias="[Desc:2]" IndexKind="PrimaryXML" />
+                                    <SeekPredicates>
+                                      <SeekPredicateNew>
+                                        <SeekKeys>
+                                          <Prefix ScanType="EQ">
+                                            <RangeColumns>
+                                              <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Desc:2]" Column="pk1" />
+                                            </RangeColumns>
+                                            <RangeExpressions>
+                                              <ScalarOperator ScalarString="[InsideTSQL2008].[dbo].[VisioDocs].[id]">
+                                                <Identifier>
+                                                  <ColumnReference Database="[InsideTSQL2008]" Schema="[dbo]" Table="[VisioDocs]" Column="id" />
+                                                </Identifier>
+                                              </ScalarOperator>
+                                            </RangeExpressions>
+                                          </Prefix>
+                                          <StartRange ScanType="GE">
+                                            <RangeColumns>
+                                              <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Desc:2]" Column="id" />
+                                            </RangeColumns>
+                                            <RangeExpressions>
+                                              <ScalarOperator ScalarString="[InsideTSQL2008].[sys].[xml_index_nodes_885578193_256000].[id] as [Company:1].[id]">
+                                                <Identifier>
+                                                  <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Company:1]" Column="id" />
+                                                </Identifier>
+                                              </ScalarOperator>
+                                            </RangeExpressions>
+                                          </StartRange>
+                                          <EndRange ScanType="LT">
+                                            <RangeColumns>
+                                              <ColumnReference Database="[InsideTSQL2008]" Schema="[sys]" Table="[xml_index_nodes_885578193_256000]" Alias="[Desc:2]" Column="id" />
+                                            </RangeColumns>
+                                            <RangeExpressions>
+                                              <ScalarOperator ScalarString="[Expr1021]">
+                                                <Identifier>
+                                                  <ColumnReference Column="Expr1021" />
+                                                </Identifier>
+                                              </ScalarOperator>
+                                            </RangeExpressions>
+                                          </EndRange>
+                                        </SeekKeys>
+                                      </SeekPredicateNew>
+                                    </SeekPredicates>
+                                  </IndexScan>
+                                </RelOp>
+                              </NestedLoops>
+                            </RelOp>
+                          </Extension>
+                        </RelOp>
+                      </StreamAggregate>
+                    </RelOp>
+                  </NestedLoops>
+                </RelOp>
+                <Predicate>
+                  <ScalarOperator ScalarString="[Expr1020] like N'Unknown%'">
+                    <Intrinsic FunctionName="like">
+                      <ScalarOperator>
+                        <Identifier>
+                          <ColumnReference Column="Expr1020" />
+                        </Identifier>
+                      </ScalarOperator>
+                      <ScalarOperator>
+                        <Const ConstValue="N'Unknown%'" />
+                      </ScalarOperator>
+                    </Intrinsic>
+                  </ScalarOperator>
+                </Predicate>
+              </Filter>
+            </RelOp>
+          </QueryPlan>
+        </StmtSimple>
+      </Statements>
+    </Batch>
+    <Batch>
+      <Statements>
+        <StmtSimple StatementCompId="3" StatementEstRows="1" StatementId="2" StatementOptmLevel="FULL" StatementSubTreeCost="3.0871" StatementText="SELECT id, doc &#xD;&#xA;FROM dbo.VisioDocs &#xD;&#xA;WHERE doc.value( &#xD;&#xA;  'declare namespace VI=&quot;http://schemas.microsoft.com/visio/2003/core&quot;; &#xD;&#xA;  (/VI:VisioDocument/VI:DocumentProperties/VI:Company)[1]', &#xD;&#xA;  'nvarchar(50)') LIKE N'Unknown%';&#xD;&#xA;" StatementType="SELECT" QueryHash="0x4D48B3A45264DBDA" QueryPlanHash="0xB7A251B5892B9DFF">
+          <StatementSetOptions ANSI_NULLS="true" ANSI_PADDING="true" ANSI_WARNINGS="true" ARITHABORT="true" CONCAT_NULL_YIELDS_NULL="true" NUMERIC_ROUNDABORT="false" QUOTED_IDENTIFIER="true" />
+          <QueryPlan DegreeOfParallelism="0" CachedPlanSize="32" CompileTime="8" CompileCPU="8" CompileMemory="360">
+            <RelOp AvgRowSize="4027" EstimateCPU="2.64E-06" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="1" LogicalOp="Filter" NodeId="0" Parallel="false" PhysicalOp="Filter" EstimatedTotalSubtreeCost="3.0871">
+              <OutputList>
+                <ColumnReference Database="[InsideTSQL2008]" Schema="[dbo]" Table="[VisioDocs]" Column="id" />
+                <ColumnReference Database="[InsideTSQL2008]" Schema="[dbo]" Table="[VisioDocs]" Column="doc" />
+              </OutputList>
+              <RunTimeInformation>
+                <RunTimeCountersPerThread Thread="0" ActualRows="1" ActualEndOfScans="1" ActualExecutions="1" />
+              </RunTimeInformation>
+              <Filter StartupExpression="false">
+                <RelOp AvgRowSize="4079" EstimateCPU="1.254E-05" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="3" LogicalOp="Inner Join" NodeId="1" Parallel="false" PhysicalOp="Nested Loops" EstimatedTotalSubtreeCost="3.0871">
+                  <OutputList>
+                    <ColumnReference Database="[InsideTSQL2008]" Schema="[dbo]" Table="[VisioDocs]" Column="id" />
+                    <ColumnReference Database="[InsideTSQL2008]" Schema="[dbo]" Table="[VisioDocs]" Column="doc" />
+                    <ColumnReference Column="Expr1016" />
+                  </OutputList>
+                  <RunTimeInformation>
+                    <RunTimeCountersPerThread Thread="0" ActualRows="3" ActualEndOfScans="1" ActualExecutions="1" />
+                  </RunTimeInformation>
+                  <NestedLoops Optimized="false">
+                    <OuterReferences>
+                      <ColumnReference Database="[InsideTSQL2008]" Schema="[dbo]" Table="[VisioDocs]" Column="doc" />
+                    </OuterReferences>
+                    <RelOp AvgRowSize="4027" EstimateCPU="0.0001603" EstimateIO="0.003125" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="3" LogicalOp="Clustered Index Scan" NodeId="2" Parallel="false" PhysicalOp="Clustered Index Scan" EstimatedTotalSubtreeCost="0.0032853" TableCardinality="3">
+                      <OutputList>
+                        <ColumnReference Database="[InsideTSQL2008]" Schema="[dbo]" Table="[VisioDocs]" Column="id" />
+                        <ColumnReference Database="[InsideTSQL2008]" Schema="[dbo]" Table="[VisioDocs]" Column="doc" />
+                      </OutputList>
+                      <RunTimeInformation>
+                        <RunTimeCountersPerThread Thread="0" ActualRows="3" ActualEndOfScans="1" ActualExecutions="1" />
+                      </RunTimeInformation>
+                      <IndexScan Ordered="false" ForcedIndex="false" NoExpandHint="false">
+                        <DefinedValues>
+                          <DefinedValue>
+                            <ColumnReference Database="[InsideTSQL2008]" Schema="[dbo]" Table="[VisioDocs]" Column="id" />
+                          </DefinedValue>
+                          <DefinedValue>
+                            <ColumnReference Database="[InsideTSQL2008]" Schema="[dbo]" Table="[VisioDocs]" Column="doc" />
+                          </DefinedValue>
+                        </DefinedValues>
+                        <Object Database="[InsideTSQL2008]" Schema="[dbo]" Table="[VisioDocs]" Index="[PK_VisioDocs]" IndexKind="Clustered" />
+                      </IndexScan>
+                    </RelOp>
+                    <RelOp AvgRowSize="61" EstimateCPU="0.0004325" EstimateIO="0" EstimateRebinds="2" EstimateRewinds="0" EstimateRows="1" LogicalOp="Aggregate" NodeId="3" Parallel="false" PhysicalOp="Stream Aggregate" EstimatedTotalSubtreeCost="3.0838">
+                      <OutputList>
+                        <ColumnReference Column="Expr1016" />
+                      </OutputList>
+                      <RunTimeInformation>
+                        <RunTimeCountersPerThread Thread="0" ActualRows="3" ActualEndOfScans="0" ActualExecutions="3" />
+                      </RunTimeInformation>
+                      <StreamAggregate>
+                        <DefinedValues>
+                          <DefinedValue>
+                            <ColumnReference Column="Expr1016" />
+                            <ScalarOperator ScalarString="MIN(CASE WHEN datalength([Expr1013])&gt;=(128) THEN CONVERT_IMPLICIT(nvarchar(50),[Expr1014],0) ELSE CONVERT_IMPLICIT(nvarchar(50),[Expr1013],0) END)">
+                              <Aggregate AggType="MIN" Distinct="false">
+                                <ScalarOperator>
+                                  <IF>
+                                    <Condition>
+                                      <ScalarOperator>
+                                        <Compare CompareOp="GE">
+                                          <ScalarOperator>
+                                            <Intrinsic FunctionName="datalength">
+                                              <ScalarOperator>
+                                                <Identifier>
+                                                  <ColumnReference Column="Expr1013" />
+                                                </Identifier>
+                                              </ScalarOperator>
+                                            </Intrinsic>
+                                          </ScalarOperator>
+                                          <ScalarOperator>
+                                            <Const ConstValue="(128)" />
+                                          </ScalarOperator>
+                                        </Compare>
+                                      </ScalarOperator>
+                                    </Condition>
+                                    <Then>
+                                      <ScalarOperator>
+                                        <Convert DataType="nvarchar" Length="100" Style="0" Implicit="true">
+                                          <ScalarOperator>
+                                            <Identifier>
+                                              <ColumnReference Column="Expr1014" />
+                                            </Identifier>
+                                          </ScalarOperator>
+                                        </Convert>
+                                      </ScalarOperator>
+                                    </Then>
+                                    <Else>
+                                      <ScalarOperator>
+                                        <Convert DataType="nvarchar" Length="100" Style="0" Implicit="true">
+                                          <ScalarOperator>
+                                            <Identifier>
+                                              <ColumnReference Column="Expr1013" />
+                                            </Identifier>
+                                          </ScalarOperator>
+                                        </Convert>
+                                      </ScalarOperator>
+                                    </Else>
+                                  </IF>
+                                </ScalarOperator>
+                              </Aggregate>
+                            </ScalarOperator>
+                          </DefinedValue>
+                        </DefinedValues>
+                        <RelOp AvgRowSize="8033" EstimateCPU="0.00072" EstimateIO="0" EstimateRebinds="2" EstimateRewinds="0" EstimateRows="720" LogicalOp="UDX" NodeId="4" Parallel="false" PhysicalOp="UDX" EstimatedTotalSubtreeCost="3.08251">
+                          <OutputList>
+                            <ColumnReference Column="Expr1013" />
+                            <ColumnReference Column="Expr1014" />
+                          </OutputList>
+                          <RunTimeInformation>
+                            <RunTimeCountersPerThread Thread="0" ActualRows="3" ActualEndOfScans="3" ActualExecutions="3" />
+                          </RunTimeInformation>
+                          <Extension UDXName="XQUERY DATA">
+                            <DefinedValues>
+                              <DefinedValue>
+                                <ColumnReference Column="Expr1011" />
+                              </DefinedValue>
+                              <DefinedValue>
+                                <ColumnReference Column="Expr1012" />
+                              </DefinedValue>
+                              <DefinedValue>
+                                <ColumnReference Column="Expr1013" />
+                              </DefinedValue>
+                              <DefinedValue>
+                                <ColumnReference Column="Expr1014" />
+                              </DefinedValue>
+                              <DefinedValue>
+                                <ColumnReference Column="Expr1015" />
+                              </DefinedValue>
+                            </DefinedValues>
+                            <UsedUDXColumns>
+                              <ColumnReference Table="[XML Reader]" Column="id" />
+                              <ColumnReference Table="[XML Reader]" Column="nid" />
+                              <ColumnReference Table="[XML Reader]" Column="tid" />
+                              <ColumnReference Table="[XML Reader]" Column="value" />
+                              <ColumnReference Table="[XML Reader]" Column="lvalue" />
+                              <ColumnReference Table="[XML Reader]" Column="lvaluebin" />
+                              <ColumnReference Column="Expr1007" />
+                              <ColumnReference Table="[XML Reader with XPath filter]" Column="id" />
+                              <ColumnReference Table="[XML Reader]" Column="id" />
+                            </UsedUDXColumns>
+                            <RelOp AvgRowSize="8535" EstimateCPU="0.003762" EstimateIO="0" EstimateRebinds="2" EstimateRewinds="0" EstimateRows="900" LogicalOp="Inner Join" NodeId="5" Parallel="false" PhysicalOp="Nested Loops" EstimatedTotalSubtreeCost="3.08035">
+                              <OutputList>
+                                <ColumnReference Table="[XML Reader with XPath filter]" Column="id" />
+                                <ColumnReference Column="Expr1007" />
+                                <ColumnReference Table="[XML Reader]" Column="id" />
+                                <ColumnReference Table="[XML Reader]" Column="nid" />
+                                <ColumnReference Table="[XML Reader]" Column="tid" />
+                                <ColumnReference Table="[XML Reader]" Column="value" />
+                                <ColumnReference Table="[XML Reader]" Column="lvalue" />
+                                <ColumnReference Table="[XML Reader]" Column="lvaluebin" />
+                              </OutputList>
+                              <RunTimeInformation>
+                                <RunTimeCountersPerThread Thread="0" ActualRows="6" ActualEndOfScans="3" ActualExecutions="3" />
+                              </RunTimeInformation>
+                              <NestedLoops Optimized="false">
+                                <OuterReferences>
+                                  <ColumnReference Table="[XML Reader with XPath filter]" Column="id" />
+                                  <ColumnReference Column="Expr1017" />
+                                </OuterReferences>
+                                <RelOp AvgRowSize="921" EstimateCPU="1E-07" EstimateIO="0" EstimateRebinds="2" EstimateRewinds="0" EstimateRows="1" LogicalOp="Top" NodeId="6" Parallel="false" PhysicalOp="Top" EstimatedTotalSubtreeCost="0.0150608">
+                                  <OutputList>
+                                    <ColumnReference Table="[XML Reader with XPath filter]" Column="id" />
+                                    <ColumnReference Column="Expr1007" />
+                                    <ColumnReference Column="Expr1017" />
+                                  </OutputList>
+                                  <RunTimeInformation>
+                                    <RunTimeCountersPerThread Thread="0" ActualRows="3" ActualEndOfScans="3" ActualExecutions="3" />
+                                  </RunTimeInformation>
+                                  <Top RowCount="false" IsPercent="false" WithTies="false">
+                                    <TopExpression>
+                                      <ScalarOperator ScalarString="(1)">
+                                        <Const ConstValue="(1)" />
+                                      </ScalarOperator>
+                                    </TopExpression>
+                                    <RelOp AvgRowSize="921" EstimateCPU="2E-05" EstimateIO="0" EstimateRebinds="2" EstimateRewinds="0" EstimateRows="1" LogicalOp="Compute Scalar" NodeId="7" Parallel="false" PhysicalOp="Compute Scalar" EstimatedTotalSubtreeCost="0.0150605">
+                                      <OutputList>
+                                        <ColumnReference Table="[XML Reader with XPath filter]" Column="id" />
+                                        <ColumnReference Column="Expr1007" />
+                                        <ColumnReference Column="Expr1017" />
+                                      </OutputList>
+                                      <ComputeScalar>
+                                        <DefinedValues>
+                                          <DefinedValue>
+                                            <ColumnReference Column="Expr1007" />
+                                            <ScalarOperator ScalarString="0x58">
+                                              <Const ConstValue="0x58" />
+                                            </ScalarOperator>
+                                          </DefinedValue>
+                                          <DefinedValue>
+                                            <ColumnReference Column="Expr1017" />
+                                            <ScalarOperator ScalarString="getdescendantlimit(XML Reader with XPath filter.[id])">
+                                              <Intrinsic FunctionName="getdescendantlimit">
+                                                <ScalarOperator>
+                                                  <Identifier>
+                                                    <ColumnReference Table="[XML Reader with XPath filter]" Column="id" />
+                                                  </Identifier>
+                                                </ScalarOperator>
+                                              </Intrinsic>
+                                            </ScalarOperator>
+                                          </DefinedValue>
+                                        </DefinedValues>
+                                        <RelOp AvgRowSize="17" EstimateCPU="1.004" EstimateIO="0" EstimateRebinds="2" EstimateRewinds="0" EstimateRows="1" LogicalOp="Table-valued function" NodeId="8" Parallel="false" PhysicalOp="Table-valued function" EstimatedTotalSubtreeCost="0.0150602">
+                                          <OutputList>
+                                            <ColumnReference Table="[XML Reader with XPath filter]" Column="id" />
+                                          </OutputList>
+                                          <RunTimeInformation>
+                                            <RunTimeCountersPerThread Thread="0" ActualRebinds="3" ActualRewinds="0" ActualRows="3" ActualEndOfScans="0" ActualExecutions="3" />
+                                          </RunTimeInformation>
+                                          <TableValuedFunction>
+                                            <DefinedValues>
+                                              <DefinedValue>
+                                                <ColumnReference Table="[XML Reader with XPath filter]" Column="id" />
+                                              </DefinedValue>
+                                            </DefinedValues>
+                                            <Object Table="[XML Reader with XPath filter]" />
+                                            <ParameterList>
+                                              <ScalarOperator ScalarString="[InsideTSQL2008].[dbo].[VisioDocs].[doc]">
+                                                <Identifier>
+                                                  <ColumnReference Database="[InsideTSQL2008]" Schema="[dbo]" Table="[VisioDocs]" Column="doc" />
+                                                </Identifier>
+                                              </ScalarOperator>
+                                              <ScalarOperator ScalarString="(0)">
+                                                <Const ConstValue="(0)" />
+                                              </ScalarOperator>
+                                              <ScalarOperator ScalarString="NULL">
+                                                <Const ConstValue="NULL" />
+                                              </ScalarOperator>
+                                              <ScalarOperator ScalarString="NULL">
+                                                <Const ConstValue="NULL" />
+                                              </ScalarOperator>
+                                            </ParameterList>
+                                          </TableValuedFunction>
+                                        </RelOp>
+                                      </ComputeScalar>
+                                    </RelOp>
+                                  </Top>
+                                </RelOp>
+                                <RelOp AvgRowSize="8075" EstimateCPU="1.018" EstimateIO="0" EstimateRebinds="2" EstimateRewinds="0" EstimateRows="900" LogicalOp="Table-valued function" NodeId="19" Parallel="false" PhysicalOp="Table-valued function" EstimatedTotalSubtreeCost="3.054">
+                                  <OutputList>
+                                    <ColumnReference Table="[XML Reader]" Column="id" />
+                                    <ColumnReference Table="[XML Reader]" Column="nid" />
+                                    <ColumnReference Table="[XML Reader]" Column="tid" />
+                                    <ColumnReference Table="[XML Reader]" Column="value" />
+                                    <ColumnReference Table="[XML Reader]" Column="lvalue" />
+                                    <ColumnReference Table="[XML Reader]" Column="lvaluebin" />
+                                  </OutputList>
+                                  <RunTimeInformation>
+                                    <RunTimeCountersPerThread Thread="0" ActualRebinds="3" ActualRewinds="0" ActualRows="6" ActualEndOfScans="3" ActualExecutions="3" />
+                                  </RunTimeInformation>
+                                  <TableValuedFunction>
+                                    <DefinedValues>
+                                      <DefinedValue>
+                                        <ColumnReference Table="[XML Reader]" Column="id" />
+                                      </DefinedValue>
+                                      <DefinedValue>
+                                        <ColumnReference Table="[XML Reader]" Column="nid" />
+                                      </DefinedValue>
+                                      <DefinedValue>
+                                        <ColumnReference Table="[XML Reader]" Column="tid" />
+                                      </DefinedValue>
+                                      <DefinedValue>
+                                        <ColumnReference Table="[XML Reader]" Column="value" />
+                                      </DefinedValue>
+                                      <DefinedValue>
+                                        <ColumnReference Table="[XML Reader]" Column="lvalue" />
+                                      </DefinedValue>
+                                      <DefinedValue>
+                                        <ColumnReference Table="[XML Reader]" Column="lvaluebin" />
+                                      </DefinedValue>
+                                    </DefinedValues>
+                                    <Object Table="[XML Reader]" />
+                                    <ParameterList>
+                                      <ScalarOperator ScalarString="[InsideTSQL2008].[dbo].[VisioDocs].[doc]">
+                                        <Identifier>
+                                          <ColumnReference Database="[InsideTSQL2008]" Schema="[dbo]" Table="[VisioDocs]" Column="doc" />
+                                        </Identifier>
+                                      </ScalarOperator>
+                                      <ScalarOperator ScalarString="(7)">
+                                        <Const ConstValue="(7)" />
+                                      </ScalarOperator>
+                                      <ScalarOperator ScalarString="XML Reader with XPath filter.[id]">
+                                        <Identifier>
+                                          <ColumnReference Table="[XML Reader with XPath filter]" Column="id" />
+                                        </Identifier>
+                                      </ScalarOperator>
+                                      <ScalarOperator ScalarString="[Expr1017]">
+                                        <Identifier>
+                                          <ColumnReference Column="Expr1017" />
+                                        </Identifier>
+                                      </ScalarOperator>
+                                    </ParameterList>
+                                  </TableValuedFunction>
+                                </RelOp>
+                              </NestedLoops>
+                            </RelOp>
+                          </Extension>
+                        </RelOp>
+                      </StreamAggregate>
+                    </RelOp>
+                  </NestedLoops>
+                </RelOp>
+                <Predicate>
+                  <ScalarOperator ScalarString="[Expr1016] like N'Unknown%'">
+                    <Intrinsic FunctionName="like">
+                      <ScalarOperator>
+                        <Identifier>
+                          <ColumnReference Column="Expr1016" />
+                        </Identifier>
+                      </ScalarOperator>
+                      <ScalarOperator>
+                        <Const ConstValue="N'Unknown%'" />
+                      </ScalarOperator>
+                    </Intrinsic>
+                  </ScalarOperator>
+                </Predicate>
+              </Filter>
+            </RelOp>
+          </QueryPlan>
+        </StmtSimple>
+      </Statements>
+    </Batch>
+  </BatchSequence>
+</ShowPlanXML>
