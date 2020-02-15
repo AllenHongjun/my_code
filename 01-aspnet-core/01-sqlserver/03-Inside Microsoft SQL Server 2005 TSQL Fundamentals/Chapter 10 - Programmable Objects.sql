@@ -1,7 +1,7 @@
 ---------------------------------------------------------------------
 -- Microsoft SQL Server 2008 T-SQL Fundamentals
 -- Chapter 10 - Programmable Objects
--- © 2008 Itzik Ben-Gan 
+-- ?2008 Itzik Ben-Gan 
 ---------------------------------------------------------------------
 
 ---------------------------------------------------------------------
@@ -87,7 +87,7 @@ GO
 -- Invalid batch
 PRINT 'Second batch';
 SELECT custid FROM Sales.Customers;
-SELECT orderid FOM Sales.Orders;
+SELECT orderid FROM Sales.Orders;
 GO
 -- Valid batch
 PRINT 'Third batch';
