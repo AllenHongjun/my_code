@@ -1,6 +1,0 @@
-first name,last name
-Nicholas,Zakas
-Michael,Smith
-Joyce,Anderson
-Benjamin,Johnson
-Amy,Jones

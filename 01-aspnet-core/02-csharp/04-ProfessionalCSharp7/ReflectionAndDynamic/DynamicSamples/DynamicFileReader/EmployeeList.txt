@@ -1,4 +1,0 @@
-﻿FirstName, LastName, City, State
-Niki, Lauda, Vienna, Austria
-Carlos, Reutemann, Santa Fe, Argentine
-Sebastian, Vettel, Thurgovia, Switzerland
