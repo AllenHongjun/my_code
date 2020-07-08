@@ -1,0 +1,332 @@
+*{
+	margin: 0;
+	padding: 0;
+	
+}
+
+body{
+	font:"微软雅黑";
+	background-color: #fafafa;
+}
+/* 顶部导航栏部分 */
+.header{
+	width: 1240px;
+	height: 100px;
+	margin: 0 auto;
+	/* background-color: #f60; */
+}
+.header .logo{
+	float: left;
+}
+.header .index-nav{
+	float: right;
+	list-style: none;
+}
+
+.header .index-nav li{
+	float: left;
+}
+
+.header .index-nav li a{
+	font-size: 13.5px;
+	font-family: "微软雅黑";
+	line-height: 100px;
+	color: #333;
+	padding-right: 40px;
+	cursor:pointer;
+	height: 100px;
+	display: block;
+}
+
+.header .index-nav li a.select{
+	color: #2288f6;
+}
+
+.header .index-nav li a:hover{
+	color: #2288f6;
+}
+.banner{
+	height: 620px;
+	background: #fff url(../images/banner.jpg) center no-repeat;
+}
+
+/* 信息服务 */
+.service{
+	width: 1240px;
+	margin: 0 auto;
+	padding-top: 64px;
+	padding-bottom: 64px;
+	text-align: center;
+	
+}
+
+.service .service-top h2{
+	font-size: 18px;
+	color:  #333;
+	text-align: center;
+	font-weight: bold;
+}
+.service .service-top h5{
+	font: 10.5px;
+	color: 666666;
+	
+	font-weight: normal;
+	padding-top: 24px;
+	padding-bottom: 16px;
+}
+
+.service .service-top p{
+	font: 10.5px;
+	color: #666;
+	line-height: 18px;
+	padding-bottom: 50px;
+}
+
+.service-content ul{
+	list-style: none;
+	overflow: hidden;
+	margin: 0 auto;
+}
+.service-content li{
+	width: 320px;
+	height: 510px;
+	float: left;
+	padding-top: 45px;
+	border: 1px solid #f1f1f1;
+	background-color: #fff;
+}
+
+.service-content li.yx-mid{
+	/* 给中间一个盒子加上 左右外边距 剧中的方式 有很多 3个4个都不一样 要灵活的运用 */
+	margin: 0 136px;
+}
+/* 信息服务内容 */
+.service-content{
+	margin: 75px auto 0;
+}
+
+.service-content li h3{
+	font: 18px;
+	color: #333;
+	line-height: 1.5;
+	padding-top: 30px;
+	padding-bottom: 15px;
+}
+.service-content p{
+	font: 10.5;
+	color: #666;
+	line-height: 1.5;
+	padding: 0 15px;
+	padding-bottom: 45px;
+}
+
+.service-content a{
+
+	display: block;
+	width: 150px;
+	height: 38px;
+	
+	color: #f60;
+	margin: 0 auto;
+	border-radius: 3px;
+	text-decoration: none;
+	line-height: 38px;
+	border: 1px solid #f60;
+}
+
+.service-content a:hover{
+	background-color: #f60;
+	color: #fff;
+}
+
+
+/* 经典案例 */
+.jdcase{
+	/* width: 1240px; */
+	background-color: #fff;
+	margin: 0 auto;
+	padding-top: 64px;
+}
+
+.jdcase .jdcase-top{
+	text-align: center;
+}
+
+.jdcase .jdcase-top h2{
+	font-size: 18px;
+	color:  #333;
+	text-align: center;
+	font-weight: bold;
+}
+.jdcase .jdcase-top h5{
+	font: 10.5px;
+	color: 666666;
+	font-weight: normal;
+	padding-top: 24px;
+	padding-bottom: 16px;
+}
+
+.jdcase .jdcase-photoes{
+	width: 1054px;
+	margin: 0 auto;
+	padding-bottom: 60px;
+	position: relative;
+}
+.jdcase-photoes ul{
+	list-style: none;
+	overflow: hidden;
+}
+.jdcase-photoes ul li{
+	float: left;
+	position: relative;
+}
+
+.jdcase-photoes ul li img{
+	width: 324px;
+	height: 210px;
+}
+
+.jdcase-photoes-md{
+	margin: 0 40px;
+}
+
+.jdcase-photoes p{
+	height: 45px;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	background-color: rgba(0,0,0,.3);
+	color: #fff;
+	line-height: 45px;
+	font-size: 12px;
+	text-align: center;
+
+}
+
+.jdcase-photoes .mask{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;	
+	left: 0;
+	background: rgba(0,0,0,.5) url(../images/fdj.png) center  no-repeat;
+	display: none;
+}
+
+.jdcase-photoes li:hover .mask{
+	display: block;
+}
+
+.left,.right{
+	display: inline-block;
+	width: 60px;
+	height: 60px;
+	background: rgba(0,0,0,.2);
+	text-align: center;
+	line-height: 60px;
+	color: #fff;
+	text-decoration: none;
+	font-size: 25px;
+	border-radius: 50%;
+	position: absolute;
+	top: 35%;
+}
+.left{
+	left: -90px;
+}
+.right{
+	right: -90px;
+}
+
+.jdcase-photoes a:hover{
+	background: rgba(87,169,239);
+}
+/* 合作媒体 */
+
+
+.acmeida{
+	width: 1160px;
+	margin: 0 auto;
+	background-color: #fafafa;
+	text-align: center;
+	overflow: hidden;
+	padding-bottom: 200px;
+}
+.acmeida .acmeida-top{
+	padding: 64px;
+	padding-bottom: 50px;
+}
+.acmeida .acmeida-top h2{
+	font-size: 18px;
+	color:  #333;
+	text-align: center;
+	font-weight: bold;
+}
+.acmeida .acmeida-top h5{
+	font: 10.5px;
+	color: 666666;
+	font-weight: normal;
+	padding-top: 24px;
+	padding-bottom: 16px;
+}
+
+.acmedia-ct ul{
+	list-style: none;
+}
+
+.acmedia-ct li{
+	float: left;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px dashed #ccc;
+	width: 231px;
+	height: 83px;
+	line-height: 83px;
+}
+/* 底部内容 */
+.footer{
+	background-color: #212425;
+	height: 170px
+
+}
+.footer ul{
+	width: 1070px;
+	margin: 0 auto;
+	list-style: none;
+	overflow: hidden;
+	margin: 0 auto;
+	text-align: center;
+	padding-top: 45px;
+}
+
+
+
+.footer ul li{
+	display: inline-block;
+	border-right: 1px solid #c3c3c3;
+	padding: 0 10px;
+
+}
+
+.footer ul li:last-child{
+	border: none;
+}
+
+.footer ul li a{
+	font-size: 14px;
+	color: #fff;
+	text-decoration: none;
+}
+
+.footer ul li a:hover{
+	color: #2288f6;
+	text-decoration: underline;
+}
+
+.footer p{
+	color: #888888;
+	text-align: center;
+	font-size: 10.5px;
+	line-height: 1.5;
+	padding: 20px 0;
+}
