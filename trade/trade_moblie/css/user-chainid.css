@@ -1,0 +1,21 @@
+/*主链ID*/
+.id{
+	margin-top: 1.1rem;
+	background: #fff;
+	padding: 0.25rem 0;
+	text-align: center;
+	color: #555;
+	font-size: 0.3rem;
+}
+.copy{
+	display: block;
+	text-align: center;
+	margin-top: 0.2rem;
+	font-size: 0.26rem;
+}
+
+
+/*点击复制*/
+.trade-code-input{
+	position: absolute;top: 0;left: 0;opacity: 0;z-index: -10;
+}

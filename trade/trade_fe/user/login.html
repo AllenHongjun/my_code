@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>登录</title>
+	
+		<script type="text/javascript" src="../js/rem.js"></script>
+		<link href="../lib/mui/css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/iconfont.css" />
+		<link rel="stylesheet" href="../css/public.css" />
+		<link rel="stylesheet" href="../css/login.css" />
+	</head>
+
+	<body>
+		<div class="mui-content binding">
+			<!--头部   开始-->
+			<div class="top">
+				<header class="mui-bar mui-bar-nav">
+					<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left icon-back"></a>
+					<h1 class="mui-title">登录</h1>
+				</header>
+			</div>
+			<!--头部   结束-->
+
+			<div class="login">
+				<form id='login-form' class="mui-input-group">
+					<div class="mui-input-row register-btn">
+						<label>
+							<svg class="mui-icon icon" aria-hidden="true">
+							  	<use xlink:href="#icon-zhanghao"></use>
+							</svg>
+						</label>
+						<input id='account' name="account" type="text" class="mui-input-clear mui-input" placeholder="请输入用户名">
+					</div>
+					<div class="mui-input-row register-btn">
+						<label>
+							<svg class="mui-icon icon" aria-hidden="true">
+							  	<use xlink:href="#icon-mima"></use>
+							</svg>
+						</label>
+						<input id='password' name="pwd" type="password" class="mui-input-clear mui-input" placeholder="请输入密码">
+					</div>
+				</form>
+				<div class="mui-content-padded">
+					<button id='login' class="mui-btn mui-btn-block mui-btn-primary login-btn" data-loading-text="登录中">登录</button>
+					<div class="link-area">
+						<a id='reg' href="register.html">注册账号</a> <span class="spliter">|</span>
+						<a id='forgetPassword'>忘记密码</a>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="others">
+				<h5>其他登录方式</h5>
+				<a href="#">
+					<svg class="mui-icon icon" aria-hidden="true">
+						<use xlink:href="#icon-shouji"></use>
+					</svg>
+					<!--手机登录-->
+				</a>
+				<a id="wxLogin" href="javascript:void(0);">
+					<svg class="mui-icon icon" aria-hidden="true">
+						<use xlink:href="#icon-weixin4"></use>
+					</svg>
+					<!--登录-->
+				</a>
+			</div>
+
+		</div>
+	</body>
+	<script src="../lib/mui/js/mui.min.js"></script>
+	
+	
+	<script type="text/javascript" src="../js/iconfont.js"></script>
+	<script type="text/javascript" src="../lib/md5/md5.js"></script>
+	<script src="../lib/zepto/zepto.min.js"></script>
+	<script src="../js/common.js"></script>
+	<script src="../js/user/login.js"></script>
+	<script>
+
+
+
+
+        var auths = null;
+		var device = null;
+		
+		mui.plusReady(function() {
+			localStorage.setItem("userinfo","");
+			device = plus.device;
+			plus.oauth.getServices(function(services) {
+				auths = services;
+			}, function(e) {
+
+			});
+			
+			if(localStorage.getItem("userinfo")!=""){
+				mui.openWindow({
+					url: '../game_list.html',
+					id: 'gamelist'
+				});
+			}
+		})
+		document.getElementById('wxLogin').addEventListener('tap', function() {
+			authLogin('weixin');
+		})
+
+		function authLogin(type) {
+			plus.nativeUI.showWaiting("登录中...")
+			//mask.show();
+			var s;
+			for(var i = 0; i < auths.length; i++) {
+				if(auths[i].id == type) {
+					s = auths[i];
+					break;
+				}
+			}
+			if(!s.authResult) {
+				s.login(function(e) {
+					var result = e.target.authResult;
+					console.log("登录认证成功：" + JSON.stringify(result));
+					mui.post(Trade.API_URL + "/account/wxapplogin", {
+						token: result.access_token,
+						openid: result.openid,
+						mac: device.uuid
+					}, function(data) {
+
+						console.log(JSON.stringify(data))
+						localStorage.setItem("userinfo", JSON.stringify(data.result));
+						mui.openWindow({
+								url: '../game_list.html',
+
+								id: 'gamelist'
+						});
+					}, 'json');
+					plus.nativeUI.closeWaiting();
+					//mask.close();
+					mui.toast("登录认证成功2！");
+					//authUserInfo(type);
+				}, function(e) {
+
+					setTimeout(function() {
+						plus.nativeUI.closeWaiting();
+						//mask.close();
+					}, 500)
+					document.getElementById("tip").innerHTML = JSON.stringify(e);
+					mui.toast("登录认证失败！");
+				});
+			} else {
+				plus.nativeUI.closeWaiting();
+				//mask.close();
+			}
+		}
+	</script>
+
+</html>

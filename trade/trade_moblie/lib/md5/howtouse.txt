@@ -1,0 +1,5 @@
+然后在需要加密的页面引用MD5脚本文件
+
+   <script src="js/md5.js" type="text/javascript"></script>
+ 最后，只需一句代码就可以实现加密
+   hex_md5("123456");

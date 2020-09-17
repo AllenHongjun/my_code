@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="demo\img\IMG_149.jpg" />
+    <Content Include="demo\img\IMG_150.jpg" />
+    <Content Include="demo\img\IMG_151.jpg" />
+    <Content Include="demo\img\IMG_152.jpg" />
+    <Content Include="demo\img\IMG_153.jpg" />
+    <Content Include="demo\img\IMG_154.jpg" />
+    <Content Include="demo\img\IMG_155.jpg" />
+    <Content Include="demo\img\IMG_156.jpg" />
+    <Content Include="demo\img\IMG_157.jpg" />
+    <Content Include="demo\img\IMG_158.jpg" />
+    <Content Include="demo\img\IMG_159.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\image\" />
+  </ItemGroup>
+
+</Project>

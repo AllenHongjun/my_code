@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	    <title>出售列表</title>
+	    <script src="js/mui.min.js"></script>
+	    <script type="text/javascript" src="js/rem.js" ></script>
+	    <script type="text/javascript" src="js/iconfont.js" ></script>
+	    <link href="css/mui.min.css" rel="stylesheet"/>
+	    <link rel="stylesheet" href="css/iconfont.css" />
+	    <link rel="stylesheet" href="css/public.css" />
+	    <link rel="stylesheet" href="css/orderList.css" />
+	    <script type="text/javascript" charset="utf-8">
+	      	mui.init();
+    	</script>
+	</head>
+	<body>
+		<div class="mui-content">
+			<!--头部   开始-->
+			<div class="top">
+				<header class="mui-bar mui-bar-nav">
+				    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left icon-back"></a>
+				    <h1 class="mui-title">我发布的</h1>
+				</header>
+				
+			</div>
+			<!--头部   结束-->
+					    
+		    <!--订单列表   开始-->
+			<div class="list">
+				<div class="mui-bar mui-segmented-control tab-select">
+				    <a class="mui-control-item mui-active" href="#item1">全部</a>
+				    <a class="mui-control-item" href="#item2">已上架</a>
+				    <a class="mui-control-item" href="#item3">已售出</a>
+				    <a class="mui-control-item" href="#item4">已下架</a>
+				</div>
+				<div id="item1" class="mui-control-content mui-active"> 					
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell">
+							<strong>圣手捕鱼</strong>
+							<span class="mui-badge mui-badge-warning mui-badge-inverted colour">未上架</span>
+						</li>
+						<li class="mui-table-view-cell mui-media orderBg">
+					        <a href="javascript:;">
+					            <img class="mui-media-object mui-pull-left" src="img/index/icon-03.png">
+					            <div class="mui-media-body">
+					            	道具名称
+					            	<p class='mui-ellipsis'>稀有/50%快速成长经验</p>
+					            </div>
+					            <span class="mui-badge mui-badge-primary mui-badge-inverted black">￥48.00</span>
+					        </a>
+					    </li>
+						<li class="mui-table-view-cell">
+							自动下架时间
+    						<span class="mui-badge mui-badge-primary mui-badge-inverted gray">2018.07.10</span>
+						</li>
+						<li class="mui-table-view-cell orderBtn">
+							<button type="button" class="mui-btn mui-btn-danger mui-btn-outlined">重新上架</button>
+							<button type="button" class="mui-btn mui-btn-outlined">修改价格</button>
+							<button type="button" class="mui-btn mui-btn-outlined">删除订单</button>
+						</li>
+					</ul>	
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell">
+							<strong>39Y捕鱼</strong>
+							<span class="mui-badge mui-badge-warning mui-badge-inverted colour">已上架</span>
+						</li>
+						<li class="mui-table-view-cell mui-media orderBg">
+					        <a href="javascript:;">
+					            <img class="mui-media-object mui-pull-left" src="img/index/icon-03.png">
+					            <div class="mui-media-body">
+					            	道具名称
+					            	<p class='mui-ellipsis'>稀有/50%快速成长经验</p>
+					            </div>
+					            <span class="mui-badge mui-badge-primary mui-badge-inverted black">￥48.00</span>
+					        </a>
+					    </li>
+						<li class="mui-table-view-cell">
+							自动下架时间
+    						<span class="mui-badge mui-badge-primary mui-badge-inverted gray">2018.07.10</span>
+						</li>
+						<li class="mui-table-view-cell orderBtn">
+							<button type="button" class="mui-btn mui-btn-danger mui-btn-outlined">下架</button>
+							<button type="button" class="mui-btn mui-btn-outlined">修改价格</button>
+							<button type="button" class="mui-btn mui-btn-outlined">删除订单</button>
+						</li>
+					</ul>
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell">
+							<strong>39Y捕鱼</strong>
+							<span class="mui-badge mui-badge-warning mui-badge-inverted colour">已售出</span>
+						</li>
+						<li class="mui-table-view-cell mui-media orderBg">
+					        <a href="javascript:;">
+					            <img class="mui-media-object mui-pull-left" src="img/index/icon-03.png">
+					            <div class="mui-media-body">
+					            	道具名称
+					            	<p class='mui-ellipsis'>稀有/50%快速成长经验</p>
+					            </div>
+					            <span class="mui-badge mui-badge-primary mui-badge-inverted black">￥48.00</span>
+					        </a>
+					    </li>
+						<li class="mui-table-view-cell">
+							成功交易时间
+    						<span class="mui-badge mui-badge-primary mui-badge-inverted gray">2018.07.10</span>
+						</li>
+						<li class="mui-table-view-cell orderBtn">
+							<button type="button" class="mui-btn mui-btn-outlined">删除订单</button>
+						</li>
+					</ul>
+				</div>
+				<div id="item2" class="mui-control-content">
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell">
+							第二个选项卡子项-1
+						</li>
+						<li class="mui-table-view-cell">
+							第二个选项卡子项-2
+						</li>
+						<li class="mui-table-view-cell">
+							第二个选项卡子项-3
+						</li>
+					</ul>
+				</div>
+				<div id="item3" class="mui-control-content">
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell">
+							第3个选项卡子项-1
+						</li>
+						<li class="mui-table-view-cell">
+							第3个选项卡子项-2
+						</li>
+						<li class="mui-table-view-cell">
+							第3个选项卡子项-3
+						</li>
+					</ul>
+				</div>
+				<div id="item4" class="mui-control-content">
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell">
+							第4个选项卡子项-1
+						</li>
+						<li class="mui-table-view-cell">
+							第4个选项卡子项-2
+						</li>
+						<li class="mui-table-view-cell">
+							第4个选项卡子项-3
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!--订单列表   结束-->
+			
+		</div>
+	</body>
+</html>

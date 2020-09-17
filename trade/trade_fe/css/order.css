@@ -1,0 +1,214 @@
+.mui-badge-blue.mui-badge-inverted, .mui-badge-primary.mui-badge-inverted.gray{
+	color: #333;
+}
+.info{
+	margin-top: 0.95rem;
+}
+.info .mui-table-view:before{
+	background: none;
+}
+.info .mui-table-view-cell{
+	padding: 0.3rem 15px;
+}
+.info .mui-table-view .mui-media-object{
+	/*width: 0.75rem;*/
+	height: 1rem;
+	max-width: none;
+}
+.info .mui-table-view .mui-media-object.mui-pull-left{
+	margin-right: 0.4rem;
+	margin-top: 0.15rem;
+}
+.info .mui-media-body{
+	line-height: 0.5rem;	
+}
+.info .mui-media-body strong{
+	color: #ec6045;
+	font-size: 0.28rem;
+}
+.info .mui-media-body p{
+	font-size: 0.25rem;
+}
+.info .mui-table-view-cell>.mui-badge,.info .mui-table-view-cell>.mui-btn,.info .mui-table-view-cell>.mui-switch, .info .mui-table-view-cell>a>.mui-badge,.info .mui-table-view-cell>a>.mui-btn,.info .mui-table-view-cell>a>.mui-switch{
+	top: 74%;
+}
+.info .mui-badge-primary.mui-badge-inverted.gray{
+	color: #888;
+	font-size: 0.24rem;
+}
+.info .mui-table-view-cell:after{
+	background: #f2f2f2;
+	right:15px
+}
+
+/*卖家信息*/
+.info .seller.mui-table-view-cell{
+	padding: 0.2rem 15px;
+	color: #888;
+	font-size: 0.22rem;
+}
+.info .seller.mui-table-view-cell>.mui-badge, .seller.mui-table-view-cell>.mui-btn, .seller.mui-table-view-cell>.mui-switch, .seller.mui-table-view-cell>a>.mui-badge, .seller.mui-table-view-cell>a>.mui-btn, .seller.mui-table-view-cell>a>.mui-switch{
+	top: 50%;
+	font-size: 0.22rem;
+}
+.details{
+	margin-top: 0.1rem;
+}
+
+/*底部支付*/
+.payment{
+	width: 100%;
+	height: 0.9rem;
+	background: #fff;
+	position: fixed;
+	bottom: 0;
+}
+.payment .mui-btn{
+	width: 3.75rem;
+	height: 0.9rem;
+	border-radius: 0;
+	float: right;
+	font-size: 0.3rem;
+	font-weight: bold;
+	background: #ec6045;
+}
+.payment .offer{
+	float: left;
+	padding: 0 0.4rem;
+	text-align: center;
+	font-size: 0.22rem;
+	color: #333;
+	line-height:0;
+}
+.payment .icon{
+	margin-top: 0.1rem;
+	margin-bottom: 0.2rem;
+}
+.payment p{
+	float: left;
+	line-height: 0.9rem;
+	margin-left: 1.2rem;
+	font-size: 0.28rem;
+	color: #333;
+}
+.payment p strong{
+	color: #ec6045;
+	font-size: 0.34rem;
+}
+
+/*收货地址*/
+.dizhi{
+	margin-top: 0.95rem;
+}
+.dizhi .mui-media-body{
+	line-height:40px;
+	font-size: 0.28rem;
+}
+.dizhi .mui-table-view-cell>.mui-badge,.dizhi .mui-table-view-cell>.mui-btn,.dizhi .mui-table-view-cell>.mui-switch,.dizhi .mui-table-view-cell>a>.mui-badge,.dizhi .mui-table-view-cell>a>.mui-btn,.dizhi .mui-table-view-cell>a>.mui-switch{
+	right: 0.65rem;
+}
+.dizhi ul{
+	background: url(../img/dizhi.jpg) no-repeat center bottom;
+	background-size: 100%;
+	background-color: #fff;
+}
+.dizhi ul li{
+	padding-top: 6px;
+}
+.dizhi ul li span.gray{
+	color: #333;
+	font-size: 0.24rem;
+}
+.dizhi input{
+	width: 85%;
+	border: 0;
+	padding-left: 5px;
+	margin-bottom: 0;
+	padding-top:13px;
+}
+.dizhi input::-webkit-input-placeholder, textarea::-webkit-input-placeholder { 
+ /* WebKit browsers */ 
+color: #333; 
+} 
+.dizhi input:-moz-placeholder, textarea:-moz-placeholder { 
+/* Mozilla Firefox 4 to 18 */ 
+color: #333; 
+} 
+.dizhi input::-moz-placeholder, textarea::-moz-placeholder { 
+ /* Mozilla Firefox 19+ */ 
+color: #333; 
+} 
+.dizhi input:-ms-input-placeholder, textarea:-ms-input-placeholder { 
+ /* Internet Explorer 10+ */ 
+color: #333; 
+} 
+
+/*订单详情*/
+.order{
+	margin-top: 0.15rem;
+	padding-bottom: 0.9rem;
+}
+.order li .mui-media-body{
+	line-height: 0.55rem;
+}
+.order li img{
+	margin-top: 0.15rem;
+	margin-left: -0.1rem;
+}
+.order .red{
+	font-weight: bold;
+	font-size: 0.32rem;
+	color: #ec6045;
+}
+.order .mui-table-view:before{
+	background-color: #fff;	
+}
+.order .mui-table-view:after{
+	background-color: #f2f2f2;
+}
+.order .mui-table-view-cell:after{
+	background-color: #f2f2f2;right: 15px;
+}
+/*.order .mui-table-view-cell:before{
+	background-color: #f2f2f2;right: 15px;
+}*/
+.order .mui-numbox{
+	border: 0;
+}
+.order .mui-numbox .mui-input-numbox,.order .mui-numbox .mui-numbox-input{
+	border-right: 0!important;
+	border-left: 0!important;
+}
+.order li{
+	font-size: 0.28rem;
+}
+.order li h5{
+	float: left;
+	color: #000;
+	font-size: 0.3rem;
+	line-height: 0.5rem;
+}
+.pay li .mui-media-body{
+	line-height:0.4rem;
+}
+.pay li .icon{
+	width: 37px;
+}
+.pay li p{
+	font-size: 0.22rem;
+}
+.pay .mui-table-view-radio .mui-table-view-cell .mui-navigate-right:after{
+	color: #ec6045;
+}
+.notice{
+	/*background: #f5f5f5;*/
+	margin: 0 auto;
+	padding: 0.15rem 3.5%;
+	line-height: 0.4rem;
+	font-size: 0.22rem;
+}
+.mui-content{
+	background: none;
+}
+
+

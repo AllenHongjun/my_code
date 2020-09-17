@@ -1,0 +1,64 @@
+.total{
+	padding: 0.25rem 15px 0.22rem;
+	font-size: 0.34rem;
+}
+.total button{
+	background: #ff8020;
+	color: #fff;
+	border: none;
+	padding: 0.12rem 0.4rem;
+	font-size: 0.29rem;
+	border-radius: 4px;
+}
+.total p{
+	margin-top: 0.12rem;
+	font-size: 0.28rem;
+}
+.total .yellow{
+	margin-left: 5px;
+}
+
+/*收入记录*/
+.income{
+	margin-top: -0.12rem;
+	font-size: 0.28rem;
+}
+.income ul,.record ul{
+	padding-top: 0.06rem;
+}
+.income p,.record p{
+	margin-top: 0.08rem;
+}
+.income .mui-badge{
+	background: none;
+	color: #ff8020;
+	font-size: 0.28rem;
+}
+
+/*记录查询*/
+.record h6{
+	padding: 0.2rem 0 0.2rem 15px;
+	font-size: 0.24rem;
+}
+.record .shouyi,.record .tixian{
+	width: 0.7rem;
+	height: 0.7rem;
+	line-height: 0.75rem;
+	border-radius: 16px;
+	text-align: center;
+	color: #fff;
+}
+.record .mui-table-view .mui-media-object.mui-pull-left{
+	margin-right: 0.25rem;
+}
+.shouyi{
+	background: #ff8020;
+}
+.tixian{
+	background: #ffc040;
+}
+.record .mui-badge{
+	background: none;
+	font-size: 0.28rem;
+}
+

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>确认订单</title>
+
+		<script type="text/javascript" src="js/rem.js"></script>
+		<link href="./lib/mui/css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/iconfont.css" />
+		<link rel="stylesheet" href="css/public.css" />
+		<link rel="stylesheet" href="css/order.css" />
+
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<!--头部   开始-->
+			<div class="top">
+				<header class="mui-bar mui-bar-nav">
+					<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left icon-back"></a>
+
+					<h1 class="mui-title">确认订单</h1>
+				</header>
+			</div>
+			<!--头部   结束-->
+
+			<!--收货地址   开始-->
+			<div class="dizhi">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<!--<a href="javascript:;">
+                    <svg class="mui-media-object mui-pull-left mui-icon icon" aria-hidden="true">
+                        <use xlink:href="#icon-shouhuoren-copy"></use>
+                    </svg>
+                    <div class="mui-media-body mui-navigate-right">
+                        收货人ID：4548764
+                    </div>
+                    <span class="mui-badge mui-badge-primary mui-badge-inverted gray">15988565537</span>
+                </a>-->
+						<svg class="mui-media-object mui-pull-left mui-icon icon" aria-hidden="true">
+							<use xlink:href="#icon-shouhuoren-copy"></use>
+						</svg>
+						<input type="text" name="main-id" class="mui-input-clear" placeholder="请输入主链ID"  readonly/>
+					</li>
+				</ul>
+			</div>
+			<!--收货地址   结束-->
+
+			<!--订单详情   开始-->
+			<div class="order">
+				<ul class="mui-table-view">
+
+					<li class="mui-table-view-cell mui-media">
+						<!--TODO-->
+						<!--<a href="javascript:;">
+                    <img class="mui-media-object mui-pull-left" src="img/index/icon-03.png">
+                    <div class="mui-media-body">
+                        道具名称
+                        <p class='mui-ellipsis'>稀有/50%快速成长经验</p>
+                    </div>
+                    <span class="mui-badge mui-badge-primary mui-badge-inverted red">￥48.00</span>
+                </a>-->
+					</li>
+					<li class="mui-table-view-cell">
+						<h5>购买数量</h5>
+						<span class="mui-badge mui-badge-primary mui-badge-inverted gray">1</span>
+					</li>
+					<li class="mui-table-view-cell">
+						<h5>选择支付方式</h5>
+					</li>
+				</ul>
+				<div class="pay">
+					<ul class="mui-table-view mui-table-view-radio">
+						<!--<li class="mui-table-view-cell mui-selected">
+                    <a href="javascript:;" data-paytype="alipay">
+                        <svg class="mui-media-object mui-pull-left mui-icon icon" aria-hidden="true">
+                            <use xlink:href="#icon-iconfontrectangle390"></use>
+                        </svg>
+                        <div class="mui-media-body mui-navigate-right">
+                            支付宝支付
+                            <p class='mui-ellipsis'>推荐支付宝用户使用</p>
+                        </div>
+                    </a>
+                </li>-->
+						<!--<li class="mui-table-view-cell mui-selected">
+							<a href="javascript:;" data-paytype="wxpay">
+								<svg class="mui-media-object mui-pull-left mui-icon icon" aria-hidden="true">
+									<use xlink:href="#icon-weixin"></use>
+								</svg>
+								<div class="mui-media-body mui-navigate-right">
+									微信支付
+									<p class='mui-ellipsis'>推荐微信用户使用</p>
+								</div>
+							</a>
+						</li>-->
+						<!--<li class="mui-table-view-cell">
+                    <a href="javascript:;" data-paytype="yinpay">
+                        <svg class="mui-media-object mui-pull-left mui-icon icon" aria-hidden="true">
+                            <use xlink:href="#icon-yinlian1"></use>
+                        </svg>
+                        <div class="mui-media-body mui-navigate-right">
+                            银行卡支付
+                            <p class='mui-ellipsis'>推荐支付宝用户使用</p>
+                        </div>
+                    </a>
+                </li>-->
+						<li class="mui-table-view-cell mui-selected">
+							<a href="javascript:;" data-paytype="localpay">
+								<svg class="mui-media-object mui-pull-left mui-icon icon" aria-hidden="true">
+									<use xlink:href="#icon-yinlian1"></use>
+								</svg>
+								<div class="mui-media-body mui-navigate-right">
+									零钱支付
+									<p class='mui-ellipsis'>推荐使用</p>
+								</div>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<p class="notice">
+					<strong>注意：</strong><br/> 1、下单购买物品后，需要在限定时间内支付成功，否则订单会自动过期
+					<br/> 2、支付成功后，登录游戏即可以领取物品，可能有5-10分钟的延迟
+				</p>
+			</div>
+			<!--订单详情   介绍-->
+
+			<!--底部   开始-->
+			<div class="payment">
+				<p>合计：<strong>￥0.00</strong></p>
+				<button type="button" class="mui-btn mui-btn-danger">立即购买</button>
+			</div>
+			<!--底部   结束-->
+		</div>
+
+		<script type="text/html" id="orderDetail">
+			<a href="javascript:;">
+				<img class="mui-media-object mui-pull-left" src="<%=result.piconurl%>">
+				<div class="mui-media-body">
+					<%=result.name%>
+					<p class='mui-ellipsis'>
+						<%=result.gname%>
+					</p>
+				</div>
+				<span class="mui-badge mui-badge-primary mui-badge-inverted red">￥<%=result.price%></span>
+			</a>
+
+		</script>
+
+		<script src="./lib/mui/js/mui.min.js"></script>
+		<script type="text/javascript" src="js/iconfont.js"></script>
+		<script src="./lib/zepto/zepto.min.js"></script>
+		<script src="./lib/artTemplate/template-native.js"></script>
+		<script src="js/common.js"></script>
+		<script src="js/order.js"></script>
+	</body>
+
+</html>

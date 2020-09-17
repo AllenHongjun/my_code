@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <title>订单列表</title>
+
+    <script type="text/javascript" src="../js/rem.js"></script>
+    <link href="../lib/mui/css/mui.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../css/iconfont.css"/>
+    <link rel="stylesheet" href="../css/public.css"/>
+    <link rel="stylesheet" href="../css/common.css"/>
+    <link rel="stylesheet" href="../css/orderList.css"/>
+
+</head>
+
+<body>
+<div class="mui-content">
+    <!--头部   开始-->
+    <div class="top">
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left icon-back"></a>
+            <h1 class="mui-title">订单</h1>
+
+        </header>
+
+    </div>
+    <!--头部   结束-->
+
+    <!--底部导航   开始-->
+    
+    <!--底部导航   结束-->
+
+    <!--订单列表   开始-->
+    <div class="list order-list">
+
+
+        <div class="mui-bar mui-segmented-control tab-select">
+            <a class="mui-control-item mui-active" href="#item0" data-type="0">全部</a>
+            <a class="mui-control-item" href="#item1" data-type="1">待付款</a>
+            <a class="mui-control-item" href="#item2" data-type="2">待确认</a>
+            <a class="mui-control-item" href="#item3" data-type="3">已结束</a>
+        </div>
+
+
+        <div id="refreshContainer" class="mui-scroll-wrapper mui-content">
+            <div class="mui-scroll">
+                <div id="item0" class="mui-control-content mui-active">
+                    <!--TODO-->
+                </div>
+                <div id="item1" class="mui-control-content">
+                    <!--TODO-->
+                </div>
+                <div id="item2" class="mui-control-content">
+                    <!--TODO-->
+                </div>
+                <div id="item3" class="mui-control-content">
+                    <!--TODO-->
+                </div>
+                <!--<div class="search-tips"></div>-->
+            </div>
+        </div>
+    </div>
+    <!--订单列表   结束-->
+
+</div>
+
+<script type="text/html" id="orderListAll">
+    <% for(var i=0 ; i < result.list.length ; i ++) {%>
+    <% var item = result.list[i];%>
+    <ul class="mui-table-view" id="order_<%=item['id']%>">
+        <li class="mui-table-view-cell" >
+            订单号：
+            <%=item['orderid']%>
+            <span class="mui-badge mui-badge-primary mui-badge-inverted gray"><%=item['createtime']%></span>
+        </li>
+        <li class="mui-table-view-cell mui-media orderBg">
+            <a href="javascript:;">
+                <img class="mui-media-object mui-pull-left" src="<%=item['piconurl']%>">
+
+                <div class="mui-media-body">
+                    <%=item['name']%>
+                    <p class='mui-ellipsis'>
+                        <%=item['gname']%>
+                    </p>
+                </div>
+                <span class="mui-badge mui-badge-primary mui-badge-inverted black">￥<%=priceFormat(item['payvalue'])%></span>
+            </a>
+        </li>
+        <li class="mui-table-view-cell">
+            共
+            <%=item['stock']%>件商品
+            <span class="mui-badge mui-badge-primary mui-badge-inverted gray">实付：<strong class="red">￥<%=priceFormat(item['payvalue'])%></strong></span>
+        </li>
+        <li class="mui-table-view-cell">
+            <span class="mui-icon mui-icon-location"></span> 收货人ID：
+            <%=item['uId']%>
+            <span class="mui-badge mui-badge-primary mui-badge-inverted gray state-str"><%=item['statestr']%></span>
+        </li>
+        <li class="mui-table-view-cell orderBtn" data-hyid="<%=item['hyid']%>" data-orderid="<%=item['orderid']%>">
+
+
+            <button style="<%=item['state']== 3?'display:block':'display:none'%>" type="button" class="mui-btn mui-btn-danger mui-btn-outlined btn-confirm">确认收货</button>
+            <button style="<%=item['state']== 0?'display:block':'display:none'%>" type="button" class="mui-btn mui-btn-danger mui-btn-outlined btn-pay">立即支付</button>
+            <button style="<%=item['state']== 0?'display:block':'display:none'%>" type="button" class="mui-btn mui-btn-outlined btn-cancel">取消订单</button>
+
+
+            <!-- <button type="button" class="mui-btn mui-btn-outlined">删除订单</button>-->
+        </li>
+    </ul>
+    <%}%>
+
+
+</script>
+
+<script src="../lib/mui/js/mui.min.js"></script>
+<script type="text/javascript" src="../js/iconfont.js"></script>
+<script src="../lib/zepto/zepto.min.js"></script>
+<script src="../lib/artTemplate/template-native.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/order-list.js"></script>
+</body>
+
+</html>

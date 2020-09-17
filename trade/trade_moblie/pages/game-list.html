@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <title>选择游戏</title>
+    <script type="text/javascript" src="../js/rem.js"></script>
+    <link href="../lib/mui/css/mui.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../css/public.css"/>
+    <link rel="stylesheet" href="../css/common.css"/>
+    <link rel="stylesheet" href="../css/select.css"/>
+
+</head>
+<body>
+<div class="mui-content">
+    <h4 class="title">请选择一款您要进行交易的游戏</h4>
+    <h6>可在 我的-设置 中修改</h6>
+    <ul class="mui-table-view game-list">
+        <!--此处数据后台渲染 TODO-->
+
+    </ul>
+    <button type="button" class="mui-btn mui-btn-blue mui-btn-block">进入首页</button>
+</div>
+
+<!--渲染数据-->
+<script type="text/template" id="gamelist">
+
+    <% for (var i = 0 ;i < result.list.length ; i ++){ %>
+    <% var item = result.list[i]; %>
+    <li class="mui-table-view-cell mui-media game <%=i==0?'checked':''%>">
+        <a href="javascript:;" data-id="<%=item.id%>">
+            <img class="mui-media-object mui-pull-left" src="<%=item.icoimg%>">
+
+            <div class="mui-media-body">
+                <%=item.name%>
+            </div>
+        </a>
+    </li>
+    <%}%>
+</script>
+
+<script src="../lib/artTemplate/template-native.js"></script>
+<script src="../lib/mui/js/mui.min.js"></script>
+<script src="../lib/zepto/zepto.min.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/game-list.js"></script>
+<script>
+//	mui.plusReady(function(){
+//		var wo=plus.webview.currentWebview().opener().getURL();
+//		if(wo.indexOf("login.html")){	//判断上个页面是否包含了 login.html
+//			mui.back=function () {
+//				return false;
+//			}
+//		}
+//	})
+</script>
+</body>
+</html>

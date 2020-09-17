@@ -1,0 +1,39 @@
+/*注册*/
+.register{ 
+	width:1100px;
+	margin:0px auto;
+	padding-bottom: 20px;
+	background: #fff;
+	/*border:1px solid #d3d3d3;*/
+}
+.register-title{
+	background: #f7f7f7;
+	text-align: center;
+	padding: 20px 0;
+	border-bottom: 1px solid #d3d3d3;
+}
+.registMain{ padding-top: 20px; padding-left: 280px;}
+.registMain label.name{
+	width: 110px;
+	padding-right: 5px;
+}
+.registMain p{
+	margin-left: 5px;
+}
+.send{
+	padding-left: 260px;
+}
+.send span{
+	padding-top: 2px;
+}
+.send .btnSubmit{
+	border:1px solid #f88316; 
+	background:#ff9c23; 
+	margin-left: 110px;
+	margin-bottom: 25px;
+	margin-top: 25px;
+}
+
+.news-main{
+	padding: 25px 0 30px;
+}

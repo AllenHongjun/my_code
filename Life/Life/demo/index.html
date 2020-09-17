@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>xiaoxiaosheng</title>
+    <!--<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">-->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+    <!--<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>-->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <style>
+        html {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            height: 100%;
+            margin: 0;
+        }
+
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Slider main container -->
+    <div class="swiper-container">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide" style="background:url(img/bizhi/1.jpg) no-repeat ;background-size:cover;">
+            </div>
+            <div class="swiper-slide" style="background:url(img/bizhi/2.jpg) no-repeat ;background-size:cover;">
+            </div>
+            <div class="swiper-slide" style="background:url(img/bizhi/3.jpg) no-repeat ;background-size:cover;">
+            </div>
+            <div class="swiper-slide" style="background:url(img/bizhi/4.jpg) no-repeat ;background-size:cover;">
+            </div>
+            <div class="swiper-slide" style="background:url(img/bizhi/5.jpg) no-repeat ;background-size:cover;">
+            </div>
+            <div class="swiper-slide" style="background:url(img/bizhi/6.jpg) no-repeat ;background-size:cover;">
+            </div>
+            <div class="swiper-slide" style="background:url(img/bizhi/7.jpg) no-repeat ;background-size:cover;">
+            </div>
+            <div class="swiper-slide" style="background:url(img/bizhi/8.jpg) no-repeat ;background-size:cover;">
+            </div>
+            <div class="swiper-slide" style="background:url(img/bizhi/9.jpg) no-repeat ;background-size:cover;">
+            </div>
+
+
+            <div class="swiper-slide" style="background:url(img/IMG_149.jpg) no-repeat ;background-size:cover;">
+            </div>
+            <div class="swiper-slide" style="background:url(img/IMG_150.jpg) no-repeat ;background-size:cover;">
+            </div>
+            <div class="swiper-slide" style="background:url(img/IMG_151.jpg) no-repeat ;background-size:cover;">
+            </div>
+            <div class="swiper-slide" style="background:url(img/IMG_152.jpg) no-repeat ;background-size:cover;">
+            </div>
+            <div class="swiper-slide" style="background:url(img/IMG_153.jpg) no-repeat ;background-size:cover;">
+            </div>
+            <div class="swiper-slide" style="background:url(img/IMG_154.jpg) no-repeat ;background-size:cover;">
+            </div>
+            <div class="swiper-slide" style="background:url(img/IMG_155.jpg) no-repeat ;background-size:cover;">
+            </div>
+            <div class="swiper-slide" style="background:url(img/IMG_156.jpg) no-repeat ;background-size:cover;">
+            </div>
+            <div class="swiper-slide" style="background:url(img/IMG_157.jpg) no-repeat ;background-size:cover;">
+            </div>
+            <div class="swiper-slide" style="background:url(img/IMG_158.jpg) no-repeat ;background-size:cover;">
+            </div>
+            <div class="swiper-slide" style="background:url(img/IMG_159.jpg) no-repeat ;background-size:cover;">
+            </div>
+
+
+            ...
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- If we need navigation buttons -->
+        <!--<div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>-->
+
+        <!-- If we need scrollbar -->
+        <div class="swiper-scrollbar"></div>
+    </div>
+
+    <audio src="./mp4/xhn.mp3" preload="meta" loop autoplay id="music"></audio>
+
+    <script>
+        var mySwiper = new Swiper('.swiper-container', {
+            // Optional parameters
+            direction: 'horizontal',    //horizontal  vertical
+            loop: true,
+            speed:100,
+            
+            autoplay: {
+                    delay: 3000,
+            },
+            // If we need pagination
+            pagination: {
+                el: '.swiper-pagination',
+            },
+
+            // Navigation arrows
+            //navigation: {
+            //    nextEl: '.swiper-button-next',
+            //    prevEl: '.swiper-button-prev',
+            //},
+
+            // And if we need scrollbar
+            scrollbar: {
+                el: '.swiper-scrollbar',
+            },
+        })
+
+
+        var played = false;
+        document.addEventListener('click', function () {
+            if (played == false) {
+                played = true;
+                document.getElementById('music').play();
+            }
+        }, false);  
+    </script>
+</body>
+</html>

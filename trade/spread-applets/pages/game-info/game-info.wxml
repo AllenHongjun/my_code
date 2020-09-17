@@ -1,0 +1,12 @@
+<!--pages/game-info/game-info.wxml-->
+
+<view class="game-info"> 游戏介绍盒子</view>
+<view class="btn-box">
+    <button class="btn-share-down"  bindtap="btnTuiguang" >邀请好友</button>
+    <button class="btn-share-img" bindtap = "getShareImg">生成邀请海报</button>
+</view>
+
+<van-dialog id="van-dialog" />
+<view class="canvas-box">
+    <canvas canvas-id="myCanvas" style="width:375px; height:667px;"></canvas>
+</view>

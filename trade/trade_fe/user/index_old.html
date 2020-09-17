@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>个人中心</title>
+    <script type="text/javascript" src="../js/rem.js" ></script>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../css/iconfont.css" />
+    <link rel="stylesheet" href="../css/public.css" />
+    <link rel="stylesheet" href="../css/wode.css" />
+    <link rel="stylesheet" href="../css/common.css"/>
+
+</head>
+<body>
+<div class="mui-content">
+    <!--头部   开始-->
+    <div class="top">
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left icon-back"></a>
+            <h1 class="mui-title">个人中心</h1>
+        </header>
+    </div>
+    <!--头部   结束-->
+
+    <!--个人信息   开始-->
+    <div class="info">
+
+    </div>
+    <!--个人信息   结束-->
+
+    <!--底部导航   开始-->
+    <nav class="mui-bar mui-bar-tab">
+        <a href="../game_detail.html" class="mui-tab-item">
+            <svg class="mui-icon icon" aria-hidden="true">
+                <use xlink:href="#icon-shouye"></use>
+            </svg>
+            <span class="mui-tab-label">首页</span>
+        </a>
+        <a  class="mui-tab-item" id="promptBtn">
+            <svg class="mui-icon icon" aria-hidden="true">
+                <use xlink:href="#icon-jia"></use>
+            </svg>
+            <span class="mui-tab-label">出售</span>
+        </a>
+        <a href="../order_list.html" class="mui-tab-item" href="orderList.html">
+            <svg class="mui-icon icon" aria-hidden="true">
+                <use xlink:href="#icon-chengjiaodingdan"></use>
+            </svg>
+            <span class="mui-tab-label">订单</span>
+        </a>
+        <a href="javacript:;" class="mui-tab-item mui-active">
+            <svg class="mui-icon icon icon-wode" aria-hidden="true">
+                <use xlink:href="#icon-wode"></use>
+            </svg>
+            <span class="mui-tab-label">我的</span>
+        </a>
+    </nav>
+    <!--底部导航   结束-->
+
+    <!--中心列表   开始-->
+    <div class="list">
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell">
+                <a href="../game_list.html" class="mui-navigate-right" href="select.html">
+                    <h4>圣手捕鱼</h4>
+                    <span class="mui-badge mui-badge-primary mui-badge-inverted gray">切换游戏</span>
+                </a>
+            </li>
+            <li class="mui-table-view-cell">
+                <a href="./bind.html" class="mui-navigate-right">
+                    <svg class="mui-icon icon icon-bd" aria-hidden="true">
+                        <use xlink:href="#icon-bangding"></use>
+                    </svg>
+                    游戏绑定
+                </a>
+            </li>
+            <li class="mui-table-view-cell">
+                <a href="../sell/item_list.html" class="mui-navigate-right">
+                    <svg class="mui-icon icon" aria-hidden="true">
+                        <use xlink:href="#icon-maichu"></use>
+                    </svg>
+                    我卖出的
+                </a>
+            </li>
+            <li class="mui-table-view-cell">
+                <a href="../order_list.html"  href="javascript:;" class="mui-navigate-right">
+                    <svg class="mui-icon icon" aria-hidden="true">
+                        <use xlink:href="#icon-maidao"></use>
+                    </svg>
+                    我买到的
+                </a>
+            </li>
+            <li class="mui-table-view-cell">
+                <a href="../sell/item_list.html" href="javascript:;" class="mui-navigate-right">
+                    <svg class="mui-icon icon" aria-hidden="true">
+                        <use xlink:href="#icon-release"></use>
+                    </svg>
+                    我发布的
+                </a>
+            </li>
+            <li class="mui-table-view-cell">
+                <a href="javascript:;" class="mui-navigate-right">
+                    <svg class="mui-icon icon" aria-hidden="true">
+                        <use xlink:href="#icon-tuichu"></use>
+                    </svg>
+                    退出登录
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!--中心列表   结束-->
+</div>
+
+<script type="text/html" id="userinfo">
+    <div class="tx"><img src="<%=faceurl%>" width="100%"/></div>
+    <div class="name"><%=nick%></div>
+    <div class="mui-bar mui-segmented-control">
+        <a class="mui-control-item">
+            <svg class="mui-icon icon" aria-hidden="true">
+                <use xlink:href="#icon-qianbao"></use>
+            </svg>
+            ￥<%=balance%>
+        </a>
+        <a class="mui-control-item">
+            <svg class="mui-icon icon" aria-hidden="true">
+                <use xlink:href="#icon-chushou"></use>
+            </svg>
+            我的出售
+        </a>
+    </div>
+    <img src="../img/wode.png" width="100%"/>
+
+</script>
+
+
+<script type="text/javascript" src="../lib/zepto/zepto.min.js"></script>
+<script type="text/javascript" src="../lib/mui/js/mui.min.js"></script>
+<script type="text/javascript" src="../js/iconfont.js"></script>
+<script type="text/javascript" src="../lib/md5/md5.js"></script>
+<script type="text/javascript" src="../lib/artTemplate/template-native.js"></script>
+
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/user/index.js"></script>
+</body>
+</html>

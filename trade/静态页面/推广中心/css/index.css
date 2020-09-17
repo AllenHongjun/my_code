@@ -1,0 +1,115 @@
+.mui-table-view{
+	background: none;
+	margin-top: 0.22rem;
+}
+.mui-table-view:before{
+	background: #f5f5f5;
+}
+.card{
+	padding-top: 0.3rem;
+	margin-bottom: 0.2rem;
+	background: #fff;
+}
+.mui-table-view .mui-media-object.card-pic{
+	width: 2.15rem;
+	height: 2.15rem;
+	background: #fff;
+	max-width: none;
+	margin-right: 0.25rem;
+	margin-left: -0.1rem;
+}
+.card-desc{
+	font-size: 0.26rem;
+	color: #000;
+	line-height: 0.44rem;
+}
+.card-desc span{
+	font-size: 0.34rem;
+}
+.card-desc p{
+	color: #999;
+}
+.card-desc p b{
+	color: #858585;
+	font-weight: normal;
+}
+
+.card-bottom{
+	/*width:6.90rem;*/
+	margin: 0.25rem 0 0.1rem;
+	display: flex;
+	align-items: center;
+	justify-content:space-between;
+	/* background: #06BF04; */
+	/* height: 50rem; */
+}
+.card-price{
+	color: #cd4331;
+	font-size: 0.34rem;
+}
+.card-price>text{
+	font-size: 0.26rem;
+	color: #7d7d7d;
+}
+.card-bottom .buttonTg{
+	background: #ff8020;
+	color: #fff;
+	width: 1.50rem;
+	height: 0.52rem;
+	line-height: 0.52rem;
+	text-align: center;
+	padding: 0;
+	border: 0;
+	font-size: 0.25rem;
+}
+
+/*通告栏*/
+.swiper_img{
+	float: left;
+	width: 0.45rem;
+	height: 0.45rem;
+	margin: 0.12rem 0.15rem 0 0.25rem;
+}
+.notice {
+    width: 100%;
+    margin: 0;
+   /* line-height: 0.7rem;*/
+   	background: #fefcee;
+	color: #e77639;
+    height: 0.7rem;
+    overflow: hidden;
+} 
+.news_li{
+	margin:0;
+	padding: 0;
+}
+.notice ul li{
+	display: block;
+	height: 0.7rem;
+    list-style: none;
+    line-height: 0.75rem;
+    display: block;
+    /*margin-left: -0.5rem;*/
+    font-size: 0.22rem;
+}
+.news_li p{
+	float: left;
+	color: #e77639;
+}
+.notice li:first-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/*轮播按钮*/
+.mui-slider-indicator .mui-indicator{
+	height: 9px;
+	width: 9px;
+	background: #fff;
+	box-shadow: none;
+	margin: 1px 3px;
+}
+.mui-slider-indicator .mui-active.mui-indicator{
+	background:#ffd41d;
+}

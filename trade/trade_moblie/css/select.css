@@ -1,0 +1,61 @@
+body,.mui-content{
+	background: #fff;
+}
+.title{
+	text-align: center;
+	margin: 1.7rem 0 0.25rem;
+	color: #333;
+}
+h6{
+	text-align: center;
+	font-size: 0.22rem;
+	color: #999;
+}
+.mui-table-view:before,.mui-table-view:after,.mui-table-view-cell:after{
+	background-color: #fff;
+}
+.game-list{
+	width: 4.6rem;
+	margin: 0 auto;
+	padding-top: 0.4rem;
+}
+.game-list li{
+	height: 1.3rem;
+	border-radius: 0.65rem;
+	margin: 0.4rem 0;
+	font-size: 0.28rem;
+	font-weight: bold;
+	/*background: #f00;*/
+}
+.mui-table-view-cell>a:not(.mui-btn){
+	/*margin: 0.1rem 0 0;
+	padding: 0;*/
+	padding-top: 0.27rem;
+	line-height: 0.75rem;
+}
+.game-list li.checked{
+	background: #f5f5f5;
+}
+.mui-table-view .mui-media-object.mui-pull-left{
+	margin-right: 0.3rem;
+}
+.game-list li img{
+	width: 0.75rem!important;
+	height: 0.75rem!important;
+	margin-left: 0.7rem;
+}
+.game-list li a{
+	height: 1.3rem;
+	/*background: #000;*/
+}
+.mui-btn-block{
+	width: 5.4rem;
+	height: 0.8rem;
+	line-height: 0.8rem;
+	margin: 1.3rem 1rem 0;
+	border-radius: 0;
+	font-size: 0.26rem;
+	font-weight: bold;
+	background: #0078ff;
+	padding: 0;
+}

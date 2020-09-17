@@ -1,0 +1,39 @@
+<!--pages/user/user.wxml-->
+
+<!-- 个人信息  开始-->
+<view class="userinfo">
+	<image class='userBg' src='../../assets/images/my_bg.jpg'></image>
+	<view class='userContent'>
+		<view class="userinfo-avatar" background-size="cover">
+			<open-data type="userAvatarUrl"></open-data>
+		</view>
+		<open-data  class="userinfo-nickname" type="userNickName"></open-data>
+		<!-- <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="save-btn">授权登录</button>
+		<button open-type="getUserInfo" bindgetuserinfo="registerUser" class="save-btn">获取用户信息</button> -->
+	</view>
+</view>
+<!-- 个人信息  结束-->
+
+<!-- 钱包  开始-->
+<view class="wallet">
+	<view class="income">
+		<text class="title">累计获得赏金（元）</text>
+		<text>20.00</text>
+	</view>
+	<view style="width: 1px;height:50rpx;background:#fcb54d;"></view>
+	<view class="income">
+		<text class="title">待提现金额（元）</text>
+		<text>0.00</text>
+	</view>
+</view>
+<!-- 钱包  结束-->
+
+<view class="list">
+	<text>全部收益</text>
+	<van-cell-group custom-class="list-content">
+	  <van-cell title="+20.00" value="2018-09-03" value-class="list-right" title-class="list-left"/>
+	  <van-cell title="+20.00" value="2018-09-03" value-class="list-right" title-class="list-left"/>
+	  <van-cell title="+20.00" value="2018-09-03" value-class="list-right" title-class="list-left"/>
+	  <van-cell title="+10.00" value="2018-09-03" value-class="list-right" title-class="list-left" border="{{ false }}" />
+	</van-cell-group>
+</view>

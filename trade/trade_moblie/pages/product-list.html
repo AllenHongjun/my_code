@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <title>商品搜索</title>
+
+    <script type="text/javascript" src="../js/rem.js"></script> 
+    <link href="../lib/mui/css/mui.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../css/iconfont.css" />
+    <link rel="stylesheet" href="../css/public.css"/>
+
+    <link rel="stylesheet" href="../css/list.css"/>
+    <link rel="stylesheet" href="../css/common.css"/>
+
+</head>
+<body>
+
+
+
+
+
+<script src="../lib/mui/js/mui.min.js"></script>
+<script type="text/javascript" src="../js/iconfont.js" ></script>	   
+<script src="../lib/artTemplate/template-native.js"></script>
+
+<!--<script src="../js/common.js"></script>-->
+<!--<script src="../js/product-list.js"></script>-->
+
+<script>	
+	//有参数传递的时候 需要把 主页面的参数传递给子页面
+	var productid = 0;
+	mui.plusReady(function(){
+		var self = plus.webview.currentWebview();
+		productid = self.productid;		
+		mui.init({
+		    subpages:[{
+		      url:'product-list-sub.html',//下拉刷新内容页面地址
+		      id:'product-list-sub',//内容页面标志
+		      styles:{
+		        top:'0px',//内容页面顶部位置,需根据实际页面布局计算，若使用标准mui导航，顶部默认为48px；
+		        bottom:'0px'//其它参数定义
+		      },
+		      extras:{
+		      	'productid':productid
+		      }
+		    }]
+		});
+	})	
+		
+</script>
+</body>
+</html>

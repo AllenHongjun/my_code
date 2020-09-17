@@ -1,0 +1,7 @@
+{
+	"navigationBarTitleText": "账户中心",
+	"usingComponents": {
+	  "van-cell": "/assets/vant-weapp/dist/cell/index",
+	  "van-cell-group": "/assets/vant-weapp/dist/cell-group/index"
+	}
+}

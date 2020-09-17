@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>首页</title>
+		<script type="text/javascript" src="js/rem.js"></script>
+		<link href="./lib/mui/css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/iconfont.css" />
+		<link rel="stylesheet" href="css/public.css" />
+		<link rel="stylesheet" href="css/common.css" />
+
+	</head>
+
+	<body>
+		<nav class="mui-bar mui-bar-tab">
+			<a href="pages/game-detail.html" class="mui-tab-item mui-active">
+				<svg class="mui-icon icon" aria-hidden="true">
+					<use xlink:href="#icon-shouye"></use>
+				</svg>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="mui-tab-item" id="promptBtn">
+				<svg class="mui-icon icon" aria-hidden="true">
+					<use xlink:href="#icon-jia"></use>
+				</svg>
+				<span class="mui-tab-label">出售</span>
+			</a>
+			<a href="pages/order-list.html" class="mui-tab-item">
+				<svg class="mui-icon icon" aria-hidden="true">
+					<use xlink:href="#icon-chengjiaodingdan"></use>
+				</svg>
+				<span class="mui-tab-label">订单</span>
+			</a>
+			<a href="pages/user-center.html" class="mui-tab-item">
+				<svg class="mui-icon icon icon-wode" aria-hidden="true">
+					<use xlink:href="#icon-wode"></use>
+				</svg>
+				<span class="mui-tab-label">我的</span>
+			</a>
+		</nav>
+		<script src="./lib/mui/js/mui.min.js"></script>
+		<script type="text/javascript" src="js/iconfont.js"></script>
+		<script src="./lib/zepto/zepto.min.js"></script>
+		<script src="./lib/artTemplate/template-native.js"></script>
+		<script src="js/common.js"></script>
+		<script type="text/javascript">
+			mui.ready(function() {
+				mui.init();
+
+				//创建子页面默认显示有些游戏详情页面，（如果没有选择游戏 ，跳转游戏列表页面）其他的都隐藏
+				mui.plusReady(function() {
+					//未登录的时候刷新的页面
+					window.addEventListener('refresh', function(e) {
+						plus.webview.currentWebview().reload(true);
+						var game_detail_webview = plus.webview.getWebviewById('pages/game-detail.html');
+						if(game_detail_webview){
+							game_detail_webview.reload(true);
+						}
+					})
+					
+					//已经登录的时候可以刷新的页面
+					window.addEventListener('refreshSub', function(e) {
+						plus.webview.getWebviewById('pages/user-center.html').reload(true);						
+						plus.webview.getWebviewById('pages/order-list.html').reload(true);				
+					})
+					
+					//用户需要先选择过游戏才能进入
+					if(getGameData() == null || getGameData().length <= 0) {
+						var u = window.location.pathname;
+						if(u.indexOf("game-list.html") < 0) {
+							mui.openWindow({
+								url: 'pages/game-list.html',
+								id: 'game-list'
+							})
+							return false;
+						}
+					}
+					
+					//区分是否登录的状态 
+					var subpages = [];
+					var extras = {};
+					if(!Trade.getUid()) {
+						subpages = ['pages/game-detail.html'];
+					} else {
+						subpages = ['pages/game-detail.html', 'pages/order-list.html', 'pages/user-center.html'];
+						extras = {userid:Trade.getUid()};
+					}
+					var subpage_style = {
+						top: '0px',
+						bottom: '51px'
+					};
+					var aniShow = {};
+					var self = plus.webview.currentWebview();					
+					for(var i = 0; i < subpages.length; i++) {
+						//只有 没有创建过的webview才创建出来
+						if( !plus.webview.getWebviewById(subpages[i])){
+							var sub = plus.webview.create(subpages[i], subpages[i], subpage_style,extras);
+							if(i > 0) {
+								sub.hide();
+							}
+							self.append(sub);
+						}						
+					}
+					plus.webview.show(subpages[0]);
+
+
+
+					//选项卡点击事件
+					var activeTab = subpages[0];				
+					mui('body').on('tap', '.mui-bar-tab a', function(e) {
+						var targetTab = this.getAttribute('href');
+						//显示出售验证码弹框
+
+						if(targetTab == activeTab) {
+							return;
+						}
+
+						if(this.getAttribute('id') == 'promptBtn') {
+
+							e.preventDefault();
+							e.detail.gesture.preventDefault(); //修复iOS 8.x平台存在的bug，使用plus.nativeUI.prompt会造成输入法闪一下又没了
+							var btnArray = ['取消', '下一步'];
+							mui.prompt('  ', '请输入您的合约ID：', '道具出售', btnArray, function(e) {
+								if(e.index == 0) {
+									//console.log(0);
+								} else {
+									var code = e.value;
+									if(!code) {
+										mui.toast('请输入正确的合约ID');
+										return false;
+									}
+
+									var uid = Trade.getUid();
+									var params = {
+										"code": code,
+										"uid": uid
+									}
+									getItemData(params, function(data) {
+										console.log(code);
+										if(data.resultcode == 200) {
+											mui.openWindow({												
+												id: 'pages/sell-additem.html',
+												url: 'pages/sell-additem.html',
+												extras: {
+													code: code
+												}
+											})
+
+										} else {
+											mui.toast(data.errordes)
+										}
+									})
+
+								}
+							})
+
+							return false;
+						} else {
+							if(targetTab == 'pages/game-detail.html') {
+								//隐藏当前;
+								plus.webview.hide(activeTab);
+								plus.webview.show(targetTab);
+
+							} else {
+								//判断用户是否已经登录
+								//console.log(Trade.getUid())
+								if(!Trade.getUid()) {
+									mui.openWindow({
+										id: 'user-login',
+										url: 'pages/user-login.html'
+									})
+								} else {
+									plus.webview.hide(activeTab);
+									plus.webview.show(targetTab);
+								}
+							}
+							//console.log("窗口数量" + plus.webview.all().length);
+							//更改当前活跃的选项卡
+							activeTab = targetTab;
+						}
+
+					});
+					
+					
+					
+					
+					
+				})
+
+			})
+		</script>
+
+	</body>
+
+</html>
+
+<!--	
+				佛祖保佑  永无bug
+			       _ooOoo_
+                  o8888888o
+                  88" . "88
+                  (| -_- |)
+                  O\  =  /O
+               ____/`---'\____
+             .'  \\|     |//  `.
+            /  \\|||  :  |||//  \
+           /  _||||| -:- |||||-  \
+           |   | \\\  -  /// |   |
+           | \_|  ''\---/''  |   |
+            \  .-\__  `-`  ___/-. /
+          ___`. .'  /--.--\  `. . __
+       ."" '<  `.___\_<|>_/___.'  >'"".
+      | | :  `- \`.;`\ _ /`;.`/ - ` : | |
+      \  \ `-.   \_ __\ /__ _/   .-` /  /
+ ======`-.____`-.___\_____/___.-`____.-'======
+                    `=---='
+                    
+                    
+-->

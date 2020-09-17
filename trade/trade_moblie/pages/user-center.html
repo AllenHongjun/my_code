@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>个人中心</title>
+
+		<script type="text/javascript" src="../js/rem.js"></script>
+		<script type="text/javascript" src="../js/iconfont.js"></script>
+		<link href="../lib/mui/css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/iconfont.css" />
+		<link rel="stylesheet" href="../lib/mui/css/icons-extra.css" />
+		<link rel="stylesheet" href="../css/public.css" />
+		<link rel="stylesheet" href="../css/wode.css" />
+		<link rel="stylesheet" href="../css/common.css" />
+
+	</head>
+
+	<body>
+
+		<div class="mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<div class="mui-content">
+					<!--头部   开始-->
+					
+					<!--头部   结束-->
+
+					<!--个人信息   开始-->
+					<div class="info">
+
+						<!--<img src="img/wode.png" width="100%"/>-->
+					</div>
+					<!--个人信息   结束-->
+
+					<!--面包屑   开始-->
+					<div class="nav">
+						<div class="mui-bar mui-segmented-control">
+							<a class="mui-control-item">
+								<div class="mui-icon wallet">
+									￥45.00
+								</div>
+								<br /> 我的钱包
+							</a>
+							<a id="item_list" href="sell-itemlist.html" class="mui-control-item">
+								<svg class="mui-icon icon" aria-hidden="true">
+									<use xlink:href="#icon-zhinan"></use>
+								</svg>
+								<br /> 我发布的
+							</a>
+							<a id="item_list2" href="sell-itemlist.html" class="mui-control-item">
+								<svg class="mui-icon icon" aria-hidden="true">
+									<use xlink:href="#icon-maichu2"></use>
+								</svg>
+								<br /> 我卖出的
+							</a>
+							<a id="order_list" href="order-list.html" class="mui-control-item">
+								<svg class="mui-icon icon" aria-hidden="true">
+									<use xlink:href="#icon-gouwuche"></use>
+								</svg>
+								<br /> 我买到的
+							</a>
+						</div>
+					</div>
+					<!--面包屑   结束-->
+
+					<!--中心列表   开始-->
+					<div class="main">
+						<div class="list">
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell">
+									<a href="game-list.html" class="mui-navigate-right" href="select.html">
+										<h4>某某游戏</h4>
+										<span class="mui-badge mui-badge-primary mui-badge-inverted gray">切换游戏</span>
+									</a>
+								</li>
+								<li class="mui-table-view-cell">
+									<a href="user-bind.html"  class="mui-navigate-right">
+										<svg class="mui-icon icon" aria-hidden="true">
+											<use xlink:href="#icon-bangding1"></use>
+										</svg>
+										游戏绑定
+									</a>
+								</li>
+								<li class="mui-table-view-cell">
+									<a href="user-chainid.html" class="mui-navigate-right">
+										<span class="mui-icon-extra mui-icon-extra-card icon"></span> 
+										已绑定主链ID
+									</a>
+								</li>
+								<li class="mui-table-view-cell">
+									<a id="loginOut" href="javascript:;" class="mui-navigate-right">
+										<svg class="mui-icon icon" aria-hidden="true">
+											<use xlink:href="#icon-tuichu"></use>
+										</svg>
+										退出登录
+									</a>
+								</li>
+								<!--<li class="mui-table-view-cell">
+									<a href="user-login.html" class="mui-navigate-right">
+										<svg class="mui-icon icon" aria-hidden="true">
+											<use xlink:href="#icon-tuichu"></use>
+										</svg>
+										登录
+									</a>
+								</li>-->
+								<!--<li class="mui-table-view-cell">
+									<a href="order-result.html?orderid=6366864549418072634" class="mui-navigate-right">
+										<svg class="mui-icon icon" aria-hidden="true">
+											<use xlink:href="#icon-tuichu"></use>
+										</svg>
+										订单结果
+									</a>
+								</li>-->
+							</ul>
+						</div>
+						<div class="list">
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell">
+									<a  class="mui-navigate-right">
+										<svg class="mui-icon icon" aria-hidden="true">
+											<use xlink:href="#icon-xiazai46"></use>
+										</svg>
+										客服中心
+									</a>
+								</li>
+								<li class="mui-table-view-cell">
+									<a  class="mui-navigate-right">
+										<svg class="mui-icon icon" aria-hidden="true">
+											<use xlink:href="#icon-icon"></use>
+										</svg>
+										意见反馈
+									</a>
+								</li>
+								<li class="mui-table-view-cell">
+									<a  class="mui-navigate-right">
+										<svg class="mui-icon icon" aria-hidden="true">
+											<use xlink:href="#icon-guize"></use>
+										</svg>
+										平台规则
+									</a>
+								</li>
+
+							</ul>
+						</div>
+					</div>
+					<!--中心列表   结束-->
+				</div>
+			</div>
+		</div>
+
+
+		<script type="text/html" id="userinfo">
+			<div class="tx"><img src="<%=faceurl?faceurl:'../img/avter.jpg'%>" width="100%" /></div>
+			<div class="name">
+				<%=nickname%>
+			</div>
+
+		</script>
+
+		<script type="text/javascript" src="../lib/mui/js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/iconfont.js"></script>
+		<script type="text/javascript" src="../lib/md5/md5.js"></script>
+		<script src="../lib/zepto/zepto.min.js"></script>
+		
+		<script type="text/javascript" src="../lib/artTemplate/template-native.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script type="text/javascript" src="../js/user-center.js"></script>
+	</body>
+
+</html>

@@ -1,0 +1,6 @@
+<view class="container">
+    <form bindsubmit="bindSave">
+        <view style='width:100%;padding-left:30rpx;font-size: 28rpx;margin-top:30rpx;'>1、只有授权登录的用户才能推广游戏哦；请点击确认</view>
+        <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="save-btn">授权登录</button>
+    </form>
+</view>

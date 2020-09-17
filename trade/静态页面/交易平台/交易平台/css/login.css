@@ -1,0 +1,102 @@
+body,.mui-content{
+	background: #fff;
+}
+
+/*绑定*/
+.games-btn{
+	width: 85%;
+	margin: 2.5rem auto 0.3rem;
+	padding: 0.2rem 0;
+	text-align: left;
+	text-indent: 15px;
+	background: #e6e6e6;
+	color: #9c9c9c;
+	font-size: 0.27rem;
+}
+.mui-input-group{
+	width: 85%;
+	margin: 0 auto;	
+}
+.mui-input-group:before{
+	background: none;
+}
+.mui-input-group:after,.mui-input-group .mui-input-row:after{
+	background: none;
+}
+.binding .mui-input-row .mui-btn+input,.binding .mui-input-row label+input,.binding .mui-input-row:last-child{
+	background: #e6e6e6;
+}
+.binding-btn,.register-btn{
+	background: #e6e6e6;
+	border: 1px solid #ccc;
+	margin-bottom: 0.3rem;
+}
+.binding-btn label{
+	width: 20%;
+}
+.binding-btn input,.binding-btn label~input, .binding-btn label~select, .binding-btn label~textarea{
+	width: 100%;
+	font-size: 0.27rem;
+}
+.login-btn{
+	width: 90%;
+	margin: 1rem auto 0;
+	padding: 0.2rem 0;
+	background: #0078FF;
+	font-size: 0.29rem;
+	font-weight: bold;
+}
+.logo{
+	width: 40%;
+	position: absolute;
+	bottom: 1.2rem;
+	left: 30%;
+}
+@media(max-width:320px){
+	.logo{
+		bottom: 0.6rem;
+	}
+	.games-btn{
+		margin: 2rem auto 0.3rem;
+	}
+}
+
+/*登录*/
+.login{
+	margin-top: 2.3rem;
+}
+.register-btn label{
+	width: 12%;
+	padding:7px 8px;
+}
+.register-btn input,.register-btn label~input, .register-btn label~select, .register-btn label~textarea{
+	width: 87.5%;
+	font-size: 0.27rem;
+}
+.register-btn label .icon{
+	color: #9c9c9c;
+}
+.link-area{
+	margin-top: 0.4rem;
+	text-align: center;
+	font-size: 0.26rem;
+}
+.link-area a{
+	color:#9c9c9c;
+}
+.others{
+	width: 40%;
+	position: absolute;
+	text-align: center;
+	bottom: 1rem;
+	left: 30%;
+	/*background: #000;*/
+}
+.others a{
+	margin: 0rem 0.2rem;
+}
+.others a .mui-icon{
+	font-size: 0.7rem;
+	color: #0078FF;
+	margin-top: 0.3rem;
+}

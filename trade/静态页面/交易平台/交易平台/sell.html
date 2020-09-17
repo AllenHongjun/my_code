@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	    <title>道具出售</title>
+	    <script src="js/mui.min.js"></script>
+	    <script type="text/javascript" src="js/rem.js" ></script>
+	    <script type="text/javascript" src="js/iconfont.js" ></script>
+	    <link href="css/mui.min.css" rel="stylesheet"/>
+	    <link rel="stylesheet" href="css/iconfont.css" />
+	    <link rel="stylesheet" href="css/public.css" />
+	    <link rel="stylesheet" href="css/sell.css" />
+	    <script type="text/javascript" charset="utf-8">
+	      	mui.init();
+    	</script>
+	</head>
+	<body>
+		<div class="mui-content">
+			<!--头部   开始-->
+			<div class="top">
+				<header class="mui-bar mui-bar-nav">
+				    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left icon-back"></a>
+				    <h1 class="mui-title">道具出售</h1>
+				</header>				
+			</div>
+			<!--头部   结束-->
+			
+			<!--发布道具   开始-->
+			<div class="sell">
+				<ul class="mui-table-view">
+				    <li class="mui-table-view-cell">
+				    	<h5>这里默认显示获取到的道具名称</h5>
+				    </li>
+				    <li class="mui-table-view-cell">
+				    	<h5>这里显示该道具的默认描述</h5>
+				    </li>
+				    <li class="mui-table-view-cell mui-media">
+				        <a href="javascript:;">
+				            <img class="mui-media-object mui-pull-left" src="img/index/icon-03.png">
+				        </a>
+				    </li>	
+				    <li class="mui-table-view-cell">
+				    	<textarea id="textarea" rows="5" placeholder="在这里描述一下宝贝吧"></textarea>
+				    </li>
+				</ul>
+				<ul class="mui-table-view price">
+			        <li class="mui-table-view-cell">				    			         			            
+			            <div class="mui-media-body">
+			            	指导价
+			            </div>
+			            <span class="mui-badge mui-badge-inverted black">￥48.00</span>			       				    	
+				    </li>
+				    <li class="mui-table-view-cell">
+			            <div class="mui-media-body">
+			            	数量
+			            </div>
+			            <span class="mui-badge mui-badge-inverted black">1</span>
+			        </li>
+			        <li class="mui-table-view-cell">
+			            <div class="mui-media-body">
+			            	价格
+			            </div>
+			            <span class="mui-badge mui-badge-inverted">
+			            	<input type="text" class="mui-input-clear" placeholder="开个价吧"/>
+			            </span>
+			        </li>	
+			        
+			    </ul>
+			</div>
+			<!--发布道具   结束-->
+			
+			<!--底部   开始-->
+			<div class="bottom">
+				<button type="button" class="mui-btn mui-btn-danger">确定发布</button>
+			</div>
+			<!--底部   结束-->
+		</div>
+	</body>
+</html>

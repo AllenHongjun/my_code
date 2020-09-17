@@ -1,0 +1,90 @@
+body{
+	background: #f8fafe;
+}
+.top .mui-bar{
+	background: -webkit-linear-gradient(left, #73cdf6 , #385ddf); /* Safari 5.1 - 6.0 */
+	background: -o-linear-gradient(right, #73cdf6, #385ddf); /* Opera 11.1 - 12.0 */
+	background: -moz-linear-gradient(right, #73cdf6, #385ddf); /* Firefox 3.6 - 15 */
+	background: linear-gradient(to right, #73cdf6 , #385ddf); /* 标准的语法 */
+}
+.mui-title,a.icon-back{
+	color: #fff;
+}
+.top .mui-bar,.top .mui-bar-nav{
+	box-shadow: none;
+}
+
+/*个人信息*/
+.info{
+	background: -webkit-linear-gradient(left, #73cdf6 , #385ddf); /* Safari 5.1 - 6.0 */
+	background: -o-linear-gradient(right, #73cdf6, #385ddf); /* Opera 11.1 - 12.0 */
+	background: -moz-linear-gradient(right, #73cdf6, #385ddf); /* Firefox 3.6 - 15 */
+	background: linear-gradient(to right, #73cdf6 , #385ddf); /* 标准的语法 */
+	margin-top: 0.78rem;
+	padding-top: 0.3rem;
+}
+.tx{
+	width: 1.5rem;
+	height: 1.5rem;
+	margin: 0 auto 0.25rem;
+	border: 4px solid #adcff6;
+	border-radius: 50%;
+	overflow: hidden;
+}
+.name{
+	text-align: center;
+	color: #fff;
+	font-size: 0.3rem;
+	margin-bottom: 0.2rem;
+}
+.info img{
+	vertical-align: bottom;
+}
+.info .mui-segmented-control .mui-control-item{
+	border: 0;
+	color: #fff;
+}
+.info .mui-segmented-control{
+	border: 0;
+	font-size: 0.28rem;
+	margin: 0.2rem 0 0.1rem;
+}
+.info .mui-bar{
+	box-shadow: none;
+}
+.info .mui-bar .mui-icon{
+	font-size: 23px;
+	padding: 0;
+}
+.info .mui-segmented-control .mui-control-item.mui-active{
+	background: none;
+}
+.info .icon{
+	vertical-align: -0.2em;
+}
+
+/*中心列表*/
+.list{
+	padding-bottom: 0.9rem;
+	background: #f9fcff;
+}
+.list h4{
+	color: #333;
+}
+.list .mui-table-view:before{
+	background: none;
+}
+.list .mui-table-view{
+	background: #f9fcff;
+}
+.list .mui-table-view-cell{
+	padding: 0.22rem 15px;
+}
+.mui-badge-primary.mui-badge-inverted.gray{
+	color: #666;
+}
+.list .icon{
+	margin-right: 7px;
+	color: #333;
+}
+

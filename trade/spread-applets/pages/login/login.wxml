@@ -1,0 +1,14 @@
+<!--pages/login/login.wxml-->
+<view class="container">
+	<image src="../../assets/images/39buyu-logo.png" class="logo"></image>
+	<van-cell-group class="form">
+		<van-field value="{{ phone }}" label="手机号" placeholder="请输入手机号" error-message="手机号错误(为空时不显示)" border="{{ false }}" input-class="cell"/>
+		<van-field value="{{ sms }}" center label="短信验证码" placeholder="请输入短信验证码" border="{{ false }}" use-button-slot input-class="cell">
+			<van-button slot="button" size="small" type="primary" custom-class="button2">发送验证码</van-button>
+		</van-field>
+	</van-cell-group>
+	<van-button custom-class="button" size="large">登录</van-button>
+	<text class="tips">
+		*未注册用户直接登录即可完成登录
+	</text>
+</view>

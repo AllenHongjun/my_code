@@ -1,0 +1,102 @@
+.top{
+	width: 100%;
+	height: 4.55rem;
+	background: url(../img/index/bg.jpg) no-repeat;
+	background-size: cover;
+	color: #fff;
+	position: relative;
+}
+.pic{
+	position: absolute;
+	width: 1.75rem;
+	height: 2.35rem;
+	border: 3px solid rgba(237,202,88,.25);
+	border-radius: 4px;
+	left: 0.16rem;
+	bottom: 0.25rem;
+}
+.info{
+	float: left;
+	left: 2.27rem;
+	bottom: 0.25rem;
+	position: absolute;
+}
+.info h3{
+	font-size: 0.32rem;
+	font-weight: normal;
+	line-height: 0;
+	margin-bottom: 0.4rem;
+}
+.info p{
+	color: #fff;
+	font-size: 0.22rem;
+	line-height: 0.36rem;
+	margin: 0;
+}
+
+/*选择列表*/
+.list{
+	padding-bottom:1.1rem;
+}
+.list h5{
+	height: 0.53rem;
+	line-height: 0.53rem;
+	font-size: 0.22rem;
+	color: #777;
+	text-indent: 0.2rem;
+}
+.mui-table-view-cell{
+	padding: 0.27rem 15px;
+}
+.mui-table-view-cell:after{
+	left: 0;
+	background-color: #f2f2f2;
+}
+.mui-table-view .mui-media-object{
+	line-height: 0.73rem;
+	width: 0.73rem;
+	height: 0.73rem;
+}
+.list ul li .mui-media-body{
+	line-height: 0.75rem;
+}
+.mui-table-view .mui-media-object.mui-pull-left{
+	margin-right: 0.3rem;
+}
+.mui-badge-primary.mui-badge-inverted.gray{
+	color: #666;
+}
+
+
+/*出售*/
+.mui-popup{
+	border-radius: 8px;
+	background: #fff;
+	width: 75%;
+}
+.mui-popup-inner{
+	padding:35px 25px 30px;
+}
+.mui-popup-button:first-child,.mui-popup-button:last-child{
+	border-radius: 0;
+}
+.mui-popup-button:first-child{
+	color: #777;
+}
+.mui-popup-button:last-child{
+	color:#EC6045 ;
+	font-weight: bold;
+}
+.mui-popup-title{
+	font-size: 0.32rem;
+	font-weight: bold;
+	color:#EC6045;
+}
+.mui-popup-input input{
+	height: 0.75rem;
+	border-radius: 1rem;
+	padding: 10px 15px;
+	margin: 20px 0 5px;
+}
+
+

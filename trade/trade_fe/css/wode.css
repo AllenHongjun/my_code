@@ -1,0 +1,116 @@
+body{
+	/*background: #f8fafe;*/
+}
+.top .mui-bar{
+	background: -webkit-linear-gradient(left, #73cdf6 , #385ddf); /* Safari 5.1 - 6.0 */
+	background: -o-linear-gradient(right, #73cdf6, #385ddf); /* Opera 11.1 - 12.0 */
+	background: -moz-linear-gradient(right, #73cdf6, #385ddf); /* Firefox 3.6 - 15 */
+	background: linear-gradient(to right, #73cdf6 , #385ddf); /* 标准的语法 */
+}
+.mui-title,a.icon-back{
+	color: #fff;
+}
+.top .mui-bar,.top .mui-bar-nav{
+	box-shadow: none;
+}
+
+/*个人信息*/
+.info{
+	background: -webkit-linear-gradient(left, #73cdf6 , #385ddf); /* Safari 5.1 - 6.0 */
+	background: -o-linear-gradient(right, #73cdf6, #385ddf); /* Opera 11.1 - 12.0 */
+	background: -moz-linear-gradient(right, #73cdf6, #385ddf); /* Firefox 3.6 - 15 */
+	background: linear-gradient(to right, #f7cc68 , #f79d3c); /* 标准的语法 */
+	/*margin-top: 0.78rem;*/
+	padding: 0.65rem 0;
+}
+.tx{
+	width: 1.5rem;
+	height: 1.5rem;
+	margin: 0 auto 0.25rem;
+	border: 4px solid #f9dea9;
+	border-radius: 50%;
+	overflow: hidden;
+}
+.name{
+	text-align: center;
+	color: #fff;
+	font-size: 0.3rem;
+	margin-bottom: 0rem;
+}
+.info img{
+	vertical-align: bottom;
+}
+.nav{
+	background: #fff;
+}
+.nav .mui-segmented-control .mui-control-item{
+	border: 0;
+	color: #666;
+}
+.nav .mui-segmented-control .mui-control-item .icon{
+	color: #000;
+}
+.nav .mui-segmented-control{
+	border: 0;
+	font-size: 0.28rem;
+	margin: 0rem 0 0.15rem;
+	padding: 0.2rem 0px 0.1rem;
+}
+.nav .mui-bar{
+	box-shadow: none;
+}
+.nav .mui-bar .mui-icon{
+	font-size: 1rem;
+	padding: 0;
+}
+.nav .mui-segmented-control .mui-control-item.mui-active{
+	background: none;
+}
+.nav .icon{
+	vertical-align: -0.2em;
+}
+.nav .mui-bar .mui-icon.wallet{
+	font-size: 0.3rem;
+	color: #f5ac3a;
+	font-weight: bold;
+	top: -0.15rem;
+}
+
+/*中心列表*/
+.main{
+	padding-bottom: 0.9rem;
+}
+.list{	
+	background: #fff;
+	margin-bottom: 0.15rem;
+	font-size: 0.27rem;
+}
+.list h4{
+	color: #333;
+}
+.list .mui-table-view:before{
+	background: none;
+}
+.list .mui-table-view{
+	/*background: #f9fcff;*/
+}
+.list .mui-table-view-cell{
+	padding: 0.22rem 15px;
+}
+.mui-badge-primary.mui-badge-inverted.gray{
+	color: #666;
+}
+.list .icon{
+	font-size: 20px;
+	margin-right: 7px;
+	color: #333;
+}
+.list .icon-bd{
+	font-size:20px;
+	margin-left: 2px;
+}
+@media(max-width:320px){
+	.main{
+		padding-bottom: 1.1rem;
+	}
+}

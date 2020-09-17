@@ -1,0 +1,78 @@
+﻿.regist{ width: 958px; border: 1px solid #E0E0E0; padding: 15px 0; position: relative;}
+.regist_tit{ width: 900px; border-bottom: 1px solid #E0E0E0; margin: 0 auto;}
+.regist_tit p{ text-align: right; color: #6a6a6a;font-family: "微软雅黑"; font-size: 14px;}
+.regist_tit a{ color:#ff7166;}
+.regist_tit h2{ height: 25px; background: url(/Images/skin/regist/tit_bg.jpg) no-repeat center; margin: 15px 0;}
+.registMain{ padding-top: 20px; padding-left: 240px;}
+.registMain em.star{ color:#ff1f0e; line-height:100%; padding:0 5px 0 0;}
+.registMain li{ clear: both; margin-bottom: 15px;position: relative;}
+.registMain li .ac{cursor:pointer;}
+.registMain label.name{ display: block; width: 114px; height: 34px;line-height: 34px; float: left; text-align: right; font-family: "微软雅黑";font-size: 16px; color: #6A6A6A;}
+.registMain input.input{ float: left; width: 242px; border: 1px solid #E5E5E5; padding: 8px 0; background: #fff; text-indent: 5px;font-family: "微软雅黑";font-size: 16px; color: #6A6A6A;}
+.registMain input.code{ float: left; width: 118px; border: 1px solid #E5E5E5; padding: 8px 0; background: #fff; text-indent: 5px;font-family: "微软雅黑";font-size: 16px; color: #6A6A6A; margin-right: 10px;}
+.rblGender{ display: none;}
+.selectList{ width: 78px;height: 32px; border: 1px solid #E5E5E5; float: left; background: #fff;font-family: "微软雅黑"; font-size: 16px;color: #6A6A6A;position: relative; z-index: 9;}
+.selectList span{ display: block; height:100%; line-height: 32px; text-indent: 10px;cursor: pointer; background: url(../img/register/select_dot.gif) no-repeat 54px center; }
+.selectList dl{ display: none; width: 78px; background: #fff; position: absolute;left:-1px; top: 32px;border: 1px solid #E5E5E5;}
+.selectList dd{ width: 100%; text-indent: 10px; cursor: pointer;padding: 5px 0;}
+.selectList dd:hover{background:#91cade; color:#fff;}
+.optional{ padding-left: 240px;}
+.optional p{cursor: pointer;width: 550px; text-align: center;font-family: "微软雅黑";font-size: 16px; height: 20px; line-height: 20px; color: #333;background: url(/Images/skin/regist/shrink.gif) no-repeat;background-position:35px -57px; margin: 10px 0;}
+.optional p.develop{background-position:35px 2px;}
+.optional ul{ padding-top: 10px; display: none;}
+.optional ul p{width:450px;margin: 0; text-align: left;background: none; font-family: "微软雅黑";font-size: 14px; height: 34px;line-height: 34px;color: #999;position: absolute; top:0;left: 365px;}
+.optional ul p{cursor:auto;}
+.optional ul p i{ display: block; width: 20px;height: 100%; float: left; margin-right: 10px; background: url(../img/register/regist_icon.gif) no-repeat;}
+.optional ul p i.warn{ background-position: center 8px;}
+.optional ul p i.error{ background-position: center -42px;}
+.optional ul p i.true{ background-position: center -92px;}
+.optional em.star{ color:#ff1f0e;}
+.optional li{ clear: both; margin-bottom: 15px;  position: relative;}
+.optional label.name{ display: block; width: 114px; height: 34px;line-height: 34px; float: left; text-align: right; font-family: "微软雅黑";font-size: 16px; color: #6A6A6A;}
+.optional input.input{ float: left;; width: 242px; border: 1px solid #E5E5E5; padding: 8px 0; background: #fff; text-indent: 5px;font-family: "微软雅黑";font-size: 16px; color: #6A6A6A;}
+
+.send{width:550px;font-family: "微软雅黑";font-size: 14px; color: #999; padding-left: 240px;}
+.send span{ display: block; float: left; width: 13px; height: 13px; padding: 5px 5px 0 60px;}
+.send a{ color: red;}
+.send .btnSubmit{display: block; width: 280px; height: 48px; clear: both; margin:20px 0 0 100px; color: #fff; text-align: center; line-height: 48px; background: url(/Images/skin/regist/btnSubmit.jpg) no-repeat; border: none; cursor: pointer;font-family: "微软雅黑";font-size: 26px;}
+.promptList{ width:800px; height: 95px; margin: 0 auto;padding: 60px 0;}
+.promptList li{float: left; width: 33%;height: 100%;}
+.promptList a{ color: #999; display: block;}
+.promptList span{ display: block;width: 72px;height: 72px; margin-right: 10px; background: url(/Images/skin/regist/tips_icon.gif) no-repeat; float: left;}
+.promptList span.guide{background-position: center top;}
+.promptList span.relation_kf{background-position: center -78px;}
+.promptList span.hotLine{background-position: center -154px;}
+.promptList h3{font-family: "微软雅黑";font-size: 20px;color: #6A6A6A;font-weight: normal;}
+.promptList p{font-size: 14px;line-height: 150%; padding-top: 5px; color:#999;}
+
+.regist_tips{ width: 350px; height: 340px; position: absolute;right:0;top: 110px; }
+#tips{position: absolute;left: 0;top: 0;}
+.registMain p{ font-family: "微软雅黑";font-size: 14px; height: 34px;line-height: 34px;color: #999;position: absolute; top:0;left: 365px;}
+.registMain i{ display: block; width: 20px;height: 100%; float: left; margin-right: 10px; background: url(../img/register/regist_icon.gif) no-repeat;}
+.registMain i.warn{ background-position: center 8px;}
+.registMain i.error{ background-position: center -42px;}
+.registMain i.true{ background-position: center -92px;}
+
+.r_success{border-top: 1px solid #E0E0E0;border-bottom: 1px solid #E0E0E0;  margin-top: 20px; padding: 45px 0;}
+.s_main{ width: 446px; margin: 0 auto; margin-bottom: 10px;}
+.s_main p{float: left; width: 364px;font-family: "微软雅黑";font-size: 18px; color: #6A6A6A;padding:6px 0;}
+.s_main p.prosit{font-size: 24px;}
+.s_main p em{ color: #ff7166;}
+.s_bg{ display: block;float: left; width: 80px; height: 100px; background: url(/Images/skin/regist/s.gif) no-repeat left 20px;}
+.s_download{ clear: both; display: block;width: 281px; height: 49px; margin: 0 auto 0 auto; background: url(/Images/skin/regist/s_download.gif) no-repeat;}
+
+.friendship{ width: 770px; margin: 0 auto; padding-top: 30px;}
+.friendship h3{ color: #6a6a6a;font-family: "微软雅黑";font-size: 18px;font-weight: normal;}
+.friendship p{ padding: 10px 0;color: #999;font-size: 14px;}
+.friendship p em{ color: red;}
+.friendship p img{ margin-left: 5px;}
+
+.raiseList{ width:100%; height: 95px; margin: 0 auto;padding: 20px 0;}
+.raiseList li{float: left; width: 33%;height: 100%;}
+.raiseList a{ color: #999; display: block;}
+.raiseList span{ display: block;width: 72px;height: 72px; margin-right: 10px; background: url(/Images/skin/regist/raise_icon.gif) no-repeat; float: left;}
+.raiseList span.attestation{background-position: center top;}
+.raiseList span.cellphone{background-position: center -78px;}
+.raiseList span.change{background-position: center -154px;}
+.raiseList h3{font-family: "微软雅黑";font-size: 20px;color: #6A6A6A;font-weight: normal;}
+.raiseList p{font-size: 14px;line-height: 150%; padding-top: 5px;font-weight: bold;}

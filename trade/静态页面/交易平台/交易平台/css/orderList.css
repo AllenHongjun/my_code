@@ -1,0 +1,155 @@
+/*排序*/
+.list .mui-bar{
+	box-shadow: none;
+}
+.list .mui-segmented-control{
+	width: 100%;
+	top: 0;
+	border: 0;
+	background: #fff;
+	position: fixed;
+	top: 0.8rem;
+	font-size: 0.26rem;
+}
+.list .mui-segmented-control .mui-control-item{
+	border-left: 0;
+	/*border-color: #fff;*/
+	color: #333;
+}
+.list .mui-segmented-control .mui-control-item.mui-active{
+	font-weight: bold;
+	background: none;
+	border-bottom: 2px solid #ec6045;
+}
+
+/*订单列表*/
+.list{
+	background: #f5f5f5;
+	margin-top: 1.6rem;
+	padding-bottom: 0.9rem;
+}
+@media(max-width:320px){
+	.list{
+		margin-top: 1.8rem;
+		padding-bottom: 1.1rem;
+	}
+}
+.list .mui-table-view{
+	background: none;
+	margin-bottom: 0.1rem;
+}
+.list .mui-table-view li{
+	background: #fff;
+	font-size: 0.26rem;
+}
+.list .mui-table-view:before{
+	background: none;
+}
+.list .mui-table-view-cell:after{
+	background: none;
+}
+.list .mui-badge-primary.mui-badge-inverted.gray{
+	color: #888;
+}
+.list li .mui-media-body{
+	line-height: 0.55rem;
+}
+.list li.orderBg{
+	background: #FAFAFA;
+}
+.list li img{
+	margin-top: 0.15rem;
+	margin-left: -0.1rem;
+}
+.list .red{
+	font-weight: bold;
+	font-size: 0.32rem;
+	color: #ec6045;
+}
+.list .black{
+	font-size: 0.28rem;
+	color: #333;
+}
+.list .colour{
+	/*font-weight: bold;*/
+	color: #ec6045;
+	font-size: 0.24rem;
+}
+.list li .mui-icon{
+	font-size: 17px;
+}
+.list li.orderBtn button{
+	/*display: block;*/
+	float: right;
+	margin-left: 0.15rem;
+	position:static;
+	-webkit-transform:none;
+	transform: none;
+	border-radius: 0.5rem;
+	padding: 3px 10px 4px;
+	font-size: 0.24rem;
+	
+}
+.list li.orderBtn button.mui-btn-danger{
+	color: #ec6045;
+	border-color: #ec6045;
+	font-weight: bold;
+}
+
+
+/*订单结果*/
+.banner{
+	margin-top: 0.65rem;
+}
+.info{
+	width: 100%;
+}
+.info h1{
+	text-align: center;
+	font-size: 0.36rem;
+	padding: 0.45rem 0 0.54rem;
+	color: #ec6045;
+}
+.info-text{
+	width: 100%;
+	background: #fff;
+	border: 1px solid #eee;
+	border-width: 1px 0;
+	/*margin-top: 0.2rem;*/
+}
+.info-text p{
+	height: 0.9rem;
+	line-height: 0.9rem;
+	color: #777;
+	text-indent:0.39rem;
+	/*font-size: 0.530rem;*/
+	border-bottom: 1px dashed #eee;
+	-webkit-margin-before: 0em;
+	-webkit-margin-after: 0em;
+}
+.info-text p span{
+	color: #5e5e5e;
+	margin-right: 0.25rem;
+}
+
+/*订单-按钮*/
+.info-btn{
+	margin:1.05rem auto 0;
+	width: 75%;
+}
+.info-btn a{
+	display: block;
+	width: 2.5rem;
+	height: 0.85rem;
+	line-height: 0.85rem;
+	text-align: center;
+	color: #fff;
+	border-radius: 4px;
+	font-size: 0.26rem;
+}
+.info-btn-01{
+	background: #21a4ff;
+}
+.info-btn-02{
+	background: #ec6045;
+}

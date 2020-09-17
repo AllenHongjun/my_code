@@ -1,0 +1,152 @@
+/*public*/
+* {
+	margin:0;
+	padding:0;
+	border:0;
+}
+body{
+	font-size:12px;
+	font-family:"Microsoft YaHei",Arial, Helvetica, sans-serif;	
+	color: #fff;
+	background: #0450b4;
+}
+ol,ul,li{ list-style:none;}
+img{border:0;}
+a{text-decoration:none; color: #333;}
+a:hover{
+	color: #258ee2;
+}
+i,em,b{font-style: normal;font-weight: normal;}
+.clear{ clear:both;}
+.left{ float:left}
+.right{float:right}
+.content{
+	width: 1100px;
+	margin: 0 auto;
+}
+
+
+
+/*导航*/
+.nav{
+	width: 1080px;
+	margin: 0 auto;
+	padding-top: 29px;
+	position: relative;
+}
+.nav-list{
+	margin-top: 39px;
+	width: 405px;
+	height: 80px;
+	background: url(../img/topnavbg.png) no-repeat;
+}
+.nav-list a{
+	display: block;
+	width: 110px;
+	margin: 15px 16px ;
+	text-align: center;
+	font-size: 18px;
+	color: #fff;
+	float: left;
+}
+.nav-list a span{
+	font-size: 12px;
+	color: #67bcff;
+}
+.nav-list a:hover,.nav-list a:hover span,.nav-list a.click,.nav-list a.click span{
+	color:#ffe327
+}
+.nav-left{
+	float: left;
+	padding-left: 39px;
+	margin-left: 137px;
+}
+.nav-right{
+	float: right;
+	padding-right: 39px;
+}
+.nav-right a{
+	float: right;
+}
+.nav img.left{
+	position: absolute;
+	left: 440px;
+}
+.nav img.logo{
+	position: absolute;
+	left:0;
+	top: 80px;
+	float: left;
+}
+
+
+/*尾部*/
+.footer{
+	width: 1100px;
+	margin: 0 auto;
+}
+.service li{
+	float: left;
+	width: 225px;
+	text-align: center;
+	margin: 0 25px;
+}
+.service li a{
+	color: #69bbff;
+	font-size: 16px;
+	line-height: 28px;
+	padding-top: 82px;
+	display: block;
+}
+.service li a p{
+	font-size: 12px;
+}
+.service li a:hover{
+	color: #fffc00;
+}
+.service01{	
+	background: url(../img/service01.png) no-repeat center top;
+}
+.service01:hover{
+	background: url(../img/service01-2.png) no-repeat center top;
+}
+
+.service02{	
+	background: url(../img/service02.png) no-repeat center top;
+}
+.service02:hover{
+	background: url(../img/service02-2.png) no-repeat center top;
+}
+
+.service03{	
+	background: url(../img/service03.png) no-repeat center top;
+}
+.service03:hover{
+	background: url(../img/service03-2.png) no-repeat center top;
+}
+
+.service04{	
+	background: url(../img/service04.png) no-repeat center top;
+}
+.service04:hover{
+	background: url(../img/service04-2.png) no-repeat center top;
+}
+
+.copyright{
+	text-align: center;
+	color: #69bbff;	
+	margin-top: 100px;
+}
+.copyright a{
+	font-size: 14px;
+	color: #69bbff;
+}
+.copyright a:hover{
+	color: #fffc00;
+}
+.copyright span{
+	margin: 0 8px;
+}
+.copyright p{
+	margin-top: 15px;
+}

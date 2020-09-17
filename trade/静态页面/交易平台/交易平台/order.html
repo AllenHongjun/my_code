@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	    <title></title>
+	    <script src="js/mui.min.js"></script>
+	    <script type="text/javascript" src="js/rem.js" ></script>
+	    <script type="text/javascript" src="js/iconfont.js" ></script>
+	    <link href="css/mui.min.css" rel="stylesheet"/>
+	    <link rel="stylesheet" href="css/iconfont.css" />
+	    <link rel="stylesheet" href="css/public.css" />
+	    <link rel="stylesheet" href="css/order.css" />
+	    <script type="text/javascript" charset="utf-8">
+	      	mui.init();
+    	</script>
+	</head>
+	<body>
+		<div class="mui-content">
+			<!--头部   开始-->
+			<div class="top">
+				<header class="mui-bar mui-bar-nav">
+				    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left icon-back"></a>
+				    <h1 class="mui-title">确认订单</h1>
+				</header>			
+			</div>
+			<!--头部   结束-->
+			
+			<!--收货地址   开始-->
+			<div class="dizhi">
+				<ul class="mui-table-view">
+				    <li class="mui-table-view-cell">
+				    	<a href="javascript:;">				          
+				            <svg class="mui-media-object mui-pull-left mui-icon icon" aria-hidden="true">
+							  	<use xlink:href="#icon-shouhuoren-copy"></use>
+							</svg>
+				            <div class="mui-media-body mui-navigate-right">
+				            	收货人ID：4548764
+				            </div>
+				            <span class="mui-badge mui-badge-primary mui-badge-inverted gray">15988565537</span>
+				       </a>				    	
+				    </li>				    
+				</ul>
+			</div>
+			<!--收货地址   结束-->
+			
+			<!--订单详情   开始-->
+			<div class="order">
+				<ul class="mui-table-view">
+				    <li class="mui-table-view-cell mui-media">
+				        <a href="javascript:;">
+				            <img class="mui-media-object mui-pull-left" src="img/index/icon-03.png">
+				            <div class="mui-media-body">
+				            	道具名称
+				            	<p class='mui-ellipsis'>稀有/50%快速成长经验</p>
+				            </div>
+				            <span class="mui-badge mui-badge-primary mui-badge-inverted red">￥48.00</span>
+				        </a>
+				    </li>
+				    <li class="mui-table-view-cell">
+				    	<h5>购买数量</h5>
+				    	<span class="right">
+				    		<div class="mui-numbox" data-numbox-min='1'>
+							  <!-- "-"按钮，点击可减小当前数值 -->
+							  <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
+							  <input class="mui-numbox-input" type="number" />
+							  <!-- "+"按钮，点击可增大当前数值 -->
+							  <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
+							</div>
+				    	</span>
+				    </li>
+				    <li class="mui-table-view-cell">
+				    	<h5>选择支付方式</h5>
+				    </li>
+				</ul>
+				<div class="pay">
+					<ul class="mui-table-view mui-table-view-radio">
+					    <li class="mui-table-view-cell mui-selected">
+					        <a href="javascript:;">				          
+					            <svg class="mui-media-object mui-pull-left mui-icon icon" aria-hidden="true">
+								  	<use xlink:href="#icon-iconfontrectangle390"></use>
+								</svg>
+					            <div class="mui-media-body mui-navigate-right">
+					            	支付宝支付
+					            	<p class='mui-ellipsis'>推荐支付宝用户使用</p>
+					            </div>
+					       	</a>	
+					    </li>
+					    <li class="mui-table-view-cell">
+					        <a href="javascript:;">				          
+					            <svg class="mui-media-object mui-pull-left mui-icon icon" aria-hidden="true">
+								  	<use xlink:href="#icon-weixin"></use>
+								</svg>
+					            <div class="mui-media-body mui-navigate-right">
+					            	微信支付
+					            	<p class='mui-ellipsis'>推荐支付宝用户使用</p>
+					            </div>
+					       	</a>
+					    </li>
+					    <li class="mui-table-view-cell">
+					        <a href="javascript:;">				          
+					            <svg class="mui-media-object mui-pull-left mui-icon icon" aria-hidden="true">
+								  	<use xlink:href="#icon-yinlian1"></use>
+								</svg>
+					            <div class="mui-media-body mui-navigate-right">
+					            	银行卡支付
+					            	<p class='mui-ellipsis'>推荐支付宝用户使用</p>
+					            </div>
+					       	</a>
+					    </li>
+					</ul>
+				</div>
+				<p class="notice">
+					<strong>注意：</strong><br />
+					1、下单购买物品后，需要在限定时间内支付成功，否则订单会自动过期<br />
+					2、支付成功后，登录游戏即可以领取物品，可能有5-10分钟的延迟
+				</p>
+			</div>
+			<!--订单详情   介绍-->
+			
+			<!--底部   开始-->
+			<div class="payment">
+				<p>合计：<strong>￥48.00</strong></p>
+				<button type="button" class="mui-btn mui-btn-danger">立即购买</button>
+			</div>
+			<!--底部   结束-->
+		</div>
+	</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>商品详情</title>
+		<script type="text/javascript" src="../js/rem.js"></script>
+		<script type="text/javascript" src="../js/iconfont.js"></script>
+		<link href="../lib/mui/css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/iconfont.css" />
+		<link rel="stylesheet" href="../css/public.css" />
+		<link rel="stylesheet" href="../css/order.css" />
+
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<!--头部   开始-->
+			<div class="top">
+				<header class="mui-bar mui-bar-nav">
+					<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left icon-back"></a>
+
+					<h1 class="mui-title">商品详情</h1>
+				</header>
+			</div>
+			<!--头部   结束-->
+
+			<!--商品信息   开始-->
+			<div class="info">
+				<!--TODO-->
+			</div>
+			<!--商品信息   结束-->
+
+			<!--底部   开始-->
+			<div class="payment">
+				<div class="offer">
+					<svg class="mui-icon icon" aria-hidden="true">
+						<use xlink:href="#icon-qiandai"></use>
+						<br/>
+					</svg>
+					<!--<span class="mui-tab-label">还价</span>-->
+				</div>
+				<button type="button" class="mui-btn mui-btn-danger">立即购买</button>
+			</div>
+			<!--底部   结束-->
+		</div>
+
+		<script id="productDetail" type="text/html">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell mui-media">
+					<a href="javascript:;">
+						<%
+			                if(!result.piconurl){
+			                    result.piconurl = 'img/index/icon-03.png';
+			                }
+		                %>
+						<img class="mui-media-object mui-pull-left" src="<%=result.piconurl%>" height="100%">
+
+						<div class="mui-media-body">
+							<%=result.name==null?'暂无数据':result.name%>
+							<p class="mui-ellipsis"><strong>&yen; <%=result.price%></p>
+
+                    <p class="mui-ellipsis"><%=result.gname%></p>
+                </div>
+                <!--<span class="mui-badge mui-badge-primary mui-badge-inverted gray">数量：<%=result.stock%>单</span>-->
+            </a>
+        </li>
+        <li class="mui-table-view-cell seller">
+            卖家ID：<%=result.uid%>
+            <span class="mui-badge mui-badge-primary mui-badge-inverted gray">数量：<%=result.stock%>个</span>
+        </li>
+    </ul>
+    <!--<img src="img/product/info.jpg" width="100%" class="details"/>-->
+
+</script>
+
+<script src="../lib/mui/js/mui.min.js"></script>
+<script type="text/javascript" src="../js/iconfont.js"></script>
+<script src="../lib/zepto/zepto.min.js"></script>
+<script src="../lib/artTemplate/template-native.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/product-detail.js"></script>
+</body>
+</html>

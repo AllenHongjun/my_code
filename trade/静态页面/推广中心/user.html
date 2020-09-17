@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	    <title></title>
+	    <script src="js/mui.min.js"></script>
+	    <script type="text/javascript" src="js/rem.js" ></script>
+	    <script type="text/javascript" src="js/mui.picker.min.js" ></script>
+	    <script type="text/javascript" src="js/iconfont.js"></script>
+	    <link href="css/mui.min.css" rel="stylesheet"/>
+	    <link rel="stylesheet" href="css/iconfont.css" />
+	    <link rel="stylesheet" href="css/icons-extra.css" />
+	    <link rel="stylesheet" href="css/public.css" />
+	    <link rel="stylesheet" href="css/user.css" />
+	</head>
+	<body>
+		<!--头部   开始-->
+		<div class="top">
+			<header class="mui-bar mui-bar-nav">
+			    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left icon-back"></a>
+			    <h1 class="mui-title">结算中心</h1>
+			</header>	
+		</div>
+		<!--头部   结束-->
+		<!--底部导航   开始-->
+	    <nav class="mui-bar mui-bar-tab">
+	        <a class="mui-tab-item" href="index.html">
+	            <svg class="mui-icon icon" aria-hidden="true">
+				  	<use xlink:href="#icon-shouye"></use>
+				</svg>
+	            <span class="mui-tab-label">首页</span>
+	        </a>
+	        <a class="mui-tab-item mui-active" href="user.html">
+	            <svg class="mui-icon icon icon-wode" aria-hidden="true">
+				  	<use xlink:href="#icon-qianbao"></use>
+				</svg>
+	            <span class="mui-tab-label">结算中心</span>
+	        </a>
+	    </nav>
+	    <!--底部导航   结束-->
+	    
+	    <div class="mui-content">
+			<!-- 个人信息  开始-->
+			<div class="info">
+				<div class="tx"><img src="img/tx.jpg" width="100%"/></div>
+				<div class="name">15988565537</div>				
+			</div>			
+			<!-- 个人信息  结束-->
+			
+			<!-- 钱包  开始-->
+			<div class="wallet">
+				<div class="income">
+					<p class="title">累计获得赏金（元）</p>
+					<span>20.00</span>
+				</div>
+				<div style="width: 1px;height:0.5rem;background:#fcb54d;"></div>
+				<div class="income">
+					<p class="title">今日收入（元）</p>
+					<span>0.00</span>
+				</div>
+			</div>
+			<!-- 钱包  结束-->
+			
+			<!--面包屑   开始-->
+		    <div class="nav">
+		    	<div class="mui-bar mui-segmented-control">
+				    <a class="mui-control-item">
+				    	<svg class="mui-icon icon" aria-hidden="true">
+						  	<use xlink:href="#icon-zhinan"></use>
+						</svg>
+						<br />
+						我要提现
+				    </a>
+				    <!--<a class="mui-control-item">
+				    	<svg class="mui-icon icon" aria-hidden="true">
+						  	<use xlink:href="#icon--"></use>
+						</svg>
+						<br />
+				    	我的卡包
+				    </a>-->
+				    <a class="mui-control-item" href="income.html">
+				    	<svg class="mui-icon icon" aria-hidden="true">
+						  	<use xlink:href="#icon-maichu2"></use>
+						</svg>
+						<br />
+				    	收入查询
+				    </a>
+				    <a class="mui-control-item">
+				    	<svg class="mui-icon icon" aria-hidden="true">
+						  	<use xlink:href="#icon-lianxi-"></use>
+						</svg>
+						<br />
+				    	记录查询
+				    </a>
+				</div>
+		    </div>
+		    <!--面包屑   结束-->				
+		</div>
+		
+		<div class="mui-content" style="margin-top: 0.2rem;padding-bottom: 0;">
+			<ul class="mui-table-view activity">
+			    <li class="mui-table-view-cell">
+		            <a href="javascript:;" class="mui-navigate-right">
+		            	<svg class="mui-icon icon" aria-hidden="true">
+						  	<use xlink:href="#icon-qiandao"></use>
+						</svg>
+						签到抽奖			               
+		            </a>
+		        </li>
+		    </ul>
+		</div>		
+	</body>
+</html>

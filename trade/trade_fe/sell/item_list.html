@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <title>出售列表</title>
+    <script type="text/javascript" src="../js/rem.js"></script>
+    <script type="text/javascript" src="../js/iconfont.js"></script>
+    <link href="../lib/mui/css/mui.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../css/iconfont.css"/>
+    <link rel="stylesheet" href="../css/public.css"/>
+    <link rel="stylesheet" href="../css/common.css"/>
+    <link rel="stylesheet" href="../css/orderList.css"/>
+
+</head>
+<body>
+<div class="mui-content td_container">
+    <!--头部   开始-->
+    <div class="top">
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left icon-back"></a>
+
+            <h1 class="mui-title">我发布的</h1>
+        </header>
+
+    </div>
+    <!--头部   结束-->
+
+    <!--出售列表   开始-->
+    <div class="list">
+        <div class="mui-bar mui-segmented-control tab-select">
+            <a class="mui-control-item " href="#item0" data-type="0">全部</a>
+            <a  class="mui-control-item" href="#item1" data-type="1">已上架</a>
+            <a id="item11" class="mui-control-item" href="#item2" data-type="2">已售出</a>
+            <a class="mui-control-item" href="#item3" data-type="3">已下架</a>
+        </div>
+
+        <div class="td_content">
+            <div class="td_wrapper">
+                <div id="refreshContainer" class="mui-content mui-scroll-wrapper sell-list-box">
+                    <div class="mui-scroll">
+                        <div id="item0" class="mui-control-content mui-active">
+                            <!--TODO-->
+                        </div>
+                        <div id="item1" class="mui-control-content">
+                            <!--已上架-->
+                        </div>
+                        <div id="item2" class="mui-control-content">
+                            <!--已售出-->
+                        </div>
+                        <div id="item3" class="mui-control-content">
+                            <!--已经下架-->
+                        </div>
+                        <!--<div class="search-tips"></div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <!--订单列表   结束-->
+    <script type="text/html" id="sell_list">
+
+        <% for(var i = 0; i < result.list.length ; i ++){ %>
+        <% var item = result.list[i]; %>
+        <ul class="mui-table-view" id="sell_item_<%=item['id']%>">
+            <li class="mui-table-view-cell">
+                <strong><%=item['gname']%></strong>
+                <span class="mui-badge mui-badge-warning mui-badge-inverted colour sell-state"><%=item['statestr']%></span>
+            </li>
+            <li class="mui-table-view-cell mui-media orderBg">
+                <a href="javascript:;">
+                    <img class="mui-media-object mui-pull-left" src="<%=item['piconurl']%>">
+
+                    <div class="mui-media-body">
+                        <%=item['name']%>
+                        <p class='mui-ellipsis'><%item['pname']%></p>
+                    </div>
+                    <span class="mui-badge mui-badge-primary mui-badge-inverted black">￥<%=item['price']%></span>
+                </a>
+            </li>
+            <li class="mui-table-view-cell">
+                自动下架时间
+                <span class="mui-badge mui-badge-primary mui-badge-inverted gray"><%=item['endtime']%></span>
+            </li>
+            <li class="mui-table-view-cell orderBtn" data-hyid="<%=item['HYId']%>" data-price="<%=item['price']%>" data-hyid="<%=item['HYId']%>">
+                <button type="button" class="mui-btn mui-btn-danger mui-btn-outlined btnSaleOff" style="<%=item['state']==1?'display:block':'display:none'%>">下架</button>
+                <button type="button" class="mui-btn mui-btn-outlined btnSaleAdd" style="<%=item['state']==0?'display:block':'display:none'%>">重新上架</button>
+                <!--<button type="button" class="mui-btn mui-btn-outlined">删除订单</button>-->
+            </li>
+        </ul>
+        <% } %>
+
+    </script>
+
+    <script src="../lib/mui/js/mui.min.js"></script>
+    <script type="text/javascript" src="../js/iconfont.js"></script>
+    <script src="../lib/zepto/zepto.min.js"></script>
+    <script src="../lib/artTemplate/template-native.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/sell/itemRequest.js"></script>
+    <script src="../js/sell/itemList.js"></script>
+</div>
+</body>
+</html>

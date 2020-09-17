@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	    <title></title>
+	    <script src="js/mui.min.js"></script>
+	    <script type="text/javascript" src="js/rem.js" ></script>
+	    <script type="text/javascript" src="js/iconfont.js"></script>
+	    <link href="css/mui.min.css" rel="stylesheet"/>
+	    <link rel="stylesheet" href="css/iconfont.css" />
+	    <link rel="stylesheet" href="css/public.css" />
+	    <link rel="stylesheet" href="css/index.css" />
+	    <script type="text/javascript" charset="utf-8">
+	      	mui.init();
+    	</script>
+	</head>
+	<body>
+		<div class="mui-content">			
+			<!--底部导航   开始-->
+		    <nav class="mui-bar mui-bar-tab">
+		        <a class="mui-tab-item mui-active">
+		            <svg class="mui-icon icon" aria-hidden="true">
+					  	<use xlink:href="#icon-shouye"></use>
+					</svg>
+		            <span class="mui-tab-label">首页</span>
+		        </a>
+		        <a class="mui-tab-item" id="promptBtn">
+		            <svg class="mui-icon icon" aria-hidden="true">
+					  	<use xlink:href="#icon-jia"></use>
+					</svg>
+		            <span class="mui-tab-label">出售</span>
+		        </a>
+		        <a class="mui-tab-item" href="orderList.html">
+		            <svg class="mui-icon icon" aria-hidden="true">
+					  	<use xlink:href="#icon-chengjiaodingdan"></use>
+					</svg>
+		            <span class="mui-tab-label">订单</span>
+		        </a>
+		        <a class="mui-tab-item">
+		            <svg class="mui-icon icon icon-wode" aria-hidden="true">
+					  	<use xlink:href="#icon-wode"></use>
+					</svg>
+		            <span class="mui-tab-label">我的</span>
+		        </a>
+		    </nav>
+		    <!--底部导航   结束-->
+		    
+		    <!--弹出  开始-->			
+			<div class="mui-popover sen" id="popover">	
+				<h1>2.15<span>元</span></h1>
+			</div>			
+			<!--弹出  结束-->
+		    
+		    <!--头部   开始-->
+		    <div class="top">
+		    	<div class="pic">
+		    		<img src="img/index/pic.jpg" width="100%" height="100%"/>		    		
+		    	</div>
+		    	<div class="info">
+	    			<h3>足球天下</h3>
+	    			<p>游戏类型：mmorpg</p>
+	    			<p>战斗：即时制</p>
+	    			<p>游戏平台：手游</p>
+	    			<p>收费模式：道具收费</p>
+		    	</div>		    	
+		    </div>
+		    <!--头部   结束-->
+		    
+		    <!--选择列表   开始-->
+		    <div class="list">
+			    <h5>请选择商品分类</h5>
+			    <ul class="mui-table-view">
+			    	<li class="mui-table-view-cell">
+				        <a class="mui-navigate-right" href="list.html">全部</a>
+				    </li>
+			        <li class="mui-table-view-cell mui-media">
+			            <a href="javascript:;">
+			                <img class="mui-media-object mui-pull-left" src="img/index/icon-01.png">
+			                <div class="mui-media-body">
+			                	金币
+			                </div>
+			                <span class="mui-badge mui-badge-primary mui-badge-inverted gray">游戏内货币</span>
+			            </a>
+			        </li>
+			        <li class="mui-table-view-cell mui-media">
+			            <a href="javascript:;">
+			                <img class="mui-media-object mui-pull-left" src="img/index/icon-02.png">
+			                <div class="mui-media-body">
+			                	钻石
+			                </div>
+			                <span class="mui-badge mui-badge-primary mui-badge-inverted gray">游戏内货币</span>
+			            </a>
+			        </li>
+			        <li class="mui-table-view-cell mui-media">
+			            <a href="javascript:;">
+			                <img class="mui-media-object mui-pull-left" src="img/index/icon-03.png">
+			                <div class="mui-media-body">
+			                	道具
+			                </div>
+			                <span class="mui-badge mui-badge-primary mui-badge-inverted gray">极品技能、道具</span>
+			            </a>
+			        </li>
+			        <li class="mui-table-view-cell mui-media">
+			            <a href="javascript:;">
+			                <img class="mui-media-object mui-pull-left" src="img/index/icon-04.png">
+			                <div class="mui-media-body">
+			                	装备
+			                </div>
+			                <span class="mui-badge mui-badge-primary mui-badge-inverted gray">酷炫服饰</span>
+			            </a>
+			        </li>
+			    </ul>
+		    </div>
+		    <!--选择列表   结束-->
+		    <div id="info"></div>
+		</div>
+		<script type="text/javascript">
+			mui.init()
+			document.getElementById("promptBtn").addEventListener('tap', function(e) {
+				e.detail.gesture.preventDefault(); //修复iOS 8.x平台存在的bug，使用plus.nativeUI.prompt会造成输入法闪一下又没了
+				var btnArray = ['取消', '下一步'];
+				mui.prompt('', '请输入您的游戏码：', '道具出售', btnArray, function(e) {
+					if (e.index == 0) {
+						info.innerText = '：' + e.value;
+					} else {
+						info.innerText = '';
+					}
+				})
+			});
+		</script>
+	</body>
+</html>

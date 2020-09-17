@@ -1,0 +1,36 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/login",
+    "pages/logs/logs",
+    "pages/user/user",
+    "pages/auth/auth",
+    "pages/game-info/game-info"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#ff8020",
+    "borderStyle": "black",
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "assets/images/tabs/home.png",
+        "selectedIconPath": "assets/images/tabs/home-active.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "结算中心",
+        "iconPath": "assets/images/tabs/center.png",
+        "selectedIconPath": "assets/images/tabs/center-active.png"
+      }
+    ]
+  }
+}

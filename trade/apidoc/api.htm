@@ -1,0 +1,4311 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>"交易平台 "API文档</title>
+    <style type="text/css">
+        body
+        {
+            font-family: 微软雅黑;
+            font-size: 13px;
+        }
+        #content
+        {
+            margin: 0 220px 0 180px;
+        }
+        a
+        {
+            color: #333;
+            font-size: 13px;
+        }
+        a:hover
+        {
+            color: Red;
+        }
+        
+        #custom
+        {
+            margin: 20px 0 10px 50px;
+            border: 1px solid #D7D7D7;
+            padding: 10px;
+        }
+        #directory
+        {
+            margin: 20px 0 10px 50px;
+            border: 1px solid #D7D7D7;
+            padding: 10px;
+        }
+        #directory h4
+        {
+            margin: 6px 0 2px 0;
+        }
+        #directory a
+        {
+            color: #0082CB;
+            text-decoration: none;
+        }
+        #directory a:hover
+        {
+            text-decoration: underline;
+        }
+        #directory ul
+        {
+            margin: 0;
+            list-style-type: decimal;
+        }
+        #directory li
+        {
+        }
+        #directory li a
+        {
+        }
+        #directory li a:hover
+        {
+        }
+        
+        #itemContainer
+        {
+            margin: 20px 0 10px 50px;
+        }
+        #itemContainer h2
+        {
+            background-color: #F0F0F0;
+            color: #333333;
+            padding: 6px 0 6px 6px;
+            font-size: 14px;
+        }
+        #itemContainer p
+        {
+            margin-left: 25px;
+        }
+        
+        #itemContainer p
+        {
+        }
+        #itemContainer table
+        {
+            border-collapse: collapse;
+            border-spacing: 0;
+            border-color: #CCCCCC;
+        }
+        #itemContainer a
+        {
+            color: #3366BB;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        #itemContainer a:hover
+        {
+            text-decoration: underline;
+        }
+        #itemContainer h4
+        {
+            margin-left: 25px;
+            font-size: 12px;
+            font-weight: normal;
+        }
+        #itemContainer h4 a
+        {
+            font-size: 12px;
+            font-weight: normal;
+        }
+        #itemContainer h4 a:hover
+        {
+            color: Red;
+        }
+        .code
+        {
+            background-color: #FBFBE7;
+            border: 1px dashed #2F6FAB;
+            padding: 13px;
+            color: #666652;
+            line-height: 150%;
+            font-size: 12px;
+        }       
+        
+        p.MsoNormal, li.MsoNormal, div.MsoNormal
+        {
+            margin: 0cm;
+            margin-bottom: .0001pt;
+            text-align: justify;
+            text-justify: inter-ideograph;
+            font-size: 10.5pt;
+            font-family: "Calibri" , "sans-serif";
+        }
+		#directory
+		{
+			 position: fixed;
+			left: -50px;
+			top: 40px;
+			overflow-y: scroll;
+			height: 550px;
+			width:200px;
+		}
+    </style>
+</head>
+<body>
+    <div style="font-size: 24px; font-weight: bold;">
+        <center>
+            "交易平台 "API文档v1.0</center>
+    </div>
+    <a id="top" name="top"></a>
+    <div id="content">
+        <div id="directory">
+            <div>
+    <div>
+        <h4>
+            用户
+        </h4>
+    </div>
+    <ul>
+        <li><span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <a href="#0799117757f145adb5e3cc57cc672c08">绑定前用户信息获取验证</a> </li>
+<li><span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <a href="#e50ac67d7ce7414999f5492c7ee784dd">绑定游戏</a> </li>
+<li><span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <a href="#b3e2694637394452824d8406d79ad870">发送验证码</a> </li>
+<li><span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <a href="#6dc2d683e73c4154b268d83fd554a717">手机号码注册</a> </li>
+<li><span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <a href="#7e57ff5d770e4371995e16aa5247dd82">用户登录</a> </li>
+<li><span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <a href="#6351c29bfd684697a48343ab9560463d">用户微信登录</a> </li>
+<li><span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <a href="#f553035398ca4c86a85e9cb45d6a16e6">用户信息获取</a> </li>
+<li><span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <a href="#1ccb3293bd2a4ddda012fef2a4cf18e2">用户游戏</a> </li>
+
+    </ul>
+</div>
+<div>
+    <div>
+        <h4>
+            商品
+        </h4>
+    </div>
+    <ul>
+        <li><span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <a href="#5751441140a14726942dd57751ae1209">出售列表</a> </li>
+<li><span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <a href="#57e8434d96f94ed296ba2b424f672b01">商品列表</a> </li>
+<li><span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <a href="#60cdb2eec5e644e1bc6789dd56580b33">商品码验证</a> </li>
+<li><span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <a href="#8b15c937830e480dababc8e97981c59d">商品详情</a> </li>
+<li><span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <a href="#8b4aed329a5d4ae3bcf1b37503750c76">上架商品</a> </li>
+<li><span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <a href="#103e2079d8d94739b38499496f40acfe">下架商品</a> </li>
+
+    </ul>
+</div>
+<div>
+    <div>
+        <h4>
+            订单
+        </h4>
+    </div>
+    <ul>
+        <li><span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <a href="#12d84c75377d40389cf38b8d2db6366b">订单列表</a> </li>
+<li><span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <a href="#a93740441507478baf1a5c463cc8e0c2">订单提交</a> </li>
+<li><span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <a href="#07ea9e26aba34404a06fa32c6e702a46">订单微信H5支付</a> </li>
+<li><span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <a href="#62cab78a40574c9b8b4ad94e6bd2d8cb">订单详情</a> </li>
+<li><span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <a href="#3f95d8e76c4b4005b1125d198d708867">订单余额支付</a> </li>
+<li><span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <a href="#566530f024fe44e2bec079948e27d244">取消订单</a> </li>
+<li><span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <a href="#d92a6c7be6c540158b8696d8a555f4b1">确认收货</a> </li>
+
+    </ul>
+</div>
+<div>
+    <div>
+        <h4>
+            游戏
+        </h4>
+    </div>
+    <ul>
+        <li><span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <a href="#5677b388ab1f4147b14e37b1b48bc8ce">游戏列表</a> </li>
+<li><span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <a href="#858d3360aab14b9b85bbd841d7bbdb99">游戏详情</a> </li>
+
+    </ul>
+</div>
+
+        </div>
+        <div id="custom">
+			<h4>
+                1) token:
+            </h4>
+			<div style="margin-left: 25px;">
+                <p>用户登录后会得到sessionid, 之后请求的url添加参数skey={sessionid} 如<br />
+                    <span style="font-size: 13px; color: blue; font-weight: bold;">http://localhost/member/get?</span><span
+                        style="color: red; font-weight: bold;">skey=1657ab575c8c470f85911c0a766293cf</span>
+                </p>
+            </div>
+			<h4>
+                2) 用户Id:<span style="color: Red;">【每个请求须传递该参数,没有时传0】</span>
+            </h4>
+            <div style="margin-left: 25px;">
+                <p>用户登录后会得到uid, 之后请求的url添加参数uid={userid} 如<br />
+                    <span style="font-size: 13px; color: blue; font-weight: bold;">http://localhost/member/get?</span><span
+                        style="color: red; font-weight: bold;">uid=412223</span>
+                </p>
+            </div>
+			<h4>
+                3) rt(待定):
+            </h4>
+            <div style="margin-left: 25px;">
+                <p>不同的请求类型rt={requesttype}，三个值中取一个weixin,app,web 如<br />
+                    <span style="font-size: 13px; color: blue; font-weight: bold;">http://localhost/member/get?</span><span
+                        style="color: red; font-weight: bold;">rt=weixin</span>
+                </p>
+            </div>
+			<h4>
+                4) v:
+            </h4>
+            <div style="margin-left: 25px;">
+                <p>不同的包带过来的版本参数不一样，线上问题定位时用<br />
+                    <span style="font-size: 13px; color: blue; font-weight: bold;">http://localhost/member/get?</span><span
+                        style="color: red; font-weight: bold;">v=v1.0</span>
+                </p>
+            </div>
+            <h4>
+                5) 返回值说明：
+            </h4>
+			<div style="margin-left: 25px;">
+                <pre>{
+	state:1,
+	resultcode:200,
+	errordes:"错误说明（用于用户显示的说明文字）",
+	result:{}
+}
+			</pre>
+			</div>
+			<h5>state：<span>成功为1，失败为0</span></h5>
+            <h5>resultcode：</h5>
+            <div style="margin-left: 25px;">
+                <table border="1" cellspacing="0" cellpadding="0" width="100%" class="parameters" style="border-color: #CCCCCC;">
+                    <tbody>
+                        <tr>
+                            <td width="10%" style="text-align: left; padding-left: 5px; font-weight: bolder; border: 1px solid #cccccc">错误代码</td>
+                            <td width="35%" style="text-align: left; padding-left: 5px; font-weight: bolder; border: 1px solid #cccccc">详细描述</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left; padding-left: 5px; border: 1px solid #cccccc">200</td>
+                            <td style="text-align: left; padding-left: 5px; border: 1px solid #cccccc">成功</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left; padding-left: 5px; border: 1px solid #cccccc">403</td>
+                            <td style="text-align: left; padding-left: 5px; border: 1px solid #cccccc">未登录</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left; padding-left: 5px; border: 1px solid #cccccc">404</td>
+                            <td style="text-align: left; padding-left: 5px; border: 1px solid #cccccc">接口不存在</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left; padding-left: 5px; border: 1px solid #cccccc">500</td>
+                            <td style="text-align: left; padding-left: 5px; border: 1px solid #cccccc">未知错误</td>
+                        </tr>
+						<tr>
+                            <td style="text-align: left; padding-left: 5px; border: 1px solid #cccccc">503</td>
+                            <td style="text-align: left; padding-left: 5px; border: 1px solid #cccccc">已知错误</td>
+                        </tr>
+						<tr>
+                            <td style="text-align: left; padding-left: 5px; border: 1px solid #cccccc">1000以上</td>
+                            <td style="text-align: left; padding-left: 5px; border: 1px solid #cccccc">接口特定错误</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+			<h5>result数据内容说明：</h5>
+				1. 必须是一个{}对象<br/>
+				2. 如果是文字内容包含属性info值<br/>
+				举例：<br/>
+				result:<pre>
+{
+	info:"你已经添加手机号码"
+}
+				</pre>
+				3. 如果是数据列表在对象内包含list属性，值是一个数组，如果包含分页信息放在外层<br/>
+				举例：<br/>
+				result:<pre>
+{
+	info:"商品列表",
+	size:12,
+	page:2,
+	total:120,
+	list:[
+	{
+		id:1,
+		title:"道具A"
+	},
+	{
+		id:12,
+		title:"道具B"
+	}]
+}
+								</pre>
+
+			
+			
+        </div>
+        <h2 style="margin: 0 0 0 50px;">
+            文档列表
+        </h2>
+        <div id="itemContainer">
+            <a id="0799117757f145adb5e3cc57cc672c08" name="0799117757f145adb5e3cc57cc672c08"></a>
+<h2>
+    <span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <span>绑定前用户信息获取验证</span>
+</h2>
+<p>
+    绑定前用户信息获取验证
+</p>
+<h2>
+    Url
+</h2>
+<p>
+    <a target="_blank" href="Account/checkusergame">Account/checkusergame</a>
+</p>
+<h2>
+    支持格式
+</h2>
+<p>
+    <strong>JSON</strong>
+    <h4>
+        <a href=""></a>
+    </h4>
+</p>
+<h2>
+    Http请求方式
+</h2>
+<p>
+    <strong>POST</strong>
+</p>
+<h2>
+    是否需要登录验证
+</h2>
+<p>
+    <strong>True</strong>
+    <h4>
+        关于授权机制，<a href="#auth_remark">参见授权机制声明</a>
+    </h4>
+</p>
+<h2>
+    是否允许游客操作
+</h2>
+<p>
+    <strong>False</strong>
+</p>
+<h2>
+    请求参数说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 70px;">
+            <strong>必选</strong>
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    <tr>
+    <td style="width: 130px;">
+    uid
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        long
+    </td>
+    <td>
+        当前用户ID
+    </td>
+</tr><tr>
+    <td style="width: 130px;">
+    account
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        绑定者账号获取UID
+    </td>
+</tr><tr>
+    <td style="width: 130px;">
+    pwd
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        密文
+    </td>
+</tr><tr>
+    <td style="width: 130px;">
+    gid
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        long
+    </td>
+    <td>
+        游戏ID
+    </td>
+</tr>
+</table>
+<h2>
+    POST调用事例
+</h2>
+<p>
+    
+</p>
+<h2>
+    注意事项
+</h2>
+<p style="color: Red;">
+    
+</p>
+<h2>
+    返回结果
+</h2>
+<div class="code">
+    
+</div>
+<h2>
+    返回结果字段说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    <tr>
+    <td style="width: 130px;">
+        userid
+    </td>
+    <td style="width: 140px;">
+        long
+    </td>
+    <td>
+        userid
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        nickname
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        游戏昵称
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        faceurl
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        头像地址
+    </td>
+</tr>
+
+</table>
+<h2>
+    示例代码
+</h2>
+<div class="code">
+</div>
+<div style="margin: 30px 0 85px 0; height: 4px; line-height: 0;">
+    <span style="float: right; color: #ccc; font-size: 12px;">第 1 页 HappyTeam</span>
+</div>
+<a id="e50ac67d7ce7414999f5492c7ee784dd" name="e50ac67d7ce7414999f5492c7ee784dd"></a>
+<h2>
+    <span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <span>绑定游戏</span>
+</h2>
+<p>
+    绑定游戏
+</p>
+<h2>
+    Url
+</h2>
+<p>
+    <a target="_blank" href="account/bindgame">account/bindgame</a>
+</p>
+<h2>
+    支持格式
+</h2>
+<p>
+    <strong>JSON</strong>
+    <h4>
+        <a href=""></a>
+    </h4>
+</p>
+<h2>
+    Http请求方式
+</h2>
+<p>
+    <strong>POST</strong>
+</p>
+<h2>
+    是否需要登录验证
+</h2>
+<p>
+    <strong>True</strong>
+    <h4>
+        关于授权机制，<a href="#auth_remark">参见授权机制声明</a>
+    </h4>
+</p>
+<h2>
+    是否允许游客操作
+</h2>
+<p>
+    <strong>False</strong>
+</p>
+<h2>
+    请求参数说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 70px;">
+            <strong>必选</strong>
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    <tr>
+    <td style="width: 130px;">
+    account
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        游戏方的账号或者userid 根据游戏要求来选
+    </td>
+</tr><tr>
+    <td style="width: 130px;">
+    uid
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        long
+    </td>
+    <td>
+        用户ID
+    </td>
+</tr><tr>
+    <td style="width: 130px;">
+    pwd
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        加密后的密文（根据中心要求会改动）
+    </td>
+</tr><tr>
+    <td style="width: 130px;">
+    gid
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        long
+    </td>
+    <td>
+        游戏ID
+    </td>
+</tr>
+</table>
+<h2>
+    POST调用事例
+</h2>
+<p>
+    <div class="code">{<br />	&quot;uid&quot;: 1,<br />	&quot;account&quot;: &quot;292140&quot;,<br />	&quot;pwd&quot;: &quot;678ce3339e784a2e868a393054a01e60&quot;,<br />	&quot;gid&quot;: 1<br />}</div>
+</p>
+<h2>
+    注意事项
+</h2>
+<p style="color: Red;">
+    
+</p>
+<h2>
+    返回结果
+</h2>
+<div class="code">
+    通用的返回结果 根据状态判断
+</div>
+<h2>
+    返回结果字段说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    
+</table>
+<h2>
+    示例代码
+</h2>
+<div class="code">
+</div>
+<div style="margin: 30px 0 85px 0; height: 4px; line-height: 0;">
+    <span style="float: right; color: #ccc; font-size: 12px;">第 2 页 HappyTeam</span>
+</div>
+<a id="5751441140a14726942dd57751ae1209" name="5751441140a14726942dd57751ae1209"></a>
+<h2>
+    <span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <span>出售列表</span>
+</h2>
+<p>
+    出售列表
+</p>
+<h2>
+    Url
+</h2>
+<p>
+    <a target="_blank" href="/product/selllist">/product/selllist</a>
+</p>
+<h2>
+    支持格式
+</h2>
+<p>
+    <strong>JSON</strong>
+    <h4>
+        <a href=""></a>
+    </h4>
+</p>
+<h2>
+    Http请求方式
+</h2>
+<p>
+    <strong>POST</strong>
+</p>
+<h2>
+    是否需要登录验证
+</h2>
+<p>
+    <strong>True</strong>
+    <h4>
+        关于授权机制，<a href="#auth_remark">参见授权机制声明</a>
+    </h4>
+</p>
+<h2>
+    是否允许游客操作
+</h2>
+<p>
+    <strong>False</strong>
+</p>
+<h2>
+    请求参数说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 70px;">
+            <strong>必选</strong>
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    <tr>
+    <td style="width: 130px;">
+    state
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        int
+    </td>
+    <td>
+        请求的状态
+    </td>
+</tr><tr>
+    <td style="width: 130px;">
+    pageindex
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        int
+    </td>
+    <td>
+        当前页 从1开始
+    </td>
+</tr><tr>
+    <td style="width: 130px;">
+    pagesize
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        int
+    </td>
+    <td>
+        每页长度
+    </td>
+</tr>
+</table>
+<h2>
+    POST调用事例
+</h2>
+<p>
+    <div class="code">{<br />	&quot;uid&quot;: 10001,<br />	&quot;state&quot;: 1,<br />	&quot;pageindex&quot;: 0,<br />	&quot;pagesize&quot;: 10<br />}</div>
+</p>
+<h2>
+    注意事项
+</h2>
+<p style="color: Red;">
+    
+</p>
+<h2>
+    返回结果
+</h2>
+<div class="code">
+    {<br />	&quot;result&quot;: {<br />		&quot;size&quot;: 10,<br />		&quot;page&quot;: 1,<br />		&quot;total&quot;: 1,<br />		&quot;list&quot;: [{<br />			&quot;id&quot;: 25,<br />			&quot;state&quot;: 1,<br />			&quot;statestr&quot;: &quot;上架&quot;,<br />			&quot;gid&quot;: 4,<br />			&quot;tpropid&quot;: 4,<br />			&quot;name&quot;: &quot;手心捕鱼-白银弹头-数量:5&quot;,<br />			&quot;gname&quot;: &quot;手心捕鱼&quot;,<br />			&quot;pname&quot;: &quot;白银弹头&quot;,<br />			&quot;piconurl&quot;: &quot;http://m.579y.com/images/item100.png&quot;,<br />			&quot;stock&quot;: 5,<br />			&quot;price&quot;: 50.0,<br />			&quot;endtime&quot;: &quot;2018-06-07 14:34:19&quot;,<br />			&quot;rematime&quot;: &quot;21&quot;,<br />			&quot;HYId&quot;: &quot;6f4da70649d149f5a4cfd723a7c2c489&quot;<br />		}]<br />	},<br />	&quot;errordes&quot;: &quot;获取成功&quot;,<br />	&quot;resultcode&quot;: 200,<br />	&quot;state&quot;: 1<br />}
+</div>
+<h2>
+    返回结果字段说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    <tr>
+    <td style="width: 130px;">
+        list.id
+    </td>
+    <td style="width: 140px;">
+        long
+    </td>
+    <td>
+        主键ID
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        list.state
+    </td>
+    <td style="width: 140px;">
+        int
+    </td>
+    <td>
+        状态  同产品状态
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        list.statestr
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        状态表达字符
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        list.gid
+    </td>
+    <td style="width: 140px;">
+        long
+    </td>
+    <td>
+        游戏ID
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        list.tpropid
+    </td>
+    <td style="width: 140px;">
+        long
+    </td>
+    <td>
+        交易平台的道具ID
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        list.name
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        产品名称
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        list.gname
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        游戏名称
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        list.pname
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        道具名称
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        list.piconurl
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        图片 路径
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        list.stock
+    </td>
+    <td style="width: 140px;">
+        int
+    </td>
+    <td>
+        库存
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        list.price
+    </td>
+    <td style="width: 140px;">
+        decimal
+    </td>
+    <td>
+        价格
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        list.endtime
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        结束时间
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        list.rematime
+    </td>
+    <td style="width: 140px;">
+        int
+    </td>
+    <td>
+        剩余小时
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        list.HYId
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        产品唯一编码
+    </td>
+</tr>
+
+</table>
+<h2>
+    示例代码
+</h2>
+<div class="code">
+</div>
+<div style="margin: 30px 0 85px 0; height: 4px; line-height: 0;">
+    <span style="float: right; color: #ccc; font-size: 12px;">第 3 页 HappyTeam</span>
+</div>
+<a id="12d84c75377d40389cf38b8d2db6366b" name="12d84c75377d40389cf38b8d2db6366b"></a>
+<h2>
+    <span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <span>订单列表</span>
+</h2>
+<p>
+    订单列表
+</p>
+<h2>
+    Url
+</h2>
+<p>
+    <a target="_blank" href="/order/orderlist">/order/orderlist</a>
+</p>
+<h2>
+    支持格式
+</h2>
+<p>
+    <strong>JSON</strong>
+    <h4>
+        <a href=""></a>
+    </h4>
+</p>
+<h2>
+    Http请求方式
+</h2>
+<p>
+    <strong>POST</strong>
+</p>
+<h2>
+    是否需要登录验证
+</h2>
+<p>
+    <strong>True</strong>
+    <h4>
+        关于授权机制，<a href="#auth_remark">参见授权机制声明</a>
+    </h4>
+</p>
+<h2>
+    是否允许游客操作
+</h2>
+<p>
+    <strong>False</strong>
+</p>
+<h2>
+    请求参数说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 70px;">
+            <strong>必选</strong>
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    <tr>
+    <td style="width: 130px;">
+    pageindex
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        int
+    </td>
+    <td>
+        当前页
+    </td>
+</tr><tr>
+    <td style="width: 130px;">
+    pagesize
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        int
+    </td>
+    <td>
+        每页长度
+    </td>
+</tr><tr>
+    <td style="width: 130px;">
+    type
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        int
+    </td>
+    <td>
+        0全部 1待付款  2待确认收货 3已结束    此处type和订单state字段不同 
+    </td>
+</tr>
+</table>
+<h2>
+    POST调用事例
+</h2>
+<p>
+    <div class="code">{<br />	&quot;uid&quot;: 10000,<br />	&quot;pageindex&quot;: 0,<br />	&quot;pagesize&quot;: 10,<br />	&quot;type&quot;: 0<br />}</div>
+</p>
+<h2>
+    注意事项
+</h2>
+<p style="color: Red;">
+    
+</p>
+<h2>
+    返回结果
+</h2>
+<div class="code">
+    {<br />	&quot;result&quot;: {<br />		&quot;size&quot;: 10,<br />		&quot;page&quot;: 0,<br />		&quot;total&quot;: 1,<br />		&quot;list&quot;: [{<br />			&quot;id&quot;: 46,<br />			&quot;hyid&quot;: &quot;71a4b1ee412b45bc9deec549f357991d&quot;,<br />			&quot;orderid&quot;: &quot;63659558281389387710000&quot;,<br />			&quot;state&quot;: 0,<br />			&quot;statestr&quot;: &quot;待付款&quot;,<br />			&quot;payvalue&quot;: 74.0,<br />			&quot;piconurl&quot;: &quot;http://m.579y.com/images/item99.png&quot;,<br />			&quot;stock&quot;: 20,<br />			&quot;name&quot;: &quot;新洪游捕鱼-鱼雷碎片-数量:20&quot;,<br />			&quot;uId&quot;: 10000,<br />			&quot;remark&quot;: &quot;&quot;,<br />			&quot;createtime&quot;: &quot;2018-04-17 10:01:38&quot;,<br />			&quot;tradetime&quot;: &quot;0001-01-01 00:00:00&quot;,<br />			&quot;ip&quot;: &quot;122.233.178.63&quot;,<br />			&quot;gname&quot;: &quot;新洪游捕鱼&quot;,<br />			&quot;pname&quot;: &quot;鱼雷碎片&quot;<br />		}]<br />	},<br />	&quot;errordes&quot;: &quot;获取成功&quot;,<br />	&quot;resultcode&quot;: 200,<br />	&quot;state&quot;: 1<br />}
+</div>
+<h2>
+    返回结果字段说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    
+</table>
+<h2>
+    示例代码
+</h2>
+<div class="code">
+</div>
+<div style="margin: 30px 0 85px 0; height: 4px; line-height: 0;">
+    <span style="float: right; color: #ccc; font-size: 12px;">第 4 页 HappyTeam</span>
+</div>
+<a id="a93740441507478baf1a5c463cc8e0c2" name="a93740441507478baf1a5c463cc8e0c2"></a>
+<h2>
+    <span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <span>订单提交</span>
+</h2>
+<p>
+    订单提交
+</p>
+<h2>
+    Url
+</h2>
+<p>
+    <a target="_blank" href="/order/addorder">/order/addorder</a>
+</p>
+<h2>
+    支持格式
+</h2>
+<p>
+    <strong>JSON</strong>
+    <h4>
+        <a href=""></a>
+    </h4>
+</p>
+<h2>
+    Http请求方式
+</h2>
+<p>
+    <strong>POST</strong>
+</p>
+<h2>
+    是否需要登录验证
+</h2>
+<p>
+    <strong>True</strong>
+    <h4>
+        关于授权机制，<a href="#auth_remark">参见授权机制声明</a>
+    </h4>
+</p>
+<h2>
+    是否允许游客操作
+</h2>
+<p>
+    <strong>False</strong>
+</p>
+<h2>
+    请求参数说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 70px;">
+            <strong>必选</strong>
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    <tr>
+    <td style="width: 130px;">
+    hyid
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        商品唯一编码
+    </td>
+</tr><tr>
+    <td style="width: 130px;">
+    toaccount
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        购买者的账号或uid  考虑需不需要填
+    </td>
+</tr><tr>
+    <td style="width: 130px;">
+    bank
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        int
+    </td>
+    <td>
+        支付方式 支付宝1  微信2
+    </td>
+</tr>
+</table>
+<h2>
+    POST调用事例
+</h2>
+<p>
+    <div class="code">{<br />	&quot;uid&quot;: 1,<br />	&quot;hyid&quot;: &quot;c9fa79f44d19415d9873c60d0db4c3f8&quot;,<br />	&quot;toaccount&quot;: &quot;292140&quot;,<br />	&quot;bank&quot;: 1<br />}</div>
+</p>
+<h2>
+    注意事项
+</h2>
+<p style="color: Red;">
+    
+</p>
+<h2>
+    返回结果
+</h2>
+<div class="code">
+    待定
+</div>
+<h2>
+    返回结果字段说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    
+</table>
+<h2>
+    示例代码
+</h2>
+<div class="code">
+</div>
+<div style="margin: 30px 0 85px 0; height: 4px; line-height: 0;">
+    <span style="float: right; color: #ccc; font-size: 12px;">第 5 页 HappyTeam</span>
+</div>
+<a id="07ea9e26aba34404a06fa32c6e702a46" name="07ea9e26aba34404a06fa32c6e702a46"></a>
+<h2>
+    <span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <span>订单微信H5支付</span>
+</h2>
+<p>
+    订单微信H5支付
+</p>
+<h2>
+    Url
+</h2>
+<p>
+    <a target="_blank" href="Pay/WxH5Pay">Pay/WxH5Pay</a>
+</p>
+<h2>
+    支持格式
+</h2>
+<p>
+    <strong>JSON</strong>
+    <h4>
+        <a href=""></a>
+    </h4>
+</p>
+<h2>
+    Http请求方式
+</h2>
+<p>
+    <strong>POST</strong>
+</p>
+<h2>
+    是否需要登录验证
+</h2>
+<p>
+    <strong>True</strong>
+    <h4>
+        关于授权机制，<a href="#auth_remark">参见授权机制声明</a>
+    </h4>
+</p>
+<h2>
+    是否允许游客操作
+</h2>
+<p>
+    <strong>True</strong>
+</p>
+<h2>
+    请求参数说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 70px;">
+            <strong>必选</strong>
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    <tr>
+    <td style="width: 130px;">
+    orderid
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        订单号
+    </td>
+</tr><tr>
+    <td style="width: 130px;">
+    uid
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        long
+    </td>
+    <td>
+        用户ID
+    </td>
+</tr>
+</table>
+<h2>
+    POST调用事例
+</h2>
+<p>
+    
+</p>
+<h2>
+    注意事项
+</h2>
+<p style="color: Red;">
+    
+</p>
+<h2>
+    返回结果
+</h2>
+<div class="code">
+    
+</div>
+<h2>
+    返回结果字段说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    
+</table>
+<h2>
+    示例代码
+</h2>
+<div class="code">
+</div>
+<div style="margin: 30px 0 85px 0; height: 4px; line-height: 0;">
+    <span style="float: right; color: #ccc; font-size: 12px;">第 6 页 HappyTeam</span>
+</div>
+<a id="62cab78a40574c9b8b4ad94e6bd2d8cb" name="62cab78a40574c9b8b4ad94e6bd2d8cb"></a>
+<h2>
+    <span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <span>订单详情</span>
+</h2>
+<p>
+    订单详情
+</p>
+<h2>
+    Url
+</h2>
+<p>
+    <a target="_blank" href="/Order/Orderdetail">/Order/Orderdetail</a>
+</p>
+<h2>
+    支持格式
+</h2>
+<p>
+    <strong>JSON</strong>
+    <h4>
+        <a href=""></a>
+    </h4>
+</p>
+<h2>
+    Http请求方式
+</h2>
+<p>
+    <strong>POST</strong>
+</p>
+<h2>
+    是否需要登录验证
+</h2>
+<p>
+    <strong>True</strong>
+    <h4>
+        关于授权机制，<a href="#auth_remark">参见授权机制声明</a>
+    </h4>
+</p>
+<h2>
+    是否允许游客操作
+</h2>
+<p>
+    <strong>False</strong>
+</p>
+<h2>
+    请求参数说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 70px;">
+            <strong>必选</strong>
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    <tr>
+    <td style="width: 130px;">
+    oid
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        订单号
+    </td>
+</tr><tr>
+    <td style="width: 130px;">
+    uid
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        long
+    </td>
+    <td>
+        用户ID
+    </td>
+</tr>
+</table>
+<h2>
+    POST调用事例
+</h2>
+<p>
+    
+</p>
+<h2>
+    注意事项
+</h2>
+<p style="color: Red;">
+    
+</p>
+<h2>
+    返回结果
+</h2>
+<div class="code">
+    待付款 = 0,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;交易成功 = 1,&nbsp;&nbsp;//属于结束状态<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;支付中 = 2,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;已付款待确认 = 3,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;交易关闭 = 4&nbsp;&nbsp;//属于结束状态
+</div>
+<h2>
+    返回结果字段说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    
+</table>
+<h2>
+    示例代码
+</h2>
+<div class="code">
+</div>
+<div style="margin: 30px 0 85px 0; height: 4px; line-height: 0;">
+    <span style="float: right; color: #ccc; font-size: 12px;">第 7 页 HappyTeam</span>
+</div>
+<a id="3f95d8e76c4b4005b1125d198d708867" name="3f95d8e76c4b4005b1125d198d708867"></a>
+<h2>
+    <span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <span>订单余额支付</span>
+</h2>
+<p>
+    订单余额支付
+</p>
+<h2>
+    Url
+</h2>
+<p>
+    <a target="_blank" href="/pay/BalancePay">/pay/BalancePay</a>
+</p>
+<h2>
+    支持格式
+</h2>
+<p>
+    <strong>JSON</strong>
+    <h4>
+        <a href=""></a>
+    </h4>
+</p>
+<h2>
+    Http请求方式
+</h2>
+<p>
+    <strong>POST</strong>
+</p>
+<h2>
+    是否需要登录验证
+</h2>
+<p>
+    <strong>True</strong>
+    <h4>
+        关于授权机制，<a href="#auth_remark">参见授权机制声明</a>
+    </h4>
+</p>
+<h2>
+    是否允许游客操作
+</h2>
+<p>
+    <strong>False</strong>
+</p>
+<h2>
+    请求参数说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 70px;">
+            <strong>必选</strong>
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    <tr>
+    <td style="width: 130px;">
+    orderid
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        订单号
+    </td>
+</tr><tr>
+    <td style="width: 130px;">
+    uid
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        long
+    </td>
+    <td>
+        用户UID
+    </td>
+</tr>
+</table>
+<h2>
+    POST调用事例
+</h2>
+<p>
+    
+</p>
+<h2>
+    注意事项
+</h2>
+<p style="color: Red;">
+    
+</p>
+<h2>
+    返回结果
+</h2>
+<div class="code">
+    
+</div>
+<h2>
+    返回结果字段说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    
+</table>
+<h2>
+    示例代码
+</h2>
+<div class="code">
+</div>
+<div style="margin: 30px 0 85px 0; height: 4px; line-height: 0;">
+    <span style="float: right; color: #ccc; font-size: 12px;">第 8 页 HappyTeam</span>
+</div>
+<a id="b3e2694637394452824d8406d79ad870" name="b3e2694637394452824d8406d79ad870"></a>
+<h2>
+    <span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <span>发送验证码</span>
+</h2>
+<p>
+    发送验证码
+</p>
+<h2>
+    Url
+</h2>
+<p>
+    <a target="_blank" href="/account/sendcode">/account/sendcode</a>
+</p>
+<h2>
+    支持格式
+</h2>
+<p>
+    <strong>JSON</strong>
+    <h4>
+        <a href=""></a>
+    </h4>
+</p>
+<h2>
+    Http请求方式
+</h2>
+<p>
+    <strong>POST</strong>
+</p>
+<h2>
+    是否需要登录验证
+</h2>
+<p>
+    <strong>False</strong>
+    <h4>
+        关于授权机制，<a href="#auth_remark">参见授权机制声明</a>
+    </h4>
+</p>
+<h2>
+    是否允许游客操作
+</h2>
+<p>
+    <strong>True</strong>
+</p>
+<h2>
+    请求参数说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 70px;">
+            <strong>必选</strong>
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    <tr>
+    <td style="width: 130px;">
+    phone
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        电话号码
+    </td>
+</tr>
+</table>
+<h2>
+    POST调用事例
+</h2>
+<p>
+    
+</p>
+<h2>
+    注意事项
+</h2>
+<p style="color: Red;">
+    
+</p>
+<h2>
+    返回结果
+</h2>
+<div class="code">
+    
+</div>
+<h2>
+    返回结果字段说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    
+</table>
+<h2>
+    示例代码
+</h2>
+<div class="code">
+</div>
+<div style="margin: 30px 0 85px 0; height: 4px; line-height: 0;">
+    <span style="float: right; color: #ccc; font-size: 12px;">第 9 页 HappyTeam</span>
+</div>
+<a id="566530f024fe44e2bec079948e27d244" name="566530f024fe44e2bec079948e27d244"></a>
+<h2>
+    <span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <span>取消订单</span>
+</h2>
+<p>
+    取消订单
+</p>
+<h2>
+    Url
+</h2>
+<p>
+    <a target="_blank" href="order/cancelorder">order/cancelorder</a>
+</p>
+<h2>
+    支持格式
+</h2>
+<p>
+    <strong>JSON</strong>
+    <h4>
+        <a href=""></a>
+    </h4>
+</p>
+<h2>
+    Http请求方式
+</h2>
+<p>
+    <strong>POST</strong>
+</p>
+<h2>
+    是否需要登录验证
+</h2>
+<p>
+    <strong>True</strong>
+    <h4>
+        关于授权机制，<a href="#auth_remark">参见授权机制声明</a>
+    </h4>
+</p>
+<h2>
+    是否允许游客操作
+</h2>
+<p>
+    <strong>False</strong>
+</p>
+<h2>
+    请求参数说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 70px;">
+            <strong>必选</strong>
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    <tr>
+    <td style="width: 130px;">
+    uid
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        long
+    </td>
+    <td>
+        用户ID
+    </td>
+</tr><tr>
+    <td style="width: 130px;">
+    hyid
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        产品唯一ID
+    </td>
+</tr><tr>
+    <td style="width: 130px;">
+    oid
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        订单ID
+    </td>
+</tr>
+</table>
+<h2>
+    POST调用事例
+</h2>
+<p>
+    
+</p>
+<h2>
+    注意事项
+</h2>
+<p style="color: Red;">
+    
+</p>
+<h2>
+    返回结果
+</h2>
+<div class="code">
+    
+</div>
+<h2>
+    返回结果字段说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    
+</table>
+<h2>
+    示例代码
+</h2>
+<div class="code">
+</div>
+<div style="margin: 30px 0 85px 0; height: 4px; line-height: 0;">
+    <span style="float: right; color: #ccc; font-size: 12px;">第 10 页 HappyTeam</span>
+</div>
+<a id="d92a6c7be6c540158b8696d8a555f4b1" name="d92a6c7be6c540158b8696d8a555f4b1"></a>
+<h2>
+    <span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <span>确认收货</span>
+</h2>
+<p>
+    确认收货
+</p>
+<h2>
+    Url
+</h2>
+<p>
+    <a target="_blank" href="order/ConfirmOrder">order/ConfirmOrder</a>
+</p>
+<h2>
+    支持格式
+</h2>
+<p>
+    <strong>JSON</strong>
+    <h4>
+        <a href=""></a>
+    </h4>
+</p>
+<h2>
+    Http请求方式
+</h2>
+<p>
+    <strong>POST</strong>
+</p>
+<h2>
+    是否需要登录验证
+</h2>
+<p>
+    <strong>True</strong>
+    <h4>
+        关于授权机制，<a href="#auth_remark">参见授权机制声明</a>
+    </h4>
+</p>
+<h2>
+    是否允许游客操作
+</h2>
+<p>
+    <strong>False</strong>
+</p>
+<h2>
+    请求参数说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 70px;">
+            <strong>必选</strong>
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    <tr>
+    <td style="width: 130px;">
+    oid
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        订单号
+    </td>
+</tr><tr>
+    <td style="width: 130px;">
+    uid
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        long
+    </td>
+    <td>
+        uid
+    </td>
+</tr>
+</table>
+<h2>
+    POST调用事例
+</h2>
+<p>
+    
+</p>
+<h2>
+    注意事项
+</h2>
+<p style="color: Red;">
+    
+</p>
+<h2>
+    返回结果
+</h2>
+<div class="code">
+    
+</div>
+<h2>
+    返回结果字段说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    
+</table>
+<h2>
+    示例代码
+</h2>
+<div class="code">
+</div>
+<div style="margin: 30px 0 85px 0; height: 4px; line-height: 0;">
+    <span style="float: right; color: #ccc; font-size: 12px;">第 11 页 HappyTeam</span>
+</div>
+<a id="57e8434d96f94ed296ba2b424f672b01" name="57e8434d96f94ed296ba2b424f672b01"></a>
+<h2>
+    <span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <span>商品列表</span>
+</h2>
+<p>
+    商品列表
+</p>
+<h2>
+    Url
+</h2>
+<p>
+    <a target="_blank" href="product/productlist">product/productlist</a>
+</p>
+<h2>
+    支持格式
+</h2>
+<p>
+    <strong>JSON</strong>
+    <h4>
+        <a href=""></a>
+    </h4>
+</p>
+<h2>
+    Http请求方式
+</h2>
+<p>
+    <strong>POST</strong>
+</p>
+<h2>
+    是否需要登录验证
+</h2>
+<p>
+    <strong>True</strong>
+    <h4>
+        关于授权机制，<a href="#auth_remark">参见授权机制声明</a>
+    </h4>
+</p>
+<h2>
+    是否允许游客操作
+</h2>
+<p>
+    <strong>False</strong>
+</p>
+<h2>
+    请求参数说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 70px;">
+            <strong>必选</strong>
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    <tr>
+    <td style="width: 130px;">
+    gameid
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        long
+    </td>
+    <td>
+        游戏ID
+    </td>
+</tr><tr>
+    <td style="width: 130px;">
+    pageindex
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        int
+    </td>
+    <td>
+        当前页
+    </td>
+</tr><tr>
+    <td style="width: 130px;">
+    pagesize
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        int
+    </td>
+    <td>
+        每页长度
+    </td>
+</tr><tr>
+    <td style="width: 130px;">
+    tpid
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        int
+    </td>
+    <td>
+        交易平台的道具ID
+    </td>
+</tr>
+</table>
+<h2>
+    POST调用事例
+</h2>
+<p>
+    <div class="code">{<br />	&quot;gameid&quot;: 4,<br />	&quot;pageindex&quot;: 1,<br />	&quot;pagesize&quot;: 10,<br />	&quot;tpid&quot;: 4<br />}</div>
+</p>
+<h2>
+    注意事项
+</h2>
+<p style="color: Red;">
+    
+</p>
+<h2>
+    返回结果
+</h2>
+<div class="code">
+    {<br />	&quot;result&quot;: {<br />		&quot;size&quot;: 10,<br />		&quot;page&quot;: 1,<br />		&quot;total&quot;: 1,<br />		&quot;list&quot;: [{<br />			&quot;id&quot;: 25,<br />			&quot;state&quot;: 0,<br />			&quot;statestr&quot;: null,<br />			&quot;gid&quot;: 4,<br />			&quot;tpropid&quot;: 4,<br />			&quot;name&quot;: &quot;手心捕鱼-白银弹头-数量:5&quot;,<br />			&quot;gname&quot;: null,<br />			&quot;pname&quot;: null,<br />			&quot;piconurl&quot;: &quot;http://m.579y.com/images/item100.png&quot;,<br />			&quot;stock&quot;: 5,<br />			&quot;price&quot;: 50.0,<br />			&quot;endtime&quot;: &quot;2018-06-07 14:34:19&quot;,<br />			&quot;rematime&quot;: &quot;21&quot;,<br />			&quot;HYId&quot;: &quot;6f4da70649d149f5a4cfd723a7c2c489&quot;<br />		}]<br />	},<br />	&quot;errordes&quot;: &quot;获取成功&quot;,<br />	&quot;resultcode&quot;: 200,<br />	&quot;state&quot;: 1<br />}
+</div>
+<h2>
+    返回结果字段说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    <tr>
+    <td style="width: 130px;">
+        id
+    </td>
+    <td style="width: 140px;">
+        long
+    </td>
+    <td>
+        产品ID
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        state
+    </td>
+    <td style="width: 140px;">
+        int
+    </td>
+    <td>
+        0下架 1正常 2锁定 3售出
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        statestr
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        状态字符
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        gid
+    </td>
+    <td style="width: 140px;">
+        long
+    </td>
+    <td>
+        游戏ID
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        tpropid
+    </td>
+    <td style="width: 140px;">
+        long
+    </td>
+    <td>
+        交易平台道具ID
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        name
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        名称
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        gname
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        游戏名称
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        pname
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        分类名称
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        piconurl
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        产品缩略图
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        stock
+    </td>
+    <td style="width: 140px;">
+        int
+    </td>
+    <td>
+        数量
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        price
+    </td>
+    <td style="width: 140px;">
+        decimal
+    </td>
+    <td>
+        价格
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        endtime
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        下架时间
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        rematime
+    </td>
+    <td style="width: 140px;">
+        int
+    </td>
+    <td>
+        剩余时间 小时
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        HYId
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        产品唯一编码 交易平台的
+    </td>
+</tr>
+
+</table>
+<h2>
+    示例代码
+</h2>
+<div class="code">
+</div>
+<div style="margin: 30px 0 85px 0; height: 4px; line-height: 0;">
+    <span style="float: right; color: #ccc; font-size: 12px;">第 12 页 HappyTeam</span>
+</div>
+<a id="60cdb2eec5e644e1bc6789dd56580b33" name="60cdb2eec5e644e1bc6789dd56580b33"></a>
+<h2>
+    <span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <span>商品码验证</span>
+</h2>
+<p>
+    商品码验证
+</p>
+<h2>
+    Url
+</h2>
+<p>
+    <a target="_blank" href="product/checkcode">product/checkcode</a>
+</p>
+<h2>
+    支持格式
+</h2>
+<p>
+    <strong>JSON</strong>
+    <h4>
+        <a href=""></a>
+    </h4>
+</p>
+<h2>
+    Http请求方式
+</h2>
+<p>
+    <strong>POST</strong>
+</p>
+<h2>
+    是否需要登录验证
+</h2>
+<p>
+    <strong>True</strong>
+    <h4>
+        关于授权机制，<a href="#auth_remark">参见授权机制声明</a>
+    </h4>
+</p>
+<h2>
+    是否允许游客操作
+</h2>
+<p>
+    <strong>False</strong>
+</p>
+<h2>
+    请求参数说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 70px;">
+            <strong>必选</strong>
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    <tr>
+    <td style="width: 130px;">
+    code
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        游戏中给的码
+    </td>
+</tr><tr>
+    <td style="width: 130px;">
+    uid
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        long
+    </td>
+    <td>
+        用户uid
+    </td>
+</tr>
+</table>
+<h2>
+    POST调用事例
+</h2>
+<p>
+    <div class="code">{<br />	&quot;code&quot;: &quot;968f3adb3c36469fb928783a0130b26c&quot;<br />}</div>
+</p>
+<h2>
+    注意事项
+</h2>
+<p style="color: Red;">
+    
+</p>
+<h2>
+    返回结果
+</h2>
+<div class="code">
+    {<br />	&quot;result&quot;: {<br />		&quot;code&quot;: &quot;968f3adb3c36469fb928783a0130b26c&quot;,<br />		&quot;count&quot;: 50,<br />		&quot;pic&quot;: &quot;http://baidu.com/img.img&quot;,<br />		&quot;price&quot;: &quot;10.0&quot;,<br />		&quot;name&quot;: &quot;鱼雷&quot;<br />	},<br />	&quot;errordes&quot;: &quot;获取成功&quot;,<br />	&quot;resultcode&quot;: 200,<br />	&quot;state&quot;: 1<br />}
+</div>
+<h2>
+    返回结果字段说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    <tr>
+    <td style="width: 130px;">
+        code
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        游戏给的唯一编码
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        count
+    </td>
+    <td style="width: 140px;">
+        int
+    </td>
+    <td>
+        数量
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        pic
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        图片地址
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        price
+    </td>
+    <td style="width: 140px;">
+        decimal
+    </td>
+    <td>
+        指导价格
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        name
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        名称
+    </td>
+</tr>
+
+</table>
+<h2>
+    示例代码
+</h2>
+<div class="code">
+</div>
+<div style="margin: 30px 0 85px 0; height: 4px; line-height: 0;">
+    <span style="float: right; color: #ccc; font-size: 12px;">第 13 页 HappyTeam</span>
+</div>
+<a id="8b15c937830e480dababc8e97981c59d" name="8b15c937830e480dababc8e97981c59d"></a>
+<h2>
+    <span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <span>商品详情</span>
+</h2>
+<p>
+    商品详情
+</p>
+<h2>
+    Url
+</h2>
+<p>
+    <a target="_blank" href="product/productdetail">product/productdetail</a>
+</p>
+<h2>
+    支持格式
+</h2>
+<p>
+    <strong>JSON</strong>
+    <h4>
+        <a href=""></a>
+    </h4>
+</p>
+<h2>
+    Http请求方式
+</h2>
+<p>
+    <strong>GET</strong>
+</p>
+<h2>
+    是否需要登录验证
+</h2>
+<p>
+    <strong>True</strong>
+    <h4>
+        关于授权机制，<a href="#auth_remark">参见授权机制声明</a>
+    </h4>
+</p>
+<h2>
+    是否允许游客操作
+</h2>
+<p>
+    <strong>True</strong>
+</p>
+<h2>
+    请求参数说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 70px;">
+            <strong>必选</strong>
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    <tr>
+    <td style="width: 130px;">
+    hyid
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        商品唯一标识
+    </td>
+</tr>
+</table>
+<h2>
+    GET调用事例
+</h2>
+<p>
+    <div class="code">{<br />	&quot;hyid&quot;: &quot;968f3adb3c36469fb928783a0130b26c&quot;<br />}</div>
+</p>
+<h2>
+    注意事项
+</h2>
+<p style="color: Red;">
+    
+</p>
+<h2>
+    返回结果
+</h2>
+<div class="code">
+    {<br />	&quot;result&quot;: {<br />		&quot;id&quot;: 25,<br />		&quot;gid&quot;: 4,<br />		&quot;tpropid&quot;: 4,<br />		&quot;name&quot;: &quot;手心捕鱼-白银弹头-数量:5&quot;,<br />		&quot;stock&quot;: 5,<br />		&quot;price&quot;: 50.0,<br />		&quot;endtime&quot;: &quot;2018-06-07 14:34:19&quot;,<br />		&quot;rematime&quot;: &quot;21&quot;,<br />		&quot;HYId&quot;: &quot;6f4da70649d149f5a4cfd723a7c2c489&quot;,<br />		&quot;uid&quot;: 10001,<br />		&quot;nick&quot;: &quot;明戈&quot;,<br />		&quot;pname&quot;: &quot;白银弹头&quot;,<br />		&quot;piconurl&quot;: &quot;http://m.579y.com/images/item100.png&quot;,<br />		&quot;gname&quot;: &quot;手心捕鱼&quot;,<br />		&quot;state&quot;: 1,<br />		&quot;timelong&quot;: 22,<br />		&quot;content&quot;: &quot;内容&quot;<br />	},<br />	&quot;errordes&quot;: &quot;获取成功&quot;,<br />	&quot;resultcode&quot;: 200,<br />	&quot;state&quot;: 1<br />}<br /><br /><br /><br /> 下架 = 0,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上架 = 1,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;锁定 = 2,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;售出 = 3
+</div>
+<h2>
+    返回结果字段说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    <tr>
+    <td style="width: 130px;">
+        id
+    </td>
+    <td style="width: 140px;">
+        long
+    </td>
+    <td>
+        商品ID
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        gid
+    </td>
+    <td style="width: 140px;">
+        long
+    </td>
+    <td>
+        所属游戏ID
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        tpropid
+    </td>
+    <td style="width: 140px;">
+        long
+    </td>
+    <td>
+        所属道具 交易平台的主键iD
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        name
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        名称
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        stock
+    </td>
+    <td style="width: 140px;">
+        int
+    </td>
+    <td>
+        数量
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        price
+    </td>
+    <td style="width: 140px;">
+        decimal
+    </td>
+    <td>
+        价格 元
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        endtime
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        结束时间
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        rematime
+    </td>
+    <td style="width: 140px;">
+        int
+    </td>
+    <td>
+        剩余时间  小时
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        HYId
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        商品唯一标识码  交易平台的
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        uid
+    </td>
+    <td style="width: 140px;">
+        long
+    </td>
+    <td>
+        所属用户UID  交易平台的
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        nick
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        用户昵称
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        pname
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        道具分类名称
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        piconurl
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        商品图片 目前一张
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        gname
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        游戏名称
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        state
+    </td>
+    <td style="width: 140px;">
+        int
+    </td>
+    <td>
+        1 上架  非1状态的商品禁止提交订单
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        timelong
+    </td>
+    <td style="width: 140px;">
+        int
+    </td>
+    <td>
+        总上架时长  小时
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        content
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        内容
+    </td>
+</tr>
+
+</table>
+<h2>
+    示例代码
+</h2>
+<div class="code">
+</div>
+<div style="margin: 30px 0 85px 0; height: 4px; line-height: 0;">
+    <span style="float: right; color: #ccc; font-size: 12px;">第 14 页 HappyTeam</span>
+</div>
+<a id="8b4aed329a5d4ae3bcf1b37503750c76" name="8b4aed329a5d4ae3bcf1b37503750c76"></a>
+<h2>
+    <span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <span>上架商品</span>
+</h2>
+<p>
+    上架商品
+</p>
+<h2>
+    Url
+</h2>
+<p>
+    <a target="_blank" href="product/productshelf">product/productshelf</a>
+</p>
+<h2>
+    支持格式
+</h2>
+<p>
+    <strong>JSON</strong>
+    <h4>
+        <a href=""></a>
+    </h4>
+</p>
+<h2>
+    Http请求方式
+</h2>
+<p>
+    <strong>POST</strong>
+</p>
+<h2>
+    是否需要登录验证
+</h2>
+<p>
+    <strong>True</strong>
+    <h4>
+        关于授权机制，<a href="#auth_remark">参见授权机制声明</a>
+    </h4>
+</p>
+<h2>
+    是否允许游客操作
+</h2>
+<p>
+    <strong>False</strong>
+</p>
+<h2>
+    请求参数说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 70px;">
+            <strong>必选</strong>
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    <tr>
+    <td style="width: 130px;">
+    code
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        商品唯一编码
+    </td>
+</tr><tr>
+    <td style="width: 130px;">
+    price
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        decimal
+    </td>
+    <td>
+        用户定价
+    </td>
+</tr>
+</table>
+<h2>
+    POST调用事例
+</h2>
+<p>
+    <div class="code">{<br />	&quot;code&quot;: &quot;968f3adb3c36469fb928783a0130b26c&quot;,<br />	&quot;price&quot;: 10.0<br />}</div>
+</p>
+<h2>
+    注意事项
+</h2>
+<p style="color: Red;">
+    
+</p>
+<h2>
+    返回结果
+</h2>
+<div class="code">
+    {<br />	&quot;result&quot;: &quot;上架成功&quot;,<br />	&quot;errordes&quot;: &quot;获取成功&quot;,<br />	&quot;resultcode&quot;: 200,<br />	&quot;state&quot;: 1<br />}
+</div>
+<h2>
+    返回结果字段说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    
+</table>
+<h2>
+    示例代码
+</h2>
+<div class="code">
+</div>
+<div style="margin: 30px 0 85px 0; height: 4px; line-height: 0;">
+    <span style="float: right; color: #ccc; font-size: 12px;">第 15 页 HappyTeam</span>
+</div>
+<a id="6dc2d683e73c4154b268d83fd554a717" name="6dc2d683e73c4154b268d83fd554a717"></a>
+<h2>
+    <span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <span>手机号码注册</span>
+</h2>
+<p>
+    手机号码注册
+</p>
+<h2>
+    Url
+</h2>
+<p>
+    <a target="_blank" href="/account/phonereg">/account/phonereg</a>
+</p>
+<h2>
+    支持格式
+</h2>
+<p>
+    <strong>JSON</strong>
+    <h4>
+        <a href=""></a>
+    </h4>
+</p>
+<h2>
+    Http请求方式
+</h2>
+<p>
+    <strong>POST</strong>
+</p>
+<h2>
+    是否需要登录验证
+</h2>
+<p>
+    <strong>False</strong>
+    <h4>
+        关于授权机制，<a href="#auth_remark">参见授权机制声明</a>
+    </h4>
+</p>
+<h2>
+    是否允许游客操作
+</h2>
+<p>
+    <strong>True</strong>
+</p>
+<h2>
+    请求参数说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 70px;">
+            <strong>必选</strong>
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    <tr>
+    <td style="width: 130px;">
+    phone
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        手机号码
+    </td>
+</tr><tr>
+    <td style="width: 130px;">
+    pwd
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        密文
+    </td>
+</tr><tr>
+    <td style="width: 130px;">
+    code
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        验证码
+    </td>
+</tr>
+</table>
+<h2>
+    POST调用事例
+</h2>
+<p>
+    
+</p>
+<h2>
+    注意事项
+</h2>
+<p style="color: Red;">
+    
+</p>
+<h2>
+    返回结果
+</h2>
+<div class="code">
+    
+</div>
+<h2>
+    返回结果字段说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    
+</table>
+<h2>
+    示例代码
+</h2>
+<div class="code">
+</div>
+<div style="margin: 30px 0 85px 0; height: 4px; line-height: 0;">
+    <span style="float: right; color: #ccc; font-size: 12px;">第 16 页 HappyTeam</span>
+</div>
+<a id="103e2079d8d94739b38499496f40acfe" name="103e2079d8d94739b38499496f40acfe"></a>
+<h2>
+    <span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <span>下架商品</span>
+</h2>
+<p>
+    下架商品
+</p>
+<h2>
+    Url
+</h2>
+<p>
+    <a target="_blank" href="product/downproduct">product/downproduct</a>
+</p>
+<h2>
+    支持格式
+</h2>
+<p>
+    <strong>JSON</strong>
+    <h4>
+        <a href=""></a>
+    </h4>
+</p>
+<h2>
+    Http请求方式
+</h2>
+<p>
+    <strong>POST</strong>
+</p>
+<h2>
+    是否需要登录验证
+</h2>
+<p>
+    <strong>True</strong>
+    <h4>
+        关于授权机制，<a href="#auth_remark">参见授权机制声明</a>
+    </h4>
+</p>
+<h2>
+    是否允许游客操作
+</h2>
+<p>
+    <strong>False</strong>
+</p>
+<h2>
+    请求参数说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 70px;">
+            <strong>必选</strong>
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    <tr>
+    <td style="width: 130px;">
+    uid
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        long
+    </td>
+    <td>
+        用户ID
+    </td>
+</tr><tr>
+    <td style="width: 130px;">
+    hyid
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        产品ID
+    </td>
+</tr>
+</table>
+<h2>
+    POST调用事例
+</h2>
+<p>
+    
+</p>
+<h2>
+    注意事项
+</h2>
+<p style="color: Red;">
+    
+</p>
+<h2>
+    返回结果
+</h2>
+<div class="code">
+    
+</div>
+<h2>
+    返回结果字段说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    
+</table>
+<h2>
+    示例代码
+</h2>
+<div class="code">
+</div>
+<div style="margin: 30px 0 85px 0; height: 4px; line-height: 0;">
+    <span style="float: right; color: #ccc; font-size: 12px;">第 17 页 HappyTeam</span>
+</div>
+<a id="7e57ff5d770e4371995e16aa5247dd82" name="7e57ff5d770e4371995e16aa5247dd82"></a>
+<h2>
+    <span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <span>用户登录</span>
+</h2>
+<p>
+    用户登录
+</p>
+<h2>
+    Url
+</h2>
+<p>
+    <a target="_blank" href="account/userlogin">account/userlogin</a>
+</p>
+<h2>
+    支持格式
+</h2>
+<p>
+    <strong>JSON</strong>
+    <h4>
+        <a href=""></a>
+    </h4>
+</p>
+<h2>
+    Http请求方式
+</h2>
+<p>
+    <strong>POST</strong>
+</p>
+<h2>
+    是否需要登录验证
+</h2>
+<p>
+    <strong>False</strong>
+    <h4>
+        关于授权机制，<a href="#auth_remark">参见授权机制声明</a>
+    </h4>
+</p>
+<h2>
+    是否允许游客操作
+</h2>
+<p>
+    <strong>True</strong>
+</p>
+<h2>
+    请求参数说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 70px;">
+            <strong>必选</strong>
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    <tr>
+    <td style="width: 130px;">
+    pwd
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        32位md5加密小写
+    </td>
+</tr><tr>
+    <td style="width: 130px;">
+    account
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        账号
+    </td>
+</tr><tr>
+    <td style="width: 130px;">
+    mac
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        机器标识
+    </td>
+</tr>
+</table>
+<h2>
+    POST调用事例
+</h2>
+<p>
+    
+</p>
+<h2>
+    注意事项
+</h2>
+<p style="color: Red;">
+    
+</p>
+<h2>
+    返回结果
+</h2>
+<div class="code">
+    返回结果同微信登录
+</div>
+<h2>
+    返回结果字段说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    
+</table>
+<h2>
+    示例代码
+</h2>
+<div class="code">
+</div>
+<div style="margin: 30px 0 85px 0; height: 4px; line-height: 0;">
+    <span style="float: right; color: #ccc; font-size: 12px;">第 18 页 HappyTeam</span>
+</div>
+<a id="6351c29bfd684697a48343ab9560463d" name="6351c29bfd684697a48343ab9560463d"></a>
+<h2>
+    <span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <span>用户微信登录</span>
+</h2>
+<p>
+    用户微信登录
+</p>
+<h2>
+    Url
+</h2>
+<p>
+    <a target="_blank" href="/account/wxapplogin">/account/wxapplogin</a>
+</p>
+<h2>
+    支持格式
+</h2>
+<p>
+    <strong>JSON</strong>
+    <h4>
+        <a href=""></a>
+    </h4>
+</p>
+<h2>
+    Http请求方式
+</h2>
+<p>
+    <strong>POST</strong>
+</p>
+<h2>
+    是否需要登录验证
+</h2>
+<p>
+    <strong>True</strong>
+    <h4>
+        关于授权机制，<a href="#auth_remark">参见授权机制声明</a>
+    </h4>
+</p>
+<h2>
+    是否允许游客操作
+</h2>
+<p>
+    <strong>True</strong>
+</p>
+<h2>
+    请求参数说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 70px;">
+            <strong>必选</strong>
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    <tr>
+    <td style="width: 130px;">
+    token
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        微信token
+    </td>
+</tr><tr>
+    <td style="width: 130px;">
+    openid
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        微信用户openid
+    </td>
+</tr><tr>
+    <td style="width: 130px;">
+    mac
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        当前用户机子标识
+    </td>
+</tr>
+</table>
+<h2>
+    POST调用事例
+</h2>
+<p>
+    <div class="code">{<br />	&quot;token&quot;: &quot;968f3adb3c36469fb928783a0130b26c&quot;,<br />	&quot;openid&quot;: &quot;968f3adb3c36469fb928783a0130b26c&quot;,<br />	&quot;mac&quot;: &quot;968f3adb3c36469fb928783a0130b26c&quot;<br />}</div>
+</p>
+<h2>
+    注意事项
+</h2>
+<p style="color: Red;">
+    
+</p>
+<h2>
+    返回结果
+</h2>
+<div class="code">
+    {<br />	&quot;result&quot;: {<br />		&quot;nick&quot;: &quot;往事笑忘&quot;,<br />		&quot;uid&quot;: 20001,<br />		&quot;sessionid&quot;: &quot;f22a42de638b43099ec7609a88dfcc42&quot;,<br />		&quot;faceurl&quot;: &quot;http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKTpJSoy9WEgJDfiaBxq0ia0SRiatKL37JH5FWdsgJIDR9Zp05hgR5uFeExRw184jicbxrUajibqqsQeaQ/132&quot;,<br />		&quot;balance&quot;: &quot;0.00&quot;<br />	},<br />	&quot;errordes&quot;: &quot;登陆成功&quot;,<br />	&quot;resultcode&quot;: 200,<br />	&quot;state&quot;: 1<br />}
+</div>
+<h2>
+    返回结果字段说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    <tr>
+    <td style="width: 130px;">
+        nick
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        用户昵称
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        uid
+    </td>
+    <td style="width: 140px;">
+        long
+    </td>
+    <td>
+        用户uid
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        sessionid
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        用户skey
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        faceurl
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        头像
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        balance
+    </td>
+    <td style="width: 140px;">
+        decimal
+    </td>
+    <td>
+        用户金额
+    </td>
+</tr>
+
+</table>
+<h2>
+    示例代码
+</h2>
+<div class="code">
+</div>
+<div style="margin: 30px 0 85px 0; height: 4px; line-height: 0;">
+    <span style="float: right; color: #ccc; font-size: 12px;">第 19 页 HappyTeam</span>
+</div>
+<a id="f553035398ca4c86a85e9cb45d6a16e6" name="f553035398ca4c86a85e9cb45d6a16e6"></a>
+<h2>
+    <span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <span>用户信息获取</span>
+</h2>
+<p>
+    用户信息获取
+</p>
+<h2>
+    Url
+</h2>
+<p>
+    <a target="_blank" href="account/getuser">account/getuser</a>
+</p>
+<h2>
+    支持格式
+</h2>
+<p>
+    <strong>JSON</strong>
+    <h4>
+        <a href=""></a>
+    </h4>
+</p>
+<h2>
+    Http请求方式
+</h2>
+<p>
+    <strong>POST</strong>
+</p>
+<h2>
+    是否需要登录验证
+</h2>
+<p>
+    <strong>True</strong>
+    <h4>
+        关于授权机制，<a href="#auth_remark">参见授权机制声明</a>
+    </h4>
+</p>
+<h2>
+    是否允许游客操作
+</h2>
+<p>
+    <strong>False</strong>
+</p>
+<h2>
+    请求参数说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 70px;">
+            <strong>必选</strong>
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    <tr>
+    <td style="width: 130px;">
+    uid
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        long
+    </td>
+    <td>
+        用户ID
+    </td>
+</tr><tr>
+    <td style="width: 130px;">
+    skey
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        当前登录的key
+    </td>
+</tr>
+</table>
+<h2>
+    POST调用事例
+</h2>
+<p>
+    
+</p>
+<h2>
+    注意事项
+</h2>
+<p style="color: Red;">
+    
+</p>
+<h2>
+    返回结果
+</h2>
+<div class="code">
+    
+</div>
+<h2>
+    返回结果字段说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    
+</table>
+<h2>
+    示例代码
+</h2>
+<div class="code">
+</div>
+<div style="margin: 30px 0 85px 0; height: 4px; line-height: 0;">
+    <span style="float: right; color: #ccc; font-size: 12px;">第 20 页 HappyTeam</span>
+</div>
+<a id="1ccb3293bd2a4ddda012fef2a4cf18e2" name="1ccb3293bd2a4ddda012fef2a4cf18e2"></a>
+<h2>
+    <span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <span>用户游戏</span>
+</h2>
+<p>
+    用户游戏
+</p>
+<h2>
+    Url
+</h2>
+<p>
+    <a target="_blank" href="/account/usergame">/account/usergame</a>
+</p>
+<h2>
+    支持格式
+</h2>
+<p>
+    <strong>JSON</strong>
+    <h4>
+        <a href=""></a>
+    </h4>
+</p>
+<h2>
+    Http请求方式
+</h2>
+<p>
+    <strong>POST</strong>
+</p>
+<h2>
+    是否需要登录验证
+</h2>
+<p>
+    <strong>True</strong>
+    <h4>
+        关于授权机制，<a href="#auth_remark">参见授权机制声明</a>
+    </h4>
+</p>
+<h2>
+    是否允许游客操作
+</h2>
+<p>
+    <strong>False</strong>
+</p>
+<h2>
+    请求参数说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 70px;">
+            <strong>必选</strong>
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    <tr>
+    <td style="width: 130px;">
+    uid
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        long
+    </td>
+    <td>
+        用户ID
+    </td>
+</tr>
+</table>
+<h2>
+    POST调用事例
+</h2>
+<p>
+    
+</p>
+<h2>
+    注意事项
+</h2>
+<p style="color: Red;">
+    
+</p>
+<h2>
+    返回结果
+</h2>
+<div class="code">
+    
+</div>
+<h2>
+    返回结果字段说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    
+</table>
+<h2>
+    示例代码
+</h2>
+<div class="code">
+</div>
+<div style="margin: 30px 0 85px 0; height: 4px; line-height: 0;">
+    <span style="float: right; color: #ccc; font-size: 12px;">第 21 页 HappyTeam</span>
+</div>
+<a id="5677b388ab1f4147b14e37b1b48bc8ce" name="5677b388ab1f4147b14e37b1b48bc8ce"></a>
+<h2>
+    <span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <span>游戏列表</span>
+</h2>
+<p>
+    游戏列表
+</p>
+<h2>
+    Url
+</h2>
+<p>
+    <a target="_blank" href="/game/gamelist">/game/gamelist</a>
+</p>
+<h2>
+    支持格式
+</h2>
+<p>
+    <strong>JSON</strong>
+    <h4>
+        <a href=""></a>
+    </h4>
+</p>
+<h2>
+    Http请求方式
+</h2>
+<p>
+    <strong>POST</strong>
+</p>
+<h2>
+    是否需要登录验证
+</h2>
+<p>
+    <strong>True</strong>
+    <h4>
+        关于授权机制，<a href="#auth_remark">参见授权机制声明</a>
+    </h4>
+</p>
+<h2>
+    是否允许游客操作
+</h2>
+<p>
+    <strong>True</strong>
+</p>
+<h2>
+    请求参数说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 70px;">
+            <strong>必选</strong>
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    <tr>
+    <td style="width: 130px;">
+    num
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        int
+    </td>
+    <td>
+        0为获取所有游戏
+    </td>
+</tr>
+</table>
+<h2>
+    POST调用事例
+</h2>
+<p>
+    <div class="code">{<br />	&quot;num&quot;: 2<br />}</div>
+</p>
+<h2>
+    注意事项
+</h2>
+<p style="color: Red;">
+    
+</p>
+<h2>
+    返回结果
+</h2>
+<div class="code">
+    {<br />	&quot;result&quot;: {<br />		&quot;count&quot;: 2,<br />		&quot;list&quot;: [{<br />				&quot;id&quot;: 1,<br />				&quot;name&quot;: &quot;新洪游捕鱼&quot;,<br />				&quot;icoimg&quot;: &quot;1&quot;<br />			},<br />			{<br />				&quot;id&quot;: 4,<br />				&quot;name&quot;: &quot;手心捕鱼&quot;,<br />				&quot;icoimg&quot;: &quot;1&quot;<br />			}<br />		]<br />	},<br />	&quot;errordes&quot;: &quot;获取成功&quot;,<br />	&quot;resultcode&quot;: 200,<br />	&quot;state&quot;: 1<br />}
+</div>
+<h2>
+    返回结果字段说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    <tr>
+    <td style="width: 130px;">
+        count
+    </td>
+    <td style="width: 140px;">
+        int
+    </td>
+    <td>
+        返回条数
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        list.id
+    </td>
+    <td style="width: 140px;">
+        long
+    </td>
+    <td>
+        游戏ID
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        list.name
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        游戏名称
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        list.icoimg
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        图标地址
+    </td>
+</tr>
+
+</table>
+<h2>
+    示例代码
+</h2>
+<div class="code">
+</div>
+<div style="margin: 30px 0 85px 0; height: 4px; line-height: 0;">
+    <span style="float: right; color: #ccc; font-size: 12px;">第 22 页 HappyTeam</span>
+</div>
+<a id="858d3360aab14b9b85bbd841d7bbdb99" name="858d3360aab14b9b85bbd841d7bbdb99"></a>
+<h2>
+    <span title="该接口已实现" style="color: Red; font-weight: bold; visibility: hidden;">√</span>
+    <span>游戏详情</span>
+</h2>
+<p>
+    游戏详情
+</p>
+<h2>
+    Url
+</h2>
+<p>
+    <a target="_blank" href="/game/getgamedetail">/game/getgamedetail</a>
+</p>
+<h2>
+    支持格式
+</h2>
+<p>
+    <strong>JSON</strong>
+    <h4>
+        <a href=""></a>
+    </h4>
+</p>
+<h2>
+    Http请求方式
+</h2>
+<p>
+    <strong>POST</strong>
+</p>
+<h2>
+    是否需要登录验证
+</h2>
+<p>
+    <strong>False</strong>
+    <h4>
+        关于授权机制，<a href="#auth_remark">参见授权机制声明</a>
+    </h4>
+</p>
+<h2>
+    是否允许游客操作
+</h2>
+<p>
+    <strong>True</strong>
+</p>
+<h2>
+    请求参数说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 70px;">
+            <strong>必选</strong>
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    <tr>
+    <td style="width: 130px;">
+    id
+    </td>
+    <td style="width: 80px;">
+        True
+    </td>
+    <td style="width: 140px;">
+        long
+    </td>
+    <td>
+        游戏ID
+    </td>
+</tr>
+</table>
+<h2>
+    POST调用事例
+</h2>
+<p>
+    <div class="code">{<br />	&quot;id&quot;: 1<br />}</div>
+</p>
+<h2>
+    注意事项
+</h2>
+<p style="color: Red;">
+    
+</p>
+<h2>
+    返回结果
+</h2>
+<div class="code">
+    {<br />	&quot;result&quot;: {<br />		&quot;id&quot;: 1,<br />		&quot;name&quot;: &quot;新洪游捕鱼&quot;,<br />		&quot;remark&quot;: &quot;新洪游捕鱼&quot;,<br />		&quot;type&quot;: &quot;动作&quot;,<br />		&quot;platform&quot;: &quot;PC&quot;,<br />		&quot;playmodel&quot;: &quot;1&quot;,<br />		&quot;img&quot;: &quot;1&quot;,<br />		&quot;icoimg&quot;: &quot;1&quot;,<br />		&quot;proplist&quot;: [{<br />				&quot;id&quot;: 1,<br />				&quot;gameid&quot;: 0,<br />				&quot;propid&quot;: 100000,<br />				&quot;name&quot;: &quot;金币&quot;,<br />				&quot;remark&quot;: &quot;道具金币&quot;,<br />				&quot;icoimg&quot;: &quot;http://m.579y.com/images/item100000.png&quot;<br />			},<br />			{<br />				&quot;id&quot;: 2,<br />				&quot;propid&quot;: 100001,<br />				&quot;name&quot;: &quot;钻石&quot;,<br />				&quot;remark&quot;: &quot;道具钻石&quot;,<br />				&quot;icoimg&quot;: &quot;http://m.579y.com/images/item100001.png&quot;<br />			},<br />			{<br />				&quot;id&quot;: 3,<br />				&quot;propid&quot;: 99,<br />				&quot;name&quot;: &quot;鱼雷碎片&quot;,<br />				&quot;remark&quot;: &quot;道具碎片&quot;,<br />				&quot;icoimg&quot;: &quot;http://m.579y.com/images/item99.png&quot;<br />			}<br />		]<br />	},<br />	&quot;errordes&quot;: &quot;获取成功&quot;,<br />	&quot;resultcode&quot;: 200,<br />	&quot;state&quot;: 1<br />}
+</div>
+<h2>
+    返回结果字段说明
+</h2>
+<table width="100%" border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td style="width: 140px;">
+        </td>
+        <td style="width: 120px;">
+            <strong>类型</strong>
+        </td>
+        <td>
+            <strong>说明</strong>
+        </td>
+    </tr>
+    <tr>
+    <td style="width: 130px;">
+        id
+    </td>
+    <td style="width: 140px;">
+        long
+    </td>
+    <td>
+        游戏ID
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        name
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        游戏名称
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        remark
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        备注说明
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        type
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        游戏类型
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        platform
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        平台
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        playmodel
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        游戏模式
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        img
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        游戏logo地址
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        icoimg
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        游戏图标地址
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        proplist.id
+    </td>
+    <td style="width: 140px;">
+        long
+    </td>
+    <td>
+        游戏道具在交易平台的ID 唯一
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        proplist.propid
+    </td>
+    <td style="width: 140px;">
+        int
+    </td>
+    <td>
+        游戏方的道具ID
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        proplist.name
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        道具名称
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        proplist.remaek
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        道具说明 旁边灰字
+    </td>
+</tr>
+<tr>
+    <td style="width: 130px;">
+        proplist.icoimg
+    </td>
+    <td style="width: 140px;">
+        string
+    </td>
+    <td>
+        道具ICO地址
+    </td>
+</tr>
+
+</table>
+<h2>
+    示例代码
+</h2>
+<div class="code">
+</div>
+<div style="margin: 30px 0 85px 0; height: 4px; line-height: 0;">
+    <span style="float: right; color: #ccc; font-size: 12px;">第 23 页 HappyTeam</span>
+</div>
+
+        </div>
+    </div>
+    <div style="position: fixed; right: 100px; bottom: 20px;">
+        <a href="#top">回到顶部</a>
+    </div>
+</body>
+</html>

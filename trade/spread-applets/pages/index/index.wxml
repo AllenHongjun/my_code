@@ -1,0 +1,109 @@
+<!--index.wxml-->
+<view class="container">
+	<swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="2000">
+		<block wx:for="{{msgList}}">
+			<swiper-item>
+				<view class="swiper_item">
+					<image class="swiper_img" src="{{item.image}}"></image>
+					{{item.title}}
+				</view>
+			</swiper-item>
+		</block>
+	</swiper>
+
+	<!-- 列表 开始-->
+	<view class="card">
+		<view class="card-top">
+			<view class="card-pic">
+				<image src="../../assets/images/pic/img-01.png"></image>
+			</view>
+			<view class="card-right">
+				<view class="card-title">
+					<text>这里填写推广任务的标题</text>
+				</view>
+				<view class="card-desc">
+					<view>游戏类型：<text>mmorpg</text></view>
+					<view>购买价格：<text>0</text></view>
+					<view>结束时间：<text>2018-08-31</text></view>
+					<view>剩余赏金：<text>282020元/450000元</text></view>
+				</view>
+			</view>
+		</view>
+		<view class="card-bottom">
+			<view class="card-price">赚80元<text decode="{{true}}">&nbsp;/&nbsp;推荐注册成功</text></view>
+			<van-button type="warning" size="normal" custom-class="buttonTg" bind:click="btnTuiguang" 
+			>立即推广</van-button>
+		</view>
+	</view>
+	<view class="card">
+		<view class="card-top">
+			<view class="card-pic">
+				<image src="../../assets/images/pic/img-01.png"></image>
+			</view>
+			<view class="card-right">
+				<view class="card-title">
+					<text>这里填写推广任务的标题</text>
+				</view>
+				<view class="card-desc">
+					<view>游戏类型：<text>mmorpg</text></view>
+					<view>购买价格：<text>0</text></view>
+					<view>结束时间：<text>2018-08-31</text></view>
+					<view>剩余赏金：<text>282020元/450000元</text></view>
+				</view>
+			</view>
+		</view>
+		<view class="card-bottom">
+			<view class="card-price">赚80元<text decode="{{true}}">&nbsp;/&nbsp;推荐注册成功</text></view>
+			<van-button type="warning" size="normal" custom-class="buttonTg" bind:click="btnTuiguang">立即推广</van-button>
+		</view>
+	</view>
+	<view class="card">
+		<view class="card-top">
+			<view class="card-pic">
+				<image src="../../assets/images/pic/img-01.png"></image>
+			</view>
+			<view class="card-right">
+				<view class="card-title">
+					<text>这里填写推广任务的标题</text>
+				</view>
+				<view class="card-desc">
+					<view>游戏类型：<text>mmorpg</text></view>
+					<view>购买价格：<text>0</text></view>
+					<view>结束时间：<text>2018-08-31</text></view>
+					<view>剩余赏金：<text>282020元/450000元</text></view>
+				</view>
+			</view>
+		</view>
+		<view class="card-bottom">
+			<view class="card-price">赚80元<text decode="{{true}}">&nbsp;/&nbsp;推荐注册成功</text></view>
+			<van-button type="warning" size="normal" custom-class="buttonTg">立即推广</van-button>
+		</view>
+	</view>
+	<view class="card">
+		<view class="card-top">
+			<view class="card-pic">
+				<image src="../../assets/images/pic/img-01.png"></image>
+			</view>
+			<view class="card-right">
+				<view class="card-title">
+					<text>这里填写推广任务的标题</text>
+				</view>
+				<view class="card-desc">
+					<view>游戏类型：<text>mmorpg</text></view>
+					<view>购买价格：<text>0</text></view>
+					<view>结束时间：<text>2018-08-31</text></view>
+					<view>剩余赏金：<text>282020元/450000元</text></view>
+				</view>
+			</view>
+		</view>
+		<view class="card-bottom">
+			<view class="card-price">赚80元<text decode="{{true}}">&nbsp;/&nbsp;推荐注册成功</text></view>
+			<van-button type="warning" size="normal" custom-class="buttonTg">立即推广</van-button>
+		</view>
+	</view>
+	<!-- 列表 结束-->
+
+
+	
+</view>
+

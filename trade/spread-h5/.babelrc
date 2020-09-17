@@ -1,0 +1,15 @@
+{
+  "presets": ["env", "stage-0"],
+  "ignore": [
+    "./src/static/js/mui.js",
+    "./src/static/js/mui.min.js",
+    "./src/static/js/mui.picker.min.js",
+    "./src/static/js/mui.poppicker.js"
+  ],
+  "plugins": ["transform-runtime", ["component", [
+    {
+      "libraryName": "mint-ui",
+      "style": true
+    }
+  ]]]
+}

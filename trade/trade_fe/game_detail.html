@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <title>游戏详情</title>
+    <script type="text/javascript" src="js/rem.js"></script>
+    <link href="./lib/mui/css/mui.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/iconfont.css"/>
+    <link rel="stylesheet" href="css/public.css"/>
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/gameDetail.css"/>
+
+</head>
+<body>
+<div class="mui-content">
+    <!--底部导航   开始-->
+    <nav class="mui-bar mui-bar-tab">
+        <a href="javascript:;" class="mui-tab-item mui-active">
+            <svg class="mui-icon icon" aria-hidden="true">
+                <use xlink:href="#icon-shouye"></use>
+            </svg>
+            <span class="mui-tab-label">首页</span>
+        </a>
+        <a  class="mui-tab-item" id="promptBtn">
+            <svg class="mui-icon icon" aria-hidden="true">
+                <use xlink:href="#icon-jia"></use>
+            </svg>
+            <span class="mui-tab-label">出售</span>
+        </a>
+        <a href="order_list.html" class="mui-tab-item">
+            <svg class="mui-icon icon" aria-hidden="true">
+                <use xlink:href="#icon-chengjiaodingdan"></use>
+            </svg>
+            <span class="mui-tab-label">订单</span>
+        </a>
+        <a href="user/index.html" class="mui-tab-item">
+            <svg class="mui-icon icon icon-wode" aria-hidden="true">
+                <use xlink:href="#icon-wode"></use>
+            </svg>
+            <span class="mui-tab-label">我的</span>
+        </a>
+    </nav>
+
+    <!--弹出  开始-->
+    <div class="mui-popover sen" id="popover">
+        <h1>2.15<span>元</span></h1>
+    </div>
+    <!--弹出  结束-->
+
+    <!--头部   开始-->
+
+    <div class="top">
+        <!-- TODO -->
+    </div>
+
+    <!--头部   结束-->
+
+    <!--选择列表   开始-->
+    <div class="list product-list">
+        <h5>请选择商品分类</h5>
+
+        <div class="mui-scroll-wrapper ">
+            <div class="mui-scroll">
+                <!--这里放置真实显示的DOM内容-->
+
+                <div class="loading">
+                    <span class="mui-icon mui-icon-spinner mui-spin"></span>
+                </div>
+                <!--TODO-->
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+    <!--选择列表   结束-->
+
+</div>
+
+<script type="text/html" id="top">
+
+    <div class="pic">
+        <img src="<%=result.icoimg%>" width="100%" height="100%"/>
+    </div>
+    <div class="info">
+        <h3><%=result.name%></h3>
+
+        <p>游戏类型：<%=result.type%></p>
+
+        <p>介绍：<%=result.introduce%></p>
+
+        <!--<p>收费模式：道具收费</p>-->
+    </div>
+
+</script>
+
+<script type="text/html" id="list">
+    <ul class="mui-table-view">
+        <li class="mui-table-view-cell">
+            <a class="mui-navigate-right" href="search_list.html?gameid=<%=result.id%>">全部</a>
+        </li>
+        <% for(var i = 0; i < result.proplist.length; i++){%>
+        <% var item = result.proplist[i]; %>
+        <li class="mui-table-view-cell mui-media">
+            <a href="./search_list.html?id=<%=item['id'];%>&gameid=<%=result.id%>&propid=<%=item['propid']%>" data-propid="<%=item['propid']%>"
+               data-id="<%=item['id'];%>">
+                <img class="mui-media-object mui-pull-left" src="<%=item['icoimg'];%>">
+
+                <div class="mui-media-body">
+                    <%=item['name'];%>
+                </div>
+                <!--<span class="mui-badge mui-badge-primary mui-badge-inverted gray"><%=item['remark'];%></span>-->
+            </a>
+        </li>
+        <%}%>
+
+    </ul>
+</script>
+<script src="./lib/mui/js/mui.min.js"></script>
+<script type="text/javascript" src="js/iconfont.js"></script>
+<script src="./lib/zepto/zepto.min.js"></script>
+<script src="./lib/artTemplate/template-native.js"></script>
+<script src="js/common.js"></script>
+<script src="js/gameDetail.js"></script>
+</body>
+</html>

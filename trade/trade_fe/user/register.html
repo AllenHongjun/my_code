@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title>登录</title>
+
+	<script type="text/javascript" src="../js/rem.js"></script>
+	<link href="../lib/mui/css/mui.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="../css/iconfont.css" />
+	<link rel="stylesheet" href="../lib/mui/css/icons-extra.css" />
+	<link rel="stylesheet" href="../css/public.css" />
+	<link rel="stylesheet" href="../css/login.css" />
+</head>
+<body>
+	<div class="mui-content binding">
+		<!--头部   开始-->
+		<div class="top">
+			<header class="mui-bar mui-bar-nav">
+			    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left icon-back"></a>
+			    <h1 class="mui-title">注册</h1>
+			</header>				
+		</div>
+		<!--头部   结束-->
+		
+		<div class="login">
+			<form id='reg-form' class="mui-input-group">
+				<div class="mui-input-row register-btn">
+					<label>
+						<svg class="mui-icon icon" aria-hidden="true">
+						  	<use xlink:href="#icon-zhanghao"></use>
+						</svg>
+					</label>
+					<input id='phone' name='phone' type="text" class="mui-input-clear mui-input" placeholder="请输入手机号">
+				</div>
+				<div class="code">
+					<div class="mui-input-row register-btn">
+						<label>
+							<span class="mui-icon-extra mui-icon-extra-calc icon"></span>
+						</label>
+						<input id='code' name="code" type="text" class="mui-input-clear mui-input" placeholder="请输入验证码">
+					</div>
+					<input type="button" class="mui-btn mui-btn-block mui-btn-primary code-btn" value="获取验证码">
+					<!--<button class="mui-btn mui-btn-block mui-btn-primary code-btn">获取验证码</button>-->
+				</div>
+				<div class="mui-input-row register-btn">
+					<label>
+						<svg class="mui-icon icon" aria-hidden="true">
+						  	<use xlink:href="#icon-mima"></use>
+						</svg>
+					</label>
+					<input id='password' name="password" type="password" class="mui-input-clear mui-input" placeholder="请输入密码">
+				</div>
+				<div class="mui-input-row register-btn">
+					<label>
+						<svg class="mui-icon icon" aria-hidden="true">
+						  	<use xlink:href="#icon-mima"></use>
+						</svg>
+					</label>
+					<input id='rePassword' name="rePassword" type="password" class="mui-input-clear mui-input" placeholder="请再次输入密码">
+				</div>
+				<input id="regBtn"type="button" class="mui-btn mui-btn-block mui-btn-primary login-btn" value="注册">
+				<!--<button id='regBtn' class="mui-btn mui-btn-block mui-btn-primary login-btn">注册</button>-->
+				<h6>注册代表您已同意网络使用协议和隐私条款</h6>
+
+			</form>
+
+			
+		</div>
+		
+	</div>
+	<script src="../lib/mui/js/mui.min.js"></script>
+	<script type="text/javascript" src="../lib/mui/js/mui.picker.min.js" ></script>
+	<script type="text/javascript" src="../lib/md5/md5.js"></script>
+	<script type="text/javascript" src="../js/iconfont.js"></script>
+	<script src="../lib/zepto/zepto.min.js"></script>
+	<script src="../js/common.js"></script>
+	<script src="../js/user/register.js"></script>
+</body>
+</html>

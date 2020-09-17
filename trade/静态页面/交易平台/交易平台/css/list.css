@@ -1,0 +1,70 @@
+a.icon-back{
+	color: #333;
+}
+.mui-search{
+	/*padding-bottom: 0.1rem;*/
+}
+.mui-search input{
+	background: #f2f2f2;
+	border-radius: 1rem;
+	font-size: 0.24rem;
+}
+.mui-bar input[type=search]{
+	height: 0.6rem;
+}
+.mui-search .mui-placeholder{
+	font-size: 0.26rem;
+	top: 0.05rem;
+}
+.mui-search .mui-placeholder .mui-icon{
+	color: #999;
+	/*font-size: 0.3rem;*/
+}
+.sort a{
+	/*display: block;*/
+	float: left;
+	width: 33.33%;
+	text-align: center;
+	padding: 0.22rem 0;
+	color: #333;
+}
+.sort a.checked{
+	font-weight: bold;
+}
+
+/*列表*/
+.list{
+	margin-top: 2.55rem;
+}
+.list .mui-table-view:before{
+	background: none;
+}
+.list .mui-table-view-cell:after{
+	background-color: #f2f2f2;
+}
+.list .mui-table-view-cell{
+	padding: 0.3rem 15px 0.3rem;
+}
+.list .mui-table-view-cell:after{
+	right: 15px;
+}
+.list .mui-table-view .mui-media-object.mui-pull-left{
+	margin-top: 0.05rem;
+	margin-right: 0.4rem;
+}
+.list .mui-ellipsis{
+	color: #888;
+	margin-top: 0.1rem;
+}
+.list .mui-badge-primary.mui-badge-inverted{
+	text-align: right;
+	line-height: 0.5rem;
+}
+.list .mui-badge-primary.mui-badge-inverted.gray{
+	color: #888;
+	font-size: 0.22rem;
+}
+.list .mui-badge-primary.mui-badge-inverted strong{
+	font-size: 0.28rem;
+	color: #ec6045;
+}

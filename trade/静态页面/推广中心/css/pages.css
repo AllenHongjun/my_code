@@ -1,0 +1,107 @@
+/*头部*/
+.banner{
+	width: 100%;
+	height: 4.55rem;
+	background: url(../img/pic/pagesBg1.jpg) no-repeat;
+	background-size: cover;
+	position: relative;
+}
+.pic{
+	position: absolute;
+	width: 1.24rem;
+	height: 1.24rem;
+	left: 0.3rem;
+	bottom: 0.3rem;
+}
+.info{
+	float: left;
+	left: 2rem;
+	bottom: 0.28rem;
+	position: absolute;
+}
+.info h3{
+	font-size: 0.32rem;
+	line-height: 0;
+	margin-bottom: 0.2rem;
+	color: #000;
+}
+.info p{
+	color: #ff8020;
+	font-size: 0.22rem;
+	line-height: 0.36rem;
+	margin: 0;
+}
+.info span{
+	font-size: 0.28rem;
+	color: #cd4331;
+}
+
+/*底部按钮*/
+.pages-bottom .mui-btn{
+	top: 0;
+	width: 3rem;
+	height: 0.6rem;
+}
+.mui-bar .mui-btn.pages-bottom1{
+	font-weight: bold;
+	color: #ff8020;
+	border-color: #ff8020;
+}
+.mui-bar .mui-btn.pages-bottom2{
+	background: #ff8020;
+}
+
+.time{
+	font-size: 0.22rem;
+	background: #fafafa;
+	color: #707070;
+	border-top: 1px solid #f2f2f2;
+	border-bottom: 1px solid #f2f2f2;
+	padding: 0.17rem 0;
+	text-indent: 0.3rem;
+}
+.intro{
+	padding: 0.3rem 0.3rem;
+	font-size: 0.27rem;
+	color: #333;
+}
+
+/*任务列表*/
+.mission{
+	background: #fff;
+	text-align: center;
+}
+.mission ul{
+	margin: 0;
+	padding: 0;
+	border-bottom: 1px solid #f2f2f2;
+	clear: both;
+}
+.mission li{
+	float: left;
+	padding: 0.25rem 0;
+	font-size: 0.26rem;
+}
+.mission-item1{
+	width: 50%;
+	text-align: left;
+	color: #333;
+}
+.indent{
+	text-indent: 0.75rem;
+}
+.indent2{
+	text-indent: 0.35rem;
+}
+.grey{
+	color: #666;
+}
+.mission-item2{
+	width: 25%;
+	color: #333;
+}
+.mission-item3{
+	width: 25%;
+	color: #cd4331;
+}
+

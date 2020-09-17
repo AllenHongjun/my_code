@@ -1,0 +1,248 @@
+body{
+	background:url(../img/news/bg.jpg) top center no-repeat;
+	background-color: #0550b5;
+}
+img{
+	vertical-align: top;
+}
+
+.top{
+	width:100%;
+	margin-top:110px;
+	border-left: 5px solid #083bb6;
+	padding-left: 10px;
+}
+.top h3 {
+	color:#083bb6;
+	font-size:60px;
+	line-height:80px
+}
+.top span {
+	font-size:18px;
+	line-height:24px;
+	color:#083bb6s
+}
+
+.wrap {
+	width: 1180px;
+	margin: 0 auto;
+}
+.content{
+	width: 1180px;
+	margin: 100px 0 20px;
+}
+
+.news-main{
+	width: 1180px;
+	background: url(../img/news/news_content.png);
+	background-size: 100%;
+	min-height: 500px;	
+}
+
+/*内容左侧*/
+.mainLeft{
+	float: right;
+	width: 210px;
+	margin-right: 50px;
+	margin-top: 15px;
+}
+.Qrcode{
+	text-align: center;
+	background: #fff;
+	margin-bottom: 20px;
+}
+.Qrcode img{
+	padding: 5px 5px 0 5px;
+	background: #fff;	
+}
+.Qrcode p{
+	font-size: 16px;
+	padding-bottom: 10px;
+	color: #333;
+}
+.mainLeft a{
+	display: block;
+	margin: 10px 0;
+}
+
+/*内容左侧*/
+.mainRight{
+	float: left;
+	width: 788px;
+	background: #fff;
+	padding: 30px;
+	margin-left: 40px;
+	margin-top: 15px;
+	/*height: 500px;*/
+}
+.title{
+	color: #817b74;
+	font-size: 26px;
+}
+.title b{
+	font-weight: normal;
+}
+.title span{
+	font-size: 14px;
+}
+.cr_zhishi {
+    float: right;
+    font-size: 14px;
+    font-family: "Microsoft YaHei";
+    margin-top: 10px;
+}
+.cr_zhishi a {
+    color: #58594b;
+}
+.cr_zhishi .cr_now {
+    color: #0665e5;
+}
+
+/*列表*/
+.news-nav{
+	width: 788px;
+	margin: 30px 0;
+}
+.news-nav a{
+	float: left;
+	width: 197px;
+	height: 42px;
+	line-height: 42px;
+	background:#f5f5f5;
+	text-align: center;
+	color: #817b74;
+	font-size: 17px;
+}
+.news-nav a.on{
+	background: #0665e5;
+	color: #fff;
+}
+
+.news-list{
+	padding-top: 10px;
+}
+.news-list li{
+	background: url(../images/disc.jpg) no-repeat left 4px;
+	padding-left: 40px;
+    border-bottom: 1px dotted #e0e0e0;
+    padding-bottom: 28px;
+    margin-bottom: 28px;
+}
+.news-list li a{
+	color: #656565;
+	font-size: 18px;
+}
+.news-list li span{
+	float: right;
+	color: #999;
+	font-size: 13px;
+	margin-top: 2px;
+}
+
+/*页码*/
+.pagenumQu {
+    padding: 20px 0;
+    text-align: center;
+}
+.yiiPager li {
+    display: inline;
+    overflow: hidden;
+}
+.yiiPager a {
+    margin: 0 3px;
+    color: #7e7e7e;
+    display: inline-block;
+    font-size: 12px;
+    overflow: hidden;
+    padding: 0 10px;
+    border: 1px solid #c5c5c5;
+    line-height: 24px;
+}
+.yiiPager a:hover, .yiiPager .selected a {
+    color: #FFF;
+    background-color: #0665e5;
+    border: 1px solid #0665e5;
+}
+
+/*文章*/
+.news{
+	border-top: 1px solid #e8e9ea;
+	margin-top: 20px;
+    padding-top: 40px;
+}
+.news h1{
+	text-align: center;
+	font-weight: normal;
+	font-size: 24px;
+    color: #58594b;
+}
+.news .time{
+	text-align: center;
+    margin: 18px 0 30px;
+    color: #959595;
+    font-size: 13px;
+}
+
+.pageBox {
+    color: #58594b;
+    font-size: 15px;
+    line-height: 34px;
+    position: relative;
+}
+
+.othersGroup {
+	border-top: 1px solid #e8e9ea;
+    margin: 50px auto 0;
+    overflow: hidden;
+    clear: both;
+    font-size: 15px;
+}
+.other_news {
+    border-top: 1px solid #e8e9ea;
+    padding: 35px 46px 15px;
+    overflow: hidden;
+}
+.other_news p.prev_news {
+    padding-right: 15px;
+}
+.other_news p{
+    float: left;
+    overflow: hidden;
+    width: 47%;
+    color: #58594b;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    -o-text-overflow: ellipsis;
+}
+.other_news a {
+    color: #959595;
+}
+
+/*尾部*/
+.footer{
+	margin: 50px auto;
+}
+
+/* FAQ页内容 */
+.FaqArtGroup  {   } 
+.FsearchBox  { padding:20px 0px  0px 0px; border-top:1px solid #a2a2a2;  font-size:14px; } 
+.FsearchBox .in_serkua  { display:inline-block; height:28px; line-height:28px; font-size:14px; padding:0 8px; color:#666; border:1px solid #999; outline:none;       }  
+.FsearchBox a.btn_srs  { display:inline-block; height:30px; line-height:30px; font-size:14px; padding:0 16px; color:#fff; background:#0d71aa; margin:0 4px;    }  
+.FsearchBox a.btn_srs:hover  { text-decoration:none;  background:#0d5985;   }  
+ 
+.FaqArt_box  { padding:10px 0px 20px 0px; font-size:14px; line-height:1.8; color:#1d1d1d;  } 
+.faq_question, .faq_Answer  { position:relative;  padding-left:35px;    }  
+.icon_wen, .icon_da  { 
+	position: absolute; 
+	left:0px; 
+	top:2px;  
+	display:inline-block; 
+	width:24px; 
+	height:24px; 
+	line-height:55px; 
+	overflow:hidden;        
+	background:url(../img/news/sprite_dao.png) no-repeat 0 0;  
+}
+.icon_da { background-position:-36px 0;} 
+.faq_question  {   margin: 10px 0px 12px 0px; color:#0d71aa;    }  
+.faq_Answer  {    margin:  0px 0px 30px 0px;    }  

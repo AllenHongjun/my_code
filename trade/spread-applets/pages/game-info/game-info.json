@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "游戏介绍",
+    "usingComponents": {
+        "van-dialog": "/assets/vant-weapp/dist/dialog/index"
+      }
+}

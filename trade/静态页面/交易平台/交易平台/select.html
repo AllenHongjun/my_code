@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <script type="text/javascript" src="js/rem.js" ></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/public.css" />
+    <link rel="stylesheet" href="css/select.css" />
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+    </script>
+</head>
+<body>
+	<div class="mui-content">
+	    <h4 class="title">请选择一款您要进行交易的游戏</h4>
+	    <h6>可在 我的-设置 中修改</h6>
+	    <ul class="mui-table-view game-list">
+	        <li class="mui-table-view-cell mui-media game">
+	            <a href="javascript:;">
+	                <img class="mui-media-object mui-pull-left" src="img/select/game-01.png">
+	                <div class="mui-media-body">
+	                	FIFA 	                   
+	                </div>
+	            </a>
+	        </li>
+	        <li class="mui-table-view-cell mui-media game checked">
+	            <a href="javascript:;">
+	                <img class="mui-media-object mui-pull-left" src="img/select/game-02.png">
+	                <div class="mui-media-body">
+	                    	荒野猎人	                    
+	                </div>
+	            </a>
+	        </li>
+	        <li class="mui-table-view-cell mui-media game">
+	            <a href="javascript:;">
+	                <img class="mui-media-object mui-pull-left" src="img/select/game-03.png">
+	                <div class="mui-media-body">
+	                    DOTA	                 
+	                </div>
+	            </a>
+	        </li>
+	        <li class="mui-table-view-cell mui-media game">
+	            <a href="javascript:;">
+	                <img class="mui-media-object mui-pull-left" src="img/select/game-04.png">
+	                <div class="mui-media-body">
+	                    	绝地求生                  
+	                </div>
+	            </a>
+	        </li>
+	    </ul>
+	    <button type="button" class="mui-btn mui-btn-blue mui-btn-block">进入首页</button>
+	</div>
+	
+	<script>
+		function hasClass(obj, cls) {
+		    return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
+		}
+		
+		function addClass(obj, cls) {
+		    if (!this.hasClass(obj, cls)) obj.className += " " + cls;
+		}
+		
+		function removeClass(obj, cls) {
+		    if (hasClass(obj, cls)) {
+		        var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
+		        obj.className = obj.className.replace(reg, '');
+		    }
+		}
+		var li1Ele = document.getElementsByClassName("game");
+		
+		var change=function (obj) {
+		    for(var i = 0; i < obj.length; i++){
+		        obj[i].onclick = function() {
+		            for(var i = 0; i < obj.length; i++){
+		                removeClass(obj[i],"checked")
+		            }
+		            addClass(this,"checked");
+		
+		        };
+		    }
+		};
+		change(li1Ele);
+	</script>
+</body>
+</html>
