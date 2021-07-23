@@ -1,42 +1,54 @@
 ﻿using action_filter.Models;
-using action_filter.Utils;
+using action_filter_api.common.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace action_filter_api.Utils
+namespace action_filter_api.Core.Attribute
 {
-    public class CustomerActionFilter : ActionFilterAttribute
-    {
+    public class RequestActionFilter : ActionFilterAttribute
+    {   
+        /// <summary>
+        /// action执行之前
+        /// </summary>
+        /// <param name="filterContext"></param>
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             filterContext.HttpContext.Response.Write("Action方法准备执行");
-            string strControllerName = filterContext.RouteData.Values["controller"].ToString();
-            string strActionName = filterContext.RouteData.Values["action"].ToString();
-            var res = filterContext.ActionParameters;
-            
-            var Items = filterContext.RequestContext.HttpContext.Items;
+            string controllerName = filterContext.RouteData.Values["controller"].ToString();
+            string actionName = filterContext.RouteData.Values["action"].ToString();
+
+            var httpMethod = filterContext.HttpContext.Request.HttpMethod;
+            var httpStatusCode = filterContext.HttpContext.Response.StatusCode;
+            var clientInfo = filterContext.HttpContext.Request.Browser.Browser;
+            //var duration = filterContext.HttpContext.Server.
+            var absoluteUri = filterContext.RequestContext.HttpContext.Request.Url.AbsoluteUri;
+
             var query = filterContext.RequestContext.HttpContext.Request.Url.Query;
             var form = filterContext.RequestContext.HttpContext.Request.Form;
-            var a = filterContext.ActionParameters;
+            var actionParameters = filterContext.ActionParameters;
 
-            Log4net.Info("res: " + res);
-            Log4net.Info("Items: " + Items);
-            Log4net.Info("query: " + query);
-            Log4net.Info("form: " + form);
-
-            LogEntity entity = new LogEntity()
+            var reqData = new
             {
-                OperationTime = DateTime.Now,
-                ControllerName = strControllerName,
-                ActionName = strActionName,
-                // 为了方便测试写admin，真实案例需要获取当前登录的用户
-                OperationUserId = "admin"
+                controllerName,
+                actionName,
+
+                httpMethod,
+                httpStatusCode,
+                clientInfo,
+                absoluteUri,
+
+                query = query,
+                from = form,
+                actionParameters = actionParameters
             };
-            // 记录操作记录
-            LogHelper.WriteOperRecore(entity);
+
+            
+            Log4net.Info(reqData);
+
+           
             base.OnActionExecuting(filterContext);
         }
 

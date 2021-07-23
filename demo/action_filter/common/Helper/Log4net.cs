@@ -1,6 +1,7 @@
 ﻿using log4net;
 using log4net.Config;
 using Newtonsoft.Json;
+
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -9,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace action_filter_api.Utils
+namespace action_filter_api.common.Helper
 {
     public static class Log4net
     {
