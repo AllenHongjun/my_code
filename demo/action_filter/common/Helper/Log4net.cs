@@ -31,11 +31,6 @@ namespace action_filter_api.common.Helper
                            ConfigurationManager.AppSettings["log4net"];
             var fi = new System.IO.FileInfo(path);
             log4net.Config.XmlConfigurator.Configure(fi);
-
-            //LogHelper.WriteLog("holle world");
-
-            //XmlConfigurator.ConfigureAndWatch(new FileInfo(AppDomain.CurrentDomain.SetupInformation.ConfigurationFile));
-            //log = LogManager.GetLogger(typeof(Log4net));
         }
 
         public static void Debug(object message)

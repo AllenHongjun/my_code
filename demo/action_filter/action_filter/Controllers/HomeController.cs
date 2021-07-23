@@ -9,10 +9,10 @@ using System.Web.Mvc;
 
 namespace action_filter.Controllers
 {
-    
+    [RequestActionFilter]
     public class HomeController : Controller
     {
-        [RequestActionFilter]
+        
         public ActionResult Index()
         {
             return View();
@@ -32,14 +32,14 @@ namespace action_filter.Controllers
             return View();
         }
 
-        [RequestActionFilter]
+        //[RequestActionFilter]
         [HttpPost]
         public JsonResult OrderDetail(int id = 1)
         {
             return Json("");
         }
 
-        [RequestActionFilter]
+        //[RequestActionFilter]
         [HttpPost]
         public JsonResult OrderList(string keyword = "",int page = 0,int limit = 10)
         {   
@@ -47,7 +47,7 @@ namespace action_filter.Controllers
             return Json("");
         }
 
-        [RequestActionFilter]
+        //[RequestActionFilter]
         [HttpPost]
         public JsonResult OrderListJson( OrderReqDto orderReqDto)
         {

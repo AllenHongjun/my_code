@@ -11,7 +11,7 @@ namespace action_filter_api.Core.Attribute
     public class RequestActionFilter : ActionFilterAttribute
     {   
         /// <summary>
-        /// action执行之前
+        /// 在执行 action方法之前 由 asp.net mvc调用
         /// </summary>
         /// <param name="filterContext"></param>
         public override void OnActionExecuting(ActionExecutingContext filterContext)
@@ -44,30 +44,24 @@ namespace action_filter_api.Core.Attribute
                 from = form,
                 actionParameters = actionParameters
             };
-
-            
             Log4net.Info(reqData);
-
            
             base.OnActionExecuting(filterContext);
         }
 
         public override void OnActionExecuted(ActionExecutedContext filterContext)
         {
-            filterContext.HttpContext.Response.Write("Action方法执行结束");
             base.OnActionExecuted(filterContext);
         }
 
 
         public override void OnResultExecuting(ResultExecutingContext filterContext)
         {
-            filterContext.HttpContext.Response.Write("Action方法执行结束，准备呈现视图");
             base.OnResultExecuting(filterContext);
         }
 
         public override void OnResultExecuted(ResultExecutedContext filterContext)
         {
-            filterContext.HttpContext.Response.Write("视图呈现结束");
             base.OnResultExecuted(filterContext);
         }
     }
